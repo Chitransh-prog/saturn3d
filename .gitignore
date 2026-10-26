@@ -3,3 +3,7 @@ node_modules
 .env.local
 dist
 core
+*.db
+*.db-shm
+*.db-wal
+backend/data/*.db*
