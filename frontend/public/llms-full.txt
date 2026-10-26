@@ -1,0 +1,100 @@
+# Saturn 3D - Comprehensive Knowledge Base & Technical Context
+
+> This document contains authoritative, verified factual data regarding Saturn 3D's manufacturing capabilities, materials, tolerances, pricing architecture, and operational guidelines.
+
+---
+
+## 1. Business Identity & Operations
+
+- **Full Legal & Trade Name**: Saturn 3D (Saturn 3D Studio)
+- **Tagline**: The Future of Precision Printing / Redefining Materiality
+- **Primary Website**: https://www.saturn3d.in/
+- **Headquarters & Central Fabrication Hub**: Bhopal, Madhya Pradesh, India (PIN: 462001)
+- **Direct Engineering Inquiries**: hello@saturn3d.in
+- **Customer Support & WhatsApp Quoting**: +91 79998 24632
+- **Service Coverage**: Bhopal local pickup + express insured courier dispatch across India (including Mumbai, Delhi-NCR, Bengaluru, Pune, Hyderabad, Chennai, Ahmedabad, Indore).
+- **Production Status**: Online • 99.98% Print Farm Uptime • 5,200+ Industrial Parts Fabricated.
+
+---
+
+## 2. Core Manufacturing Technologies & Capacities
+
+### A. Industrial Fused Deposition Modeling (FDM / FFF)
+- **Build Volume**: Up to 350 × 350 × 400 mm
+- **Layer Resolution Range**: 80 μm to 300 μm (0.08mm – 0.3mm)
+- **Dimensional Tolerance**: ±0.08 mm to ±0.15 mm
+- **Compatible Filaments**: PLA Pro, Industrial PETG, ABS-ESD, Carbon-X PA12, TPU 95A, ASA, Polycarbonate (PC).
+- **Primary Applications**: Functional mechanical prototypes, end-use brackets, drone airframes, manufacturing jigs, electrical enclosures.
+- **When NOT to Choose**: Micro-fluidic channels (<0.5mm), optical-clear lens components, or jewelry master patterns requiring invisible layer lines without chemical smoothing.
+
+### B. Ultra-Precision Stereolithography (SLA / MSLA Resin)
+- **Build Volume**: Up to 218 × 123 × 250 mm
+- **Layer Resolution Range**: 10 μm to 50 μm (0.01mm – 0.05mm)
+- **Dimensional Tolerance**: ±0.02 mm to ±0.05 mm
+- **Resin Types**: Ultra-Tough ABS-like Resin, Engineering Rigid Ceramic-filled Resin, High-Detail Architectural Resin, Castable Jewelry Wax.
+- **Surface Finish**: Injection-mold equivalent smoothness (Ra < 0.8 μm).
+- **Primary Applications**: Medical anatomical models, miniature gears, jewelry investment casting, fluidic test manifolds, visual display prototypes.
+- **When NOT to Choose**: Large bulky structural frames (>300mm) or continuous high-impact outdoor mechanical vibration.
+
+---
+
+## 3. Engineering Material Matrix (Mechanical & Thermal Properties)
+
+| Material | Technology | Tensile Strength | Heat Deflection Temp (HDT) | Elongation at Break | Best Use Case | When NOT to Use |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **PLA Pro Eco** | FDM | 52 MPa | 55°C | 6% | Rapid visual models, architectural massing, indoor brackets | Under-the-hood automotive, hot summer dashboards |
+| **Industrial PETG** | FDM | 54 MPa | 75°C | 18% | Liquid ducting, outdoor weather enclosures, chemical lab splash guards | High friction dry gears without grease |
+| **ABS-ESD Flame-Retardant** | FDM | 45 MPa | 98°C | 8% | Electronic PCB enclosures, drone flight controllers, heat shields | Ultra-fine jewelry miniatures |
+| **Carbon-X PA12 (Carbon Nylon)** | FDM | 95 MPa | 145°C | 4% | Drone arms, racing suspension brackets, robotic EOAT grippers | Low-cost aesthetic-only display items |
+| **TPU 95A Elastomer** | FDM | 35 MPa | 80°C | 480% | Vibration dampers, shock-absorbing feet, custom sealing gaskets | Rigid load-bearing structural frames |
+| **Ultra-SLA Tough Resin** | SLA | 65 MPa | 85°C | 12% | Snap-fit prototypes, fluidic manifolds, micro-detail housings | Severe high-impact rough drops on stone |
+
+---
+
+## 4. Transparent Pricing Architecture
+
+Saturn 3D operates with zero hidden surcharges and transparent volume tiering:
+
+1. **Custom Upload & Instant Slicing**:
+   - Base machine setup and mesh audit: From $12 / ₹950
+   - Standard FDM (PLA/PETG): Approximately ₹3.50 to ₹8.00 per gram based on infill and geometry
+   - Engineering Polymers (ABS-ESD / Nylon): ₹12.00 to ₹25.00 per gram
+   - Carbon-Fiber PA12: ₹28.00 to ₹45.00 per gram
+   - Precision SLA Resin: ₹15.00 to ₹35.00 per ml
+2. **Catalog Hardware**:
+   - Prices range from $24.00 (Flexible TPU Couplings) to $165.00 (Urban Planning Scale Monolith).
+3. **Volume Batch Discounts**:
+   - 1–4 units: Base price
+   - 5–19 units: 10% discount
+   - 20–49 units: 15% discount
+   - 50+ units: 25% discount + dedicated manufacturing batch engineer
+
+---
+
+## 5. Frequently Asked Questions (Verified Technical Answers)
+
+### Q: What CAD file formats do you accept for custom printing?
+**A**: We accept `.STL`, `.STEP`, `.STP`, `.OBJ`, and `.3MF`. For mechanical assemblies, `.STEP` or `.STP` is preferred as it preserves exact parametric NURBS curvature.
+
+### Q: What is the typical turnaround and delivery time?
+**A**: Standard prototyping jobs are dispatched within 24 to 48 hours of design approval. Express same-day production is available for urgent engineering sprints. Express shipping reaches metro hubs across India within 1–2 business days.
+
+### Q: What is your minimum order quantity (MOQ)?
+**A**: There is no minimum order quantity. We print single one-off proof-of-concept parts as well as production runs of 10 to 500+ units.
+
+### Q: How do I choose between FDM and SLA Resin?
+**A**: Choose FDM for functional strength, larger mechanical parts, snap-fits, and outdoor temperature resistance. Choose SLA Resin when surface finish must resemble injection molding or when intricate features are smaller than 0.5mm.
+
+### Q: Where is Saturn 3D located?
+**A**: Saturn 3D's manufacturing studio and print farm is located in Bhopal, Madhya Pradesh, India (PIN 462001). Local customers can coordinate same-day pickup, and nationwide orders are shipped via insured express air courier.
+
+---
+
+## 6. Verified Client Testimonials (Phase 0 Audit Data)
+
+1. **Arjun Mehta** (Operations Director, Precision Dynamics):
+   *"The industrial parts we received were highly accurate and delivered on time. Saturn3D has become an indispensable additive partner for our rapid manufacturing cycles."* — Rating: 5/5
+2. **Kavya Nair** (Principal Architect, Studio Form):
+   *"Their architectural scale models allowed us to present complex kinetic facades beautifully. The surface fidelity and dimensional accuracy exceeded expectations."* — Rating: 5/5
+3. **Rohan Khanna** (Co-Founder, AeroNest Robotics):
+   *"Saturn3D supported our drone prototyping with impressive speed and precision. The Carbon-X parts fit perfectly on the first print, eliminating costly CNC revisions."* — Rating: 5/5

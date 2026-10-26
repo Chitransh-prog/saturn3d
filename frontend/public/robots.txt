@@ -1,0 +1,64 @@
+# ==============================================================================
+# Saturn 3D - robots.txt
+# Domain: https://www.saturn3d.in/
+# Additive Manufacturing & Precision 3D Printing Service
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /checkout
+Disallow: /order-success
+Disallow: /orders
+
+# ------------------------------------------------------------------------------
+# Explicit Permissions for AI Search, Answer Engines & LLM Retrieval Crawlers
+# ------------------------------------------------------------------------------
+
+# OpenAI Search & ChatGPT Retrieval
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude & Claude SearchBot
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity AI Answer Engine
+User-agent: PerplexityBot
+Allow: /
+
+# Google Search, Google AI Overviews & Google-Extended
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence & Applebot
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Bing & Copilot
+User-agent: Bingbot
+Allow: /
+
+# Common Crawl & General Web Datasets
+User-agent: CCBot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Sitemap Index & LLM Manifest Discovery
+# ------------------------------------------------------------------------------
+Sitemap: https://www.saturn3d.in/sitemap.xml

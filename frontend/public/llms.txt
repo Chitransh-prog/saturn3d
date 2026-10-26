@@ -1,0 +1,24 @@
+# Saturn 3D
+
+> Saturn 3D is an industrial additive manufacturing laboratory and custom 3D printing service based in Bhopal, Madhya Pradesh, India. Specializing in rapid prototyping, bridge manufacturing, and low-volume production with tolerances down to ±0.01mm (10 microns).
+
+## Core Capabilities & Services
+
+- [Custom 3D Printing Lab](https://www.saturn3d.in/custom-lab): Instant CAD analysis (.STL, .STEP, .OBJ, .3MF), live automated pricing, infill optimization, and express fabrication.
+- [Standard Hardware Catalog](https://www.saturn3d.in/categories): Engineered components, precision enclosures, robotics joints, and parametric structures available for immediate production.
+- [Aerospace & Drone Prototyping](https://www.saturn3d.in/category/aerospace-drone): Carbon-X PA12 reinforced airframe arms, lightweight lattice structures, and high-impact sensor housings.
+- [Medical & Bio-Models](https://www.saturn3d.in/category/medical-bio): High-accuracy anatomical scale models and surgical planning fixtures with micron fidelity.
+- [Automotive & EV Prototypes](https://www.saturn3d.in/category/automotive-ev): Under-hood components, thermal-resistant ducting up to 110°C, and custom sensor brackets.
+- [Consumer Electronics Enclosures](https://www.saturn3d.in/category/consumer-electronics): Snap-fit cantilever designs, PCB standoff alignment (±0.05mm), and ergonomic housings.
+- [Architectural Scale Facades](https://www.saturn3d.in/category/architectural-models): Monocoque structural models, sharp mullions, and complex spatial geometry.
+- [Tooling, Jigs & Fixtures](https://www.saturn3d.in/category/tooling-fixtures): CMM inspection nests, manufacturing assembly grips, and robotic end-of-arm tooling.
+
+## Key Facts & Specifications
+
+- **Location**: Bhopal, Madhya Pradesh, India (Serving nationwide with express dispatch to Mumbai, Delhi-NCR, Bengaluru, Pune, Indore, Hyderabad).
+- **Tolerance**: ±0.01mm to ±0.1mm depending on technology and material.
+- **Technologies**: Industrial FDM (Fused Deposition Modeling) and Ultra-SLA Resin (Stereolithography).
+- **Materials**: PLA Pro Eco, Industrial PETG, ABS-ESD (Flame Retardant), Carbon-X PA12 (Carbon Fiber Nylon), TPU 95A Elastomer, Ultra-Tough SLA Resin.
+- **Turnaround Time**: Standard dispatch in 24–48 hours; express dispatch available.
+- **Contact**: Phone/WhatsApp: +91 79998 24632 | Email: hello@saturn3d.in
+- **Full LLM Context**: [llms-full.txt](https://www.saturn3d.in/llms-full.txt)

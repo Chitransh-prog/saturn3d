@@ -1,0 +1,25 @@
+.gallery-item {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  will-change: transform;
+}
+
+/* Custom shadow for the bento items on hover */
+.gallery-item:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure smooth modal transition */
+[role="dialog"] {
+  animation: modal-enter 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
