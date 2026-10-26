@@ -1,0 +1,11 @@
+[build]
+  # Frontend dependencies (including Vite) live in frontend/package.json,
+  # so install them before building. Vite outputs to frontend/dist.
+  command = "npm install --prefix frontend && npm run build --prefix frontend"
+  publish = "frontend/dist"
+
+# Single-page app fallback so client-side routes resolve to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
