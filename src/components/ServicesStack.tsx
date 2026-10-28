@@ -191,7 +191,7 @@ export default function ServicesStack() {
   const navigate = useNavigate();
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FFF4E0] border-b-3 border-ink relative overflow-hidden">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FAF7F2] border-b-3 border-ink relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           number="02"
@@ -247,7 +247,7 @@ export default function ServicesStack() {
                       {service.specs.map((spec, sIdx) => (
                         <div
                           key={sIdx}
-                          className="bg-[#FFF4E0] border-2 border-ink p-2 text-center rounded-xs"
+                          className="bg-[#FAF7F2] border-2 border-ink p-2 text-center rounded-xs"
                         >
                           <div className="text-[10px] font-mono text-[#555] uppercase font-bold">
                             {spec.label}
@@ -278,7 +278,7 @@ export default function ServicesStack() {
 
                   {/* Right Column: Interactive 3D Miniature Box */}
                   <div className="lg:col-span-5 flex justify-center">
-                    <div className="w-full max-w-[340px] h-64 sm:h-72 bg-[#FFF4E0] border-3 border-ink shadow-brutal rounded-xs p-2 relative overflow-hidden flex flex-col justify-between">
+                    <div className="w-full max-w-[340px] h-64 sm:h-72 bg-[#FAF7F2] border-3 border-ink shadow-brutal rounded-xs p-2 relative overflow-hidden flex flex-col justify-between">
                       {/* Top Bar on 3D Box */}
                       <div className="flex items-center justify-between px-2 pt-1 border-b border-ink text-[10px] font-mono font-bold">
                         <span>LIVE 3D MESH</span>

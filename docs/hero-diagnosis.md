@@ -60,3 +60,4 @@
    - Clean intro timeline <= 2.4s (H1 rise -> lemon disc scale -> print-reveal -> copy & CTAs fade). MatchMedia, reduced-motion fallback.
 6. **Phase 6: WhatsApp Fix**:
    - Position `right: 20px`, `bottom: calc(20px + env(safe-area-inset-bottom))`. Remove fake red "1". Offset from Netlify badge.
+

@@ -90,7 +90,47 @@ Saturn 3D operates with zero hidden surcharges and transparent volume tiering:
 
 ---
 
-## 6. Verified Client Testimonials (Phase 0 Audit Data)
+## 6. Full Product Catalog (Precision 3D Printed in Bhopal, India)
+
+1. **Hexagonal Carbon Vase** (https://saturn3d.in/product/1)
+   - Category: Interior | Material: Carbon-Fiber PLA | Tolerance: ±0.08 mm | Lead Time: 24-48 Hours | Price: ₹4,067 ($49.00)
+   - Specs: Continuous spiral shell with matte velvet tactile finish. Generative algorithm design.
+
+2. **Tech Organizer Elite** (https://saturn3d.in/product/2)
+   - Category: Corporate / Bulk Gifting | Material: Matte Industrial PETG | Tolerance: ±0.1 mm | Lead Time: 24 Hours | Price: ₹3,486 ($42.00)
+   - Specs: Modular workstation dock with cable conduits and anti-resonant weighting.
+
+3. **Industrial Chassis V1** (https://saturn3d.in/product/3)
+   - Category: Rapid Prototyping | Material: ABS-ESD Flame Retardant | Tolerance: ±0.05 mm | Lead Time: 48 Hours | Price: ₹9,877 ($119.00)
+   - Specs: High-rigidity electronics enclosure with standoff mounts and snap-fit tolerances.
+
+4. **Monolithic Heavy Bookends** (https://saturn3d.in/product/4)
+   - Category: Corporate / Bulk Gifting | Material: Stone-Filled PLA | Tolerance: ±0.1 mm | Lead Time: 24-48 Hours | Price: ₹4,814 ($58.00)
+   - Specs: Sculptural architectural bookends with high-density internal ballast.
+
+5. **Urban Planning Facade Scale** (https://saturn3d.in/product/5)
+   - Category: Architectural Scale Down Models | Material: Engineering SLA Tough Resin | Tolerance: ±0.04 mm | Lead Time: 3-4 Days | Price: ₹13,695 ($165.00)
+   - Specs: Micro-detail architectural elevation model with true-to-CAD micro-mullions.
+
+6. **Precision Flexible Couplings** (https://saturn3d.in/product/6)
+   - Category: Small Batch Manufacturing | Material: TPU 95A Industrial Elastomer | Tolerance: ±0.05 mm | Lead Time: 24 Hours | Price: ₹1,992 ($24.00)
+   - Specs: Functional torsion-damping drive coupling tested under cyclic motor vibration up to 4000 RPM.
+
+7. **Planetary Gear Reducer Kit** (https://saturn3d.in/product/7)
+   - Category: Education | Material: Nylon PA12 / Carbon | Tolerance: ±0.08 mm | Lead Time: 24-48 Hours | Price: ₹5,644 ($68.00)
+   - Specs: High-torque compound epicyclic gearbox assembly demonstrating 4:1 torque amplification.
+
+8. **Parametric Fractal Planter** (https://saturn3d.in/product/8)
+   - Category: Interior | Material: Bio-Polymer Matte PLA | Tolerance: ±0.1 mm | Lead Time: 24 Hours | Price: ₹2,988 ($36.00)
+   - Specs: Dual-wall self-aerating Voronoi vessel, 100% watertight with internal drainage basin.
+
+9. **Modular Pen & Caliper Station** (https://saturn3d.in/product/9)
+   - Category: Corporate / Bulk Gifting | Material: Recycled Stealth Matte Black PETG | Tolerance: ±0.1 mm | Lead Time: 24 Hours | Price: ₹2,656 ($32.00)
+   - Specs: Desk instrumentation station with precision friction-fit slots for digital calipers.
+
+---
+
+## 7. Verified Client Testimonials (Phase 0 Audit Data)
 
 1. **Arjun Mehta** (Operations Director, Precision Dynamics):
    *"The industrial parts we received were highly accurate and delivered on time. Saturn3D has become an indispensable additive partner for our rapid manufacturing cycles."* — Rating: 5/5

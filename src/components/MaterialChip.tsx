@@ -38,7 +38,7 @@ export default function MaterialChip({
           {type && <div className="text-[10px] opacity-75 font-normal">{type}</div>}
         </div>
       </div>
-      <div className={`px-1.5 py-0.5 border border-ink text-xs font-bold shrink-0 ${isActive ? 'bg-[#0B0B0B] text-white' : 'bg-[#FFF4E0] text-[#0B0B0B]'}`}>
+      <div className={`px-1.5 py-0.5 border border-ink text-xs font-bold shrink-0 ${isActive ? 'bg-[#0B0B0B] text-white' : 'bg-[#FAF7F2] text-[#0B0B0B]'}`}>
         {price}
       </div>
     </button>

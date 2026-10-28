@@ -232,9 +232,9 @@ export default function TheLab() {
     <section
       id="the-lab"
       ref={sectionRef}
-      data-bg="#FFF4E0"
+      data-bg="#FAF7F2"
       data-fg="#0B0B0B"
-      className="relative w-full section-padding px-6 sm:px-10 lg:px-16 bg-[#FFF4E0] text-[#0B0B0B] overflow-hidden"
+      className="relative w-full section-padding px-6 sm:px-10 lg:px-16 bg-[#FAF7F2] text-[#0B0B0B] overflow-hidden"
     >
       {/* Ghost "3D" parallax backdrop typography */}
       <div ref={ghostTextRef} className="ghost-3d-text" aria-hidden="true">

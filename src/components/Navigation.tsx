@@ -88,7 +88,7 @@ export default function Navigation() {
         isVisible || isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
       } ${
         isSolidHeader
-          ? 'bg-[#FFF4E0]/95 backdrop-blur-md hairline-b py-3 px-6 sm:px-10 shadow-brutal-sm'
+          ? 'bg-[#FAF7F2]/95 backdrop-blur-md hairline-b py-3 px-6 sm:px-10 shadow-brutal-sm'
           : 'bg-transparent py-5 px-6 sm:px-10'
       }`}
     >
@@ -164,7 +164,7 @@ export default function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                className="w-48 bg-[#FFF4E0] border border-ink p-1 font-mono text-xs shadow-md rounded-xs"
+                className="w-48 bg-[#FAF7F2] border border-ink p-1 font-mono text-xs shadow-md rounded-xs"
               >
                 <DropdownMenuLabel className="font-bold text-[11px] truncate px-2 py-1">
                   {user?.name || user?.email}
@@ -223,7 +223,7 @@ export default function Navigation() {
 
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#FFF4E0] hairline-t hairline-b py-6 px-6 mt-3 flex flex-col gap-4 font-mono text-sm font-bold uppercase max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div className="md:hidden bg-[#FAF7F2] hairline-t hairline-b py-6 px-6 mt-3 flex flex-col gap-4 font-mono text-sm font-bold uppercase max-h-[calc(100vh-80px)] overflow-y-auto">
           {navLinks.map((link) => {
             const isHash = link.path.startsWith('/#');
             if (isHash) {

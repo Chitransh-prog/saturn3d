@@ -4,8 +4,8 @@ import { ArrowLeft, Box, Check, Copy, Flame, Layers, ShieldCheck, Sparkles, Zap 
 
 export default function DesignSystem() {
   const colors = [
-    { name: 'Base Paper', token: '--paper', hex: '#FFF4E0', text: '#0B0B0B', desc: 'Global foundation surface' },
-    { name: 'Ink Black', token: '--ink', hex: '#0B0B0B', text: '#FFF4E0', desc: 'Borders, type, hard shadows' },
+    { name: 'Base Paper', token: '--paper', hex: '#FAF7F2', text: '#0B0B0B', desc: 'Global foundation surface' },
+    { name: 'Ink Black', token: '--ink', hex: '#0B0B0B', text: '#FAF7F2', desc: 'Borders, type, hard shadows' },
     { name: 'Saturn Orange', token: '--saturn-orange', hex: '#FF5A1F', text: '#0B0B0B', desc: 'Primary brand energy & action' },
     { name: 'Lemon Yellow', token: '--lemon', hex: '#FFE14D', text: '#0B0B0B', desc: 'Highlight tags & warning chips' },
     { name: 'Blueprint Periwinkle', token: '--periwinkle', hex: '#8EA2FF', text: '#0B0B0B', desc: 'Technical process & accents' },
@@ -14,9 +14,9 @@ export default function DesignSystem() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFF4E0] text-[#0B0B0B] blueprint-grid pb-24 font-mono-tech">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#0B0B0B] blueprint-grid pb-24 font-mono-tech">
       {/* Top Bar */}
-      <header className="border-b-ink bg-[#FFF4E0] sticky top-0 z-50 px-6 py-4 flex flex-wrap items-center justify-between gap-4 shadow-brutal-sm">
+      <header className="border-b-ink bg-[#FAF7F2] sticky top-0 z-50 px-6 py-4 flex flex-wrap items-center justify-between gap-4 shadow-brutal-sm">
         <div className="flex items-center gap-4">
           <Link
             to="/"
@@ -49,7 +49,7 @@ export default function DesignSystem() {
           <p className="font-body text-base sm:text-lg text-[#0B0B0B] max-w-3xl leading-relaxed">
             This design system rejects generic AI-template layouts, purple gradients, and soft floating glass.
             Every component is anchored by <strong>3px solid ink borders</strong>, <strong>hard zero-blur offset shadows</strong>, 
-            vintage blueprint paper fills (<code>#FFF4E0</code>), vibrant high-voltage accents (<code>#FF5A1F</code>), 
+            vintage blueprint paper fills (<code>#FAF7F2</code>), vibrant high-voltage accents (<code>#FF5A1F</code>), 
             and aerospace-grade technical typography.
           </p>
         </section>
@@ -110,7 +110,7 @@ export default function DesignSystem() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t-2 border-black">
               <div>
                 <div className="text-xs text-[#666] uppercase tracking-widest mb-2">Technical Mono Readout (Space Mono)</div>
-                <div className="bg-[#FFF4E0] border-ink p-4 space-y-1 text-sm font-mono-tech">
+                <div className="bg-[#FAF7F2] border-ink p-4 space-y-1 text-sm font-mono-tech">
                   <div>TOLERANCE: &plusmn;0.04 MM (MICRON GRADE)</div>
                   <div>BUILD VOLUME: 350 &times; 350 &times; 400 MM</div>
                   <div>MATERIAL: CARBON-X PA12 HIGH TEMP</div>
@@ -165,13 +165,13 @@ export default function DesignSystem() {
             </div>
 
             <div className="mt-8 pt-6 border-t-2 border-black grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono-tech">
-              <div className="p-3 bg-[#FFF4E0] border border-black">
+              <div className="p-3 bg-[#FAF7F2] border border-black">
                 <strong>DEFAULT STATE:</strong> 3px solid ink, 4px 4px 0 ink shadow.
               </div>
-              <div className="p-3 bg-[#FFF4E0] border border-black">
+              <div className="p-3 bg-[#FAF7F2] border border-black">
                 <strong>HOVER STATE:</strong> translate(-3px, -3px), 7px 7px 0 shadow.
               </div>
-              <div className="p-3 bg-[#FFF4E0] border border-black">
+              <div className="p-3 bg-[#FAF7F2] border border-black">
                 <strong>ACTIVE STATE:</strong> translate(3px, 3px), 0px 0px 0 shadow (press feel).
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function DesignSystem() {
               <div className="badge-sticker bg-white -rotate-2">
                 100% INFILL DENSITY
               </div>
-              <div className="badge-sticker bg-[#0B0B0B] text-[#FFF4E0] rotate-1">
+              <div className="badge-sticker bg-[#0B0B0B] text-[#FAF7F2] rotate-1">
                 CENTRAL INDIA HUB
               </div>
             </div>
@@ -281,14 +281,14 @@ export default function DesignSystem() {
               <input
                 type="text"
                 defaultValue="drone_chassis_v3.stl"
-                className="w-full bg-[#FFF4E0] border-ink p-3 font-mono-tech text-sm focus:outline-hidden focus:bg-white shadow-brutal-sm"
+                className="w-full bg-[#FAF7F2] border-ink p-3 font-mono-tech text-sm focus:outline-hidden focus:bg-white shadow-brutal-sm"
               />
             </div>
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider mb-2 font-mono-tech">
                 INFILL PERCENTAGE (%)
               </label>
-              <select className="w-full bg-[#FFF4E0] border-ink p-3 font-mono-tech text-sm focus:outline-hidden focus:bg-white shadow-brutal-sm">
+              <select className="w-full bg-[#FAF7F2] border-ink p-3 font-mono-tech text-sm focus:outline-hidden focus:bg-white shadow-brutal-sm">
                 <option>20% &ndash; Standard Rapid Prototype</option>
                 <option>50% &ndash; Semi-Functional Assembly</option>
                 <option>100% &ndash; Solid Industrial Grade</option>

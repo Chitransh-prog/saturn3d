@@ -89,7 +89,7 @@ export default function Cart() {
       />
 
       {/* Cart Drawer */}
-      <div className="fixed top-0 right-0 w-full max-w-[440px] h-full bg-[#FFF4E0] shadow-brutal-xl z-[80] flex flex-col border-l-4 border-ink animate-in slide-in-from-right duration-200">
+      <div className="fixed top-0 right-0 w-full max-w-[440px] h-full bg-[#FAF7F2] shadow-brutal-xl z-[80] flex flex-col border-l-4 border-ink animate-in slide-in-from-right duration-200">
 
         {/* Drawer Header */}
         <div className="flex items-center justify-between p-5 border-b-3 border-ink bg-white">
@@ -139,7 +139,7 @@ export default function Cart() {
         <div className="flex-1 overflow-y-auto p-5 space-y-3 blueprint-grid">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center py-12 card-slab bg-white p-6">
-              <div className="w-16 h-16 rounded-xs bg-[#FFF4E0] border-3 border-ink shadow-brutal flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-xs bg-[#FAF7F2] border-3 border-ink shadow-brutal flex items-center justify-center mb-4">
                 <ShoppingBag className="w-8 h-8 text-[#0B0B0B]" />
               </div>
               <h3 className="font-display font-black text-lg text-[#0B0B0B] uppercase mb-1">
@@ -166,7 +166,7 @@ export default function Cart() {
                   className="flex gap-3.5 p-3.5 bg-white rounded-xs border-2 border-ink shadow-brutal-sm"
                 >
                   {/* Thumbnail */}
-                  <div className="w-16 h-16 rounded-xs overflow-hidden bg-[#FFF4E0] border-2 border-ink shrink-0">
+                  <div className="w-16 h-16 rounded-xs overflow-hidden bg-[#FAF7F2] border-2 border-ink shrink-0">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -206,7 +206,7 @@ export default function Cart() {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => updateQuantity(item.cartItemId, Math.max(1, item.quantity - 1))}
-                          className="w-6 h-6 bg-[#FFF4E0] border border-ink flex items-center justify-center hover:bg-[#FFE14D] font-bold text-xs"
+                          className="w-6 h-6 bg-[#FAF7F2] border border-ink flex items-center justify-center hover:bg-[#FFE14D] font-bold text-xs"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
@@ -215,7 +215,7 @@ export default function Cart() {
                         </span>
                         <button
                           onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
-                          className="w-6 h-6 bg-[#FFF4E0] border border-ink flex items-center justify-center hover:bg-[#FFE14D] font-bold text-xs"
+                          className="w-6 h-6 bg-[#FAF7F2] border border-ink flex items-center justify-center hover:bg-[#FFE14D] font-bold text-xs"
                         >
                           <Plus className="w-3 h-3" />
                         </button>

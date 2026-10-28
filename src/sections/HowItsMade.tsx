@@ -385,9 +385,9 @@ export default function HowItsMade() {
     <section
       id="how-it-works"
       ref={sectionRef}
-      data-bg="#FFF4E0"
+      data-bg="#FAF7F2"
       data-fg="#0B0B0B"
-      className="relative w-full min-h-screen bg-[#FFF4E0] text-[#0B0B0B] py-16 sm:py-24 px-4 sm:px-8 lg:px-14 flex flex-col justify-center overflow-hidden pattern-blueprint"
+      className="relative w-full min-h-screen bg-[#FAF7F2] text-[#0B0B0B] py-16 sm:py-24 px-4 sm:px-8 lg:px-14 flex flex-col justify-center overflow-hidden pattern-blueprint"
     >
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         
@@ -425,7 +425,7 @@ export default function HowItsMade() {
                 className={`px-3.5 py-2 font-mono text-xs font-bold transition-all shrink-0 rounded-xs border-2 cursor-pointer ${
                   isActive
                     ? 'bg-[#0B0B0B] text-[#FFE14D] border-ink font-black shadow-brutal-sm'
-                    : 'bg-white text-[#0B0B0B]/70 border-ink/40 hover:bg-[#FFF4E0]'
+                    : 'bg-white text-[#0B0B0B]/70 border-ink/40 hover:bg-[#FAF7F2]'
                 }`}
               >
                 <span className="text-[#FF5A1F] mr-1.5">{st.number}</span>
@@ -476,7 +476,7 @@ export default function HowItsMade() {
                   <StepIcon className="w-6 h-6 text-[#0B0B0B] stroke-[2.5]" />
                 </div>
                 <div className="space-y-1">
-                  <span className="inline-block font-mono text-[11px] font-black uppercase tracking-wider text-[#FF5A1F] bg-[#FFF4E0] border border-ink px-2 py-0.5">
+                  <span className="inline-block font-mono text-[11px] font-black uppercase tracking-wider text-[#FF5A1F] bg-[#FAF7F2] border border-ink px-2 py-0.5">
                     {current.stage}
                   </span>
                   <h3 className="font-display text-2xl sm:text-3xl font-black uppercase text-ink leading-[0.98]">
@@ -497,7 +497,7 @@ export default function HowItsMade() {
 
               {/* Metrics & Technical Spec Block */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="p-3 bg-[#FFF4E0] border-2 border-ink rounded-xs font-mono">
+                <div className="p-3 bg-[#FAF7F2] border-2 border-ink rounded-xs font-mono">
                   <span className="block text-[10px] uppercase font-bold text-ink/60">BENCHMARK METRIC</span>
                   <span className="block text-sm font-black text-[#FF5A1F] mt-0.5">{current.metric}</span>
                 </div>
@@ -640,7 +640,7 @@ export default function HowItsMade() {
                   const stepIdx = Math.min(steps.length - 1, Math.floor(val * steps.length));
                   setActiveStep(stepIdx);
                 }}
-                className="w-full accent-[#FF5A1F] cursor-pointer h-2 bg-[#FFF4E0] border border-ink"
+                className="w-full accent-[#FF5A1F] cursor-pointer h-2 bg-[#FAF7F2] border border-ink"
               />
               <span className="font-black text-[#FF5A1F] whitespace-nowrap text-xs w-12 text-right">
                 {Math.round(sliceProgress * 100)}%

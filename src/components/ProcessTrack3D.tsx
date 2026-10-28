@@ -456,7 +456,7 @@ function MotorizedCarriage({ activeIndex }: { activeIndex: number }) {
       {/* Magnetic Chuck Fixture Base */}
       <mesh position={[0, -0.04, 0]}>
         <cylinderGeometry args={[0.34, 0.36, 0.08, 24]} />
-        <meshToonMaterial color="#FFF4E0" />
+        <meshToonMaterial color="#FAF7F2" />
         <Outlines thickness={2.2} color="#0B0B0B" />
       </mesh>
 
@@ -553,7 +553,7 @@ export default function ProcessTrack3D() {
   const StepIcon = currentStep.icon;
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FFF4E0] border-b-3 border-ink relative overflow-hidden">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FAF7F2] border-b-3 border-ink relative overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -598,7 +598,7 @@ export default function ProcessTrack3D() {
         ----------------------------------------------------------------- */}
         <div className="card-slab bg-white p-3 sm:p-5 border-4 border-ink shadow-brutal-xl relative overflow-hidden">
           {/* Viewport Top Control Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-2 border-b-3 border-ink text-xs font-mono font-bold bg-[#FFF4E0] -mx-3 sm:-mx-5 -mt-3 sm:-mt-5 p-3 sm:px-5">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-2 border-b-3 border-ink text-xs font-mono font-bold bg-[#FAF7F2] -mx-3 sm:-mx-5 -mt-3 sm:-mt-5 p-3 sm:px-5">
             <div className="flex items-center gap-2.5">
               <span className="w-3 h-3 bg-[#FF5A1F] border border-ink inline-block animate-pulse" />
               <span className="text-[#0B0B0B] text-xs sm:text-sm font-black">
@@ -630,7 +630,7 @@ export default function ProcessTrack3D() {
                     ? 'bg-[#FF5A1F] text-black shadow-brutal-xs -translate-y-0.5'
                     : i < activeStep
                     ? 'bg-[#7CF2C1] text-black'
-                    : 'bg-white hover:bg-[#FFF4E0] text-[#555]'
+                    : 'bg-white hover:bg-[#FAF7F2] text-[#555]'
                 }`}
               >
                 <span>{st.number}</span>
@@ -733,7 +733,7 @@ export default function ProcessTrack3D() {
                           ? 'bg-white text-[#0B0B0B] shadow-brutal-xs'
                           : isCompleted
                           ? 'bg-[#7CF2C1] text-black'
-                          : 'bg-[#FFF4E0] text-[#0B0B0B]'
+                          : 'bg-[#FAF7F2] text-[#0B0B0B]'
                       }`}
                     >
                       <Icon className="w-4 h-4 stroke-[2.5]" />
@@ -807,7 +807,7 @@ export default function ProcessTrack3D() {
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                <div className="font-mono text-xs font-black text-[#0B0B0B] bg-[#FFF4E0] p-2.5 border-2 border-ink shadow-brutal-xs">
+                <div className="font-mono text-xs font-black text-[#0B0B0B] bg-[#FAF7F2] p-2.5 border-2 border-ink shadow-brutal-xs">
                   {currentStep.specs}
                 </div>
                 <div className="font-mono text-xs font-bold text-[#FF5A1F] bg-white p-2.5 border-2 border-ink">

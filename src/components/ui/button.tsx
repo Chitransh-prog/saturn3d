@@ -14,20 +14,20 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-white border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
         outline:
-          "bg-white text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#FFF4E0]",
+          "bg-white text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#FAF7F2]",
         secondary:
           "bg-[#FFE14D] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#FFF070]",
         ghost:
           "text-[#0B0B0B] border-2 border-transparent hover:border-ink hover:bg-white hover:shadow-brutal-sm",
         link: "text-[#FF5A1F] underline underline-offset-4 hover:text-[#0B0B0B]",
         brutal:
-          "bg-[#FFF4E0] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
+          "bg-[#FAF7F2] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
         mint:
           "bg-[#7CF2C1] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
         periwinkle:
           "bg-[#8EA2FF] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
         ink:
-          "bg-[#0B0B0B] text-[#FFF4E0] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#222222]",
+          "bg-[#0B0B0B] text-[#FAF7F2] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#222222]",
       },
       size: {
         default: "h-11 px-5 py-2.5",

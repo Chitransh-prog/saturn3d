@@ -93,9 +93,9 @@ export default function FAQSection() {
     <section
       id="faq"
       ref={sectionRef}
-      data-bg="#FFF4E0"
+      data-bg="#FAF7F2"
       data-fg="#0B0B0B"
-      className="relative w-full bg-[#FFF4E0] text-[#0B0B0B] section-padding px-6 sm:px-10 lg:px-16 overflow-hidden hairline-t"
+      className="relative w-full bg-[#FAF7F2] text-[#0B0B0B] section-padding px-6 sm:px-10 lg:px-16 overflow-hidden hairline-t"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}

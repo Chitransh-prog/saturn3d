@@ -267,8 +267,8 @@ export default function ExploreMaterials() {
       id="materials"
       ref={sectionRef}
       data-bg="#0B0B0B"
-      data-fg="#FFF4E0"
-      className="relative w-full min-h-screen bg-[#0B0B0B] text-[#FFF4E0] py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 flex flex-col justify-center overflow-hidden"
+      data-fg="#FAF7F2"
+      className="relative w-full min-h-screen bg-[#0B0B0B] text-[#FAF7F2] py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 flex flex-col justify-center overflow-hidden"
     >
       <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between h-full">
         {/* Section Header */}
@@ -284,12 +284,12 @@ export default function ExploreMaterials() {
             </div>
 
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black uppercase tracking-tight leading-[0.95]">
-              <span className="text-[#FFF4E0] mr-2.5">EXPLORE EVERY</span>
+              <span className="text-[#FAF7F2] mr-2.5">EXPLORE EVERY</span>
               <span className="text-[#FFE14D]">MATERIAL.</span>
             </h2>
           </div>
 
-          <p className="type-body text-[#FFF4E0]/70 max-w-md text-xs sm:text-sm font-medium leading-relaxed">
+          <p className="type-body text-[#FAF7F2]/70 max-w-md text-xs sm:text-sm font-medium leading-relaxed">
             From flexible elastomeric seals to metal-yield carbon composites.
             Select or scroll to inspect mechanical tolerances and real-time surface properties.
           </p>

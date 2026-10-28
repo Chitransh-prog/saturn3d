@@ -243,7 +243,7 @@ function BrutalistPrinter({
       {/* Heated Bed Plate (Paper Base with Hard Outlines) */}
       <mesh position={[0, -1.2, 0]} receiveShadow>
         <boxGeometry args={[2.7, 0.16, 2.7]} />
-        <meshToonMaterial color="#FFF4E0" />
+        <meshToonMaterial color="#FAF7F2" />
         <Outlines thickness={2.8} color="#0B0B0B" />
       </mesh>
 
@@ -367,7 +367,7 @@ export default function HeroFusion3D({ printProgress = 0.5, isPrinting = true }:
         />
         <directionalLight position={[-4.0, 3.2, 2.0]} intensity={1.2} color="#E2E8F0" />
         <directionalLight position={[0, 4.5, -4.5]} intensity={1.5} color="#CBD5E1" />
-        <pointLight position={[0, -1.3, 1.8]} intensity={0.7} color="#FFF4E0" />
+        <pointLight position={[0, -1.3, 1.8]} intensity={0.7} color="#FAF7F2" />
 
         {/* Studio HDR Reflections */}
         <Environment files="/potsdamer_platz_1k.hdr" />

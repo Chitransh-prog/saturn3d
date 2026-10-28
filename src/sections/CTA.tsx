@@ -29,7 +29,7 @@ export default function CTA() {
 
       <section
         ref={sectionRef}
-        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FFF4E0] border-b-3 border-ink relative overflow-hidden blueprint-grid"
+        className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FAF7F2] border-b-3 border-ink relative overflow-hidden blueprint-grid"
       >
         <div
           ref={cardRef}

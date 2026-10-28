@@ -35,7 +35,7 @@ export default function Gallery() {
   const visibleAssets = isExpanded ? galleryAssets : galleryAssets.slice(0, initialItemsCount);
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FFF4E0] border-b-3 border-ink relative overflow-hidden" ref={sectionRef}>
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FAF7F2] border-b-3 border-ink relative overflow-hidden" ref={sectionRef}>
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -74,7 +74,7 @@ export default function Gallery() {
                 ${asset.size === 'tall' ? 'row-span-2' : 'row-span-1'}
               `}
             >
-              <div className="absolute inset-0 bg-[#FFF4E0]">
+              <div className="absolute inset-0 bg-[#FAF7F2]">
                 {asset.type === 'video' ? (
                   <div className="relative w-full h-full">
                     <video
@@ -107,7 +107,7 @@ export default function Gallery() {
               </div>
 
               {/* Bottom Caption Overlay */}
-              <div className="absolute inset-x-0 bottom-0 bg-[#FFF4E0] border-t-2 border-ink p-2 sm:p-3 flex items-center justify-between font-mono text-xs z-10">
+              <div className="absolute inset-x-0 bottom-0 bg-[#FAF7F2] border-t-2 border-ink p-2 sm:p-3 flex items-center justify-between font-mono text-xs z-10">
                 <span className="font-bold text-[#0B0B0B] truncate text-[11px]">
                   {asset.name}
                 </span>
@@ -121,7 +121,7 @@ export default function Gallery() {
 
         {/* Lightbox Dialog */}
         <Dialog open={!!selectedAsset} onOpenChange={() => setSelectedAsset(null)}>
-          <DialogContent className="max-w-4xl p-0 overflow-hidden bg-[#FFF4E0] border-4 border-ink">
+          <DialogContent className="max-w-4xl p-0 overflow-hidden bg-[#FAF7F2] border-4 border-ink">
             {selectedAsset && (
               <div className="flex flex-col">
                 <div className="relative max-h-[75vh] flex items-center justify-center bg-black">

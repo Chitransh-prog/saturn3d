@@ -88,7 +88,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         position="bottom-right"
         toastOptions={{
           style: {
-            background: '#FFF4E0',
+            background: '#FAF7F2',
             border: '2px solid #0B0B0B',
             borderRadius: '4px',
             boxShadow: '2.5px 2.5px 0px #0B0B0B',

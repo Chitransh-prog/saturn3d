@@ -115,7 +115,7 @@ export default function Categories({ limit, initialProducts, initialCategories }
   const displayedProducts = limit ? filteredProducts.slice(0, limit) : filteredProducts;
 
   return (
-    <section id="categories" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FFF4E0] hairline-b relative overflow-hidden">
+    <section id="categories" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FAF7F2] hairline-b relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -139,7 +139,7 @@ export default function Categories({ limit, initialProducts, initialCategories }
               placeholder="SEARCH BY PART OR SPEC..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-9 py-2 bg-white hairline rounded-xs font-mono text-xs uppercase text-[#0B0B0B] placeholder:text-[#777] focus:outline-hidden focus:bg-[#FFF4E0] transition-all font-bold"
+              className="w-full pl-10 pr-9 py-2 bg-white hairline rounded-xs font-mono text-xs uppercase text-[#0B0B0B] placeholder:text-[#777] focus:outline-hidden focus:bg-[#FAF7F2] transition-all font-bold"
             />
             {searchQuery && (
               <button
@@ -180,7 +180,7 @@ export default function Categories({ limit, initialProducts, initialCategories }
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-[#FFF4E0] border-2 border-ink px-2.5 py-1 text-xs font-mono font-bold uppercase rounded-xs focus:outline-hidden cursor-pointer shadow-brutal-sm"
+              className="bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-xs font-mono font-bold uppercase rounded-xs focus:outline-hidden cursor-pointer shadow-brutal-sm"
             >
               <option value="featured">FEATURED</option>
               <option value="price-asc">PRICE: LOW &rarr; HIGH</option>
@@ -198,7 +198,7 @@ export default function Categories({ limit, initialProducts, initialCategories }
             </div>
           </div>
         ) : error ? (
-          <div className="card-slab bg-[#FFF4E0] p-8 border-3 border-ink shadow-brutal text-center space-y-3">
+          <div className="card-slab bg-[#FAF7F2] p-8 border-3 border-ink shadow-brutal text-center space-y-3">
             <div className="font-display font-black text-xl text-red-600">FAILED TO LOAD CATALOG</div>
             <p className="font-mono text-xs text-[#555]">{error}</p>
           </div>

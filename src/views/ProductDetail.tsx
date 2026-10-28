@@ -253,7 +253,7 @@ export default function ProductDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FFF4E0] pattern-blueprint">
+      <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2] pattern-blueprint">
         <div className="card-slab bg-white border-3 border-ink shadow-brutal p-8 flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
           <p className="font-mono text-xs font-black text-ink uppercase tracking-wider">
@@ -266,7 +266,7 @@ export default function ProductDetail() {
 
   if (notFound || !product) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FFF4E0] pattern-blueprint px-6">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF7F2] pattern-blueprint px-6">
         <div className="card-slab bg-white border-4 border-ink shadow-brutal-xl p-8 max-w-md text-center">
           <div className="w-16 h-16 bg-[#FF5A1F] border-3 border-ink flex items-center justify-center mx-auto mb-6 shadow-brutal-sm">
             <Package className="w-8 h-8 text-white" />
@@ -289,7 +289,7 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FFF4E0] pattern-blueprint text-ink selection:bg-[#FFE14D]">
+    <div className="min-h-screen bg-[#FAF7F2] pattern-blueprint text-ink selection:bg-[#FFE14D]">
       
       {/* ────────────────────────────────────────────────────────────────────────── */}
       {/* 1. TOP BREADCRUMB & PREV/NEXT PRODUCT ROW (MATCHING MR. MAWAA)             */}
@@ -367,7 +367,7 @@ export default function ProductDetail() {
               <button
                 type="button"
                 onClick={() => setMediaMode('3d')}
-                className={`w-16 h-16 rounded-xs border-2 border-ink bg-[#FFF4E0] flex flex-col items-center justify-center gap-1 font-mono text-[9px] font-black transition-all cursor-pointer ${
+                className={`w-16 h-16 rounded-xs border-2 border-ink bg-[#FAF7F2] flex flex-col items-center justify-center gap-1 font-mono text-[9px] font-black transition-all cursor-pointer ${
                   mediaMode === '3d'
                     ? 'ring-2 ring-[#FF5A1F] shadow-brutal-sm bg-[#FFE14D]'
                     : 'hover:bg-white'
@@ -518,7 +518,7 @@ export default function ProductDetail() {
             <div className="space-y-2.5">
               <div className="flex items-center justify-between font-mono text-xs font-black uppercase tracking-wider">
                 <span>SELECT MATERIAL GRADE:</span>
-                <span className="text-[#FF5A1F] bg-[#FFF4E0] border border-ink px-1.5 py-0.5 text-[10px]">
+                <span className="text-[#FF5A1F] bg-[#FAF7F2] border border-ink px-1.5 py-0.5 text-[10px]">
                   {selectedMatObj.badge}
                 </span>
               </div>
@@ -534,7 +534,7 @@ export default function ProductDetail() {
                       className={`p-3 text-left border-2 rounded-xs transition-all cursor-pointer flex flex-col justify-between ${
                         isSelected
                           ? 'bg-[#0B0B0B] text-white border-ink shadow-brutal-sm'
-                          : 'bg-white text-ink border-ink/40 hover:border-ink hover:bg-[#FFF4E0]'
+                          : 'bg-white text-ink border-ink/40 hover:border-ink hover:bg-[#FAF7F2]'
                       }`}
                     >
                       <div className="flex items-center justify-between gap-1">
@@ -788,7 +788,7 @@ export default function ProductDetail() {
         </div>
 
         {/* Overall Rating Slab */}
-        <div className="card-slab bg-[#FFF4E0] border-3 border-ink shadow-brutal p-6 sm:p-8 max-w-2xl mx-auto mb-12 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-xs">
+        <div className="card-slab bg-[#FAF7F2] border-3 border-ink shadow-brutal p-6 sm:p-8 max-w-2xl mx-auto mb-12 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-xs">
           <div className="flex items-center gap-4 text-center sm:text-left">
             <div className="font-display font-black text-5xl sm:text-6xl text-ink leading-none">
               4.9
@@ -840,7 +840,7 @@ export default function ProductDetail() {
               <div className="pt-3 border-t border-ink/20 font-mono text-xs">
                 <div className="font-black text-ink">{rev.name}</div>
                 <div className="text-[10px] text-ink/70 font-medium">{rev.role}</div>
-                <div className="inline-block mt-2 px-2 py-0.5 bg-[#FFF4E0] border border-ink text-[10px] font-bold text-[#FF5A1F]">
+                <div className="inline-block mt-2 px-2 py-0.5 bg-[#FAF7F2] border border-ink text-[10px] font-bold text-[#FF5A1F]">
                   {rev.material}
                 </div>
               </div>
@@ -904,7 +904,7 @@ export default function ProductDetail() {
       {/* 7. FULLSCREEN MEDIA ZOOM MODAL                                             */}
       {/* ────────────────────────────────────────────────────────────────────────── */}
       <Dialog open={zoomModalOpen} onOpenChange={setZoomModalOpen}>
-        <DialogContent className="max-w-[94vw] lg:max-w-5xl h-[85vh] bg-[#FFF4E0] border-4 border-ink shadow-brutal-xl p-6 flex flex-col justify-between">
+        <DialogContent className="max-w-[94vw] lg:max-w-5xl h-[85vh] bg-[#FAF7F2] border-4 border-ink shadow-brutal-xl p-6 flex flex-col justify-between">
           <div className="flex items-center justify-between pb-3 border-b-2 border-ink">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 bg-[#FF5A1F]" />

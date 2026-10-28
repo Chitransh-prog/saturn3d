@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <footer
       data-bg="#0B0B0B"
-      data-fg="#FFF4E0"
+      data-fg="#FAF7F2"
       className="w-full bg-[#0B0B0B] text-white pt-20 sm:pt-28 pb-28 sm:pb-16 relative overflow-hidden select-none hairline-t-ink"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
@@ -246,7 +246,7 @@ export default function Footer() {
 
       {/* Mobile Sticky Bar: "GET A QUOTE" */}
       <div
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FFF4E0] hairline-t p-3 flex items-center justify-between gap-3 shadow-lg"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF7F2] hairline-t p-3 flex items-center justify-between gap-3 shadow-lg"
         style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}
       >
         <div className="font-mono text-xs font-bold text-[#0B0B0B] pl-2">

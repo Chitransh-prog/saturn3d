@@ -167,7 +167,7 @@ export default function Testimonials({ standalone = false }: TestimonialsProps) 
               </span>
             </div>
           </div>
-          <span className="self-start sm:self-auto font-mono text-xs font-black text-[#FF5A1F] bg-[#FFF4E0] border-2 border-ink px-3 py-1 rounded-xs shadow-xs">
+          <span className="self-start sm:self-auto font-mono text-xs font-black text-[#FF5A1F] bg-[#FAF7F2] border-2 border-ink px-3 py-1 rounded-xs shadow-xs">
             100% RETENTION &bull; 0 DELAMINATION &bull; ISO 9001
           </span>
         </div>
@@ -494,7 +494,7 @@ export default function Testimonials({ standalone = false }: TestimonialsProps) 
                 <img className="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" src="/avatar2.jpg" alt="" />
                 <img className="inline-block h-7 w-7 rounded-full ring-2 ring-white object-cover" src="/avatar3.jpg" alt="" />
               </div>
-              <span className="font-mono text-[10px] font-black text-ink uppercase tracking-wider bg-[#FFF4E0] border border-black px-2 py-0.5 rounded-full">
+              <span className="font-mono text-[10px] font-black text-ink uppercase tracking-wider bg-[#FAF7F2] border border-black px-2 py-0.5 rounded-full">
                 +180 BATCH RUNS CERTIFIED
               </span>
             </div>

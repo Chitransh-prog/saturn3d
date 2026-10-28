@@ -67,7 +67,7 @@ export default function IndustryCategories() {
                 data-aos="fade-up"
                 data-aos-delay={(i % 3) * 80}
                 onClick={() => navigate(`/category/${cat.slug}`)}
-                className="card-slab bg-[#FFF4E0] p-6 sm:p-8 border-2 border-ink shadow-brutal-sm hover:shadow-brutal hover:bg-white transition-all cursor-pointer flex flex-col justify-between group"
+                className="card-slab bg-[#FAF7F2] p-6 sm:p-8 border-2 border-ink shadow-brutal-sm hover:shadow-brutal hover:bg-white transition-all cursor-pointer flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">

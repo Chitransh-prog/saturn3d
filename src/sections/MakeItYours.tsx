@@ -336,7 +336,7 @@ Can an engineer review my tolerances and dispatch timeline?`;
             </div>
 
             {/* Live Total Display */}
-            <div className="p-4 bg-[#FFF4E0] hairline-ink flex items-end justify-between">
+            <div className="p-4 bg-[#FAF7F2] hairline-ink flex items-end justify-between">
               <div>
                 <span className="font-mono text-xs text-[#0B0B0B]/60 block font-bold">
                   TOTAL ESTIMATE ({quantity} {quantity === 1 ? 'UNIT' : 'UNITS'})

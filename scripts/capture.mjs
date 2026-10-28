@@ -53,6 +53,11 @@ async function run() {
 
   await new Promise((resolve) => ws.onopen = resolve);
 
+
+  await send('Runtime.enable');
+  await send('Page.enable');
+  await send('Network.enable');
+
   ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
     if (data.id && callbacks.has(data.id)) {
@@ -64,12 +69,15 @@ async function run() {
       console.log('[BROWSER CONSOLE]', data.params.type, ...data.params.args.map(a => a.value || a.description));
     }
     if (data.method === 'Runtime.exceptionThrown') {
-      console.error('[BROWSER EXCEPTION]', data.params.exceptionDetails);
+      console.error('[BROWSER EXCEPTION]', JSON.stringify(data.params.exceptionDetails, null, 2));
+    }
+    if (data.method === 'Network.responseReceived' && (data.params.response.url.includes('.glb') || data.params.response.url.includes('.wasm') || data.params.response.url.includes('.js'))) {
+      console.log('[RES]', data.params.response.status, data.params.response.url);
+    }
+    if (data.method === 'Network.loadingFailed') {
+      console.log('[NET FAIL]', data.params.errorText, data.params.requestId);
     }
   };
-
-  await send('Runtime.enable');
-  await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', {
     width: 1920,
     height: 870,
@@ -77,9 +85,14 @@ async function run() {
     mobile: false
   });
 
-  // Bypass preloader in sessionStorage
+  // Bypass preloader and intro in sessionStorage safely
   await send('Page.addScriptToEvaluateOnNewDocument', {
-    source: `sessionStorage.setItem('saturn_preloader_seen', 'true');`
+    source: `
+      try {
+        sessionStorage.setItem('saturn_preloader_seen', 'true');
+        sessionStorage.setItem('saturn_hero_intro_seen', 'true');
+      } catch (e) {}
+    `
   });
 
   // Wait for load and DOM
@@ -87,14 +100,33 @@ async function run() {
   await new Promise((r) => setTimeout(r, 6000));
 
   const evalRes = await send('Runtime.evaluate', {
-    expression: `({
-      h1: document.querySelector('h1')?.innerText,
-      canvas: !!document.querySelector('canvas'),
-      bodyText: document.body.innerText.slice(0, 300)
-    })`,
+    expression: `(() => {
+      const scene = window.__SCENE;
+      const meshes = [];
+      if (scene) {
+        scene.traverse((obj) => {
+          if (obj.isMesh) {
+            meshes.push({
+              name: obj.name,
+              visible: obj.visible,
+              parentName: obj.parent?.name,
+              parentType: obj.parent?.type,
+              pos: obj.position.toArray(),
+              scale: obj.scale.toArray(),
+              mat: obj.material?.type
+            });
+          }
+        });
+      }
+      return {
+        hasScene: !!scene,
+        meshesCount: meshes.length,
+        meshes: meshes
+      };
+    })()`,
     returnByValue: true
   });
-  console.log('Page state:', evalRes.result?.value);
+  console.log('Scene Meshes:', JSON.stringify(evalRes.result?.value, null, 2));
 
   // Take screenshot
   const screenshotData = await send('Page.captureScreenshot', { format: 'png' });

@@ -75,9 +75,9 @@ export default function UseItFor() {
   return (
     <section
       id="use-it-for"
-      data-bg="#FFF4E0"
+      data-bg="#FAF7F2"
       data-fg="#0B0B0B"
-      className="relative w-full bg-[#FFF4E0] text-[#0B0B0B] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 overflow-hidden"
+      className="relative w-full bg-[#FAF7F2] text-[#0B0B0B] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -129,7 +129,7 @@ export default function UseItFor() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   />
-                  <div className="absolute top-2.5 left-2.5 bg-[#0B0B0B] text-[#FFF4E0] font-mono text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-xs">
+                  <div className="absolute top-2.5 left-2.5 bg-[#0B0B0B] text-[#FAF7F2] font-mono text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-xs">
                     {item.number}
                   </div>
                 </div>

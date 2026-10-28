@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    /* Neo-Brutalist Calm & De-Boxed Palette */
-    --paper: #FFF4E0;
+    /* Neo-Brutalist Calm & Soothing Lighter Palette */
+    --paper: #FAF7F2;
     --ink: #0B0B0B;
     --saturn-orange: #FF5A1F;
     --lemon: #FFE14D;
@@ -17,9 +17,9 @@
     --white: #FFFFFF;
 
     /* Semantic Radix/Tailwind Tokens */
-    --background: 41 100% 94%;   /* #FFF4E0 Paper */
+    --background: 40 33% 97%;   /* #FAF7F2 Soothing Paper */
     --foreground: 0 0% 4%;       /* #0B0B0B Ink */
-    --card: 41 100% 94%;         /* Open, uncarded paper */
+    --card: 40 33% 97%;         /* Open, uncarded paper */
     --card-foreground: 0 0% 4%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 4%;
@@ -27,7 +27,7 @@
     --primary-foreground: 0 0% 4%;
     --secondary: 48 100% 65%;    /* #FFE14D Lemon */
     --secondary-foreground: 0 0% 4%;
-    --muted: 41 40% 90%;
+    --muted: 40 20% 92%;
     --muted-foreground: 0 0% 38%;
     --accent: 16 100% 56%;
     --accent-foreground: 0 0% 100%;
@@ -47,7 +47,7 @@
   html {
     overflow-x: hidden;
     width: 100%;
-    background-color: #FFF4E0;
+    background-color: #FAF7F2;
     color: #0B0B0B;
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   }
@@ -55,7 +55,7 @@
     overflow-x: hidden;
     width: 100%;
     position: relative;
-    background-color: #FFF4E0;
+    background-color: #FAF7F2;
     color: #0B0B0B;
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -218,7 +218,7 @@
     border: 2px solid #0B0B0B;
     box-shadow: 2px 2px 0px #0B0B0B;
     border-radius: 4px;
-    background-color: #FFF4E0;
+    background-color: #FAF7F2;
     color: #0B0B0B;
     cursor: pointer;
     transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
@@ -254,7 +254,7 @@
 
   .btn-brutal-ink {
     background-color: #0B0B0B;
-    color: #FFF4E0;
+    color: #FAF7F2;
     border-color: #0B0B0B;
   }
   .btn-brutal-ink:hover {
@@ -379,7 +379,7 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFF4E0;
+  background: #FAF7F2;
 }
 ::-webkit-scrollbar-thumb {
   background: #FF5A1F;

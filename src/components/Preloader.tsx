@@ -87,7 +87,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   return (
     <div
       ref={curtainRef}
-      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#0B0B0B] text-[#FFF4E0] select-none"
+      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#0B0B0B] text-[#FAF7F2] select-none"
       role="dialog"
       aria-label="Saturn 3D Loading Screen"
       aria-live="polite"
@@ -95,7 +95,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       {/* Skip button in top corner */}
       <button
         onClick={skipPreloader}
-        className="absolute top-6 right-6 z-50 flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-[#FFF4E0]/70 hover:text-[#FF5A1F] transition-colors border border-white/20 hover:border-[#FF5A1F]"
+        className="absolute top-6 right-6 z-50 flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-[#FAF7F2]/70 hover:text-[#FF5A1F] transition-colors border border-white/20 hover:border-[#FF5A1F]"
       >
         <FastForward className="w-3.5 h-3.5" />
         <span>SKIP [ESC]</span>
@@ -141,12 +141,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         </div>
 
         {/* Title */}
-        <h2 className="font-mono text-xl sm:text-2xl font-black uppercase tracking-wider text-[#FFF4E0] mb-2">
+        <h2 className="font-mono text-xl sm:text-2xl font-black uppercase tracking-wider text-[#FAF7F2] mb-2">
           PRINTING SATURN...
         </h2>
 
         {/* Subtitle */}
-        <p className="font-mono text-xs text-[#FFF4E0]/60 tracking-widest uppercase mb-4">
+        <p className="font-mono text-xs text-[#FAF7F2]/60 tracking-widest uppercase mb-4">
           Warming the nozzle, slicing layers
         </p>
 

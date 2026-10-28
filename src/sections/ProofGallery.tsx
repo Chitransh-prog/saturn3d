@@ -111,7 +111,7 @@ const proofAssets: ProofBentoItem[] = [
     },
     gridSpan: 'lg:col-span-4',
     minHeightClass: 'min-h-[320px]',
-    badgeBg: 'bg-[#FFF4E0]',
+    badgeBg: 'bg-[#FAF7F2]',
     badgeFg: 'text-[#0B0B0B]',
   },
   {
@@ -227,9 +227,9 @@ export default function ProofGallery() {
     <section
       id="proof"
       ref={sectionRef}
-      data-bg="#FFF4E0"
+      data-bg="#FAF7F2"
       data-fg="#0B0B0B"
-      className="relative w-full bg-[#FFF4E0] text-[#0B0B0B] py-20 sm:py-28 px-4 sm:px-8 lg:px-14 overflow-hidden pattern-blueprint border-b-3 border-ink"
+      className="relative w-full bg-[#FAF7F2] text-[#0B0B0B] py-20 sm:py-28 px-4 sm:px-8 lg:px-14 overflow-hidden pattern-blueprint border-b-3 border-ink"
     >
       <div className="max-w-7xl mx-auto w-full">
         
@@ -276,7 +276,7 @@ export default function ProofGallery() {
                 className={`px-3.5 py-1.5 font-mono text-xs font-black uppercase tracking-wider rounded-xs border-2 transition-all cursor-pointer shrink-0 ${
                   isActive
                     ? 'bg-[#0B0B0B] text-[#FFE14D] border-ink shadow-brutal-sm -translate-y-0.5'
-                    : 'bg-white text-ink/70 border-ink/40 hover:bg-[#FFF4E0] hover:text-ink'
+                    : 'bg-white text-ink/70 border-ink/40 hover:bg-[#FAF7F2] hover:text-ink'
                 }`}
               >
                 {tab.label}
@@ -391,7 +391,7 @@ export default function ProofGallery() {
                   </div>
 
                   {/* Inspection Trigger Icon */}
-                  <div className="w-8 h-8 rounded-xs bg-[#FFF4E0] group-hover:bg-[#FF5A1F] group-hover:text-white border-2 border-ink flex items-center justify-center shrink-0 transition-all shadow-xs">
+                  <div className="w-8 h-8 rounded-xs bg-[#FAF7F2] group-hover:bg-[#FF5A1F] group-hover:text-white border-2 border-ink flex items-center justify-center shrink-0 transition-all shadow-xs">
                     <ArrowUpRight className="w-4 h-4 stroke-[2.5] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
@@ -410,7 +410,7 @@ export default function ProofGallery() {
 
       {/* ─── NEO-BRUTALIST INSPECTION LIGHTBOX DIALOG ─── */}
       <Dialog open={!!selectedAsset} onOpenChange={() => setSelectedAsset(null)}>
-        <DialogContent showCloseButton={false} className="max-w-[94vw] lg:max-w-4xl p-0 bg-[#FFF4E0] border-4 border-ink shadow-brutal-xl overflow-hidden rounded-xs">
+        <DialogContent showCloseButton={false} className="max-w-[94vw] lg:max-w-4xl p-0 bg-[#FAF7F2] border-4 border-ink shadow-brutal-xl overflow-hidden rounded-xs">
           {selectedAsset && (
             <div className="flex flex-col">
               
@@ -452,7 +452,7 @@ export default function ProofGallery() {
                 </div>
 
                 {/* Technical Spec Sheet (5 cols) */}
-                <div className="lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between gap-6 bg-[#FFF4E0]">
+                <div className="lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between gap-6 bg-[#FAF7F2]">
                   <div className="space-y-4">
                     <div className="space-y-1">
                       <span className="font-mono text-[10px] font-black text-[#FF5A1F] uppercase tracking-wider">

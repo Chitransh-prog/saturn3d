@@ -53,7 +53,7 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden font-body text-sm sm:text-base border-t-2 border-ink bg-[#FFF4E0]"
+      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden font-body text-sm sm:text-base border-t-2 border-ink bg-[#FAF7F2]"
       {...props}
     >
       <div className={cn("px-6 py-5 text-[#111111] leading-relaxed", className)}>{children}</div>

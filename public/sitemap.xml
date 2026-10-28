@@ -4,140 +4,208 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Core Money & Landing Pages -->
+  <!-- Core Commercial & Landing Pages -->
   <url>
-    <loc>https://www.saturn3d.in/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.saturn3d.in/custom-lab</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/custom-lab</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://www.saturn3d.in/categories</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
-    <loc>https://www.saturn3d.in/about</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/about</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <!-- Industry Solutions & Sectors -->
   <url>
-    <loc>https://www.saturn3d.in/category/aerospace-drone</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/tech</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- High-Intent Categories (Bhopal & All India) -->
+  <url>
+    <loc>https://saturn3d.in/category/rapid-prototyping</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/corporate-bulk-gifting</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/marriage-gifts</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/architectural-scale-down-models</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/small-batch-manufacturing</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/education</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/interior</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/industrial-parts-manufacturing</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/category/drone-robotics</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
+  <!-- All Hardware Products (Canonical /product/[id]) -->
   <url>
-    <loc>https://www.saturn3d.in/category/medical-bio</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/product/1</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/2</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/3</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/4</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/5</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/6</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/7</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/8</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://saturn3d.in/product/9</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
+  <!-- Backward-Compatible Catalog Routes -->
   <url>
-    <loc>https://www.saturn3d.in/category/automotive-ev</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.saturn3d.in/category/consumer-electronics</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.saturn3d.in/category/architectural-models</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.saturn3d.in/category/tooling-fixtures</loc>
-    <lastmod>2026-10-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- High-Intent Catalog Components -->
-  <url>
-    <loc>https://www.saturn3d.in/categories/1</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/1</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/2</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/2</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/3</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/3</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/4</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/4</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/5</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/5</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/6</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/6</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/7</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/7</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/8</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/8</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
-
   <url>
-    <loc>https://www.saturn3d.in/categories/9</loc>
-    <lastmod>2026-10-25</lastmod>
+    <loc>https://saturn3d.in/categories/9</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.70</priority>
   </url>
 
 </urlset>

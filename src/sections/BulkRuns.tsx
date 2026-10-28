@@ -73,9 +73,9 @@ Please share production scheduling and lead time.`;
   return (
     <section
       id="bulk-runs"
-      data-bg="#FFF4E0"
+      data-bg="#FAF7F2"
       data-fg="#0B0B0B"
-      className="relative w-full bg-[#FFF4E0] text-[#0B0B0B] section-padding px-6 sm:px-10 lg:px-16 overflow-hidden hairline-t"
+      className="relative w-full bg-[#FAF7F2] text-[#0B0B0B] section-padding px-6 sm:px-10 lg:px-16 overflow-hidden hairline-t"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
@@ -129,7 +129,7 @@ Please share production scheduling and lead time.`;
                       className={`p-3 text-left font-mono text-xs transition-all cursor-pointer rounded-xs ${
                         isSelected
                           ? 'bg-[#0B0B0B] text-[#FFE14D] font-bold border border-ink'
-                          : 'bg-[#FFF4E0] text-[#0B0B0B] hairline hover:bg-neutral-100'
+                          : 'bg-[#FAF7F2] text-[#0B0B0B] hairline hover:bg-neutral-100'
                       }`}
                     >
                       <span className="block font-bold truncate">{pt.label}</span>
@@ -165,7 +165,7 @@ Please share production scheduling and lead time.`;
           </div>
 
           {/* Right: Live Output & WhatsApp Button (LG: 5 cols) */}
-          <div className="lg:col-span-5 p-6 bg-[#FFF4E0] hairline-ink flex flex-col justify-between space-y-6 rounded-xs">
+          <div className="lg:col-span-5 p-6 bg-[#FAF7F2] hairline-ink flex flex-col justify-between space-y-6 rounded-xs">
             
             <div className="space-y-2">
               <div className="flex justify-between font-mono text-xs text-[#0B0B0B]/70 font-bold">

@@ -192,7 +192,7 @@ export default function MaterialsViewer3D() {
               ))}
             </div>
 
-            <div className="card-slab bg-[#FFF4E0] p-4 text-xs font-mono space-y-2 border-2 border-ink">
+            <div className="card-slab bg-[#FAF7F2] p-4 text-xs font-mono space-y-2 border-2 border-ink">
               <div className="flex items-center gap-2 font-bold text-[#FF5A1F]">
                 <Flame className="w-4 h-4" />
                 <span>THERMAL VERIFICATION</span>
@@ -204,7 +204,7 @@ export default function MaterialsViewer3D() {
           </div>
 
           {/* Center Column: 3D Cel-Shaded Part Preview (4 cols) */}
-          <div className="lg:col-span-4 card-slab bg-[#FFF4E0] p-4 border-3 border-ink shadow-brutal flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-4 card-slab bg-[#FAF7F2] p-4 border-3 border-ink shadow-brutal flex flex-col justify-between relative overflow-hidden">
             <div className="flex items-center justify-between pb-2 border-b-2 border-ink font-mono text-xs font-bold">
               <span className="text-[#FF5A1F]">ACTIVE: {activeMaterial.name}</span>
               <span className="bg-white px-2 py-0.5 border border-ink text-[10px]">360&deg; ROTATE</span>
@@ -241,22 +241,22 @@ export default function MaterialsViewer3D() {
 
               {/* Data Table */}
               <div className="space-y-3 font-mono text-xs">
-                <div className="flex justify-between p-2 bg-[#FFF4E0] border border-ink">
+                <div className="flex justify-between p-2 bg-[#FAF7F2] border border-ink">
                   <span className="font-bold text-[#555]">TENSILE YIELD:</span>
                   <span className="font-black text-[#0B0B0B]">{activeMaterial.specs.tensile}</span>
                 </div>
 
-                <div className="flex justify-between p-2 bg-[#FFF4E0] border border-ink">
+                <div className="flex justify-between p-2 bg-[#FAF7F2] border border-ink">
                   <span className="font-bold text-[#555]">HEAT DEFLECTION:</span>
                   <span className="font-black text-[#FF5A1F]">{activeMaterial.specs.temp}</span>
                 </div>
 
-                <div className="flex justify-between p-2 bg-[#FFF4E0] border border-ink">
+                <div className="flex justify-between p-2 bg-[#FAF7F2] border border-ink">
                   <span className="font-bold text-[#555]">POLYMER DENSITY:</span>
                   <span className="font-black text-[#0B0B0B]">{activeMaterial.specs.density}</span>
                 </div>
 
-                <div className="flex justify-between p-2 bg-[#FFF4E0] border border-ink">
+                <div className="flex justify-between p-2 bg-[#FAF7F2] border border-ink">
                   <span className="font-bold text-[#555]">SURFACE FINISH:</span>
                   <span className="font-black text-[#0B0B0B]">{activeMaterial.specs.surface}</span>
                 </div>

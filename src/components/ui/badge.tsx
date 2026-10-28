@@ -12,7 +12,7 @@ const badgeVariants = cva(
         default:
           "bg-[#FFE14D] text-[#0B0B0B]",
         secondary:
-          "bg-[#FFF4E0] text-[#0B0B0B]",
+          "bg-[#FAF7F2] text-[#0B0B0B]",
         destructive:
           "bg-destructive text-white",
         outline:
@@ -24,7 +24,7 @@ const badgeVariants = cva(
         periwinkle:
           "bg-[#8EA2FF] text-[#0B0B0B]",
         ink:
-          "bg-[#0B0B0B] text-[#FFF4E0]",
+          "bg-[#0B0B0B] text-[#FAF7F2]",
       },
     },
     defaultVariants: {
