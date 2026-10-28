@@ -125,7 +125,7 @@ Can an engineer review my tolerances and dispatch timeline?`;
       ref={sectionRef}
       data-bg="#FFE14D"
       data-fg="#0B0B0B"
-      className="relative w-full bg-[#FFE14D] text-[#0B0B0B] section-padding px-6 sm:px-10 lg:px-16 overflow-hidden"
+      className="relative w-full bg-[#FFE14D] text-[#0B0B0B] py-14 sm:py-24 px-4 sm:px-10 lg:px-16 overflow-hidden"
     >
       {/* Ghost "3D" parallax backdrop typography */}
       <div ref={ghostTextRef} className="ghost-3d-text" aria-hidden="true">
@@ -167,12 +167,12 @@ Can an engineer review my tolerances and dispatch timeline?`;
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Column: Dropzone + Parameter Sliders (LG: 6 cols) */}
-          <div data-aos="fade-right" data-aos-delay="100" className="configurator-panel lg:col-span-6 space-y-6">
+          <div data-aos="fade-up" data-aos-delay="100" className="configurator-panel lg:col-span-6 space-y-6">
             
             {/* STL / OBJ / GLB / Image Dropzone (Container 1) */}
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="group cursor-pointer p-8 sm:p-10 border-2 border-dashed border-[#0B0B0B] hover:border-[#FF5A1F] transition-all bg-white/40 hover:bg-white/70 flex flex-col items-center justify-center text-center rounded-xs"
+              className="group cursor-pointer p-4 sm:p-8 border-2 border-dashed border-[#0B0B0B] w-full max-w-full overflow-hidden hover:border-[#FF5A1F] transition-all bg-white/40 hover:bg-white/70 flex flex-col items-center justify-center text-center rounded-xs"
             >
               <input
                 ref={fileInputRef}
@@ -201,7 +201,7 @@ Can an engineer review my tolerances and dispatch timeline?`;
                 </div>
               ) : (
                 <div className="space-y-1">
-                  <span className="font-display text-base font-bold uppercase tracking-tight text-[#0B0B0B] block">
+                  <span className="font-display text-sm sm:text-base font-bold uppercase tracking-tight text-[#0B0B0B] block break-words max-w-full px-1">
                     DROP YOUR CAD BLUEPRINT OR IMAGE HERE
                   </span>
                   <span className="font-mono text-xs text-[#0B0B0B]/60 block">
@@ -229,7 +229,7 @@ Can an engineer review my tolerances and dispatch timeline?`;
                           : 'bg-white/60 text-[#0B0B0B] hover:bg-white'
                       }`}
                     >
-                      <span className="block truncate">{item.label}</span>
+                      <span className="block truncate text-[11px] sm:text-xs leading-tight">{item.label}</span>
                       <span className="text-[10px] opacity-70">₹{item.basePerGram}/g</span>
                     </button>
                   );
@@ -302,7 +302,7 @@ Can an engineer review my tolerances and dispatch timeline?`;
           </div>
 
           {/* Right Column: Live Tiered Price Table & CTAs (LG: 6 cols, Container 2) */}
-          <div data-aos="fade-left" data-aos-delay="150" className="configurator-panel lg:col-span-6 bg-white p-5 sm:p-8 hairline-ink space-y-6 rounded-xs">
+          <div data-aos="fade-up" data-aos-delay="150" className="configurator-panel lg:col-span-6 bg-white p-5 sm:p-8 hairline-ink space-y-6 rounded-xs">
             
             <div className="flex items-center justify-between hairline-b pb-4">
               <span className="font-mono text-xs font-bold text-[#0B0B0B]/70 uppercase">

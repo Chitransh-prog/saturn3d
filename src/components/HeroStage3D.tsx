@@ -233,28 +233,6 @@ function MechaCharacter({
     });
 
     if (robot) {
-      const colors = (robot as THREE.Mesh).geometry.attributes.color as THREE.BufferAttribute | undefined;
-      if (colors) {
-        for (let i = 0; i < colors.count; i++) {
-          const r = colors.getX(i);
-          const g = colors.getY(i);
-          const b = colors.getZ(i);
-
-          // Detect Visor / Core lights: remap to brand Saturn Orange #FF5A1F
-          const isVisor = (b > r + 15 && g > r + 10) || (r < 90 && g > 115 && b > 128);
-          const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-          const isJoint = lum < 70;
-
-          if (isVisor) {
-            colors.setXYZ(i, 255, 90, 31);
-          } else if (isJoint) {
-            colors.setXYZ(i, 26, 26, 26);
-          } else {
-            colors.setXYZ(i, 242, 238, 230);
-          }
-        }
-        colors.needsUpdate = true;
-      }
 
       scene.updateMatrixWorld(true);
       const box = new THREE.Box3().setFromObject(robot);
