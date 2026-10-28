@@ -6,4 +6,5 @@ core
 *.db
 *.db-shm
 *.db-wal
-backend/data/*.db*
+.next
+

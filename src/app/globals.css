@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Neo-Brutalist Calm & De-Boxed Palette */
+    --paper: #FFF4E0;
+    --ink: #0B0B0B;
+    --saturn-orange: #FF5A1F;
+    --lemon: #FFE14D;
+    --periwinkle: #8EA2FF;
+    --mint: #7CF2C1;
+    --wa-green: #25D366;
+    --white: #FFFFFF;
+
+    /* Semantic Radix/Tailwind Tokens */
+    --background: 41 100% 94%;   /* #FFF4E0 Paper */
+    --foreground: 0 0% 4%;       /* #0B0B0B Ink */
+    --card: 41 100% 94%;         /* Open, uncarded paper */
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 16 100% 56%;      /* #FF5A1F Saturn Orange */
+    --primary-foreground: 0 0% 4%;
+    --secondary: 48 100% 65%;    /* #FFE14D Lemon */
+    --secondary-foreground: 0 0% 4%;
+    --muted: 41 40% 90%;
+    --muted-foreground: 0 0% 38%;
+    --accent: 16 100% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 4% / 0.15;    /* 1px Hairlines */
+    --input: 0 0% 4% / 0.2;
+    --ring: 16 100% 56%;
+    --radius: 0.25rem;          /* Strict 4px max */
+  }
+}
+
+@layer base {
+  * {
+    border-color: rgba(11, 11, 11, 0.15);
+  }
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    background-color: #FFF4E0;
+    color: #0B0B0B;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    background-color: #FFF4E0;
+    color: #0B0B0B;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: inherit;
+  }
+  ::selection {
+    background-color: #FF5A1F;
+    color: #0B0B0B;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+  }
+  .font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+  }
+  .font-body {
+    font-family: 'Manrope', 'Space Grotesk', sans-serif;
+  }
+  .font-mono-tech {
+    font-family: 'Space Mono', monospace;
+  }
+  .font-mono {
+    font-family: 'Space Mono', monospace;
+  }
+  .font-archivo {
+    font-family: 'Archivo Black', sans-serif;
+  }
+
+  /* -------------------------------------------------------------
+     DE-BOXED TYPOGRAPHY SCALES
+  ------------------------------------------------------------- */
+  .type-display {
+    font-size: clamp(3.5rem, 11vw, 12rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .type-h2 {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .type-h3 {
+    font-size: clamp(1.5rem, 3.2vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+  .type-body {
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 62ch;
+  }
+  .type-mono-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .type-section-numeral {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+    opacity: 0.18;
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    padding-top: clamp(96px, 14vh, 200px);
+    padding-bottom: clamp(96px, 14vh, 200px);
+  }
+  .section-padding-top {
+    padding-top: clamp(96px, 14vh, 200px);
+  }
+  .section-padding-bottom {
+    padding-bottom: clamp(96px, 14vh, 200px);
+  }
+
+  /* -------------------------------------------------------------
+     DE-BOXING HAIRLINES
+  ------------------------------------------------------------- */
+  .hairline {
+    border: 1px solid rgba(11, 11, 11, 0.15);
+  }
+  .hairline-ink {
+    border: 1px solid #0B0B0B;
+  }
+  .hairline-white {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .hairline-t {
+    border-top: 1px solid rgba(11, 11, 11, 0.15);
+  }
+  .hairline-b {
+    border-bottom: 1px solid rgba(11, 11, 11, 0.15);
+  }
+  .hairline-l {
+    border-left: 1px solid rgba(11, 11, 11, 0.15);
+  }
+  .hairline-r {
+    border-right: 1px solid rgba(11, 11, 11, 0.15);
+  }
+  .hairline-t-ink {
+    border-top: 1px solid #0B0B0B;
+  }
+  .hairline-b-ink {
+    border-bottom: 1px solid #0B0B0B;
+  }
+  .hairline-t-white {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .hairline-b-white {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* -------------------------------------------------------------
+     PRIMARY BRUTALIST BUTTONS
+  ------------------------------------------------------------- */
+  .btn-brutal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.6rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 2px solid #0B0B0B;
+    box-shadow: 2px 2px 0px #0B0B0B;
+    border-radius: 4px;
+    background-color: #FFF4E0;
+    color: #0B0B0B;
+    cursor: pointer;
+    transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
+  }
+  .btn-brutal:hover {
+    transform: translate(-1.5px, -1.5px);
+    box-shadow: 3.5px 3.5px 0px #0B0B0B;
+  }
+  .btn-brutal:active {
+    transform: translate(1px, 1px);
+    box-shadow: 0px 0px 0px #0B0B0B;
+  }
+  .btn-brutal:focus-visible {
+    outline: 2px solid #FF5A1F;
+    outline-offset: 3px;
+  }
+
+  .btn-brutal-orange {
+    background-color: #FF5A1F;
+    color: #0B0B0B;
+  }
+  .btn-brutal-orange:hover {
+    background-color: #FF6B35;
+  }
+
+  .btn-brutal-lemon {
+    background-color: #FFE14D;
+    color: #0B0B0B;
+  }
+  .btn-brutal-lemon:hover {
+    background-color: #FFF070;
+  }
+
+  .btn-brutal-ink {
+    background-color: #0B0B0B;
+    color: #FFF4E0;
+    border-color: #0B0B0B;
+  }
+  .btn-brutal-ink:hover {
+    background-color: #222222;
+    color: #FFFFFF;
+  }
+
+  .btn-ghost-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: inherit;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, transform 0.15s ease;
+  }
+  .btn-ghost-link:hover {
+    border-bottom-color: #FF5A1F;
+    transform: translateX(4px);
+  }
+
+  .btn-whatsapp-brutal {
+    border: 2px solid #0B0B0B;
+    box-shadow: 2px 2px 0px #0B0B0B;
+    border-radius: 4px;
+    background-color: #25D366;
+    color: #0B0B0B;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-whatsapp-brutal:hover {
+    transform: translate(-1.5px, -1.5px);
+    box-shadow: 3.5px 3.5px 0px #0B0B0B;
+  }
+  .btn-whatsapp-brutal:active {
+    transform: translate(1px, 1px);
+    box-shadow: 0px 0px 0px #0B0B0B;
+  }
+
+  .card-slab {
+    border: 2px solid #0B0B0B;
+    box-shadow: 3px 3px 0px #0B0B0B;
+    border-radius: 4px;
+  }
+
+  .badge-sticker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.55rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1.5px solid #0B0B0B;
+    box-shadow: 1.5px 1.5px 0px #0B0B0B;
+    border-radius: 2px;
+  }
+
+  .line-reveal-mask {
+    overflow: hidden;
+    display: block;
+  }
+  .line-reveal-inner {
+    display: block;
+    transform: translateY(0);
+    will-change: transform;
+  }
+
+  .ghost-3d-text {
+    position: absolute;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(10rem, 28vw, 32rem);
+    font-weight: 900;
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(11, 11, 11, 0.07);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .ghost-3d-text-light {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
+  }
+
+  .blueprint-grid-subtle {
+    background-size: 48px 48px;
+    background-image: 
+      linear-gradient(to right, rgba(11, 11, 11, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 11, 11, 0.035) 1px, transparent 1px);
+  }
+
+  .sticker-minimal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid #0B0B0B;
+    background-color: #FFE14D;
+    color: #0B0B0B;
+    border-radius: 2px;
+  }
+}
+
+/* Custom Brutalist Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF4E0;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF5A1F;
+  border: 1px solid #0B0B0B;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0B0B0B;
+}
+
+/* Film Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Ticker Marquee Keyframe */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.ticker-animation {
+  animation: ticker 32s linear infinite;
+}
+.ticker-animation:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .ticker-animation {
+    animation: none !important;
+  }
+}
