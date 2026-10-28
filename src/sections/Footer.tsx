@@ -249,7 +249,7 @@ export default function Footer() {
         className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF7F2] hairline-t p-3 flex items-center justify-between gap-3 shadow-lg"
         style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}
       >
-        <div className="font-mono text-xs font-bold text-[#0B0B0B] pl-2">
+        <div className="font-mono text-[10px] sm:text-xs font-bold text-[#0B0B0B] pl-24 truncate">
           <span>&plusmn;0.04 MM</span> &bull; <span>24H DISPATCH</span>
         </div>
         <button
