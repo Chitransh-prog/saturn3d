@@ -12,14 +12,17 @@ if (!fs.existsSync(dataDir)) {
 const dbPath = path.join(dataDir, 'saturn3d.db');
 export const sqlite = new DatabaseSync(dbPath);
 
-// Enable WAL mode, 10s busy timeout & foreign keys
-sqlite.exec('PRAGMA journal_mode = WAL;');
-sqlite.exec('PRAGMA busy_timeout = 10000;');
-sqlite.exec('PRAGMA foreign_keys = ON;');
+// Enable WAL mode, 30s busy timeout & foreign keys
+try {
+  sqlite.exec('PRAGMA busy_timeout = 30000;');
+  sqlite.exec('PRAGMA journal_mode = WAL;');
+  sqlite.exec('PRAGMA foreign_keys = ON;');
+} catch {}
 
 // ---------------------------------------------------------------------------
 // 1. Initialize Tables (SQLite Schema)
 // ---------------------------------------------------------------------------
+try {
 sqlite.exec(`
 CREATE TABLE IF NOT EXISTS users (
   id TEXT PRIMARY KEY,
@@ -164,6 +167,7 @@ CREATE TABLE IF NOT EXISTS audit_logs (
   created_at TEXT NOT NULL
 );
 `);
+} catch {}
 
 // ---------------------------------------------------------------------------
 // 2. Initial Admin & Default Catalog Seeding
