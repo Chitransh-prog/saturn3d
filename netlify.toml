@@ -3,3 +3,6 @@
   # handles pages, API routes and server rendering from the .next output.
   command = "npm run build"
   publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
