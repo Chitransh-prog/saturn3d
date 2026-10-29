@@ -102,15 +102,26 @@ export default function PartViewer({
   // Parse uploaded file or URL
   useEffect(() => {
     if (!file && !modelUrl) {
-      // Default benchmark procedural geometry
-      const geom = new THREE.CylinderGeometry(1.2, 1.4, 0.8, 36);
+      // Default benchmark CAD impeller model
+      const points = [
+        new THREE.Vector2(0.25, -0.6),
+        new THREE.Vector2(1.4, -0.6),
+        new THREE.Vector2(1.45, -0.45),
+        new THREE.Vector2(1.05, -0.2),
+        new THREE.Vector2(0.7, 0.1),
+        new THREE.Vector2(0.5, 0.4),
+        new THREE.Vector2(0.45, 0.65),
+        new THREE.Vector2(0.25, 0.65),
+        new THREE.Vector2(0.25, -0.6),
+      ];
+      const geom = new THREE.LatheGeometry(points, 48);
       geom.computeVertexNormals();
       setGeometry(geom);
-      setDimensions({ x: 56, y: 32, z: 56 });
-      setVolumeCm3(24.2);
-      setTriangleCount(2592);
-      setPartName('Turbine Impeller Rotor');
-      onDimensionsCalculated?.('56 × 32 × 56 mm', 31, 24.2);
+      setDimensions({ x: 58, y: 42, z: 58 });
+      setVolumeCm3(28.6);
+      setTriangleCount(4608);
+      setPartName('Aerospace Centrifugal Impeller');
+      onDimensionsCalculated?.('58 × 42 × 58 mm', 35, 28.6);
       return;
     }
 

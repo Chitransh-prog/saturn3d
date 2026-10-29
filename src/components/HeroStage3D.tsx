@@ -31,16 +31,16 @@ function CameraAndSceneSetup({ viewMode }: { viewMode: 'printer' | 'bed' | 'tool
 
   useFrame(() => {
     const targetPos = viewMode === 'bed'
-      ? new THREE.Vector3(0, 1.45, 3.8)
+      ? new THREE.Vector3(0, 1.6, 3.8)
       : viewMode === 'toolhead'
       ? new THREE.Vector3(0.5, 2.3, 3.4)
-      : new THREE.Vector3(0, 1.7, 5.6);
+      : new THREE.Vector3(0, 1.9, 5.8);
 
     const targetLookAt = viewMode === 'bed'
-      ? new THREE.Vector3(0, 1.1, 0)
+      ? new THREE.Vector3(0, 1.35, 0)
       : viewMode === 'toolhead'
       ? new THREE.Vector3(0, 2.0, 0)
-      : new THREE.Vector3(0, 1.5, 0);
+      : new THREE.Vector3(0, 1.6, 0);
 
     camera.position.lerp(targetPos, 0.05);
     camera.lookAt(targetLookAt);
@@ -142,9 +142,9 @@ function PrintedMechanicalPart({
     }
   });
 
-  // Bed sits at y = 0.5 inside the Voron printer frame
+  // Bed sits at y = 1.02 inside the Voron printer frame
   return (
-    <group ref={groupRef} position={[0, 0.52, 0]}>
+    <group ref={groupRef} position={[0, 1.02, 0]}>
       {/* 1. Base Mounting Flange Disc */}
       <mesh material={carbonMaterial} castShadow receiveShadow position={[0, 0.04, 0]}>
         <cylinderGeometry args={[0.75, 0.82, 0.08, 36]} />
@@ -224,7 +224,7 @@ function ActiveNozzleDeposition({
   isPrinting: boolean;
   printProgress: number;
 }) {
-  const actualY = 0.52 + currentCut;
+  const actualY = 1.02 + currentCut;
   const radius = Math.max(0.2, 0.78 - currentCut * 0.4);
 
   return (
@@ -274,7 +274,7 @@ function CalloutHotspots({
 }) {
   if (!active) return null;
 
-  const actualCutY = 0.52 + currentCut;
+  const actualCutY = 1.02 + currentCut;
 
   return (
     <group>
@@ -289,7 +289,7 @@ function CalloutHotspots({
       </group>
 
       {/* 2. Heated PEI Bed Telemetry */}
-      <group position={[-1.1, 0.5, 0.5]}>
+      <group position={[-1.1, 1.02, 0.5]}>
         <Html distanceFactor={8} position={[-0.2, 0.1, 0]}>
           <div className="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#0B0D10]/90 border border-white/10 shadow-lg backdrop-blur-md whitespace-nowrap pointer-events-none animate-in fade-in duration-300">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -337,14 +337,14 @@ function CombinedStage({
 }) {
   const rootGroupRef = useRef<THREE.Group>(null);
 
-  // Clipping plane calculation for the mechanical print (from y=0.52 to y=1.52)
+  // Clipping plane calculation for the mechanical print (from y=1.02 to y=2.02)
   const currentCut = useMemo(() => {
     return Math.max(0.01, Math.min(1.0, printProgress));
   }, [printProgress]);
 
   const clippingPlane = useMemo(() => {
-    // Normal points down so geometry below y = 0.52 + currentCut is visible
-    return new THREE.Plane(new THREE.Vector3(0, -1, 0), 0.52 + currentCut);
+    // Normal points down so geometry below y = 1.02 + currentCut is visible
+    return new THREE.Plane(new THREE.Vector3(0, -1, 0), 1.02 + currentCut);
   }, [currentCut]);
 
   useFrame((_, delta) => {
