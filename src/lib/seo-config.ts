@@ -36,6 +36,7 @@ export const CORE_KEYWORDS = [
   '3D printing service India',
   'Industrial 3D printing India',
   'Online 3D printing India',
+  'Online 3D printing service India',
   'Rapid prototyping India',
   'Custom 3D print online India',
   'CAD to 3D print India',
@@ -44,9 +45,12 @@ export const CORE_KEYWORDS = [
   'SLA resin 3D printing India',
   'Carbon fiber 3D printing India',
   'Small batch manufacturing India',
+  'Best 3D printing service India',
+  'On-demand 3D printing India',
 
   // Bhopal & Central India Keywords
   '3D printing Bhopal',
+  '3D printing service in Bhopal',
   '3D printing services in Bhopal',
   'Industrial 3D printing Bhopal',
   'Custom 3D printing Bhopal MP',
@@ -58,6 +62,8 @@ export const CORE_KEYWORDS = [
   '3D printing Madhya Pradesh',
   'Additive manufacturing Bhopal',
   'Engineering 3D printing Central India',
+  '3D printing shop in Bhopal',
+  '3D printing near me Bhopal',
 ];
 
 /**
@@ -108,6 +114,13 @@ export function getLocalBusinessSchema() {
       { '@type': 'City', name: 'Jabalpur' },
       { '@type': 'City', name: 'Gwalior' },
       { '@type': 'AdministrativeArea', name: 'Madhya Pradesh' },
+      { '@type': 'City', name: 'Delhi' },
+      { '@type': 'City', name: 'Mumbai' },
+      { '@type': 'City', name: 'Bengaluru' },
+      { '@type': 'City', name: 'Pune' },
+      { '@type': 'City', name: 'Hyderabad' },
+      { '@type': 'City', name: 'Chennai' },
+      { '@type': 'City', name: 'Ahmedabad' },
       { '@type': 'Country', name: 'India' },
     ],
     sameAs: [
