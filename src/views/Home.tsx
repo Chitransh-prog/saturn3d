@@ -9,6 +9,7 @@ import Hero from '@/sections/Hero';
 import StickySubNav from '@/components/StickySubNav';
 import CapabilityStrip from '@/sections/LogoTicker';
 import TechResultsDuo from '@/sections/TechResultsDuo';
+import PrinterFleet from '@/sections/PrinterFleet';
 import TheLab from '@/sections/TheLab';
 import ExploreMaterials from '@/sections/ExploreMaterials';
 import MakeItYours from '@/sections/MakeItYours';
@@ -46,6 +47,7 @@ export default function Home() {
   }, [preloaderDone]);
 
   const subNavItems = [
+    { id: 'hardware', label: 'Hardware Fleet' },
     { id: 'the-lab', label: 'Showcase' },
     { id: 'materials', label: 'Materials & Specs' },
     { id: 'configurator', label: 'Instant Quote' },
@@ -73,7 +75,12 @@ export default function Home() {
       {/* 03. Technology & Results Duo Showcase (Carbon-Style) */}
       <TechResultsDuo />
 
-      {/* 04. The Lab: Powered by Saturn Cut-Out Showcase + Intent Selector */}
+      {/* 04. Hardware Fleet Showcase (Creality / SparkX Style) */}
+      <div id="hardware">
+        <PrinterFleet />
+      </div>
+
+      {/* 05. The Lab: Powered by Saturn Cut-Out Showcase + Intent Selector */}
       <TheLab />
 
       {/* 04. Explore Materials: Deep Graphite Section + Process Comparison Table */}
