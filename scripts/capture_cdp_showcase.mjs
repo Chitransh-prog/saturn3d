@@ -113,3 +113,4 @@ run().catch(err => {
   chromeProc.kill();
   process.exit(1);
 });
+

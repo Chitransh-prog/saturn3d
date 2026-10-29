@@ -149,3 +149,4 @@ for (const p of premierProducts) {
 const list = db.prepare('SELECT id, name, category, image FROM products').all();
 console.log('Total products in database:', list.length);
 console.log(list);
+

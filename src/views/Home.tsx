@@ -8,7 +8,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Precision Studio Streamlined Sections
 import Preloader from '@/components/Preloader';
 import Hero from '@/sections/Hero';
-import StickySubNav from '@/components/StickySubNav';
 import CapabilityStrip from '@/sections/LogoTicker';
 import TechResultsDuo from '@/sections/TechResultsDuo';
 import FeaturedProductsViewer from '@/sections/FeaturedProductsViewer';
@@ -111,9 +110,6 @@ export default function Home() {
       <div id="overview">
         <Hero />
       </div>
-
-      {/* Sticky Sub-Navigation Bar (Creality-Style) */}
-      <StickySubNav items={subNavItems} quoteCtaHref="/custom-lab" quoteCtaLabel="Instant CAD Quote" />
 
       {/* 02. Capability Telemetry Strip (4 Inline Metrics) */}
       <CapabilityStrip />

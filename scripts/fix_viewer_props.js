@@ -19,3 +19,4 @@ if (content.includes(target) && !content.includes('interface Product3DViewerProp
 } else {
   console.log('Already present or target not found');
 }
+

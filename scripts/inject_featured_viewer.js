@@ -49,3 +49,4 @@ if (!content.includes('<FeaturedProductsViewer />')) {
 
 fs.writeFileSync(homePath, content, 'utf8');
 console.log('Successfully updated Home.tsx with FeaturedProductsViewer!');
+

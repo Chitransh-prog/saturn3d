@@ -16,3 +16,4 @@ content = content.replace(
 
 fs.writeFileSync(viewerPath, content, 'utf8');
 console.log('Successfully added default parameter for selectedMaterial!');
+
