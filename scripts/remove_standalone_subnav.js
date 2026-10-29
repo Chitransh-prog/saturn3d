@@ -23,3 +23,4 @@ content = content.replace(/\{\/\* Sticky Sub-Navigation Bar \(Creality-Style\) \
 
 fs.writeFileSync(homePath, content, 'utf8');
 console.log('Successfully removed standalone StickySubNav from Home.tsx!');
+

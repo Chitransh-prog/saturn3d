@@ -9,3 +9,4 @@ content = content.replace("</div>\n\n      }\n      \n      {/* 02.", "</div>\n\
 
 fs.writeFileSync(homePath, content, 'utf8');
 console.log('Fixed orphan brace in Home.tsx!');
+

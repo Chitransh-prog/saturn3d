@@ -11,3 +11,4 @@ content = content.replace(target, replacement);
 
 fs.writeFileSync(navPath, content, 'utf8');
 console.log('Successfully optimized mobile quote button!');
+
