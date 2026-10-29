@@ -21,6 +21,7 @@ import { authApi } from '@/lib/api';
 // Home Page Section Jump Items (Merged from SubNav)
 const HOME_SECTIONS = [
   { id: 'products', label: '3D Products' },
+  { id: 'categories', label: 'Categories' },
   { id: 'hardware', label: 'Hardware Fleet' },
   { id: 'specs', label: 'Materials & Specs' },
   { id: 'configurator', label: 'Instant Quote' },
@@ -81,7 +82,7 @@ export default function Navigation() {
   useEffect(() => {
     if (!isHomePage) return;
 
-    const sectionIds = ['overview', 'products', 'hardware', 'specs', 'configurator', 'gallery', 'faq'];
+    const sectionIds = ['overview', 'products', 'categories', 'hardware', 'specs', 'configurator', 'gallery', 'faq'];
 
     const handleScrollSpy = () => {
       const scrollPos = window.scrollY + 200;

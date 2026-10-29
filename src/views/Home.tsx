@@ -11,6 +11,7 @@ import Hero from '@/sections/Hero';
 import CapabilityStrip from '@/sections/LogoTicker';
 import TechResultsDuo from '@/sections/TechResultsDuo';
 import FeaturedProductsViewer from '@/sections/FeaturedProductsViewer';
+import IndustryCategories from '@/sections/Sectors';
 import PrinterFleet from '@/sections/PrinterFleet';
 import ExploreMaterials from '@/sections/ExploreMaterials';
 import MakeItYours from '@/sections/MakeItYours';
@@ -120,6 +121,11 @@ export default function Home() {
       {/* 03.5 3D Component Inspection Workstation */}
       <div id="products">
         <FeaturedProductsViewer />
+      </div>
+
+      {/* 03.8 Our Categories - Solutions at Scale (8 Sectors from saturn3d.in) */}
+      <div id="categories">
+        <IndustryCategories />
       </div>
 
       {/* 04. Hardware Fleet Showcase (Creality / SparkX Style) */}

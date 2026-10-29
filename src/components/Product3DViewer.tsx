@@ -1091,8 +1091,53 @@ function ProductModelRenderer({
   wireframe: boolean;
 }) {
   const name = product.name.toLowerCase();
-  const id = product.id;
+  const id = String(product.id);
   const img = (product.image || '').toLowerCase();
+
+  // 1. Geometric Vase (Interior)
+  if (img.includes('vase') || name.includes('vase')) {
+    return <HexVaseModel material={material} />;
+  }
+
+  // 2. Tech Organizer (Corporate / Bulk Gifting)
+  if (img.includes('organizer') || name.includes('organizer')) {
+    return <TechOrganizerModel material={material} />;
+  }
+
+  // 3. Articulated Desk Lamp (Drone & Robotics)
+  if (img.includes('lamp') || name.includes('lamp')) {
+    return <ArticulatedLampModel material={material} wireframe={wireframe} />;
+  }
+
+  // 4. Monolithic / Sculptural Bookends (Corporate & Wedding Keepsakes)
+  if (img.includes('bookend') || name.includes('bookend')) {
+    return <MonolithicBookendsModel material={material} wireframe={wireframe} />;
+  }
+
+  // 5. Faceted Wall Hooks (Architectural Scale Down Models)
+  if (img.includes('wall-hook') || img.includes('hook') || name.includes('hook') || name.includes('architectural')) {
+    return <FacetedWallHookModel material={material} wireframe={wireframe} />;
+  }
+
+  // 6. Cable Management System (Small Batch Manufacturing)
+  if (img.includes('cable') || name.includes('cable')) {
+    return <ModularCableClipModel material={material} wireframe={wireframe} />;
+  }
+
+  // 7. Adjustable Phone Stand (Industrial Parts Manufacturing)
+  if (img.includes('phone') || name.includes('phone') || name.includes('stand')) {
+    return <ArticulatedPhoneStandModel material={material} wireframe={wireframe} />;
+  }
+
+  // 8. Self-Watering Plant Pot / Parametric Planter (Education)
+  if (img.includes('plant') || img.includes('pot') || name.includes('planter') || name.includes('plant') || name.includes('pot')) {
+    return <ParametricPlanterModel material={material} wireframe={wireframe} />;
+  }
+
+  // 9. Modular Pen & Caliper Station / Lattice Pen Holder (Rapid Prototyping)
+  if (img.includes('pen-holder') || img.includes('pen') || name.includes('pen') || name.includes('caliper') || name.includes('station')) {
+    return <PenCaliperStationModel material={material} wireframe={wireframe} />;
+  }
 
   // Premier Engineering Products
   if (id === '1' || img.includes('impeller') || name.includes('impeller') || name.includes('turbine')) {
@@ -1117,19 +1162,6 @@ function ProductModelRenderer({
 
   if (id === '6' || img.includes('biomedical') || name.includes('surgical') || name.includes('guide')) {
     return <SurgicalGuide3DModel material={material} wireframe={wireframe} />;
-  }
-
-  // Fallbacks
-  if (id === '7' || img.includes('cable-management') || name.includes('cable')) {
-    return <ModularCableClipModel material={material} wireframe={wireframe} />;
-  }
-
-  if (id === '8' || img.includes('plant-pot') || name.includes('planter') || name.includes('pot')) {
-    return <ParametricPlanterModel material={material} wireframe={wireframe} />;
-  }
-
-  if (id === '9' || img.includes('pen-holder') || name.includes('pen') || name.includes('caliper')) {
-    return <PenCaliperStationModel material={material} wireframe={wireframe} />;
   }
 
   return <Impeller3DModel material={material} wireframe={wireframe} />;

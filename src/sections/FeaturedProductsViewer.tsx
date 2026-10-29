@@ -18,9 +18,9 @@ const MATERIAL_OPTIONS = [
 ];
 
 export default function FeaturedProductsViewer() {
-  // Use premier products (IDs 1 to 6)
+  // Use official Saturn 3D products (9 items covering all 8 sectors from saturn3d.in)
   const premierProducts = useMemo(() => {
-    return products.slice(0, 6);
+    return products.slice(0, 9);
   }, []);
 
   const [activeProductId, setActiveProductId] = useState<string>(premierProducts[0]?.id || '1');
