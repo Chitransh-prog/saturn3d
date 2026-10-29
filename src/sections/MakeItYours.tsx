@@ -81,7 +81,7 @@ Can an engineer review my file geometry for additive fabrication?`;
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10 scroll-reveal">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
@@ -103,7 +103,7 @@ Can an engineer review my file geometry for additive fabrication?`;
         </div>
 
         {/* 2-Column Precision Intake Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-reveal">
           
           {/* Left Column: Dropzone + Sliders */}
           <div className="lg:col-span-7 space-y-6">

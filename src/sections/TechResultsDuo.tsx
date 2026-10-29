@@ -16,7 +16,7 @@ export default function TechResultsDuo() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Eyebrow */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border hairline-dark rounded-full font-mono text-[11px] font-medium uppercase tracking-wider text-muted-dark mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-saturn-orange" />
             <span>Industrial Additive Ecosystem</span>
@@ -28,7 +28,7 @@ export default function TechResultsDuo() {
         </div>
 
         {/* The Two Pillars (Carbon-style Duo Cards) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch scroll-stagger">
           
           {/* Card 1: Our Technology */}
           <div className="group relative bg-gradient-to-br from-[#131626] via-[#0E101D] to-[#080911] border hairline-dark rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-precision-lg hover:border-white/20 transition-all duration-300">

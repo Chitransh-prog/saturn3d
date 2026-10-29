@@ -4,7 +4,7 @@ import React, { useRef, useMemo, useState, useCallback, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
-import { Sliders, RotateCw, RefreshCw, Zap, Cpu } from 'lucide-react';
+import { Sliders, RotateCw, RefreshCw, Zap, Play, Pause } from 'lucide-react';
 
 interface HeroStage3DProps {
   printProgress?: number;
@@ -18,91 +18,94 @@ interface HeroStage3DProps {
 // ---------------------------------------------------------------------------
 function SaturnCorePrinter({
   layerProgress,
-  isPrinting,
+  isAutoPrinting,
+  onCoordsUpdate,
 }: {
   layerProgress: number;
-  isPrinting: boolean;
+  isAutoPrinting: boolean;
+  onCoordsUpdate?: (x: number, y: number, z: number) => void;
 }) {
   const gantryRef = useRef<THREE.Group>(null);
   const toolheadRef = useRef<THREE.Group>(null);
   const nozzleGlowRef = useRef<THREE.PointLight>(null);
-  const printheadLedRef = useRef<THREE.MeshStandardMaterial>(null);
+  const activeExtrusionRingRef = useRef<THREE.Mesh>(null);
+  const sparksRef = useRef<THREE.Points>(null);
 
   // Materials
   const materials = useMemo(() => {
     return {
       // Anodized dark graphite 2020/2040 aluminum frame
       frame: new THREE.MeshStandardMaterial({
-        color: 0x181a20,
-        metalness: 0.85,
-        roughness: 0.3,
+        color: 0x16181f,
+        metalness: 0.88,
+        roughness: 0.28,
       }),
       // Saturn Orange CNC milled corner brackets
       orangeAccent: new THREE.MeshStandardMaterial({
         color: 0xff5a1f,
-        metalness: 0.4,
-        roughness: 0.35,
+        metalness: 0.45,
+        roughness: 0.3,
       }),
       // Polished stainless steel linear guide rods & lead screws
       steelRod: new THREE.MeshStandardMaterial({
-        color: 0xe5e7eb,
-        metalness: 0.95,
-        roughness: 0.12,
+        color: 0xeef0f4,
+        metalness: 0.98,
+        roughness: 0.1,
       }),
       // Heated aluminum bed subplate
       bedPlate: new THREE.MeshStandardMaterial({
-        color: 0x1f242d,
-        metalness: 0.7,
-        roughness: 0.4,
+        color: 0x1c2027,
+        metalness: 0.75,
+        roughness: 0.35,
       }),
       // Textured gold-sheen PEI spring steel build surface
       peiSheet: new THREE.MeshStandardMaterial({
-        color: 0x222630,
-        metalness: 0.5,
-        roughness: 0.5,
+        color: 0x222631,
+        metalness: 0.55,
+        roughness: 0.48,
       }),
       // PEI Gold accent edge
       peiGoldEdge: new THREE.MeshStandardMaterial({
         color: 0xd4af37,
-        metalness: 0.8,
-        roughness: 0.25,
+        metalness: 0.85,
+        roughness: 0.22,
       }),
       // Smoked tinted acrylic side/rear enclosure
       smokedGlass: new THREE.MeshPhysicalMaterial({
-        color: 0x0f1318,
-        transmission: 0.65,
-        opacity: 0.45,
+        color: 0x0e1116,
+        transmission: 0.7,
+        opacity: 0.4,
         transparent: true,
-        roughness: 0.2,
+        roughness: 0.18,
         metalness: 0.1,
       }),
       // Toolhead industrial shroud
       shroud: new THREE.MeshStandardMaterial({
-        color: 0x12151b,
-        metalness: 0.6,
-        roughness: 0.4,
+        color: 0x11141a,
+        metalness: 0.65,
+        roughness: 0.35,
       }),
       // Brass Volcano Hotend Nozzle
       brassNozzle: new THREE.MeshStandardMaterial({
         color: 0xd97706,
-        metalness: 0.9,
-        roughness: 0.2,
+        metalness: 0.92,
+        roughness: 0.18,
       }),
-      // Hotend Molten Deposition Glow
-      moltenGlow: new THREE.MeshBasicMaterial({
+      // Molten orange extruded filament
+      moltenOrange: new THREE.MeshBasicMaterial({
         color: 0xff5a1f,
       }),
-      // Carbon composite printed part
+      // Carbon-X PA12 composite printed part
       carbonPart: new THREE.MeshStandardMaterial({
-        color: 0x161920,
-        metalness: 0.35,
-        roughness: 0.45,
+        color: 0x14171d,
+        metalness: 0.3,
+        roughness: 0.42,
       }),
       // Orange part detail
       orangePart: new THREE.MeshStandardMaterial({
         color: 0xff5a1f,
-        metalness: 0.3,
-        roughness: 0.35,
+        metalness: 0.35,
+        roughness: 0.32,
       }),
     };
   }, []);
@@ -110,23 +113,57 @@ function SaturnCorePrinter({
   // Frame Dimensions
   const W = 2.4; // Width (X)
   const D = 2.4; // Depth (Z)
-  const H = 2.7; // Height (Y)
+  const H = 2.6; // Height (Y)
   const beamR = 0.045; // Beam half-thickness
-  const bedY = 0.75 + layerProgress * 0.1; // Bed sits at solid position
 
-  // Toolhead kinematics animation loop
+  // FIXED KINEMATIC ZERO PLANES:
+  // The nozzle tip is at fixed height y = 1.30.
+  // The bed lowers as layers accumulate from y = 1.25 down to y = 0.65!
+  const NOZZLE_Y = 1.30;
+  const maxPartHeight = 0.58;
+  const currentPartHeight = Math.max(0.04, layerProgress * maxPartHeight);
+  const bedY = NOZZLE_Y - currentPartHeight;
+
+  // Spark / molten particles setup
+  const particleCount = 20;
+  const particleGeo = useMemo(() => {
+    const geo = new THREE.BufferGeometry();
+    const pos = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * 0.08;
+      pos[i * 3 + 1] = -Math.random() * 0.05;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 0.08;
+    }
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    return geo;
+  }, []);
+
+  // Dynamic Kinematics Toolpath Loop
   useFrame(({ clock }) => {
-    const t = clock.getElapsedTime() * (isPrinting ? 2.2 : 1.4);
+    const t = clock.getElapsedTime() * (isAutoPrinting ? 3.2 : 1.6);
 
-    // Realistic Lissajous toolpath on the X-Z plane
-    const targetX = Math.sin(t * 1.8) * 0.42 + Math.sin(t * 3.6) * 0.12;
-    const targetZ = Math.cos(t * 1.5) * 0.42 + Math.cos(t * 3.0) * 0.10;
+    // Multi-phase authentic toolpath (Outer circular perimeter -> Radial infill spokes)
+    const phase = Math.floor(t / 6) % 2;
+    let targetX = 0;
+    let targetZ = 0;
+
+    if (phase === 0) {
+      // High-speed outer perimeter loop
+      const r = 0.42;
+      targetX = Math.cos(t * 2.2) * r;
+      targetZ = Math.sin(t * 2.2) * r;
+    } else {
+      // Rapid infill cross-hatch
+      const r = 0.12 + Math.abs(Math.sin(t * 1.2)) * 0.28;
+      targetX = Math.cos(t * 4.6) * r;
+      targetZ = Math.sin(t * 4.6) * r;
+    }
 
     if (toolheadRef.current) {
       toolheadRef.current.position.x = THREE.MathUtils.lerp(
         toolheadRef.current.position.x,
         targetX,
-        0.25
+        0.3
       );
     }
 
@@ -134,13 +171,27 @@ function SaturnCorePrinter({
       gantryRef.current.position.z = THREE.MathUtils.lerp(
         gantryRef.current.position.z,
         targetZ,
-        0.25
+        0.3
       );
     }
 
-    // Dynamic nozzle glow pulse
+    // Dynamic nozzle light pulse
     if (nozzleGlowRef.current) {
-      nozzleGlowRef.current.intensity = 3.5 + Math.sin(t * 8) * 1.2;
+      nozzleGlowRef.current.intensity = 3.8 + Math.sin(t * 12) * 1.5;
+    }
+
+    // Extrusion ring rotation / pulse
+    if (activeExtrusionRingRef.current) {
+      activeExtrusionRingRef.current.rotation.z += 0.04;
+    }
+
+    // Telemetry callback
+    if (onCoordsUpdate && Math.random() < 0.2) {
+      onCoordsUpdate(
+        Math.round(targetX * 250),
+        Math.round(targetZ * 250),
+        Math.round(currentPartHeight * 100)
+      );
     }
   });
 
@@ -160,14 +211,13 @@ function SaturnCorePrinter({
           <mesh material={materials.frame} castShadow receiveShadow>
             <boxGeometry args={[beamR * 2, H, beamR * 2]} />
           </mesh>
-          {/* Top & Bottom Rubber/Silicone Shock Absorber Foot */}
           <mesh material={materials.frame} position={[0, -H / 2 - 0.03, 0]}>
             <cylinderGeometry args={[0.07, 0.08, 0.06, 16]} />
           </mesh>
         </group>
       ))}
 
-      {/* 4 Bottom Horizontal Base Extrusions */}
+      {/* 4 Bottom Base Extrusions */}
       <mesh material={materials.frame} position={[0, beamR, -D / 2 + beamR]}>
         <boxGeometry args={[W, beamR * 2, beamR * 2]} />
       </mesh>
@@ -181,7 +231,7 @@ function SaturnCorePrinter({
         <boxGeometry args={[beamR * 2, beamR * 2, D]} />
       </mesh>
 
-      {/* 4 Top Horizontal Gantry Frame Extrusions */}
+      {/* 4 Top Gantry Frame Extrusions */}
       <mesh material={materials.frame} position={[0, H - beamR, -D / 2 + beamR]}>
         <boxGeometry args={[W, beamR * 2, beamR * 2]} />
       </mesh>
@@ -195,7 +245,7 @@ function SaturnCorePrinter({
         <boxGeometry args={[beamR * 2, beamR * 2, D]} />
       </mesh>
 
-      {/* 8 Saturn Orange CNC Corner Brackets with Bolt Detail */}
+      {/* 8 Saturn Orange CNC Corner Brackets */}
       {[
         [-W / 2 + 0.1, 0.1, -D / 2 + 0.1],
         [W / 2 - 0.1, 0.1, -D / 2 + 0.1],
@@ -211,37 +261,26 @@ function SaturnCorePrinter({
         </mesh>
       ))}
 
-      {/* Smoked Tinted Acrylic Side & Back Panels (Open Front Chamber for Crystal Clear View) */}
-      {/* Back Panel */}
+      {/* Smoked Tinted Acrylic Side & Back Panels (Open Front) */}
       <mesh material={materials.smokedGlass} position={[0, H / 2, -D / 2 + 0.01]}>
         <boxGeometry args={[W - 0.1, H - 0.12, 0.015]} />
       </mesh>
-      {/* Left Panel */}
       <mesh material={materials.smokedGlass} position={[-W / 2 + 0.01, H / 2, 0]}>
         <boxGeometry args={[0.015, H - 0.12, D - 0.1]} />
       </mesh>
-      {/* Right Panel */}
       <mesh material={materials.smokedGlass} position={[W / 2 - 0.01, H / 2, 0]}>
         <boxGeometry args={[0.015, H - 0.12, D - 0.1]} />
-      </mesh>
-
-      {/* Top Front Saturn Orange Logo Badge */}
-      <mesh material={materials.orangeAccent} position={[0, H - 0.03, D / 2 - 0.01]}>
-        <boxGeometry args={[0.7, 0.04, 0.02]} />
       </mesh>
 
       {/* ===================================================================
           2. DUAL Z-AXIS LEAD SCREWS & LINEAR GUIDE RODS
       =================================================================== */}
-      {/* Left Z-Axis: Linear Rod + Trapezoidal Lead Screw */}
       <mesh material={materials.steelRod} position={[-W / 2 + 0.22, H / 2, 0]}>
         <cylinderGeometry args={[0.016, 0.016, H - 0.2, 20]} />
       </mesh>
       <mesh material={materials.steelRod} position={[-W / 2 + 0.32, H / 2, 0]}>
         <cylinderGeometry args={[0.012, 0.012, H - 0.2, 20]} />
       </mesh>
-
-      {/* Right Z-Axis: Linear Rod + Trapezoidal Lead Screw */}
       <mesh material={materials.steelRod} position={[W / 2 - 0.22, H / 2, 0]}>
         <cylinderGeometry args={[0.016, 0.016, H - 0.2, 20]} />
       </mesh>
@@ -250,7 +289,7 @@ function SaturnCorePrinter({
       </mesh>
 
       {/* ===================================================================
-          3. HEATED BED PLATFORM & TEXTURED PEI SPRING STEEL SHEET
+          3. HEATED BED PLATFORM & ACTIVE OBJECT BEING PRINTED
       =================================================================== */}
       <group position={[0, bedY, 0]}>
         {/* Aluminum Sub-Bed Carrier */}
@@ -258,18 +297,14 @@ function SaturnCorePrinter({
           <boxGeometry args={[1.7, 0.04, 1.7]} />
         </mesh>
 
-        {/* 4 Corner Bed Leveling Knobs (Saturn Orange) */}
+        {/* 4 Corner Leveling Thumbwheels (Saturn Orange) */}
         {[
           [-0.75, -0.75],
           [0.75, -0.75],
           [-0.75, 0.75],
           [0.75, 0.75],
         ].map(([kx, kz], idx) => (
-          <mesh
-            key={`knob-${idx}`}
-            material={materials.orangeAccent}
-            position={[kx, -0.07, kz]}
-          >
+          <mesh key={`knob-${idx}`} material={materials.orangeAccent} position={[kx, -0.07, kz]}>
             <cylinderGeometry args={[0.05, 0.05, 0.03, 16]} />
           </mesh>
         ))}
@@ -282,15 +317,13 @@ function SaturnCorePrinter({
           <boxGeometry args={[1.58, 0.008, 1.58]} />
         </mesh>
 
-        {/* Precision Laser-Etched Bed Calibration Grid Lines */}
+        {/* Laser-Etched Bed Calibration Grid Lines */}
         {[-0.5, -0.25, 0, 0.25, 0.5].map((pos, idx) => (
           <React.Fragment key={`grid-${idx}`}>
-            {/* X-direction lines */}
             <mesh position={[0, -0.003, pos]}>
               <boxGeometry args={[1.4, 0.002, 0.004]} />
               <meshBasicMaterial color="#374151" />
             </mesh>
-            {/* Z-direction lines */}
             <mesh position={[pos, -0.003, 0]}>
               <boxGeometry args={[0.004, 0.002, 1.4]} />
               <meshBasicMaterial color="#374151" />
@@ -298,89 +331,98 @@ function SaturnCorePrinter({
           </React.Fragment>
         ))}
 
-        {/* Center Target Mark */}
-        <mesh position={[0, -0.003, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[0.08, 0.09, 32]} />
-          <meshBasicMaterial color="#FF5A1F" />
-        </mesh>
-
-        {/* ===================================================================
-            4. THE REAL HIGH-TECH ENGINEERING PART BEING PRINTED
-        =================================================================== */}
+        {/* =================================================================
+            4. THE OBJECT ACTIVELY BEING PRINTED
+        ================================================================= */}
         <group position={[0, 0, 0]}>
-          {/* Base Mounting Hub / Planetary Carrier */}
-          <mesh material={materials.carbonPart} position={[0, 0.04, 0]} castShadow receiveShadow>
-            <cylinderGeometry args={[0.55, 0.62, 0.08, 36]} />
+          {/* Base Mounting Flange Disc */}
+          <mesh material={materials.carbonPart} position={[0, Math.min(currentPartHeight * 0.15, 0.04), 0]} castShadow receiveShadow>
+            <cylinderGeometry args={[0.55, 0.62, Math.min(currentPartHeight * 0.3, 0.08), 36]} />
           </mesh>
 
-          {/* Hexagonal Core Base Boss */}
-          <mesh material={materials.orangePart} position={[0, 0.09, 0]} castShadow>
-            <cylinderGeometry args={[0.42, 0.42, 0.04, 6]} />
-          </mesh>
+          {/* Hexagonal Mounting Boss */}
+          {currentPartHeight > 0.08 && (
+            <mesh material={materials.orangePart} position={[0, Math.min(currentPartHeight * 0.25, 0.09), 0]} castShadow>
+              <cylinderGeometry args={[0.42, 0.42, 0.04, 6]} />
+            </mesh>
+          )}
 
-          {/* Precision Aerospace Turbomachinery Stator Core */}
-          <mesh material={materials.carbonPart} position={[0, 0.22, 0]} castShadow receiveShadow>
-            <cylinderGeometry args={[0.38, 0.46, 0.24, 32]} />
-          </mesh>
+          {/* Precision Aerospace Turbine Impeller Body */}
+          {currentPartHeight > 0.15 && (
+            <mesh
+              material={materials.carbonPart}
+              position={[0, currentPartHeight * 0.5, 0]}
+              castShadow
+              receiveShadow
+            >
+              <cylinderGeometry
+                args={[
+                  0.36 + (1 - layerProgress) * 0.1,
+                  0.48,
+                  currentPartHeight * 0.7,
+                  32
+                ]}
+              />
+            </mesh>
+          )}
 
-          {/* Dynamic Spiral Impeller Aerodynamic Vanes */}
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => {
-            const rad = (deg * Math.PI) / 180;
-            return (
-              <group key={`vane-${i}`} rotation={[0, rad, 0]} position={[0, 0.22, 0]}>
-                <mesh
-                  material={materials.orangePart}
-                  position={[0.26, 0, 0]}
-                  rotation={[0.25, 0.35, 0.05]}
-                  castShadow
-                >
-                  <boxGeometry args={[0.18, 0.22, 0.035]} />
-                </mesh>
-              </group>
-            );
-          })}
+          {/* Dynamic Curved Aerodynamic Impeller Vanes */}
+          {currentPartHeight > 0.25 && (
+            [0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => {
+              const rad = (deg * Math.PI) / 180;
+              return (
+                <group key={`vane-${i}`} rotation={[0, rad, 0]} position={[0, currentPartHeight * 0.55, 0]}>
+                  <mesh
+                    material={materials.orangePart}
+                    position={[0.26, 0, 0]}
+                    rotation={[0.25, 0.35, 0.05]}
+                    castShadow
+                  >
+                    <boxGeometry args={[0.16, currentPartHeight * 0.45, 0.035]} />
+                  </mesh>
+                </group>
+              );
+            })
+          )}
 
-          {/* Top Drive Hub Flange */}
-          <mesh material={materials.carbonPart} position={[0, 0.38, 0]} castShadow receiveShadow>
-            <cylinderGeometry args={[0.24, 0.28, 0.12, 24]} />
-          </mesh>
+          {/* Active Molten Extruded Layer Boundary on Top of the Part */}
+          <group position={[0, currentPartHeight - 0.002, 0]}>
+            {/* Bright molten orange freshly extruded bead ring */}
+            <mesh ref={activeExtrusionRingRef} rotation={[-Math.PI / 2, 0, 0]}>
+              <ringGeometry args={[0.38, 0.43, 36]} />
+              <meshBasicMaterial color="#FF5A1F" side={THREE.DoubleSide} />
+            </mesh>
 
-          {/* Central Shaft Bore (Metallic Hollow Core) */}
-          <mesh material={materials.steelRod} position={[0, 0.39, 0]}>
-            <cylinderGeometry args={[0.10, 0.10, 0.14, 20]} />
-          </mesh>
-
-          {/* Active Deposition Contact Ring (Where molten filament is bonding) */}
-          <mesh position={[0, 0.445, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <ringGeometry args={[0.12, 0.26, 32]} />
-            <meshBasicMaterial color="#FF5A1F" transparent opacity={0.9} />
-          </mesh>
+            {/* Inner molten infill bead */}
+            <mesh rotation={[-Math.PI / 2, 0, 0]}>
+              <ringGeometry args={[0.18, 0.22, 24]} />
+              <meshBasicMaterial color="#FF8A50" side={THREE.DoubleSide} />
+            </mesh>
+          </group>
         </group>
       </group>
 
       {/* ===================================================================
-          5. COREXY GANTRY & ACTIVE MOVING TOOLHEAD
+          5. COREXY GANTRY & MOVING ACTIVE TOOLHEAD CARRIAGE
       =================================================================== */}
       {/* Dual Left & Right Y-Axis Stainless Linear Rails */}
-      <mesh material={materials.steelRod} position={[-W / 2 + 0.18, H - 0.38, 0]}>
+      <mesh material={materials.steelRod} position={[-W / 2 + 0.18, 1.62, 0]}>
         <boxGeometry args={[0.02, 0.03, D - 0.4]} />
       </mesh>
-      <mesh material={materials.steelRod} position={[W / 2 - 0.18, H - 0.38, 0]}>
+      <mesh material={materials.steelRod} position={[W / 2 - 0.18, 1.62, 0]}>
         <boxGeometry args={[0.02, 0.03, D - 0.4]} />
       </mesh>
 
       {/* Moving X-Axis Cross Gantry Bridge */}
-      <group ref={gantryRef} position={[0, H - 0.38, 0]}>
-        {/* Main Gantry Crossbeam (Carbon / Anodized Aluminum) */}
+      <group ref={gantryRef} position={[0, 1.62, 0]}>
         <mesh material={materials.frame} castShadow>
           <boxGeometry args={[W - 0.32, 0.05, 0.06]} />
         </mesh>
-        {/* Stainless Steel X Linear Rail */}
         <mesh material={materials.steelRod} position={[0, 0.026, 0.015]}>
           <boxGeometry args={[W - 0.36, 0.015, 0.02]} />
         </mesh>
 
-        {/* Left & Right Y-Axis Linear Carriage Blocks */}
+        {/* Left & Right Y-Carriages */}
         <mesh material={materials.orangeAccent} position={[-W / 2 + 0.18, 0, 0]}>
           <boxGeometry args={[0.05, 0.06, 0.1]} />
         </mesh>
@@ -389,27 +431,27 @@ function SaturnCorePrinter({
         </mesh>
 
         {/* =================================================================
-            ACTIVE TOOLHEAD CARRIAGE (Moves along X axis on the gantry)
+            ACTIVE MOVING TOOLHEAD CARRIAGE (Directly touches the printed part!)
         ================================================================= */}
-        <group ref={toolheadRef} position={[0, -0.12, 0]}>
-          {/* Main Stealth Printhead Shroud */}
+        <group ref={toolheadRef} position={[0, -0.15, 0]}>
+          {/* Main Shroud */}
           <mesh material={materials.shroud} position={[0, 0.02, 0]} castShadow>
             <boxGeometry args={[0.18, 0.18, 0.16]} />
           </mesh>
 
-          {/* Front Air Intake Fan Grill */}
+          {/* Front Intake Fan Grill */}
           <mesh position={[0, 0.02, 0.082]}>
             <circleGeometry args={[0.055, 20]} />
             <meshStandardMaterial color="#0B0D10" metalness={0.9} roughness={0.2} />
           </mesh>
 
-          {/* Status Indicator LED (Saturn Orange) */}
+          {/* Status LED */}
           <mesh position={[0, 0.09, 0.082]}>
             <planeGeometry args={[0.06, 0.015]} />
             <meshBasicMaterial color="#FF5A1F" />
           </mesh>
 
-          {/* Left & Right Part Cooling Blower Ducts */}
+          {/* Left & Right Blower Ducts */}
           <mesh material={materials.orangeAccent} position={[-0.07, -0.06, 0.02]}>
             <boxGeometry args={[0.035, 0.08, 0.06]} />
           </mesh>
@@ -427,20 +469,37 @@ function SaturnCorePrinter({
             <coneGeometry args={[0.03, 0.06, 16]} />
           </mesh>
 
-          {/* Molten Extrusion Nozzle Tip Bead */}
-          <mesh material={materials.moltenGlow} position={[0, -0.142, 0]}>
+          {/* Molten Extrusion Tip Bead (Sits right on the top layer of the part) */}
+          <mesh material={materials.moltenOrange} position={[0, -0.142, 0]}>
             <sphereGeometry args={[0.012, 12, 12]} />
           </mesh>
 
-          {/* Real-time Dynamic Point Light Cast Directly onto the Printed Part! */}
+          {/* Real-time Dynamic Molten Filament Deposition Strand */}
+          <mesh position={[0, -0.155, 0]}>
+            <cylinderGeometry args={[0.005, 0.005, 0.025, 8]} />
+            <meshBasicMaterial color="#FF5A1F" />
+          </mesh>
+
+          {/* Real-time Dynamic Molten Point Light Cast Directly onto the Object & Bed! */}
           <pointLight
             ref={nozzleGlowRef}
             color="#FF5A1F"
-            intensity={4}
+            intensity={4.2}
             distance={1.6}
             decay={2}
-            position={[0, -0.15, 0]}
+            position={[0, -0.16, 0]}
           />
+
+          {/* Micro-spark particles drifting from extrusion contact */}
+          <points ref={sparksRef} geometry={particleGeo} position={[0, -0.15, 0]}>
+            <pointsMaterial
+              color="#FFA07A"
+              size={0.015}
+              transparent
+              opacity={0.7}
+              blending={THREE.AdditiveBlending}
+            />
+          </points>
         </group>
       </group>
     </group>
@@ -461,7 +520,6 @@ function CameraAndStudioSetup() {
 
   return (
     <>
-      {/* Studio Key Light (Pure Cool White Directional Light) */}
       <directionalLight
         position={[4, 6, 5]}
         intensity={2.8}
@@ -469,14 +527,8 @@ function CameraAndStudioSetup() {
         shadow-mapSize={[1024, 1024]}
         shadow-bias={-0.0001}
       />
-
-      {/* Rim Light for Dramatic Contour Shading */}
       <directionalLight position={[-4, 3, -4]} intensity={1.5} color="#A3A9B3" />
-
-      {/* Warm Saturn Orange Fill from the base */}
       <directionalLight position={[0, 1, 4]} intensity={0.8} color="#FF8A50" />
-
-      {/* Balanced Ambient Light */}
       <ambientLight intensity={0.9} />
     </>
   );
@@ -491,16 +543,36 @@ export default function HeroStage3D({
   reducedMotion = false,
   onTriggerReprint,
 }: HeroStage3DProps) {
-  const [manualProgress, setManualProgress] = useState(1.0);
+  const [manualProgress, setManualProgress] = useState<number | null>(null);
   const [autoRotate, setAutoRotate] = useState(true);
+  const [isAutoPrinting, setIsAutoPrinting] = useState(true);
+  const [dynamicCoords, setDynamicCoords] = useState({ x: 0, y: 0, z: 34 });
   const controlsRef = useRef<any>(null);
 
-  const activeProgress = manualProgress !== 1.0 ? manualProgress : printProgress;
+  // Auto-advancing print layer height simulation
+  const [simulatedProgress, setSimulatedProgress] = useState(0.68);
+
+  useEffect(() => {
+    if (!isAutoPrinting || reducedMotion || manualProgress !== null) return;
+    const interval = setInterval(() => {
+      setSimulatedProgress((prev) => {
+        const next = prev + 0.002;
+        return next > 0.98 ? 0.35 : next;
+      });
+    }, 120);
+    return () => clearInterval(interval);
+  }, [isAutoPrinting, reducedMotion, manualProgress]);
+
+  const activeProgress = manualProgress !== null ? manualProgress : simulatedProgress;
 
   const handleResetCamera = useCallback(() => {
     if (controlsRef.current) {
       controlsRef.current.reset();
     }
+  }, []);
+
+  const handleCoordsUpdate = useCallback((x: number, y: number, z: number) => {
+    setDynamicCoords({ x, y, z });
   }, []);
 
   return (
@@ -519,7 +591,8 @@ export default function HeroStage3D({
         {/* Our Custom Procedural Precision 3D Printer */}
         <SaturnCorePrinter
           layerProgress={activeProgress}
-          isPrinting={isPrinting}
+          isAutoPrinting={isAutoPrinting}
+          onCoordsUpdate={handleCoordsUpdate}
         />
 
         {/* Studio Soft Floor Contact Shadow */}
@@ -532,7 +605,7 @@ export default function HeroStage3D({
           color="#000000"
         />
 
-        {/* Orbit Controls (Full Inspection, Smooth Damping) */}
+        {/* Orbit Controls */}
         <OrbitControls
           ref={controlsRef}
           enableDamping
@@ -546,8 +619,20 @@ export default function HeroStage3D({
         />
       </Canvas>
 
-      {/* Top Right Discreet View Controls */}
+      {/* Top Right Discreet View & Playback Controls */}
       <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 pointer-events-auto">
+        <button
+          onClick={() => setIsAutoPrinting(!isAutoPrinting)}
+          title={isAutoPrinting ? 'Pause Print Kinematics' : 'Resume Print Kinematics'}
+          className={`p-2 rounded-xl border backdrop-blur-md transition-all ${
+            isAutoPrinting
+              ? 'bg-[#FF5A1F]/20 border-[#FF5A1F] text-[#FF5A1F]'
+              : 'bg-[#0B0D10]/80 border-white/10 text-[#A3A9B3] hover:text-white'
+          }`}
+        >
+          {isAutoPrinting ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+        </button>
+
         <button
           onClick={() => setAutoRotate(!autoRotate)}
           title="Toggle Smooth Auto-Rotation"
@@ -569,7 +654,7 @@ export default function HeroStage3D({
         </button>
       </div>
 
-      {/* Minimalist Engineered Bottom Bar: Layer Scrubber + Clean Status */}
+      {/* Minimalist Engineered Bottom Bar: Layer Scrubber + Real-Time Telemetry */}
       <div className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-2xl bg-[#0B0D10]/90 border border-white/10 backdrop-blur-md z-20 pointer-events-auto shadow-xl">
         {/* Layer Slicing Scrubber */}
         <div className="flex items-center gap-3 w-full sm:w-auto flex-1">
@@ -593,16 +678,18 @@ export default function HeroStage3D({
           </span>
         </div>
 
-        {/* Clean Machine Telemetry Status Line */}
+        {/* Real-Time Live Kinematics Telemetry Readout */}
         <div className="flex items-center gap-2.5 text-[11px] font-mono text-[#A3A9B3] border-t sm:border-t-0 sm:border-l border-white/10 pt-2 sm:pt-0 sm:pl-3 flex-shrink-0">
           <span className="flex items-center gap-1.5 text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            CoreXY Active
+            Printing PA12-CF
           </span>
           <span className="text-[#FF5A1F]">•</span>
-          <span>Nozzle 245°C</span>
+          <span>X: {dynamicCoords.x > 0 ? `+${dynamicCoords.x}` : dynamicCoords.x}</span>
+          <span className="text-white/40">/</span>
+          <span>Y: {dynamicCoords.y > 0 ? `+${dynamicCoords.y}` : dynamicCoords.y}</span>
           <span className="text-[#FF5A1F]">•</span>
-          <span>Bed 90°C</span>
+          <span>Z: {(activeProgress * 58).toFixed(1)}mm</span>
           <span className="text-[#FF5A1F]">•</span>
           <span className="text-white">±0.04mm</span>
         </div>

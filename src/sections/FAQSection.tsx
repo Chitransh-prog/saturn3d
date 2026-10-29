@@ -68,7 +68,7 @@ export default function FAQSection() {
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
@@ -90,7 +90,7 @@ export default function FAQSection() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 scroll-reveal">
           {tags.map((t) => (
             <button
               key={t}
@@ -107,7 +107,7 @@ export default function FAQSection() {
         </div>
 
         {/* Precision Hairline Accordion */}
-        <div className="card-precision divide-y divide-black/5 overflow-hidden">
+        <div className="card-precision divide-y divide-black/5 overflow-hidden scroll-reveal">
           {filteredFaqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (

@@ -83,7 +83,7 @@ export default function PrinterFleet() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F6F8] border border-[#0B0D10]/10 text-xs font-mono tracking-wider text-[#5B616B] mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
             SATURN INDUSTRIAL HARDWARE FLEET
@@ -97,7 +97,7 @@ export default function PrinterFleet() {
         </div>
 
         {/* 2-Column Creality / SparkX Style Hardware Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 scroll-stagger">
           {fleetData.map((printer) => (
             <div
               key={printer.id}

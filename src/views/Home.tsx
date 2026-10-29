@@ -1,21 +1,19 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Precision Studio Overhauled Sections
+// Precision Studio Streamlined Sections
 import Preloader from '@/components/Preloader';
 import Hero from '@/sections/Hero';
 import StickySubNav from '@/components/StickySubNav';
 import CapabilityStrip from '@/sections/LogoTicker';
 import TechResultsDuo from '@/sections/TechResultsDuo';
 import PrinterFleet from '@/sections/PrinterFleet';
-import TheLab from '@/sections/TheLab';
 import ExploreMaterials from '@/sections/ExploreMaterials';
 import MakeItYours from '@/sections/MakeItYours';
-import UseItFor from '@/sections/UseItFor';
-import HowItsMade from '@/sections/HowItsMade';
-import BulkRuns from '@/sections/BulkRuns';
 import ProofGallery from '@/sections/ProofGallery';
 import FAQSection from '@/sections/FAQSection';
 
@@ -34,12 +32,60 @@ export default function Home() {
       rootLenis.on('scroll', ScrollTrigger.update);
     }
 
+    // Scroll Animations across all sections
+    const ctx = gsap.context(() => {
+      if (prefersReducedMotion) return;
+
+      // 1. Smooth Fade-Up for Section Headers & Key Blocks
+      const revealElements = containerRef.current?.querySelectorAll('.scroll-reveal');
+      revealElements?.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { y: 32, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      });
+
+      // 2. Staggered Entrance for Cards, Grids, and Lists
+      const staggerContainers = containerRef.current?.querySelectorAll('.scroll-stagger');
+      staggerContainers?.forEach((container) => {
+        const items = container.children;
+        gsap.fromTo(
+          items,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.65,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: container,
+              start: 'top 82%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      });
+    }, containerRef);
+
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 600);
+    }, 500);
 
     return () => {
       clearTimeout(timer);
+      ctx.revert();
       if (rootLenis && !prefersReducedMotion) {
         rootLenis.off('scroll', ScrollTrigger.update);
       }
@@ -48,11 +94,9 @@ export default function Home() {
 
   const subNavItems = [
     { id: 'hardware', label: 'Hardware Fleet' },
-    { id: 'the-lab', label: 'Showcase' },
-    { id: 'materials', label: 'Materials & Specs' },
+    { id: 'specs', label: 'Materials & Specs' },
     { id: 'configurator', label: 'Instant Quote' },
-    { id: 'how-it-works', label: 'Pipeline' },
-    { id: 'proof', label: 'Real Prints' },
+    { id: 'gallery', label: 'Real Prints' },
     { id: 'faq', label: 'FAQ' },
   ];
 
@@ -61,7 +105,7 @@ export default function Home() {
       {/* 00. Preloader */}
       <Preloader onComplete={() => setPreloaderDone(true)} />
 
-      {/* 01. Hero: Precision Studio Dark 3D Stage */}
+      {/* 01. Hero: Precision Studio Dark 3D Stage with Active Printing */}
       <div id="overview">
         <Hero />
       </div>
@@ -80,32 +124,20 @@ export default function Home() {
         <PrinterFleet />
       </div>
 
-      {/* 05. The Lab: Powered by Saturn Cut-Out Showcase + Intent Selector */}
-      <TheLab />
-
-      {/* 04. Explore Materials: Deep Graphite Section + Process Comparison Table */}
+      {/* 05. Explore Materials: Deep Graphite Section + Process Comparison Table */}
       <div id="specs">
         <ExploreMaterials />
       </div>
 
-      {/* 05. Instant CAD Quote Configurator */}
+      {/* 06. Instant CAD Quote Configurator */}
       <MakeItYours />
 
-      {/* 06. Applications & Industrial Case Studies */}
-      <UseItFor />
-
-      {/* 07. Methodology & 5-Stage Fabrication Pipeline */}
-      <HowItsMade />
-
-      {/* 08. Small-Batch Production Volume Calculator */}
-      <BulkRuns />
-
-      {/* 09. Real Prints Showcase with Verified Shop Telemetry & Testimonials */}
+      {/* 07. Real Prints Showcase with Verified Shop Telemetry & Testimonials */}
       <div id="gallery">
         <ProofGallery />
       </div>
 
-      {/* 10. Frequently Answered Questions Accordion */}
+      {/* 08. Frequently Answered Questions Accordion */}
       <div id="faq">
         <FAQSection />
       </div>
