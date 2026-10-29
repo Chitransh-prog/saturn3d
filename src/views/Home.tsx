@@ -8,6 +8,7 @@ import Preloader from '@/components/Preloader';
 import Hero from '@/sections/Hero';
 import StickySubNav from '@/components/StickySubNav';
 import CapabilityStrip from '@/sections/LogoTicker';
+import TechResultsDuo from '@/sections/TechResultsDuo';
 import TheLab from '@/sections/TheLab';
 import ExploreMaterials from '@/sections/ExploreMaterials';
 import MakeItYours from '@/sections/MakeItYours';
@@ -69,7 +70,10 @@ export default function Home() {
       {/* 02. Capability Telemetry Strip (4 Inline Metrics) */}
       <CapabilityStrip />
 
-      {/* 03. The Lab: Powered by Saturn Cut-Out Showcase + Intent Selector */}
+      {/* 03. Technology & Results Duo Showcase (Carbon-Style) */}
+      <TechResultsDuo />
+
+      {/* 04. The Lab: Powered by Saturn Cut-Out Showcase + Intent Selector */}
       <TheLab />
 
       {/* 04. Explore Materials: Deep Graphite Section + Process Comparison Table */}
