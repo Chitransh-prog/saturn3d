@@ -6,7 +6,7 @@ import {
   CheckCircle, Clock, XCircle, ChevronDown, X, Menu, Eye,
   Truck, ShieldCheck, Mail, Calendar, Layers, BarChart3,
   Tag, Folder, History, Settings, UploadCloud, FileText,
-  RotateCcw, Ban, Check, ArrowRight
+  RotateCcw, Ban, Check, ArrowRight, Sparkles, Globe, MapPin, Bot, Search, ExternalLink, HelpCircle, CheckCircle2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -222,7 +222,7 @@ function Dashboard() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PRODUCT FORM MODAL
+// PRODUCT FORM MODAL WITH COMPREHENSIVE SEO, GEO & AEO CONTROLS
 // ─────────────────────────────────────────────────────────────────────────────
 interface ProductFormProps {
   product?: Product | null;
@@ -232,12 +232,15 @@ interface ProductFormProps {
 
 function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
   const isEdit = Boolean(product);
+  const [activeFormTab, setActiveFormTab] = useState<'general' | 'seo' | 'geo' | 'aeo'>('general');
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // General fields
   const [form, setForm] = useState({
     name: product?.name || '',
+    slug: (product as any)?.slug || '',
     description: product?.description || '',
     price: product?.price?.toString() || '',
     image: product?.image || '',
@@ -247,6 +250,59 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
   });
 
   const [images, setImages] = useState<string[]>(product?.image ? [product.image] : []);
+
+  // SEO fields
+  const initialSeo = (product?.seo_fields as any)?.seo || {};
+  const [seoForm, setSeoForm] = useState({
+    meta_title: initialSeo.meta_title || '',
+    meta_description: initialSeo.meta_description || '',
+    keywords: initialSeo.keywords || '',
+    canonical_url: initialSeo.canonical_url || '',
+    og_image: initialSeo.og_image || '',
+    indexable: initialSeo.indexable !== false,
+  });
+
+  // GEO fields
+  const initialGeo = (product?.seo_fields as any)?.geo || {};
+  const [geoForm, setGeoForm] = useState({
+    target_city: initialGeo.target_city || 'Bhopal',
+    target_region: initialGeo.target_region || 'Madhya Pradesh & Central India Hub',
+    geo_placename: initialGeo.geo_placename || 'Govindpura Industrial Area, Bhopal, MP 462023, India',
+    geo_position: initialGeo.geo_position || '23.259933;77.412615',
+    service_scope: initialGeo.service_scope || 'Local Same-Day Bhopal Dispatch • 24-48h Pan-India Express Air Cargo',
+    dispatch_lead_time: initialGeo.dispatch_lead_time || '24-48 Hours',
+  });
+
+  // AEO fields
+  const initialAeo = (product?.seo_fields as any)?.aeo || {};
+  const [aeoForm, setAeoForm] = useState<{
+    direct_answer: string;
+    material_grade: string;
+    tolerance_rating: string;
+    technology_process: string;
+    ai_keywords: string;
+    faq_items: Array<{ question: string; answer: string }>;
+  }>({
+    direct_answer: initialAeo.direct_answer || '',
+    material_grade: initialAeo.material_grade || '',
+    tolerance_rating: initialAeo.tolerance_rating || '±0.04 mm',
+    technology_process: initialAeo.technology_process || 'Industrial CoreXY FFF / Continuous Carbon Extrusion',
+    ai_keywords: initialAeo.ai_keywords || '',
+    faq_items: initialAeo.faq_items && initialAeo.faq_items.length > 0 ? (initialAeo.faq_items as Array<{ question: string; answer: string }>) : [
+      {
+        question: 'Where is this custom component fabricated?',
+        answer: 'Fabricated at the Saturn 3D Additive Fabrication Facility in Sector B, Govindpura Industrial Area, Bhopal, MP, India.',
+      },
+      {
+        question: 'What are the manufacturing tolerances and surface finish?',
+        answer: 'Printed with calibrated industrial tolerances of ±0.04 mm, offering high isotropic layer bonding and engineering-grade durability.',
+      },
+      {
+        question: 'How fast is dispatch across India?',
+        answer: 'Orders are fabricated and dispatched within 24-48 hours with priority express air shipping to Delhi, Mumbai, Bengaluru, Pune, Hyderabad, and all Indian pincodes.',
+      },
+    ],
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -292,6 +348,97 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
     }
   };
 
+  const handleAddFaqItem = () => {
+    setAeoForm((prev) => ({
+      ...prev,
+      faq_items: [
+        ...prev.faq_items,
+        { question: '', answer: '' },
+      ],
+    }));
+  };
+
+  const handleUpdateFaqItem = (index: number, field: 'question' | 'answer', val: string) => {
+    setAeoForm((prev) => {
+      const updated = [...prev.faq_items];
+      updated[index] = { ...updated[index], [field]: val };
+      return { ...prev, faq_items: updated };
+    });
+  };
+
+  const handleRemoveFaqItem = (index: number) => {
+    setAeoForm((prev) => ({
+      ...prev,
+      faq_items: prev.faq_items.filter((_: { question: string; answer: string }, i: number) => i !== index),
+    }));
+  };
+
+  // Magic 1-click Auto-Fill for SEO, GEO & AEO
+  const autoGenerateSeoGeoAeo = () => {
+    if (!form.name.trim()) {
+      toast.error('Please enter a component name in the General tab first');
+      return;
+    }
+    const cleanName = form.name.trim();
+    const cat = form.category || 'Rapid Prototyping';
+    const slugClean = cleanName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
+    let mat = 'Industrial Engineering Grade Polymer';
+    if (cleanName.toLowerCase().includes('carbon') || cat.toLowerCase().includes('drone')) {
+      mat = 'Carbon-X PA12 Carbon Fiber (Continuous Chopped Fiber)';
+    } else if (cleanName.toLowerCase().includes('impeller') || cleanName.toLowerCase().includes('gear') || cat.toLowerCase().includes('sla') || cat.toLowerCase().includes('resin')) {
+      mat = '12K High-Definition Tough SLA Photopolymer Resin';
+    } else if (cat.toLowerCase().includes('interior') || cat.toLowerCase().includes('gift')) {
+      mat = 'Matte Architectural PLA / Industrial PETG';
+    }
+
+    setSeoForm({
+      meta_title: `${cleanName} | 3D Printing Bhopal & India | Saturn 3D`,
+      meta_description: `High-precision 3D printed ${cleanName} for ${cat}. Manufactured with ±0.04 mm tolerance at Saturn 3D additive hub in Bhopal, MP. Fast 24-48h dispatch across India.`,
+      keywords: `${cleanName}, 3d printing bhopal, 3d printing service madhya pradesh, custom ${cat.toLowerCase()} 3d printing, industrial additive manufacturing india, saturn 3d printing`,
+      canonical_url: `/product/${slugClean}`,
+      og_image: form.image || '/showcase/carbon-drone-spar.jpg',
+      indexable: true,
+    });
+
+    setGeoForm({
+      target_city: 'Bhopal',
+      target_region: 'Madhya Pradesh & Central India Hub',
+      geo_placename: 'Govindpura Industrial Area, Bhopal, MP 462023, India',
+      geo_position: '23.259933;77.412615',
+      service_scope: 'Local Same-Day Bhopal Dispatch • 24-48h Pan-India Express Air Cargo',
+      dispatch_lead_time: '24-48 Hours',
+    });
+
+    setAeoForm({
+      direct_answer: `Saturn 3D manufactures the ${cleanName} in Bhopal, Madhya Pradesh using ${mat} with industrial tolerance of ±0.04 mm, dispatching nationwide with zero minimum order quantity.`,
+      material_grade: mat,
+      tolerance_rating: '±0.04 mm',
+      technology_process: mat.includes('Resin') ? '12K High-Resolution SLA Photopolymerization' : 'High-Speed Enclosed CoreXY FFF Extrusion',
+      ai_keywords: `best 3d printing in bhopal, who manufactures ${cleanName.toLowerCase()} in india, 3d printing price in bhopal, saturn 3d lab`,
+      faq_items: [
+        {
+          question: `Where is the ${cleanName} 3D printed?`,
+          answer: `Fabricated at the Saturn 3D Additive Manufacturing Facility located in Sector B, Govindpura Industrial Area, Bhopal, MP, India.`,
+        },
+        {
+          question: `What are the manufacturing tolerances and materials used?`,
+          answer: `Engineered with ${mat} achieving dimensional tolerances of ±0.04 mm on calibrated industrial CoreXY platforms.`,
+        },
+        {
+          question: `What is the delivery turnaround across India?`,
+          answer: `Components enter slicing analysis immediately, print within 24 hours, and ship via priority express air cargo to Delhi, Mumbai, Bengaluru, Pune, and all Indian cities.`,
+        },
+      ],
+    });
+
+    if (!form.slug) {
+      setForm((p) => ({ ...p, slug: slugClean }));
+    }
+
+    toast.success('Generated optimized SEO, GEO & AEO parameters!');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim()) return toast.error('Part name is required');
@@ -299,22 +446,28 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
 
     setLoading(true);
     try {
-      const payload = {
+      const payload: any = {
         name: form.name.trim(),
+        slug: form.slug ? form.slug.trim() : undefined,
         description: form.description.trim(),
         price: parseFloat(form.price),
         image: form.image || 'https://picsum.photos/seed/saturn-part/600/600',
         category: form.category.trim(),
         stock: parseInt(form.stock) || 0,
         is_active: form.is_active,
+        seo_fields: {
+          seo: seoForm,
+          geo: geoForm,
+          aeo: aeoForm,
+        },
       };
 
       if (isEdit && product) {
         await adminApi.updateProduct(product.id, payload);
-        toast.success(`Updated component "${form.name}"`);
+        toast.success(`Updated component "${form.name}" with SEO, GEO & AEO telemetry`);
       } else {
         await adminApi.createProduct(payload);
-        toast.success(`Registered new part "${form.name}"`);
+        toast.success(`Registered new part "${form.name}" with SEO, GEO & AEO telemetry`);
       }
       onSaved();
       onClose();
@@ -326,187 +479,570 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0D10]/60 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto font-mono">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#0B0D10]/60 backdrop-blur-sm">
+      <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-2xl w-full max-w-3xl max-h-[92vh] overflow-y-auto font-mono flex flex-col">
         {/* Header */}
-        <div className="sticky top-0 bg-[#F5F6F8] flex items-center justify-between p-5 border-b border-[#0B0D10]/10 z-10 rounded-t-2xl">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-[#0B0D10]/5 text-[#5B616B] border border-[#0B0D10]/10">
-                SPEC // MOD
-              </span>
-              <h2 className="text-base font-semibold text-[#0B0D10]">
-                {isEdit ? 'Edit Catalog Component' : 'Register New Part'}
-              </h2>
+        <div className="sticky top-0 bg-[#F5F6F8] p-5 border-b border-[#0B0D10]/10 z-10 rounded-t-2xl">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-[#0B0D10]/5 text-[#5B616B] border border-[#0B0D10]/10">
+                  SPEC // MOD
+                </span>
+                <h2 className="text-base font-semibold text-[#0B0D10]">
+                  {isEdit ? 'Edit Component & Search Telemetry' : 'Register New Part & Parameters'}
+                </h2>
+              </div>
+              <p className="text-[11px] text-[#5B616B] mt-0.5">
+                Catalog data, Google Search SEO, Bhopal GEO targeting &amp; AI AEO citation parameters
+              </p>
             </div>
-            <p className="text-[11px] text-[#5B616B] mt-0.5">
-              Multi-asset and technical parameter manifest
-            </p>
-          </div>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white flex items-center justify-center hover:bg-[#F5F6F8] text-[#5B616B] transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-
-        <form onSubmit={handleSubmit} className="p-6 space-y-5">
-          {/* Multi-Image Drag and Drop */}
-          <div className="space-y-2">
-            <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center justify-between">
-              <span>01 / CAD &amp; Render Gallery (Drag &amp; Drop)</span>
-              <span className="text-[10px] text-[#5B616B]">Max 8MB (JPEG, PNG, WebP)</span>
-            </Label>
             
-            <div
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={handleDrop}
-              onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-[#0B0D10]/15 hover:border-[#FF5A1F]/50 hover:bg-[#FF5A1F]/5 p-6 rounded-2xl text-center cursor-pointer transition-colors bg-white flex flex-col items-center justify-center gap-2 group"
-            >
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/jpeg,image/png,image/webp"
-                className="hidden"
-                onChange={(e) => e.target.files && handleFileUpload(e.target.files)}
-              />
-              <div className="w-12 h-12 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center group-hover:scale-105 transition-transform">
-                {uploading ? <Loader2 className="w-6 h-6 animate-spin text-[#FF5A1F]" /> : <UploadCloud className="w-6 h-6" />}
-              </div>
-              <div>
-                <p className="text-xs font-medium text-[#0B0D10]">
-                  {uploading ? 'Transmitting to Saturn Storage...' : 'Click or drop visual asset'}
-                </p>
-                <p className="text-[10px] text-[#5B616B] mt-0.5">High-resolution print photography</p>
-              </div>
-            </div>
-
-            {/* Thumbnail Preview strip */}
-            {images.length > 0 && (
-              <div className="flex gap-2 pt-2 overflow-x-auto pb-1">
-                {images.map((imgUrl, idx) => (
-                  <div key={idx} className="relative w-16 h-16 rounded-xl border border-[#0B0D10]/10 overflow-hidden flex-shrink-0 bg-[#F5F6F8]">
-                    <img src={imgUrl} alt="Thumb" className="w-full h-full object-cover" />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const next = images.filter((_, i) => i !== idx);
-                        setImages(next);
-                        if (form.image === imgUrl) setForm((p) => ({ ...p, image: next[0] || '' }));
-                      }}
-                      className="absolute top-1 right-1 w-5 h-5 bg-[#0B0D10]/80 text-white rounded-full flex items-center justify-center text-[10px] hover:bg-red-500 transition-colors"
-                    >
-                      <X className="w-3 h-3" />
-                    </button>
-                    {idx === 0 && (
-                      <span className="absolute bottom-0 inset-x-0 bg-[#FF5A1F] text-white text-[8px] font-semibold text-center uppercase tracking-tight py-0.5">
-                        PRIMARY
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="space-y-1.5">
-            <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">02 / Component Name</Label>
-            <Input
-              name="name"
-              placeholder="Saturn S1 Industrial Carbon Bracket"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">03 / Engineering Description</Label>
-            <textarea
-              name="description"
-              value={form.description}
-              onChange={handleChange}
-              required
-              rows={3}
-              placeholder="High-load carbon fiber reinforced component..."
-              className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#FF5A1F] bg-white"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
-              <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">04 / Unit Price (INR)</Label>
-              <Input
-                name="price"
-                type="number"
-                step="0.01"
-                min="0"
-                placeholder="499.00"
-                value={form.price}
-                onChange={handleChange}
-                required
-                className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">05 / Inventory Stock</Label>
-              <Input
-                name="stock"
-                type="number"
-                min="0"
-                placeholder="50"
-                value={form.stock}
-                onChange={handleChange}
-                required
-                className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
-              <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">06 / Category</Label>
-              <Input
-                name="category"
-                placeholder="Aerospace & Drone"
-                value={form.category}
-                onChange={handleChange}
-                required
-                className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">07 / Storefront Status</Label>
-              <select
-                name="is_active"
-                value={form.is_active ? 'true' : 'false'}
-                onChange={(e) => setForm((p) => ({ ...p, is_active: e.target.value === 'true' }))}
-                className="w-full h-10 px-3 rounded-xl border border-[#0B0D10]/15 font-mono text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#FF5A1F]"
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={autoGenerateSeoGeoAeo}
+                title="Automatically generate high-ranking SEO, GEO and AEO citations from product details"
+                className="h-8 px-3 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F] hover:text-white transition-all text-xs font-semibold flex items-center gap-1.5 border border-[#FF5A1F]/20 shadow-sm"
               >
-                <option value="true">Active (Published)</option>
-                <option value="false">Draft (Hidden)</option>
-              </select>
+                <Sparkles className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Auto-Fill SEO/GEO/AEO</span>
+              </button>
+              <button
+                onClick={onClose}
+                className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white flex items-center justify-center hover:bg-[#F5F6F8] text-[#5B616B] transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
           </div>
 
-          <div className="flex gap-3 pt-3">
+          {/* Form Tabs Nav */}
+          <div className="flex items-center gap-1 mt-4 pt-3 border-t border-[#0B0D10]/10 overflow-x-auto no-scrollbar">
             <button
               type="button"
-              onClick={onClose}
-              className="flex-1 h-10 rounded-xl border border-[#0B0D10]/10 bg-white text-[#5B616B] font-medium text-xs hover:bg-[#F5F6F8] transition-all"
+              onClick={() => setActiveFormTab('general')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                activeFormTab === 'general'
+                  ? 'bg-[#0B0D10] text-white shadow-sm'
+                  : 'text-[#5B616B] hover:text-[#0B0D10] hover:bg-white'
+              }`}
             >
-              Cancel
+              <Package className="w-3.5 h-3.5" />
+              General Specs
             </button>
+
             <button
-              type="submit"
-              disabled={loading || uploading}
-              className="flex-1 h-10 rounded-xl bg-[#FF5A1F] text-white font-medium text-xs shadow-sm hover:bg-[#E04B14] transition-all flex items-center justify-center gap-2"
+              type="button"
+              onClick={() => setActiveFormTab('seo')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                activeFormTab === 'seo'
+                  ? 'bg-[#FF5A1F] text-white shadow-sm'
+                  : 'text-[#5B616B] hover:text-[#0B0D10] hover:bg-white'
+              }`}
             >
-              {loading ? <Loader2 className="w-4 h-4 animate-spin text-white" /> : isEdit ? 'Save Changes' : 'Create Product'}
+              <Globe className="w-3.5 h-3.5" />
+              SEO Engine
+              {seoForm.meta_title && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
             </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveFormTab('geo')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                activeFormTab === 'geo'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-[#5B616B] hover:text-[#0B0D10] hover:bg-white'
+              }`}
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              GEO Bhopal &amp; India
+              {geoForm.target_city && <span className="w-1.5 h-1.5 rounded-full bg-blue-300" />}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveFormTab('aeo')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all whitespace-nowrap ${
+                activeFormTab === 'aeo'
+                  ? 'bg-purple-600 text-white shadow-sm'
+                  : 'text-[#5B616B] hover:text-[#0B0D10] hover:bg-white'
+              }`}
+            >
+              <Bot className="w-3.5 h-3.5" />
+              AEO &amp; AI Citations
+              {aeoForm.direct_answer && <span className="w-1.5 h-1.5 rounded-full bg-purple-300" />}
+            </button>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="p-6 space-y-6 flex-1">
+          {/* TAB 1: GENERAL SPECS */}
+          {activeFormTab === 'general' && (
+            <div className="space-y-5">
+              {/* Multi-Image Drag and Drop */}
+              <div className="space-y-2">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center justify-between">
+                  <span>01 / CAD &amp; Render Gallery (Drag &amp; Drop)</span>
+                  <span className="text-[10px] text-[#5B616B]">Max 8MB (JPEG, PNG, WebP)</span>
+                </Label>
+                
+                <div
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                  className="border-2 border-dashed border-[#0B0D10]/15 hover:border-[#FF5A1F]/50 hover:bg-[#FF5A1F]/5 p-6 rounded-2xl text-center cursor-pointer transition-colors bg-white flex flex-col items-center justify-center gap-2 group"
+                >
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    className="hidden"
+                    onChange={(e) => e.target.files && handleFileUpload(e.target.files)}
+                  />
+                  <div className="w-12 h-12 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center group-hover:scale-105 transition-transform">
+                    {uploading ? <Loader2 className="w-6 h-6 animate-spin text-[#FF5A1F]" /> : <UploadCloud className="w-6 h-6" />}
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-[#0B0D10]">
+                      {uploading ? 'Transmitting to Saturn Storage...' : 'Click or drop visual asset'}
+                    </p>
+                    <p className="text-[10px] text-[#5B616B] mt-0.5">High-resolution print photography</p>
+                  </div>
+                </div>
+
+                {/* Thumbnail Preview strip */}
+                {images.length > 0 && (
+                  <div className="flex gap-2 pt-2 overflow-x-auto pb-1">
+                    {images.map((imgUrl, idx) => (
+                      <div key={idx} className="relative w-16 h-16 rounded-xl border border-[#0B0D10]/10 overflow-hidden flex-shrink-0 bg-[#F5F6F8]">
+                        <img src={imgUrl} alt="Thumb" className="w-full h-full object-cover" />
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const next = images.filter((_: string, i: number) => i !== idx);
+                            setImages(next);
+                            if (form.image === imgUrl) setForm((p) => ({ ...p, image: next[0] || '' }));
+                          }}
+                          className="absolute top-1 right-1 w-5 h-5 bg-[#0B0D10]/80 text-white rounded-full flex items-center justify-center text-[10px] hover:bg-red-500 transition-colors"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                        {idx === 0 && (
+                          <span className="absolute bottom-0 inset-x-0 bg-[#FF5A1F] text-white text-[8px] font-semibold text-center uppercase tracking-tight py-0.5">
+                            PRIMARY
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">02 / Component Name</Label>
+                  <Input
+                    name="name"
+                    placeholder="Carbon-X High-Tension Drone Spar"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">03 / Custom URL Slug</Label>
+                  <Input
+                    name="slug"
+                    placeholder="carbon-x-drone-spar"
+                    value={form.slug}
+                    onChange={handleChange}
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">04 / Engineering Description</Label>
+                <textarea
+                  name="description"
+                  value={form.description}
+                  onChange={handleChange}
+                  required
+                  rows={3}
+                  placeholder="Continuous chopped carbon fiber PA12 reinforced component manufactured for high vibrational damping..."
+                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#FF5A1F] bg-white"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">05 / Unit Price (INR)</Label>
+                  <Input
+                    name="price"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    placeholder="890.00"
+                    value={form.price}
+                    onChange={handleChange}
+                    required
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">06 / Inventory Stock</Label>
+                  <Input
+                    name="stock"
+                    type="number"
+                    min="0"
+                    placeholder="50"
+                    value={form.stock}
+                    onChange={handleChange}
+                    required
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">07 / Category</Label>
+                  <Input
+                    name="category"
+                    placeholder="Aerospace & Drone"
+                    value={form.category}
+                    onChange={handleChange}
+                    required
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">08 / Storefront Publishing State</Label>
+                <select
+                  name="is_active"
+                  value={form.is_active ? 'true' : 'false'}
+                  onChange={(e) => setForm((p) => ({ ...p, is_active: e.target.value === 'true' }))}
+                  className="w-full h-10 px-3 rounded-xl border border-[#0B0D10]/15 font-mono text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#FF5A1F]"
+                >
+                  <option value="true">Active &amp; Published (Visible on Store &amp; Sitemaps)</option>
+                  <option value="false">Draft &amp; Hidden (Restricted to Internal Review)</option>
+                </select>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: SEO ENGINE OPTIMIZATION */}
+          {activeFormTab === 'seo' && (
+            <div className="space-y-5">
+              {/* Google SERP Live Simulation Card */}
+              <div className="bg-[#F5F6F8] p-4 rounded-xl border border-[#0B0D10]/10 space-y-1.5">
+                <span className="text-[10px] text-[#5B616B] uppercase font-semibold block">Google Search Result Live Simulation:</span>
+                <div className="bg-white p-3 rounded-lg border border-[#0B0D10]/5 space-y-1">
+                  <div className="text-[11px] text-[#5B616B] truncate font-sans">
+                    https://saturn3d.in › product › {seoForm.canonical_url ? seoForm.canonical_url.replace(/^\//, '') : (form.slug || form.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'))}
+                  </div>
+                  <div className="text-sm font-medium text-[#1a0dab] hover:underline cursor-pointer truncate font-sans">
+                    {seoForm.meta_title || `${form.name || 'Component'} | 3D Printing Bhopal & India | Saturn 3D`}
+                  </div>
+                  <div className="text-xs text-[#4d5156] line-clamp-2 leading-relaxed font-sans">
+                    {seoForm.meta_description || form.description || 'Precision 3D printed component manufactured with micron tolerance at Saturn 3D additive hub in Bhopal, MP. Fast all-India dispatch.'}
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <div className="flex justify-between items-center">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Meta Page Title</Label>
+                  <span className={`text-[10px] font-mono ${seoForm.meta_title.length > 60 ? 'text-amber-600 font-semibold' : 'text-[#5B616B]'}`}>
+                    {seoForm.meta_title.length} / 60 chars (Recommended)
+                  </span>
+                </div>
+                <Input
+                  value={seoForm.meta_title}
+                  onChange={(e) => setSeoForm({ ...seoForm, meta_title: e.target.value })}
+                  placeholder="e.g. Carbon-X Drone Arm Spar | 3D Printing Bhopal & India | Saturn 3D"
+                  className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <div className="flex justify-between items-center">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Meta Description (Snippet)</Label>
+                  <span className={`text-[10px] font-mono ${seoForm.meta_description.length > 160 ? 'text-amber-600 font-semibold' : 'text-[#5B616B]'}`}>
+                    {seoForm.meta_description.length} / 160 chars (High CTR)
+                  </span>
+                </div>
+                <textarea
+                  rows={3}
+                  value={seoForm.meta_description}
+                  onChange={(e) => setSeoForm({ ...seoForm, meta_description: e.target.value })}
+                  placeholder="e.g. High-strength PA12-CF carbon fiber drone arm spar printed with ±0.04 mm precision at Saturn 3D Bhopal hub. Fast dispatch across India."
+                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#FF5A1F] bg-white"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Target Focus Keywords (Comma-Separated)</Label>
+                <Input
+                  value={seoForm.keywords}
+                  onChange={(e) => setSeoForm({ ...seoForm, keywords: e.target.value })}
+                  placeholder="e.g. 3d printing bhopal, drone parts 3d print, carbon nylon printing india, rapid prototyping madhya pradesh"
+                  className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                />
+                <span className="text-[10px] text-[#5B616B] block">Includes long-tail local Bhopal keywords and India-wide procurement terms.</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Canonical Target URI</Label>
+                  <Input
+                    value={seoForm.canonical_url}
+                    onChange={(e) => setSeoForm({ ...seoForm, canonical_url: e.target.value })}
+                    placeholder="/product/carbon-drone-spar"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Robots Indexing</Label>
+                  <select
+                    value={seoForm.indexable ? 'true' : 'false'}
+                    onChange={(e) => setSeoForm({ ...seoForm, indexable: e.target.value === 'true' })}
+                    className="w-full h-10 px-3 rounded-xl border border-[#0B0D10]/15 font-mono text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#FF5A1F]"
+                  >
+                    <option value="true">index, follow (Rank on Google, Bing &amp; DuckDuckGo)</option>
+                    <option value="false">noindex, nofollow (Exclude from SERPs)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: GEO BHOPAL & INDIA LOCAL TARGETING */}
+          {activeFormTab === 'geo' && (
+            <div className="space-y-5">
+              <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl space-y-1">
+                <div className="flex items-center gap-2 text-xs font-semibold text-blue-900">
+                  <MapPin className="w-4 h-4 text-blue-600" />
+                  Local Bhopal &amp; All-India Geographic Targeting
+                </div>
+                <p className="text-xs text-blue-800/80 leading-relaxed">
+                  Configures local schema attributes, ICBM geographic coordinates, and regional coverage tags that Google Maps, Local Packs, and Google Search use to rank Saturn 3D as the #1 3D printing provider in Bhopal and Madhya Pradesh.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Target Manufacturing City</Label>
+                  <Input
+                    value={geoForm.target_city}
+                    onChange={(e) => setGeoForm({ ...geoForm, target_city: e.target.value })}
+                    placeholder="Bhopal"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Region / State Jurisdiction</Label>
+                  <Input
+                    value={geoForm.target_region}
+                    onChange={(e) => setGeoForm({ ...geoForm, target_region: e.target.value })}
+                    placeholder="Madhya Pradesh & Central India Hub"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Facility Hub Street Address</Label>
+                <Input
+                  value={geoForm.geo_placename}
+                  onChange={(e) => setGeoForm({ ...geoForm, geo_placename: e.target.value })}
+                  placeholder="Govindpura Industrial Area, Bhopal, MP 462023, India"
+                  className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Geographic Coordinates (Lat;Long)</Label>
+                  <Input
+                    value={geoForm.geo_position}
+                    onChange={(e) => setGeoForm({ ...geoForm, geo_position: e.target.value })}
+                    placeholder="23.259933;77.412615"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                  />
+                  <span className="text-[10px] text-[#5B616B] block">Precision coordinates of Govindpura Bhopal facility.</span>
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Dispatch Turnaround</Label>
+                  <Input
+                    value={geoForm.dispatch_lead_time}
+                    onChange={(e) => setGeoForm({ ...geoForm, dispatch_lead_time: e.target.value })}
+                    placeholder="24-48 Hours"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Fulfillment &amp; Delivery Scope</Label>
+                <Input
+                  value={geoForm.service_scope}
+                  onChange={(e) => setGeoForm({ ...geoForm, service_scope: e.target.value })}
+                  placeholder="Local Same-Day Bhopal Dispatch • 24-48h Pan-India Express Air Cargo"
+                  className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: AEO & AI CITATION OPTIMIZATION */}
+          {activeFormTab === 'aeo' && (
+            <div className="space-y-5">
+              <div className="bg-purple-50 border border-purple-200 p-4 rounded-xl space-y-1">
+                <div className="flex items-center gap-2 text-xs font-semibold text-purple-900">
+                  <Bot className="w-4 h-4 text-purple-600" />
+                  Answer Engine Optimization (AEO) for LLMs &amp; AI Search
+                </div>
+                <p className="text-xs text-purple-800/80 leading-relaxed">
+                  Tailored specifically for ChatGPT Search, Perplexity, Google Gemini, and Claude citations. Generates structured machine-readable direct answers, verifiable manufacturing parameters, and structured FAQ schemas.
+                </p>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">
+                  Direct Answer Citation Summary (1-2 Sentences for AI Overviews)
+                </Label>
+                <textarea
+                  rows={3}
+                  value={aeoForm.direct_answer}
+                  onChange={(e) => setAeoForm({ ...aeoForm, direct_answer: e.target.value })}
+                  placeholder="e.g. Saturn 3D manufactures the Carbon-X Drone Arm in Bhopal, Madhya Pradesh using continuous chopped carbon fiber PA12 with industrial tolerance of ±0.04 mm, dispatching nationwide with zero minimum order quantity."
+                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#FF5A1F] bg-white"
+                />
+                <span className="text-[10px] text-[#5B616B] block">This exact factual sentence is structured in JSON-LD for AI search engines to quote word-for-word.</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Material Grade</Label>
+                  <Input
+                    value={aeoForm.material_grade}
+                    onChange={(e) => setAeoForm({ ...aeoForm, material_grade: e.target.value })}
+                    placeholder="Carbon-X PA12 Carbon Fiber"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Tolerance Rating</Label>
+                  <Input
+                    value={aeoForm.tolerance_rating}
+                    onChange={(e) => setAeoForm({ ...aeoForm, tolerance_rating: e.target.value })}
+                    placeholder="±0.04 mm"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Additive Technology</Label>
+                  <Input
+                    value={aeoForm.technology_process}
+                    onChange={(e) => setAeoForm({ ...aeoForm, technology_process: e.target.value })}
+                    placeholder="Industrial CoreXY FFF / 12K SLA"
+                    className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">Natural Language AI Prompts</Label>
+                <Input
+                  value={aeoForm.ai_keywords}
+                  onChange={(e) => setAeoForm({ ...aeoForm, ai_keywords: e.target.value })}
+                  placeholder="e.g. who prints carbon fiber in bhopal, where to get rapid prototyping in central india, custom drone parts supplier india"
+                  className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono"
+                />
+              </div>
+
+              {/* Dynamic Q&A FAQ items */}
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center justify-between">
+                  <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider">
+                    Structured FAQ Pairs (Parsed by AI Search Engines)
+                  </Label>
+                  <button
+                    type="button"
+                    onClick={handleAddFaqItem}
+                    className="text-xs text-[#FF5A1F] hover:underline font-semibold flex items-center gap-1"
+                  >
+                    <Plus className="w-3.5 h-3.5" /> Add Q&amp;A
+                  </button>
+                </div>
+
+                <div className="space-y-3">
+                  {aeoForm.faq_items.map((item: { question: string; answer: string }, idx: number) => (
+                    <div key={idx} className="p-3 bg-[#F5F6F8] rounded-xl border border-[#0B0D10]/10 space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <Input
+                          placeholder="Question (e.g. Can this part be customized?)"
+                          value={item.question}
+                          onChange={(e) => handleUpdateFaqItem(idx, 'question', e.target.value)}
+                          className="h-8 rounded-lg text-xs bg-white border border-[#0B0D10]/15 font-mono"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveFaqItem(idx)}
+                          className="w-7 h-7 rounded-lg border border-red-200 bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-100 flex-shrink-0"
+                          title="Remove item"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </button>
+                      </div>
+                      <textarea
+                        rows={2}
+                        placeholder="Answer (factual, concise answer for AI retrieval)"
+                        value={item.answer}
+                        onChange={(e) => handleUpdateFaqItem(idx, 'answer', e.target.value)}
+                        className="w-full px-2.5 py-1.5 rounded-lg border border-[#0B0D10]/15 font-mono text-xs resize-none bg-white focus:outline-none focus:ring-1 focus:ring-[#FF5A1F]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Footer Submit */}
+          <div className="flex items-center justify-between gap-3 pt-4 border-t border-[#0B0D10]/10">
+            <div className="text-[11px] text-[#5B616B] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Telemetry: SEO, GEO &amp; AEO Ready</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="h-10 px-4 rounded-xl border border-[#0B0D10]/10 bg-white text-[#5B616B] font-medium text-xs hover:bg-[#F5F6F8] transition-all"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={loading || uploading}
+                className="h-10 px-6 rounded-xl bg-[#FF5A1F] text-white font-medium text-xs shadow-sm hover:bg-[#E04B14] transition-all flex items-center justify-center gap-2"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    Saving...
+                  </>
+                ) : isEdit ? (
+                  'Save & Commit Telemetry'
+                ) : (
+                  'Create Component'
+                )}
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -559,10 +1095,10 @@ function ProductsManagement() {
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-[#0B0D10]/5 text-[#5B616B] border border-[#0B0D10]/10">
               MOD // 02
             </span>
-            <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-[#0B0D10]">Catalog Components</h1>
+            <h1 className="text-xl sm:text-2xl font-semibold tracking-tight text-[#0B0D10]">Catalog Components &amp; SEO/GEO/AEO Hub</h1>
           </div>
           <p className="text-xs text-[#5B616B] font-mono">
-            Industrial inventory manifest &amp; 3D print stock control
+            Industrial inventory manifest, search rankings &amp; AI answer engine parameters
           </p>
         </div>
         <button
@@ -584,7 +1120,7 @@ function ProductsManagement() {
       {/* Search Bar */}
       <div className="max-w-md">
         <Input
-          placeholder="Search catalog (name, category)..."
+          placeholder="Search catalog (name, category, material)..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="h-10 rounded-xl border border-[#0B0D10]/15 bg-white text-xs font-mono placeholder:text-[#5B616B]/60"
@@ -611,67 +1147,107 @@ function ProductsManagement() {
                   <th className="px-6 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider">Sector / Category</th>
                   <th className="px-6 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider">Unit Price</th>
                   <th className="px-6 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider">Stock</th>
+                  <th className="px-6 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider">SEO / GEO / AEO</th>
                   <th className="px-6 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider">Status</th>
                   <th className="px-6 py-3.5 text-right text-[11px] font-semibold uppercase tracking-wider">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#0B0D10]/5">
-                {products.map((product) => (
-                  <tr key={product.id} className="hover:bg-[#F5F6F8]/60 transition-colors">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl border border-[#0B0D10]/10 overflow-hidden bg-[#F5F6F8] flex-shrink-0">
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-full object-cover"
-                            onError={(e) => { e.currentTarget.src = `https://picsum.photos/seed/${product.id}/100/100`; }}
-                          />
+                {products.map((product) => {
+                  const seoData = (product.seo_fields as any)?.seo;
+                  const geoData = (product.seo_fields as any)?.geo;
+                  const aeoData = (product.seo_fields as any)?.aeo;
+                  const hasCustomSeo = Boolean(seoData?.meta_title || seoData?.meta_description);
+                  const hasCustomGeo = Boolean(geoData?.target_city);
+                  const hasCustomAeo = Boolean(aeoData?.direct_answer);
+
+                  return (
+                    <tr key={product.id} className="hover:bg-[#F5F6F8]/60 transition-colors">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-xl border border-[#0B0D10]/10 overflow-hidden bg-[#F5F6F8] flex-shrink-0">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="w-full h-full object-cover"
+                              onError={(e) => { e.currentTarget.src = `https://picsum.photos/seed/${product.id}/100/100`; }}
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="font-semibold text-xs text-[#0B0D10] truncate max-w-[200px]">{product.name}</div>
+                            <div className="text-[10px] text-[#5B616B] truncate max-w-[180px]">{product.description}</div>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <div className="font-semibold text-xs text-[#0B0D10] truncate max-w-[220px]">{product.name}</div>
-                          <div className="text-[10px] text-[#5B616B] truncate max-w-[180px]">{product.description}</div>
+                      </td>
+                      <td className="px-6 py-4 text-xs text-[#0B0D10]/80">{product.category}</td>
+                      <td className="px-6 py-4 font-semibold text-xs text-[#FF5A1F]">
+                        ₹{product.price.toFixed(2)}
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                          product.stock === 0 
+                            ? 'text-red-600 bg-red-50 border border-red-200' 
+                            : product.stock <= 5 
+                            ? 'text-amber-700 bg-amber-50 border border-amber-200' 
+                            : 'text-[#0B0D10]'
+                        }`}>
+                          {product.stock} PCS
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-1 flex-wrap">
+                          <span
+                            title={hasCustomSeo ? `Meta: ${seoData?.meta_title}` : 'Standard SEO active'}
+                            className={`text-[9px] font-mono px-2 py-0.5 rounded-full border ${
+                              hasCustomSeo
+                                ? 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20 font-semibold'
+                                : 'bg-[#0B0D10]/5 text-[#5B616B] border-[#0B0D10]/10'
+                            }`}
+                          >
+                            SEO
+                          </span>
+                          <span
+                            title="Bhopal Hub + Pan-India Logistics"
+                            className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-700 border border-blue-500/20 font-semibold"
+                          >
+                            GEO:BHP
+                          </span>
+                          <span
+                            title={hasCustomAeo ? `AI Citation: ${aeoData?.direct_answer}` : 'Standard AEO citations'}
+                            className={`text-[9px] font-mono px-2 py-0.5 rounded-full border ${
+                              hasCustomAeo
+                                ? 'bg-purple-500/10 text-purple-700 border-purple-500/20 font-semibold'
+                                : 'bg-[#0B0D10]/5 text-[#5B616B] border-[#0B0D10]/10'
+                            }`}
+                          >
+                            AEO:AI
+                          </span>
                         </div>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-xs text-[#0B0D10]/80">{product.category}</td>
-                    <td className="px-6 py-4 font-semibold text-xs text-[#FF5A1F]">
-                      ₹{product.price.toFixed(2)}
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        product.stock === 0 
-                          ? 'text-red-600 bg-red-50 border border-red-200' 
-                          : product.stock <= 5 
-                          ? 'text-amber-700 bg-amber-50 border border-amber-200' 
-                          : 'text-[#0B0D10]'
-                      }`}>
-                        {product.stock} PCS
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <StatusBadge status={product.is_active ? 'active' : 'suspended'} />
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center justify-end gap-2">
-                        <button
-                          onClick={() => { setEditProduct(product); setShowForm(true); }}
-                          title="Edit Component"
-                          className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white flex items-center justify-center text-[#5B616B] hover:text-[#0B0D10] hover:bg-[#F5F6F8] shadow-sm transition-all"
-                        >
-                          <Pencil className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(product.id, product.name)}
-                          title="Delete Component"
-                          className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white flex items-center justify-center text-[#5B616B] hover:text-red-600 hover:bg-red-50 hover:border-red-200 shadow-sm transition-all"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="px-6 py-4">
+                        <StatusBadge status={product.is_active ? 'active' : 'suspended'} />
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <div className="flex items-center justify-end gap-2">
+                          <button
+                            onClick={() => { setEditProduct(product); setShowForm(true); }}
+                            title="Edit Component, SEO, GEO & AEO"
+                            className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white flex items-center justify-center text-[#5B616B] hover:text-[#0B0D10] hover:bg-[#F5F6F8] shadow-sm transition-all"
+                          >
+                            <Pencil className="w-3.5 h-3.5" />
+                          </button>
+                          <button
+                            onClick={() => handleDelete(product.id, product.name)}
+                            title="Delete Component"
+                            className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white flex items-center justify-center text-[#5B616B] hover:text-red-600 hover:bg-red-50 hover:border-red-200 shadow-sm transition-all"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
 
@@ -701,19 +1277,34 @@ function ProductsManagement() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => { setEditProduct(product); setShowForm(true); }}
-                      className="flex-1 h-8 rounded-lg border border-[#0B0D10]/10 bg-white text-[11px] font-medium gap-1.5 flex items-center justify-center text-[#0B0D10] shadow-sm hover:bg-[#F5F6F8]"
-                    >
-                      <Pencil className="w-3 h-3" /> Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(product.id, product.name)}
-                      className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white text-[#5B616B] flex items-center justify-center hover:bg-red-50 hover:text-red-600 shadow-sm"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+
+                  <div className="flex items-center justify-between gap-2 pt-1 border-t border-[#0B0D10]/5">
+                    <div className="flex items-center gap-1">
+                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 font-semibold">
+                        SEO
+                      </span>
+                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-700 border border-blue-500/20 font-semibold">
+                        GEO:BHP
+                      </span>
+                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-700 border border-purple-500/20 font-semibold">
+                        AEO:AI
+                      </span>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => { setEditProduct(product); setShowForm(true); }}
+                        className="h-8 px-3 rounded-lg border border-[#0B0D10]/10 bg-white text-[11px] font-medium gap-1 flex items-center justify-center text-[#0B0D10] shadow-sm hover:bg-[#F5F6F8]"
+                      >
+                        <Pencil className="w-3 h-3" /> Edit &amp; SEO
+                      </button>
+                      <button
+                        onClick={() => handleDelete(product.id, product.name)}
+                        className="w-8 h-8 rounded-lg border border-[#0B0D10]/10 bg-white text-[#5B616B] flex items-center justify-center hover:bg-red-50 hover:text-red-600 shadow-sm"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}

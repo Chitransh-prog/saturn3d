@@ -23,10 +23,23 @@ export async function GET(req: NextRequest) {
     }
 
     const products = db.query(`SELECT * FROM products ${whereClause} ORDER BY created_at DESC`, params)
-      .map(p => ({
-        ...p,
-        is_active: Boolean(p.is_active),
-      }));
+      .map(p => {
+        let seo_fields = {};
+        let specs = {};
+        try {
+          seo_fields = p.seo_fields ? (typeof p.seo_fields === 'string' ? JSON.parse(p.seo_fields) : p.seo_fields) : {};
+        } catch {}
+        try {
+          specs = p.specs ? (typeof p.specs === 'string' ? JSON.parse(p.specs) : p.specs) : {};
+        } catch {}
+
+        return {
+          ...p,
+          is_active: Boolean(p.is_active),
+          seo_fields,
+          specs,
+        };
+      });
 
     return NextResponse.json(
       {

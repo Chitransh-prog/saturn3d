@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { products, type Product } from '@/data/products';
+import db from '@/lib/db';
 import ProductDetailClient from '@/components/ProductDetailClient';
 import {
   SITE_URL,
@@ -20,9 +21,53 @@ export async function generateStaticParams() {
   }));
 }
 
+function getProductData(id: string) {
+  let dbProduct: any = null;
+  try {
+    dbProduct = db.get('SELECT * FROM products WHERE (id = ? OR slug = ?) AND is_deleted = 0', [id, id]);
+  } catch {}
+
+  const staticProduct = products.find((p) => p.id === id);
+
+  if (!dbProduct && !staticProduct) {
+    return null;
+  }
+
+  let customSeo: any = {};
+  if (dbProduct?.seo_fields) {
+    try {
+      customSeo = typeof dbProduct.seo_fields === 'string' ? JSON.parse(dbProduct.seo_fields) : dbProduct.seo_fields;
+    } catch {}
+  }
+
+  const name = dbProduct?.name || staticProduct?.name || '';
+  const description = dbProduct?.description || staticProduct?.description || '';
+  const price = dbProduct ? dbProduct.price : (staticProduct ? staticProduct.price : 0);
+  const image = dbProduct?.image || staticProduct?.image || '/showcase/carbon-drone-spar.jpg';
+  const category = dbProduct?.category || staticProduct?.category || 'Rapid Prototyping';
+  const stock = dbProduct ? dbProduct.stock : (staticProduct ? staticProduct.stock : 10);
+  const material = customSeo?.aeo?.material_grade || staticProduct?.material || 'Engineering Polymer';
+  const tolerances = customSeo?.aeo?.tolerance_rating || staticProduct?.tolerances || '±0.04 mm';
+  const leadTime = customSeo?.geo?.dispatch_lead_time || staticProduct?.leadTime || '24-48 Hours';
+
+  return {
+    id,
+    name,
+    description,
+    price,
+    image,
+    category,
+    stock,
+    material,
+    tolerances,
+    leadTime,
+    customSeo,
+  };
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = products.find((p) => p.id === id);
+  const product = getProductData(id);
 
   if (!product) {
     return {
@@ -31,30 +76,50 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const priceInr = Math.round(product.price * 83);
-  const title = `${product.name} | 3D Printing Bhopal & India | Saturn 3D`;
-  const description = `${product.description} Precision 3D printed with ${product.material || 'Engineering Polymer'} at Saturn 3D lab in Bhopal, MP. Tolerance: ${product.tolerances || '±0.04mm'}. Turnaround: ${product.leadTime || '24-48 Hours'}. Starting ₹${priceInr}. Pan-India express air dispatch.`;
-  const canonicalUrl = `${SITE_URL}/product/${product.id}`;
+  const priceInr = Math.round(product.price * (product.price < 500 ? 83 : 1));
+  const customSeo = product.customSeo;
+
+  const title = customSeo?.seo?.meta_title || `${product.name} | 3D Printing Bhopal & India | Saturn 3D`;
+  const description = customSeo?.seo?.meta_description || 
+    `${product.description} Precision 3D printed with ${product.material} at Saturn 3D lab in Bhopal, MP. Tolerance: ${product.tolerances}. Turnaround: ${product.leadTime}. Starting ₹${priceInr}. Pan-India express air dispatch.`;
+  
+  const customCanonical = customSeo?.seo?.canonical_url;
+  const canonicalUrl = customCanonical 
+    ? `${SITE_URL}${customCanonical.startsWith('/') ? '' : '/'}${customCanonical}`
+    : `${SITE_URL}/product/${product.id}`;
+    
   const imageUrl = product.image.startsWith('http') ? product.image : `${SITE_URL}${product.image}`;
+
+  const keywords = customSeo?.seo?.keywords
+    ? customSeo.seo.keywords.split(',').map((k: string) => k.trim()).filter(Boolean)
+    : [
+        product.name,
+        `${product.name} 3D print`,
+        `${product.category} 3D printing`,
+        `${product.material} 3D printing India`,
+        '3D printing Bhopal',
+        '3D printing service Bhopal',
+        '3D printing India',
+        'industrial 3D printing India',
+        'custom rapid prototyping India',
+        'Saturn 3D hardware catalog',
+        'Govindpura Bhopal 3D printing',
+      ];
+
+  const targetRegion = customSeo?.geo?.target_region || GEO_CONFIG.regionCode;
+  const targetPlacename = customSeo?.geo?.geo_placename || `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`;
+  const targetPosition = customSeo?.geo?.geo_position || `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`;
 
   return {
     title: {
       absolute: title,
     },
     description,
-    keywords: [
-      product.name,
-      `${product.name} 3D print`,
-      `${product.category} 3D printing`,
-      `${product.material} 3D printing India`,
-      '3D printing Bhopal',
-      '3D printing service Bhopal',
-      '3D printing India',
-      'industrial 3D printing India',
-      'custom rapid prototyping India',
-      'Saturn 3D hardware catalog',
-      'Govindpura Bhopal 3D printing',
-    ],
+    keywords,
+    robots: {
+      index: customSeo?.seo?.indexable !== false,
+      follow: customSeo?.seo?.indexable !== false,
+    },
     alternates: {
       canonical: canonicalUrl,
     },
@@ -82,10 +147,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [imageUrl],
     },
     other: {
-      'geo.region': GEO_CONFIG.regionCode,
-      'geo.placename': `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
-      'geo.position': `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`,
-      'ICBM': `${GEO_CONFIG.latitude}, ${GEO_CONFIG.longitude}`,
+      'geo.region': targetRegion,
+      'geo.placename': targetPlacename,
+      'geo.position': targetPosition,
+      'ICBM': targetPosition.replace(';', ', '),
       'product:price:amount': String(priceInr),
       'product:price:currency': 'INR',
       'product:availability': product.stock > 0 ? 'in stock' : 'preorder',
@@ -96,13 +161,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ProductPage({ params }: PageProps) {
   const { id } = await params;
-  const product = products.find((p) => p.id === id);
+  const product = getProductData(id);
 
   if (!product) {
     notFound();
   }
 
-  const productJsonLd = getProductSchema(product);
+  const customSeo = product.customSeo;
+  const productJsonLd = getProductSchema(product as any);
   const breadcrumbJsonLd = getBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Hardware Catalog', url: '/categories' },
@@ -110,7 +176,24 @@ export default async function ProductPage({ params }: PageProps) {
     { name: product.name, url: `/product/${product.id}` },
   ]);
 
-  const priceInr = Math.round(product.price * 83);
+  // AEO FAQ schema if FAQ items exist
+  const faqItems = customSeo?.aeo?.faq_items || [];
+  const faqJsonLd = faqItems.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item: any) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  } : null;
+
+  const priceInr = Math.round(product.price * (product.price < 500 ? 83 : 1));
+  const directAnswer = customSeo?.aeo?.direct_answer || 
+    `Saturn 3D fabricates ${product.name} in Bhopal, Madhya Pradesh with micron tolerance (${product.tolerances}) using ${product.material}. Available with zero MOQ and 24-48h dispatch across India.`;
 
   return (
     <>
@@ -124,11 +207,19 @@ export default async function ProductPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {/* FAQ Schema for AEO / AI Question Answering */}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       {/* Semantic Crawlable & AEO-Ready Content for LLMs & Search Bots */}
       <article className="sr-only" itemScope itemType="https://schema.org/Product">
         <h1 itemProp="name">{product.name}</h1>
         <p itemProp="description">{product.description}</p>
+        <p itemProp="disambiguatingDescription">{directAnswer}</p>
         <span itemProp="category">{product.category}</span>
         <div itemProp="offers" itemScope itemType="https://schema.org/Offer">
           <meta itemProp="priceCurrency" content="INR" />
@@ -140,15 +231,15 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
         <dl>
           <dt>Material</dt>
-          <dd>{product.material || 'Engineering Polymer'}</dd>
+          <dd>{product.material}</dd>
           <dt>Tolerances</dt>
-          <dd>{product.tolerances || '±0.04 mm'}</dd>
+          <dd>{product.tolerances}</dd>
           <dt>Lead Time</dt>
-          <dd>{product.leadTime || '24-48 Hours'}</dd>
+          <dd>{product.leadTime}</dd>
           <dt>Fabrication Hub</dt>
-          <dd>Sector B, Govindpura Industrial Area, Bhopal, Madhya Pradesh 462023, India</dd>
+          <dd>{customSeo?.geo?.geo_placename || 'Sector B, Govindpura Industrial Area, Bhopal, Madhya Pradesh 462023, India'}</dd>
           <dt>Shipping</dt>
-          <dd>Pan-India Express Air Shipping to Mumbai, Bengaluru, Delhi-NCR, Pune, Hyderabad, and all Indian cities</dd>
+          <dd>{customSeo?.geo?.service_scope || 'Pan-India Express Air Shipping to Mumbai, Bengaluru, Delhi-NCR, Pune, Hyderabad, and all Indian cities'}</dd>
         </dl>
       </article>
 

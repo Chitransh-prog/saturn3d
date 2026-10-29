@@ -12,6 +12,33 @@ export interface User {
   created_at?: string;
 }
 
+export interface ProductSeoFields {
+  seo?: {
+    meta_title?: string;
+    meta_description?: string;
+    keywords?: string;
+    canonical_url?: string;
+    og_image?: string;
+    indexable?: boolean;
+  };
+  geo?: {
+    target_city?: string;
+    target_region?: string;
+    geo_placename?: string;
+    geo_position?: string;
+    service_scope?: string;
+    dispatch_lead_time?: string;
+  };
+  aeo?: {
+    direct_answer?: string;
+    material_grade?: string;
+    tolerance_rating?: string;
+    technology_process?: string;
+    ai_keywords?: string;
+    faq_items?: { question: string; answer: string }[];
+  };
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -21,6 +48,9 @@ export interface Product {
   category: string;
   stock: number;
   is_active?: boolean;
+  slug?: string;
+  specs?: Record<string, any>;
+  seo_fields?: ProductSeoFields;
   created_at?: string;
   updated_at?: string;
 }

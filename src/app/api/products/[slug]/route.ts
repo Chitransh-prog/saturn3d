@@ -16,12 +16,23 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
       return NextResponse.json({ success: false, error: 'Product not found' }, { status: 404 });
     }
 
+    let seo_fields = {};
+    let specs = {};
+    try {
+      seo_fields = product.seo_fields ? (typeof product.seo_fields === 'string' ? JSON.parse(product.seo_fields) : product.seo_fields) : {};
+    } catch {}
+    try {
+      specs = product.specs ? (typeof product.specs === 'string' ? JSON.parse(product.specs) : product.specs) : {};
+    } catch {}
+
     return NextResponse.json({
       success: true,
       data: {
         product: {
           ...product,
           is_active: Boolean(product.is_active),
+          seo_fields,
+          specs,
         },
       },
     });
