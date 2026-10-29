@@ -35,11 +35,11 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/75 print:p-0 print:bg-white">
-      <div className="card-slab bg-paper border-4 border-ink shadow-brutal-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto print:max-h-none print:shadow-none print:border-none print:bg-white">
+      <div className="card-precision bg-studio-light border hairline shadow-precision-lg w-full max-w-3xl max-h-[90vh] overflow-y-auto print:max-h-none print:shadow-none print:border-none print:bg-white">
         {/* Header */}
-        <div className="sticky top-0 bg-paper flex items-center justify-between p-6 border-b-3 border-ink z-10 print:hidden">
+        <div className="sticky top-0 bg-studio-light flex items-center justify-between p-6 border-b hairline z-10 print:hidden">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-saturn-orange border-2 border-ink flex items-center justify-center font-black text-ink shadow-brutal-sm">
+            <div className="w-8 h-8 bg-saturn-orange border hairline flex items-center justify-center font-black text-ink shadow-precision-xs">
               <FileText className="w-4 h-4" />
             </div>
             <div>
@@ -51,13 +51,13 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
             <Button
               onClick={handlePrint}
               size="sm"
-              className="btn-brutal bg-lemon text-ink border-2 border-ink shadow-brutal-sm hover:bg-saturn-orange hover:text-white font-mono font-black uppercase tracking-wider text-xs gap-2 h-9 px-4 cursor-pointer"
+              className="btn-precision-secondary bg-amber-500/10 text-amber-700 text-ink border hairline shadow-precision-xs hover:bg-saturn-orange hover:text-white font-mono font-black uppercase tracking-wider text-xs gap-2 h-9 px-4 cursor-pointer"
             >
               <Printer className="w-4 h-4" /> Print / Save PDF
             </Button>
             <button
               onClick={onClose}
-              className="w-9 h-9 bg-white border-2 border-ink shadow-brutal-sm flex items-center justify-center hover:bg-red-400 hover:text-white transition-colors cursor-pointer"
+              className="w-9 h-9 bg-white border hairline shadow-precision-xs flex items-center justify-center hover:bg-red-400 hover:text-white transition-colors cursor-pointer"
               aria-label="Close invoice"
             >
               <X className="w-5 h-5" />
@@ -73,13 +73,13 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
         ) : !invoice ? (
           <div className="py-20 text-center text-ink/60 font-mono font-bold uppercase">Invoice could not be loaded</div>
         ) : (
-          <div className="p-8 sm:p-10 space-y-8 font-sans text-ink bg-paper print:bg-white" id="printable-invoice">
+          <div className="p-8 sm:p-10 space-y-8 font-sans text-ink bg-studio-light print:bg-white" id="printable-invoice">
             {/* Top Bar / Branding */}
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-6 border-b-3 border-ink pb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-6 border-b hairline pb-8">
               <div>
                 <div className="text-3xl font-display font-black tracking-tight text-ink flex items-center gap-2">
                   <span>SATURN</span>
-                  <span className="bg-saturn-orange text-white px-2 py-0.5 border-2 border-ink shadow-brutal-sm text-2xl">3D</span>
+                  <span className="bg-saturn-orange text-white px-2 py-0.5 border hairline shadow-precision-xs text-2xl">3D</span>
                 </div>
                 <div className="text-xs font-mono font-black text-saturn-orange uppercase tracking-wider mt-2">
                   // Precision Additive Manufacturing Hub
@@ -92,7 +92,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
               </div>
 
               <div className="text-left sm:text-right space-y-1.5">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-mint text-ink border-2 border-ink shadow-brutal-sm text-xs font-mono font-black uppercase tracking-wider mb-1">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 text-emerald-700 text-ink border hairline shadow-precision-xs text-xs font-mono font-black uppercase tracking-wider mb-1">
                   <CheckCircle2 className="w-3.5 h-3.5 text-ink" />
                   {invoice.paymentStatus}
                 </div>
@@ -106,7 +106,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
             </div>
 
             {/* Bill To */}
-            <div className="card-slab bg-white border-3 border-ink shadow-brutal-sm p-6">
+            <div className="card-precision bg-white border hairline shadow-precision-xs p-6">
               <div className="text-[10px] font-mono font-black uppercase tracking-widest text-saturn-orange mb-2">// BILLED TO</div>
               <div className="font-display font-black text-base text-ink uppercase">{invoice.customer.name}</div>
               <div className="text-xs font-mono text-ink/70">{invoice.customer.email}</div>
@@ -120,10 +120,10 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
             </div>
 
             {/* Line Items Table */}
-            <div className="overflow-x-auto border-3 border-ink shadow-brutal-sm bg-white">
+            <div className="overflow-x-auto border hairline shadow-precision-xs bg-white">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b-3 border-ink bg-ink text-paper">
+                  <tr className="border-b hairline bg-ink text-paper">
                     <th className="py-3 px-4 text-left font-mono font-black uppercase tracking-wider">Description</th>
                     <th className="py-3 px-4 text-center font-mono font-black uppercase tracking-wider">Qty</th>
                     <th className="py-3 px-4 text-right font-mono font-black uppercase tracking-wider">Unit Price</th>
@@ -132,11 +132,11 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
                 </thead>
                 <tbody className="divide-y-2 divide-ink/20 font-mono">
                   {invoice.items.map((item, i) => (
-                    <tr key={i} className="hover:bg-lemon/15">
+                    <tr key={i} className="hover:bg-amber-500/10 text-amber-700/15">
                       <td className="py-4 px-4 font-bold text-ink">
                         <div className="font-display text-sm font-black">{item.name}</div>
                         {item.options?.material && (
-                          <span className="inline-block text-[10px] font-mono bg-paper border border-ink px-1.5 py-0.5 mt-1 font-bold text-saturn-orange">
+                          <span className="inline-block text-[10px] font-mono bg-studio-light border border-ink px-1.5 py-0.5 mt-1 font-bold text-saturn-orange">
                             Material: {item.options.material}
                           </span>
                         )}
@@ -153,10 +153,10 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
             </div>
 
             {/* Financials & Tax Breakdown */}
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-6 pt-4 border-t-3 border-ink">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-6 pt-4 border-t hairline">
               <div className="text-xs font-mono text-ink/70 max-w-sm space-y-2">
                 <div className="font-mono font-black text-ink uppercase tracking-wider">// DECLARATION & TERMS</div>
-                <p className="leading-relaxed bg-white p-3 border-2 border-ink shadow-brutal-sm text-[11px]">
+                <p className="leading-relaxed bg-white p-3 border hairline shadow-precision-xs text-[11px]">
                   This is an authorized computer-generated tax invoice. Goods/services once supplied are covered under Saturn 3D standard precision manufacturing & micron tolerance warranties.
                 </p>
                 <div className="text-[10px] font-mono font-bold text-ink/80">Gateway: <span className="font-black text-ink uppercase">{invoice.paymentMethod}</span></div>
@@ -191,7 +191,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
                     {invoice.financials.shippingCost === 0 ? 'FREE' : `₹${invoice.financials.shippingCost.toFixed(2)}`}
                   </span>
                 </div>
-                <div className="flex justify-between items-baseline p-3 bg-lemon border-3 border-ink shadow-brutal-sm text-sm font-black text-ink mt-3">
+                <div className="flex justify-between items-baseline p-3 bg-amber-500/10 text-amber-700 border hairline shadow-precision-xs text-sm font-black text-ink mt-3">
                   <span className="font-mono uppercase tracking-wider">Grand Total:</span>
                   <span className="text-xl font-mono text-saturn-orange font-black">₹{invoice.financials.grandTotal.toFixed(2)}</span>
                 </div>

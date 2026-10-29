@@ -282,32 +282,32 @@ export default function AdminCredentialsManagement() {
 
       {/* Overview Stat Badges */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-4 bg-white border-3 border-ink shadow-brutal flex items-center justify-between">
+        <div className="p-4 bg-white border hairline shadow-precision-sm flex items-center justify-between">
           <div>
             <div className="text-[10px] font-black text-ink/60 uppercase">Active Administrators</div>
             <div className="text-2xl font-black text-ink mt-0.5">{admins.length} Accounts</div>
           </div>
-          <div className="w-10 h-10 border-2 border-ink bg-lemon flex items-center justify-center text-ink shadow-brutal-sm">
+          <div className="w-10 h-10 border hairline bg-amber-500/10 text-amber-700 flex items-center justify-center text-ink shadow-precision-xs">
             <Users className="w-5 h-5 text-saturn-orange" />
           </div>
         </div>
 
-        <div className="p-4 bg-white border-3 border-ink shadow-brutal flex items-center justify-between">
+        <div className="p-4 bg-white border hairline shadow-precision-sm flex items-center justify-between">
           <div className="min-w-0">
             <div className="text-[10px] font-black text-ink/60 uppercase">Current Session</div>
             <div className="text-xs font-black text-ink truncate mt-0.5">{currentUser?.email || 'saturn3d@gmail.com'}</div>
           </div>
-          <div className="w-10 h-10 border-2 border-ink bg-mint flex items-center justify-center text-ink shadow-brutal-sm">
+          <div className="w-10 h-10 border hairline bg-emerald-500/10 text-emerald-700 flex items-center justify-center text-ink shadow-precision-xs">
             <ShieldCheck className="w-5 h-5 text-emerald-800" />
           </div>
         </div>
 
-        <div className="p-4 bg-white border-3 border-ink shadow-brutal flex items-center justify-between">
+        <div className="p-4 bg-white border hairline shadow-precision-sm flex items-center justify-between">
           <div>
             <div className="text-[10px] font-black text-ink/60 uppercase">Cryptographic Layer</div>
             <div className="text-xs font-black text-ink mt-0.5">BCRYPT 10-ROUNDS + JWT</div>
           </div>
-          <div className="w-10 h-10 border-2 border-ink bg-paper flex items-center justify-center text-ink shadow-brutal-sm">
+          <div className="w-10 h-10 border hairline bg-studio-light flex items-center justify-center text-ink shadow-precision-xs">
             <KeyRound className="w-5 h-5 text-saturn-orange" />
           </div>
         </div>
@@ -318,8 +318,8 @@ export default function AdminCredentialsManagement() {
         
         {/* SECTION 1: Add New Administrator Form (5 Cols) */}
         <div className="lg:col-span-5">
-          <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 space-y-5">
-            <div className="bg-lemon -mx-6 -mt-6 p-4 border-b-3 border-ink flex items-center justify-between">
+          <div className="card-precision bg-white border hairline shadow-precision-sm p-6 space-y-5">
+            <div className="bg-amber-500/10 text-amber-700 -mx-6 -mt-6 p-4 border-b hairline flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <UserPlus className="w-4 h-4 text-saturn-orange" />
                 <h2 className="font-display font-black text-sm text-ink uppercase tracking-wider">
@@ -347,7 +347,7 @@ export default function AdminCredentialsManagement() {
                   value={newAdminEmail}
                   onChange={(e) => setNewAdminEmail(e.target.value)}
                   placeholder="e.g. operations@saturn3d.in"
-                  className="h-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                  className="h-10 font-mono font-bold border hairline shadow-precision-xs bg-white"
                 />
               </div>
 
@@ -361,7 +361,7 @@ export default function AdminCredentialsManagement() {
                   value={newAdminName}
                   onChange={(e) => setNewAdminName(e.target.value)}
                   placeholder="e.g. Lead Engineer / Ops Admin"
-                  className="h-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                  className="h-10 font-mono font-bold border hairline shadow-precision-xs bg-white"
                 />
               </div>
 
@@ -378,7 +378,7 @@ export default function AdminCredentialsManagement() {
                       value={newAdminPassword}
                       onChange={(e) => setNewAdminPassword(e.target.value)}
                       placeholder="Min 6 chars"
-                      className="h-10 pr-8 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                      className="h-10 pr-8 font-mono font-bold border hairline shadow-precision-xs bg-white"
                     />
                     <button
                       type="button"
@@ -401,7 +401,7 @@ export default function AdminCredentialsManagement() {
                     value={newAdminConfirmPassword}
                     onChange={(e) => setNewAdminConfirmPassword(e.target.value)}
                     placeholder="Repeat password"
-                    className="h-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                    className="h-10 font-mono font-bold border hairline shadow-precision-xs bg-white"
                   />
                 </div>
               </div>
@@ -409,7 +409,7 @@ export default function AdminCredentialsManagement() {
               <Button
                 type="submit"
                 disabled={creatingAdmin}
-                className="w-full h-11 bg-saturn-orange text-white hover:bg-orange-600 font-mono font-black uppercase tracking-wider border-2 border-ink shadow-brutal active:translate-x-0.5 active:translate-y-0.5 transition-all mt-2"
+                className="w-full h-11 bg-saturn-orange text-white hover:bg-orange-600 font-mono font-black uppercase tracking-wider border hairline shadow-precision-sm active:scale-[0.98] transition-all mt-2"
               >
                 {creatingAdmin ? (
                   <>
@@ -429,8 +429,8 @@ export default function AdminCredentialsManagement() {
 
         {/* SECTION 2: Active Administrator Roster & Password Management (7 Cols) */}
         <div className="lg:col-span-7">
-          <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 space-y-5">
-            <div className="bg-paper -mx-6 -mt-6 p-4 border-b-3 border-ink flex items-center justify-between">
+          <div className="card-precision bg-white border hairline shadow-precision-sm p-6 space-y-5">
+            <div className="bg-studio-light -mx-6 -mt-6 p-4 border-b hairline flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-saturn-orange" />
                 <h2 className="font-display font-black text-sm text-ink uppercase tracking-wider">
@@ -442,7 +442,7 @@ export default function AdminCredentialsManagement() {
                 variant="outline"
                 onClick={fetchAdmins}
                 disabled={loadingAdmins}
-                className="h-7 px-2 border-2 border-ink bg-white text-ink text-[10px] font-black uppercase hover:bg-lemon"
+                className="h-7 px-2 border hairline bg-white text-ink text-[10px] font-black uppercase hover:bg-amber-500/10 text-amber-700"
               >
                 <RefreshCw className={`w-3 h-3 mr-1 ${loadingAdmins ? 'animate-spin' : ''}`} />
                 Sync
@@ -465,12 +465,12 @@ export default function AdminCredentialsManagement() {
                   return (
                     <div
                       key={admin.id}
-                      className={`p-4 border-2 border-ink shadow-brutal-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${
-                        isCurrent ? 'bg-lemon/20' : 'bg-white'
+                      className={`p-4 border hairline shadow-precision-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${
+                        isCurrent ? 'bg-amber-500/10 text-amber-700/20' : 'bg-white'
                       }`}
                     >
                       <div className="flex items-start sm:items-center gap-3">
-                        <div className="w-9 h-9 border-2 border-ink bg-lemon flex items-center justify-center text-xs font-black text-ink shadow-brutal-sm flex-shrink-0">
+                        <div className="w-9 h-9 border hairline bg-amber-500/10 text-amber-700 flex items-center justify-center text-xs font-black text-ink shadow-precision-xs flex-shrink-0">
                           {admin.name ? admin.name.charAt(0).toUpperCase() : 'A'}
                         </div>
                         <div className="min-w-0">
@@ -481,7 +481,7 @@ export default function AdminCredentialsManagement() {
                                 YOU
                               </span>
                             )}
-                            <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.2 bg-mint text-ink border border-ink">
+                            <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.2 bg-emerald-500/10 text-emerald-700 text-ink border border-ink">
                               ACTIVE
                             </span>
                           </div>
@@ -502,7 +502,7 @@ export default function AdminCredentialsManagement() {
                         <Button
                           size="sm"
                           onClick={() => handleOpenEdit(admin)}
-                          className="h-8 px-3 border-2 border-ink bg-white hover:bg-lemon text-ink text-xs font-black uppercase shadow-brutal-sm"
+                          className="h-8 px-3 border hairline bg-white hover:bg-amber-500/10 text-amber-700 text-ink text-xs font-black uppercase shadow-precision-xs"
                         >
                           <KeyRound className="w-3.5 h-3.5 mr-1 text-saturn-orange" />
                           Update Password
@@ -514,7 +514,7 @@ export default function AdminCredentialsManagement() {
                             variant="destructive"
                             disabled={deletingId === admin.id}
                             onClick={() => handleDeleteAdmin(admin)}
-                            className="h-8 px-2.5 border-2 border-ink bg-red-500 hover:bg-red-600 text-white text-xs font-black uppercase shadow-brutal-sm"
+                            className="h-8 px-2.5 border hairline bg-red-500 hover:bg-red-600 text-white text-xs font-black uppercase shadow-precision-xs"
                             title="Revoke Admin Access"
                           >
                             {deletingId === admin.id ? (
@@ -535,10 +535,10 @@ export default function AdminCredentialsManagement() {
       </div>
 
       {/* SECTION 3: My Current Admin Credentials (Self Password & Email Update) */}
-      <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 sm:p-8 space-y-6">
-        <div className="bg-mint -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b-3 border-ink flex items-center justify-between">
+      <div className="card-precision bg-white border hairline shadow-precision-sm p-6 sm:p-8 space-y-6">
+        <div className="bg-emerald-500/10 text-emerald-700 -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b hairline flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 border-2 border-ink bg-white flex items-center justify-center text-ink shadow-brutal-sm">
+            <div className="w-8 h-8 border hairline bg-white flex items-center justify-center text-ink shadow-precision-xs">
               <ShieldCheck className="w-4 h-4 text-emerald-800" />
             </div>
             <div>
@@ -556,7 +556,7 @@ export default function AdminCredentialsManagement() {
         </div>
 
         {selfSuccessMsg && (
-          <div className="p-4 bg-mint border-3 border-ink shadow-brutal flex items-start gap-3">
+          <div className="p-4 bg-emerald-500/10 text-emerald-700 border hairline shadow-precision-sm flex items-start gap-3">
             <CheckCircle2 className="w-5 h-5 text-ink flex-shrink-0 mt-0.5" />
             <div>
               <div className="font-black text-xs uppercase tracking-wide text-ink">Credentials Synchronized</div>
@@ -566,7 +566,7 @@ export default function AdminCredentialsManagement() {
         )}
 
         <form onSubmit={handleSelfSubmit} className="space-y-6">
-          <div className="bg-paper/80 border-2 border-ink/30 p-4 space-y-1">
+          <div className="bg-studio-light/80 border hairline/30 p-4 space-y-1">
             <div className="flex items-center gap-2 text-xs font-black uppercase text-ink">
               <AlertTriangle className="w-4 h-4 text-saturn-orange" />
               Default System Credentials Notice
@@ -588,7 +588,7 @@ export default function AdminCredentialsManagement() {
                 value={myNewEmail}
                 onChange={(e) => setMyNewEmail(e.target.value)}
                 placeholder="saturn3d@gmail.com"
-                className="h-11 mt-1 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
               <span className="text-[10px] text-ink/60 font-bold block mt-1">
                 Used to log into the admin console directly at /admin
@@ -606,7 +606,7 @@ export default function AdminCredentialsManagement() {
                 value={myCurrentPassword}
                 onChange={(e) => setMyCurrentPassword(e.target.value)}
                 placeholder="Enter current password (e.g. Saturn3D@123)"
-                className="h-11 mt-1 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
               <span className="text-[10px] text-ink/60 font-bold block mt-1">
                 Identity verification required before committing changes
@@ -624,7 +624,7 @@ export default function AdminCredentialsManagement() {
                   value={myNewPassword}
                   onChange={(e) => setMyNewPassword(e.target.value)}
                   placeholder="Leave blank to keep unchanged"
-                  className="h-11 mt-1 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                  className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
                 />
               </div>
 
@@ -638,7 +638,7 @@ export default function AdminCredentialsManagement() {
                   value={myConfirmPassword}
                   onChange={(e) => setMyConfirmPassword(e.target.value)}
                   placeholder="Confirm new password"
-                  className="h-11 mt-1 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                  className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
                 />
               </div>
             </div>
@@ -648,7 +648,7 @@ export default function AdminCredentialsManagement() {
             <Button
               type="submit"
               disabled={savingSelf}
-              className="h-12 px-8 bg-saturn-orange text-white hover:bg-orange-600 font-mono font-black uppercase tracking-wider border-3 border-ink shadow-brutal active:translate-x-1 active:translate-y-1 transition-all"
+              className="h-12 px-8 bg-saturn-orange text-white hover:bg-orange-600 font-mono font-black uppercase tracking-wider border hairline shadow-precision-sm active:translate-x-1 active:translate-y-1 transition-all"
             >
               {savingSelf ? (
                 <>
@@ -669,9 +669,9 @@ export default function AdminCredentialsManagement() {
       {/* MODAL: Update Any Administrator's Password & Details */}
       {editingAdmin && (
         <div className="fixed inset-0 z-50 bg-ink/70 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="w-full max-w-lg bg-white border-3 border-ink shadow-brutal-lg animate-in fade-in zoom-in-95 duration-150">
+          <div className="w-full max-w-lg bg-white border hairline shadow-precision-md animate-in fade-in zoom-in-95 duration-150">
             {/* Modal Header */}
-            <div className="p-4 bg-lemon border-b-3 border-ink flex items-center justify-between">
+            <div className="p-4 bg-amber-500/10 text-amber-700 border-b hairline flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <KeyRound className="w-4 h-4 text-saturn-orange" />
                 <h3 className="font-display font-black text-sm text-ink uppercase tracking-wider">
@@ -681,7 +681,7 @@ export default function AdminCredentialsManagement() {
               <button
                 type="button"
                 onClick={() => setEditingAdmin(null)}
-                className="w-7 h-7 border-2 border-ink bg-white flex items-center justify-center text-ink hover:bg-red-500 hover:text-white transition-colors"
+                className="w-7 h-7 border hairline bg-white flex items-center justify-center text-ink hover:bg-red-500 hover:text-white transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -689,7 +689,7 @@ export default function AdminCredentialsManagement() {
 
             {/* Modal Body */}
             <form onSubmit={handleUpdateAdminPassword} className="p-6 space-y-4">
-              <div className="p-3 bg-paper border-2 border-ink/30 text-xs font-bold text-ink">
+              <div className="p-3 bg-studio-light border hairline/30 text-xs font-bold text-ink">
                 Modifying credentials for <span className="underline font-black">{editingAdmin.email}</span>
               </div>
 
@@ -701,7 +701,7 @@ export default function AdminCredentialsManagement() {
                   type="email"
                   value={editAdminEmail}
                   onChange={(e) => setEditAdminEmail(e.target.value)}
-                  className="h-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                  className="h-10 font-mono font-bold border hairline shadow-precision-xs bg-white"
                   required
                 />
               </div>
@@ -715,7 +715,7 @@ export default function AdminCredentialsManagement() {
                   value={editAdminName}
                   onChange={(e) => setEditAdminName(e.target.value)}
                   placeholder="Admin Name"
-                  className="h-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                  className="h-10 font-mono font-bold border hairline shadow-precision-xs bg-white"
                 />
               </div>
 
@@ -736,7 +736,7 @@ export default function AdminCredentialsManagement() {
                     value={editAdminPassword}
                     onChange={(e) => setEditAdminPassword(e.target.value)}
                     placeholder="Enter new password (min 6 characters)"
-                    className="h-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                    className="h-10 font-mono font-bold border hairline shadow-precision-xs bg-white"
                   />
                   <span className="text-[10px] text-ink/60 font-bold block mt-1">
                     Leave blank to keep existing password unchanged
@@ -753,7 +753,7 @@ export default function AdminCredentialsManagement() {
                       value={editAdminConfirmPassword}
                       onChange={(e) => setEditAdminConfirmPassword(e.target.value)}
                       placeholder="Confirm new password"
-                      className="h-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white"
+                      className="h-10 font-mono font-bold border hairline shadow-precision-xs bg-white"
                     />
                   </div>
                 )}
@@ -765,14 +765,14 @@ export default function AdminCredentialsManagement() {
                   type="button"
                   variant="outline"
                   onClick={() => setEditingAdmin(null)}
-                  className="h-10 px-4 border-2 border-ink bg-white text-ink text-xs font-black uppercase hover:bg-paper"
+                  className="h-10 px-4 border hairline bg-white text-ink text-xs font-black uppercase hover:bg-studio-light"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
                   disabled={updatingAdmin}
-                  className="h-10 px-6 bg-saturn-orange text-white hover:bg-orange-600 text-xs font-black uppercase tracking-wider border-2 border-ink shadow-brutal active:translate-x-0.5 active:translate-y-0.5"
+                  className="h-10 px-6 bg-saturn-orange text-white hover:bg-orange-600 text-xs font-black uppercase tracking-wider border hairline shadow-precision-sm active:scale-[0.98]"
                 >
                   {updatingAdmin ? (
                     <>

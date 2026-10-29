@@ -1,14 +1,12 @@
 import React, { useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, OrbitControls } from '@react-three/drei';
+import { Float, OrbitControls, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 import { Layers } from 'lucide-react';
 
 type ModelType = 'gyroid' | 'impeller' | 'polyhedron';
 
-// ---------------------------------------------------------------------------
-// 1. Model A: Neural Gyroid Lattice Metamaterial (Stylized Brutalist Cel)
-// ---------------------------------------------------------------------------
+// 1. Model A: Neural Gyroid Lattice Metamaterial (PBR Engineering Polymer)
 function GyroidModel({ wireframe }: { wireframe: boolean }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const innerRef = useRef<THREE.Mesh>(null);
@@ -28,26 +26,27 @@ function GyroidModel({ wireframe }: { wireframe: boolean }) {
     <group>
       <mesh ref={meshRef}>
         <torusKnotGeometry args={[1.05, 0.32, 128, 32, 2, 3]} />
-        <meshToonMaterial
+        <meshStandardMaterial
           color="#FF5A1F"
           wireframe={wireframe}
+          roughness={0.3}
+          metalness={0.1}
         />
       </mesh>
 
       <mesh ref={innerRef}>
         <icosahedronGeometry args={[0.55, 1]} />
-        <meshToonMaterial
-          color="#FFE14D"
+        <meshStandardMaterial
+          color="#E5E7EB"
           wireframe={true}
+          roughness={0.4}
         />
       </mesh>
     </group>
   );
 }
 
-// ---------------------------------------------------------------------------
 // 2. Model B: Aerospace Helical Impeller / Turbine Rotor
-// ---------------------------------------------------------------------------
 function ImpellerModel({ wireframe }: { wireframe: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
   const bladesCount = 8;
@@ -71,9 +70,11 @@ function ImpellerModel({ wireframe }: { wireframe: boolean }) {
       {/* Center Hub */}
       <mesh>
         <cylinderGeometry args={[0.45, 0.55, 0.9, 32]} />
-        <meshToonMaterial
-          color="#8EA2FF"
+        <meshStandardMaterial
+          color="#374151"
           wireframe={wireframe}
+          roughness={0.35}
+          metalness={0.2}
         />
       </mesh>
 
@@ -81,7 +82,7 @@ function ImpellerModel({ wireframe }: { wireframe: boolean }) {
       <mesh position={[0, 0.46, 0]}>
         <ringGeometry args={[0.15, 0.35, 32]} />
         <meshBasicMaterial
-          color="#0B0B0B"
+          color="#111827"
           side={THREE.DoubleSide}
         />
       </mesh>
@@ -91,179 +92,185 @@ function ImpellerModel({ wireframe }: { wireframe: boolean }) {
         <group key={i} rotation={[0, b.angle, 0]}>
           <mesh position={[0.75, 0, 0]} rotation={[0.4, 0.2, 0.1]}>
             <boxGeometry args={[0.7, 0.6, 0.08]} />
-            <meshToonMaterial
-              color="#FFE14D"
+            <meshStandardMaterial
+              color="#FF5A1F"
               wireframe={wireframe}
+              roughness={0.25}
+              metalness={0.1}
             />
           </mesh>
         </group>
       ))}
-
-      {/* Outer Shroud Ring */}
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[1.35, 0.06, 16, 64]} />
-        <meshToonMaterial
-          color="#0B0B0B"
-          wireframe={wireframe}
-        />
-      </mesh>
     </group>
   );
 }
 
-// ---------------------------------------------------------------------------
-// 3. Model C: Precision Calibration Polyhedron
-// ---------------------------------------------------------------------------
+// 3. Model C: Optic Precision Calibration Polyhedron
 function PolyhedronModel({ wireframe }: { wireframe: boolean }) {
   const outerRef = useRef<THREE.Mesh>(null);
-  const innerRef = useRef<THREE.Mesh>(null);
+  const middleRef = useRef<THREE.Mesh>(null);
+  const coreRef = useRef<THREE.Mesh>(null);
 
   useFrame((_, delta) => {
     if (outerRef.current) {
-      outerRef.current.rotation.x += delta * 0.35;
-      outerRef.current.rotation.y += delta * 0.5;
+      outerRef.current.rotation.x += delta * 0.25;
+      outerRef.current.rotation.z += delta * 0.35;
     }
-    if (innerRef.current) {
-      innerRef.current.rotation.x -= delta * 0.5;
-      innerRef.current.rotation.z += delta * 0.4;
+    if (middleRef.current) {
+      middleRef.current.rotation.y -= delta * 0.45;
+      middleRef.current.rotation.x += delta * 0.2;
+    }
+    if (coreRef.current) {
+      coreRef.current.rotation.y += delta * 0.7;
     }
   });
 
   return (
     <group>
+      {/* Outer Lattice */}
       <mesh ref={outerRef}>
-        <dodecahedronGeometry args={[1.2, 0]} />
-        <meshToonMaterial
-          color="#7CF2C1"
+        <dodecahedronGeometry args={[1.35, 0]} />
+        <meshStandardMaterial
+          color="#9CA3AF"
           wireframe={wireframe}
+          roughness={0.2}
+          metalness={0.3}
         />
       </mesh>
 
-      <mesh ref={innerRef}>
-        <octahedronGeometry args={[0.7, 0]} />
-        <meshToonMaterial
+      {/* Mid Shell */}
+      <mesh ref={middleRef}>
+        <octahedronGeometry args={[0.9, 0]} />
+        <meshStandardMaterial
           color="#FF5A1F"
           wireframe={wireframe}
+          roughness={0.3}
+        />
+      </mesh>
+
+      {/* High-Density Core */}
+      <mesh ref={coreRef}>
+        <sphereGeometry args={[0.4, 16, 16]} />
+        <meshStandardMaterial
+          color="#1F2937"
+          roughness={0.5}
         />
       </mesh>
     </group>
   );
 }
 
-// ---------------------------------------------------------------------------
-// 4. Ambient Orbiting Geometric Markers
-// ---------------------------------------------------------------------------
-function AmbientMarkers() {
-  const groupRef = useRef<THREE.Group>(null);
-
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.elapsedTime * 0.25;
-      groupRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.2) * 0.15;
-    }
-  });
-
-  const markers = useMemo(() => [
-    { pos: [1.8, 0.8, -0.6] as [number, number, number], r: 0.14, color: '#FF5A1F' },
-    { pos: [-1.7, -0.6, 0.7] as [number, number, number], r: 0.18, color: '#8EA2FF' },
-    { pos: [0.8, -1.4, -1.2] as [number, number, number], r: 0.12, color: '#FFE14D' },
-    { pos: [-1.2, 1.2, 1.1] as [number, number, number], r: 0.15, color: '#7CF2C1' },
-  ], []);
+// 4. Background Orbiting Dust Particles
+function OrbitingParticles() {
+  const particles = useMemo(() => {
+    return [
+      { pos: [-1.8, 1.2, -0.5] as [number, number, number], r: 0.08, color: '#FF5A1F' },
+      { pos: [1.9, 0.8, -1.0] as [number, number, number], r: 0.1, color: '#9CA3AF' },
+      { pos: [-1.2, -1.5, 0.8] as [number, number, number], r: 0.09, color: '#374151' },
+      { pos: [0.8, -1.4, -1.2] as [number, number, number], r: 0.12, color: '#FF5A1F' },
+    ];
+  }, []);
 
   return (
-    <group ref={groupRef}>
-      {markers.map((s, idx) => (
-        <mesh key={idx} position={s.pos}>
-          <boxGeometry args={[s.r * 1.5, s.r * 1.5, s.r * 1.5]} />
-          <meshToonMaterial color={s.color} />
-        </mesh>
+    <group>
+      {particles.map((p, i) => (
+        <Float key={i} speed={1.5} rotationIntensity={1} floatIntensity={1.5}>
+          <mesh position={p.pos}>
+            <sphereGeometry args={[p.r, 16, 16]} />
+            <meshStandardMaterial color={p.color} roughness={0.4} />
+          </mesh>
+        </Float>
       ))}
     </group>
   );
 }
 
-// ---------------------------------------------------------------------------
-// 5. Scene Lighting & Floating Rig
-// ---------------------------------------------------------------------------
-function FloatingStage({ activeModel, wireframe }: { activeModel: ModelType; wireframe: boolean }) {
+// 5. Stage Lighting & Scene Composition
+function FloatingStage({
+  activeModel,
+  wireframe,
+}: {
+  activeModel: ModelType;
+  wireframe: boolean;
+}) {
   return (
     <>
-      <ambientLight intensity={1.2} />
-      <directionalLight position={[5, 8, 5]} intensity={2.0} />
-      <directionalLight position={[-4, -2, -3]} intensity={0.8} />
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[5, 8, 5]} intensity={1.5} color="#FFFFFF" />
+      <directionalLight position={[-5, -2, -5]} intensity={0.6} color="#FF5A1F" />
 
-      <Float speed={2} rotationIntensity={0.4} floatIntensity={0.8}>
+      <OrbitingParticles />
+
+      <Float speed={2} rotationIntensity={0.6} floatIntensity={1.2}>
         {activeModel === 'gyroid' && <GyroidModel wireframe={wireframe} />}
         {activeModel === 'impeller' && <ImpellerModel wireframe={wireframe} />}
         {activeModel === 'polyhedron' && <PolyhedronModel wireframe={wireframe} />}
-        <AmbientMarkers />
       </Float>
+
+      <ContactShadows
+        position={[0, -1.8, 0]}
+        opacity={0.3}
+        scale={6}
+        blur={1.5}
+        far={3}
+      />
 
       <OrbitControls
         enableZoom={false}
         enablePan={false}
         autoRotate={true}
-        autoRotateSpeed={1.5}
-        maxPolarAngle={Math.PI / 1.7}
-        minPolarAngle={Math.PI / 3.2}
+        autoRotateSpeed={0.8}
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={(Math.PI / 4) * 3}
       />
     </>
   );
 }
 
-// ---------------------------------------------------------------------------
-// 6. Main Exported Interactive 3D Component
-// ---------------------------------------------------------------------------
+// Main Interactive Floating Stage Container
 export default function FloatingModels3D() {
   const [activeModel, setActiveModel] = useState<ModelType>('gyroid');
   const [wireframe, setWireframe] = useState<boolean>(false);
 
   const modelMetadata = {
     gyroid: {
-      name: 'NEURAL GYROID METAMATERIAL',
-      material: 'SLA OPTIC CERAMIC',
-      tolerance: '±0.01 MM',
+      name: 'Neural Gyroid Metamaterial',
+      material: 'SLA Optic Ceramic',
+      tolerance: '±0.01 mm',
       density: '99.9%',
     },
     impeller: {
-      name: 'AEROSPACE HELICAL ROTOR',
-      material: 'CARBON-X PA12',
-      tolerance: '±0.03 MM',
-      density: '100% SOLID',
+      name: 'Aerospace Helical Rotor',
+      material: 'Carbon-X PA12',
+      tolerance: '±0.03 mm',
+      density: '100% Solid',
     },
     polyhedron: {
-      name: 'CALIBRATION POLYHEDRON',
-      material: 'OPTICAL CLEAR RESIN',
-      tolerance: '±0.01 MM',
-      density: 'SOLID CORE',
+      name: 'Calibration Polyhedron',
+      material: 'Optical Clear Resin',
+      tolerance: '±0.01 mm',
+      density: 'Solid Core',
     },
   };
 
   return (
-    <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] flex flex-col justify-between overflow-hidden select-none bg-paper pattern-blueprint">
+    <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] flex flex-col justify-between overflow-hidden select-none bg-graphite rounded-2xl border hairline-dark">
       
-      {/* Background Giant Brutalist Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <span className="font-display text-8xl sm:text-9xl lg:text-[11rem] font-black text-ink/5 select-none tracking-wider">
-          3DP
-        </span>
-      </div>
-
       {/* Top Controls Bar */}
       <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 p-5 sm:p-6 pb-0">
         {/* Model Tabs */}
-        <div className="flex items-center gap-1.5 p-1 bg-white border-2 border-ink shadow-brutal-sm">
+        <div className="flex items-center gap-1.5 p-1 bg-surface-dark border hairline-dark rounded-xl backdrop-blur-md">
           {(['gyroid', 'impeller', 'polyhedron'] as ModelType[]).map((type) => (
             <button
               key={type}
               onClick={() => setActiveModel(type)}
-              className={`px-3 py-1 text-[10px] font-mono font-black uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-3 py-1 text-[11px] font-mono font-medium uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
                 activeModel === type
-                  ? 'bg-saturn-orange text-white shadow-brutal-sm'
-                  : 'text-ink hover:bg-lemon'
+                  ? 'bg-saturn-orange text-white shadow-precision-xs'
+                  : 'text-muted-dark hover:text-white'
               }`}
             >
-              {type === 'gyroid' ? 'GYROID' : type === 'impeller' ? 'IMPELLER' : 'CRYSTAL'}
+              {type === 'gyroid' ? 'Gyroid' : type === 'impeller' ? 'Impeller' : 'Crystal'}
             </button>
           ))}
         </div>
@@ -271,15 +278,15 @@ export default function FloatingModels3D() {
         {/* Wireframe / Shader Toggle */}
         <button
           onClick={() => setWireframe(!wireframe)}
-          className={`flex items-center gap-1.5 px-3 py-1.5 border-2 border-ink text-[10px] font-mono font-black uppercase tracking-wider shadow-brutal-sm transition-all cursor-pointer ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border hairline-dark text-[11px] font-mono font-medium uppercase tracking-wider transition-all cursor-pointer ${
             wireframe
-              ? 'bg-lemon text-ink'
-              : 'bg-white text-ink hover:bg-saturn-orange hover:text-white'
+              ? 'bg-white text-graphite'
+              : 'bg-surface-dark text-muted-dark hover:text-white'
           }`}
           title="Toggle Wireframe Mesh"
         >
           <Layers className="w-3.5 h-3.5" />
-          <span>{wireframe ? 'WIREFRAME' : 'CEL SURFACE'}</span>
+          <span>{wireframe ? 'Wireframe' : 'PBR Surface'}</span>
         </button>
       </div>
 
@@ -293,21 +300,24 @@ export default function FloatingModels3D() {
         </Canvas>
       </div>
 
-      {/* Bottom HUD: Live Telemetry Readout & System Badge */}
-      <div className="relative z-10 p-4 sm:p-5 border-t-3 border-ink flex flex-col sm:flex-row items-center justify-between gap-2 bg-ink text-paper">
+      {/* Bottom HUD: Live Telemetry Readout */}
+      <div className="relative z-10 p-4 sm:p-5 border-t hairline-dark flex flex-col sm:flex-row items-center justify-between gap-2 bg-surface-dark/80 backdrop-blur-sm text-studio-light">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 bg-saturn-orange animate-pulse" />
-          <span className="font-mono text-[11px] font-black uppercase tracking-widest text-paper">
+          <span className="w-2 h-2 rounded-full bg-saturn-orange animate-pulse" />
+          <span className="font-mono text-xs font-medium text-white">
             {modelMetadata[activeModel].name}
+          </span>
+          <span className="font-mono text-[10px] text-muted-dark">
+            ({modelMetadata[activeModel].material})
           </span>
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="font-mono text-[10px] text-paper/70 uppercase">
-            DRAG 360° //
+          <span className="font-mono text-[10px] text-muted uppercase">
+            Drag to inspect 360°
           </span>
-          <span className="font-mono text-[10px] font-black uppercase tracking-wider text-ink bg-lemon px-2.5 py-0.5 border border-ink shadow-brutal-sm">
-            SATURN SYSTEM V8.2
+          <span className="font-mono text-[10px] text-saturn-orange bg-saturn-orange/10 px-2.5 py-0.5 rounded-full border border-saturn-orange/20">
+            Tolerance {modelMetadata[activeModel].tolerance}
           </span>
         </div>
       </div>

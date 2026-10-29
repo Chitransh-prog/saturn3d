@@ -12,7 +12,7 @@ interface CategoriesPageProps {
 
 export default function CategoriesPage({ initialProducts, initialCategories }: CategoriesPageProps) {
   return (
-    <div className="pt-0 min-h-screen bg-paper pattern-blueprint relative overflow-hidden">
+    <div className="pt-0 min-h-screen bg-studio-light text-graphite relative overflow-hidden">
       <div className="relative z-10">
         <Categories initialProducts={initialProducts} initialCategories={initialCategories} />
         <CTA />

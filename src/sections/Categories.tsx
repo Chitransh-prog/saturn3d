@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, SlidersHorizontal, X, ArrowRight, PackageOpen } from 'lucide-react';
+import { Search, X, ArrowRight, PackageOpen } from 'lucide-react';
 import { productsApi, type Product } from '@/lib/api';
 import ProductCard from '@/components/ProductCard';
 import SectionHeader from '@/components/SectionHeader';
@@ -115,58 +115,60 @@ export default function Categories({ limit, initialProducts, initialCategories }
   const displayedProducts = limit ? filteredProducts.slice(0, limit) : filteredProducts;
 
   return (
-    <section id="categories" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-[#FAF7F2] hairline-b relative overflow-hidden">
+    <section id="categories" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-studio-light border-b hairline relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-          <SectionHeader
-            number="05"
-            tag="CATALOG MATRIX"
-            title="ENGINEERED COMPONENTS & PRINTS"
-            highlightWord="COMPONENTS"
-            subtitle="Explore standard functional prototypes, high-density enclosures, and structural fixtures manufactured with micron-level fidelity."
-            badgeText="INSTANT DISPATCH"
-            badgeColor="#FFE14D"
-            className="mb-0"
-          />
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/[0.04] border hairline rounded-full font-mono text-[11px] font-medium uppercase tracking-wider text-muted-dark mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-saturn-orange" />
+              <span>05 // Catalog Matrix</span>
+            </div>
+            <h2 className="font-display font-semibold text-2xl sm:text-4xl text-graphite tracking-tight">
+              Engineered components & stock prints.
+            </h2>
+            <p className="font-body text-xs sm:text-sm text-muted mt-2 max-w-xl leading-relaxed">
+              Standard functional fixtures, drone frames, and precision enclosures manufactured with micron repeatability.
+            </p>
+          </div>
 
           {/* Quick Search Input */}
           <div className="w-full lg:w-80 relative">
-            <Search className="w-4 h-4 text-[#0B0B0B] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none stroke-[2.5]" />
+            <Search className="w-4 h-4 text-muted absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
-              placeholder="SEARCH BY PART OR SPEC..."
+              placeholder="Search by part or spec..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-9 py-2 bg-white hairline rounded-xs font-mono text-xs uppercase text-[#0B0B0B] placeholder:text-[#777] focus:outline-hidden focus:bg-[#FAF7F2] transition-all font-bold"
+              className="w-full pl-10 pr-9 py-2.5 bg-white border hairline rounded-xl font-mono text-xs text-graphite placeholder:text-muted focus:outline-hidden focus:border-saturn-orange focus:ring-2 focus:ring-saturn-orange/20 transition-all shadow-precision-xs"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#0B0B0B] hover:text-[#FF5A1F]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-graphite cursor-pointer"
               >
-                <X className="w-4 h-4 stroke-[3]" />
+                <X className="w-4 h-4" />
               </button>
             )}
           </div>
         </div>
 
         {/* Filter Bar & Sort Controls */}
-        <div className="hairline-b pb-4 mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div className="border-b hairline pb-4 mb-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
           {/* Category Tabs */}
-          <div className="flex items-center gap-6 overflow-x-auto no-scrollbar pb-2 md:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 font-mono text-xs font-bold uppercase tracking-wider">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
             {categoriesList.map((category) => {
               const isSelected = selectedCategory === category;
               return (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`relative pb-2 whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-xl font-mono text-xs font-medium whitespace-nowrap transition-all cursor-pointer border ${
                     isSelected
-                      ? 'text-[#FF5A1F] after:w-full font-black'
-                      : 'text-[#0B0B0B]/60 hover:text-[#0B0B0B] after:w-0'
-                  } after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-[#FF5A1F] after:transition-all`}
+                      ? 'bg-graphite text-white border-graphite shadow-precision-xs'
+                      : 'bg-white text-muted hover:text-graphite border-black/10 hover:border-black/25'
+                  }`}
                 >
                   {category}
                 </button>
@@ -175,50 +177,50 @@ export default function Categories({ limit, initialProducts, initialCategories }
           </div>
 
           {/* Sort Control */}
-          <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#0B0B0B] shrink-0 self-end md:self-auto">
-            <span>SORT:</span>
+          <div className="flex items-center gap-2 font-mono text-xs text-muted shrink-0 self-end md:self-auto">
+            <span>Sort:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-xs font-mono font-bold uppercase rounded-xs focus:outline-hidden cursor-pointer shadow-brutal-sm"
+              className="bg-white border hairline px-3 py-1.5 text-xs font-mono font-medium rounded-xl focus:outline-hidden focus:border-saturn-orange cursor-pointer shadow-precision-xs text-graphite"
             >
-              <option value="featured">FEATURED</option>
-              <option value="price-asc">PRICE: LOW &rarr; HIGH</option>
-              <option value="price-desc">PRICE: HIGH &rarr; LOW</option>
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
             </select>
           </div>
         </div>
 
         {/* Loading / Error / Grid States */}
         {loading ? (
-          <div className="card-slab bg-white p-12 text-center border-3 border-ink shadow-brutal">
-            <div className="inline-block w-8 h-8 border-4 border-ink border-t-[#FF5A1F] animate-spin mb-3" />
-            <div className="font-mono text-xs font-bold text-[#0B0B0B]">
-              LOADING ENGINEERED CATALOG ARCHIVE...
+          <div className="card-precision bg-white p-12 text-center">
+            <div className="inline-block w-8 h-8 border-2 border-black/10 border-t-saturn-orange rounded-full animate-spin mb-3" />
+            <div className="font-mono text-xs text-muted">
+              Loading engineered catalog archive...
             </div>
           </div>
         ) : error ? (
-          <div className="card-slab bg-[#FAF7F2] p-8 border-3 border-ink shadow-brutal text-center space-y-3">
-            <div className="font-display font-black text-xl text-red-600">FAILED TO LOAD CATALOG</div>
-            <p className="font-mono text-xs text-[#555]">{error}</p>
+          <div className="card-precision bg-white p-8 text-center space-y-3">
+            <div className="font-display font-semibold text-lg text-red-600">Failed to load catalog</div>
+            <p className="font-mono text-xs text-muted">{error}</p>
           </div>
         ) : displayedProducts.length === 0 ? (
-          <div className="card-slab bg-white p-12 text-center border-3 border-ink shadow-brutal space-y-3">
-            <PackageOpen className="w-12 h-12 text-[#FF5A1F] mx-auto stroke-[2]" />
-            <h3 className="font-display font-black text-xl text-[#0B0B0B] uppercase">
-              NO COMPONENTS MATCHING "{searchQuery}"
+          <div className="card-precision bg-white p-12 text-center space-y-3 max-w-md mx-auto">
+            <PackageOpen className="w-10 h-10 text-saturn-orange mx-auto" />
+            <h3 className="font-display font-semibold text-lg text-graphite">
+              No components matching "{searchQuery}"
             </h3>
-            <p className="font-mono text-xs text-[#666]">
-              Try searching by general polymer (PLA, PETG, ABS) or clear search filter.
+            <p className="font-body text-xs text-muted">
+              Try searching by general polymer or clear active search filter.
             </p>
             <button
               onClick={() => {
                 setSearchQuery('');
                 setSelectedCategory('All');
               }}
-              className="btn-brutal btn-brutal-orange text-xs py-2 px-4 mt-2"
+              className="btn-precision-secondary text-xs py-2 px-4 mt-2 cursor-pointer"
             >
-              RESET CATALOG FILTERS
+              Reset catalog filters
             </button>
           </div>
         ) : (
@@ -234,10 +236,10 @@ export default function Categories({ limit, initialProducts, initialCategories }
           <div className="mt-12 text-center">
             <button
               onClick={() => navigate('/categories')}
-              className="btn-brutal btn-brutal-orange text-xs sm:text-sm py-3.5 px-8 flex items-center gap-2 mx-auto"
+              className="btn-precision-secondary text-xs sm:text-sm py-3 px-6 inline-flex items-center gap-2 mx-auto cursor-pointer"
             >
-              <span>VIEW COMPLETE CATALOG ({products.length} COMPONENTS)</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              <span>View complete catalog ({products.length} components)</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         )}

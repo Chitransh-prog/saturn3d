@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingBag, Heart, Eye, Star, Check, ArrowRight } from 'lucide-react';
+import { ShoppingBag, Heart, Eye, Star, ArrowRight } from 'lucide-react';
 import { type Product } from '@/lib/api';
 import { useCartStore } from '@/store/cartStore';
 import { toast } from 'sonner';
@@ -61,7 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       }
     );
 
-    toast.success(`Added ${product.name} to order!`, {
+    toast.success(`Added ${product.name} to order`, {
       description: selectedVariant === 'single' ? 'Single Part' : 'Batch Box of 10 pcs',
       action: {
         label: 'View Cart',
@@ -93,72 +93,72 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <>
       <div
         onClick={() => navigate(`/categories/${product.id}`)}
-        className="group relative bg-[#EAF0EB] border border-[#0B0B0B] rounded-2xl p-5 sm:p-6 flex flex-col justify-between cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-[4px_4px_0px_#0B0B0B] select-none"
+        className="group relative bg-white border hairline hover:border-black/25 rounded-2xl p-5 sm:p-6 flex flex-col justify-between cursor-pointer transition-all duration-200 shadow-precision-sm hover:shadow-precision-md hover:-translate-y-1 select-none"
       >
-        {/* 1. Header: Eyebrow + Title + (Badge & Heart Action) */}
+        {/* Header: Eyebrow + Title + Actions */}
         <div>
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0 pr-2">
               <span
                 onClick={handleCategoryClick}
-                className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B0B0B]/60 hover:text-[#FF5A1F] transition-colors block truncate"
+                className="font-mono text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-muted hover:text-saturn-orange transition-colors block truncate"
               >
                 {product.category || 'PRECISION ADDITIVE'}
               </span>
-              <h3 className="font-display font-black text-lg sm:text-xl text-[#0B0B0B] leading-snug tracking-tight mt-0.5 truncate group-hover:text-[#FF5A1F] transition-colors">
+              <h3 className="font-display font-semibold text-base sm:text-lg text-graphite leading-snug tracking-tight mt-0.5 truncate group-hover:text-saturn-orange transition-colors">
                 {product.name}
               </h3>
             </div>
 
             {/* Top Right Badges & Wishlist Button */}
-            <div className="flex flex-col items-end gap-2 shrink-0">
-              <span className="bg-[#FFE14D] border border-[#0B0B0B] text-[#0B0B0B] text-[10px] sm:text-[11px] font-mono font-black px-2.5 py-0.5 rounded-full shadow-xs">
-                New
+            <div className="flex items-center gap-1.5 shrink-0">
+              <span className="font-mono text-[10px] text-muted-dark bg-studio-light border hairline px-2.5 py-0.5 rounded-full">
+                Stock
               </span>
 
               <button
                 onClick={handleToggleWishlist}
-                className="w-8 h-8 rounded-full border border-[#0B0B0B] bg-white flex items-center justify-center hover:bg-[#FFE14D] active:scale-90 transition-transform cursor-pointer shadow-xs"
+                className="w-8 h-8 rounded-full border hairline bg-white flex items-center justify-center hover:bg-black/5 active:scale-95 transition-all cursor-pointer"
                 title="Add to Wishlist"
                 aria-label="Wishlist"
               >
                 <Heart
-                  className={`w-4 h-4 transition-colors ${
-                    isWishlisted ? 'fill-[#FF5A1F] text-[#FF5A1F]' : 'text-[#0B0B0B]'
+                  className={`w-3.5 h-3.5 transition-colors ${
+                    isWishlisted ? 'fill-saturn-orange text-saturn-orange' : 'text-muted hover:text-graphite'
                   }`}
                 />
               </button>
             </div>
           </div>
 
-          {/* 2. Floating Centered Product Image */}
-          <div className="relative w-full aspect-[4/3] flex items-center justify-center my-4 overflow-hidden rounded-xl bg-white/70 p-4 border border-black/5">
+          {/* Floating Centered Product Image */}
+          <div className="relative w-full aspect-[4/3] flex items-center justify-center my-4 overflow-hidden rounded-xl bg-studio-light/70 p-4 border hairline">
             <img
               src={product.image}
               alt={product.name}
               loading="lazy"
               decoding="async"
-              className="max-w-full max-h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300 ease-out"
+              className="max-w-full max-h-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300 ease-out"
               onError={(e) => {
                 e.currentTarget.src = '/products/vase.jpg';
               }}
             />
           </div>
 
-          {/* 3. Subtitle / One-Line Description */}
-          <p className="font-body text-xs text-[#0B0B0B]/70 leading-relaxed line-clamp-1 mb-3">
+          {/* Subtitle / One-Line Description */}
+          <p className="font-body text-xs text-muted leading-relaxed line-clamp-1 mb-3">
             {product.description || 'Precision calibrated polymer • Micron fidelity • 24-48h dispatch'}
           </p>
 
-          {/* 4. Interactive Variant Pills */}
+          {/* Interactive Variant Pills */}
           <div className="flex flex-wrap items-center gap-2 mb-3.5" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               onClick={() => setSelectedVariant('single')}
-              className={`font-mono text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+              className={`font-mono text-[11px] font-medium px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 selectedVariant === 'single'
-                  ? 'bg-[#0B0B0B] text-white border-[#0B0B0B]'
-                  : 'bg-white text-[#0B0B0B] border-[#0B0B0B] hover:bg-neutral-50'
+                  ? 'bg-graphite text-white border-graphite shadow-precision-xs'
+                  : 'bg-white text-graphite border-black/10 hover:border-black/25'
               }`}
             >
               Single Part
@@ -167,37 +167,37 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <button
               type="button"
               onClick={() => setSelectedVariant('batch')}
-              className={`font-mono text-[11px] font-bold px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+              className={`font-mono text-[11px] font-medium px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
                 selectedVariant === 'batch'
-                  ? 'bg-[#0B0B0B] text-white border-[#0B0B0B]'
-                  : 'bg-white text-[#0B0B0B] border-[#0B0B0B] hover:bg-neutral-50'
+                  ? 'bg-graphite text-white border-graphite shadow-precision-xs'
+                  : 'bg-white text-graphite border-black/10 hover:border-black/25'
               }`}
             >
-              Batch Box (10 Pcs)
+              Batch (10 Pcs)
             </button>
           </div>
 
-          {/* 5. Star Rating */}
-          <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[#0B0B0B]/80 mb-3.5">
-            <Star className="w-3.5 h-3.5 fill-[#FFE14D] text-[#0B0B0B] stroke-[1.5]" />
-            <span>5.0</span>
-            <span className="text-[#0B0B0B]/50 font-normal">({product.reviewsCount || 96})</span>
+          {/* Star Rating */}
+          <div className="flex items-center gap-1.5 font-mono text-xs text-muted mb-3.5">
+            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" />
+            <span className="font-medium text-graphite">5.0</span>
+            <span className="text-muted/70">({product.reviewsCount || 96})</span>
           </div>
         </div>
 
-        {/* 6. Hairline Divider & Footer Row */}
-        <div className="pt-3.5 border-t border-[#0B0B0B]/15 flex items-center justify-between gap-3">
+        {/* Hairline Divider & Footer Row */}
+        <div className="pt-3.5 border-t hairline flex items-center justify-between gap-3">
           {/* Price & Weight/Lead-time */}
           <div>
             <div className="flex items-baseline gap-1.5">
-              <span className="font-display font-black text-xl text-[#0B0B0B]">
+              <span className="font-display font-semibold text-lg sm:text-xl text-graphite">
                 ₹{currentPrice.toLocaleString('en-IN')}
               </span>
-              <span className="font-mono text-xs text-[#0B0B0B]/40 line-through">
+              <span className="font-mono text-xs text-muted/60 line-through">
                 ₹{currentOriginalPrice.toLocaleString('en-IN')}
               </span>
             </div>
-            <span className="font-mono text-[10px] text-[#0B0B0B]/60 block mt-0.5">
+            <span className="font-mono text-[10px] text-muted block mt-0.5">
               {selectedVariant === 'single' ? 'Net wt: 75g' : 'Net wt: 750g (Box)'}
             </span>
           </div>
@@ -207,17 +207,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <button
               type="button"
               onClick={handleQuickView}
-              className="w-9 h-9 rounded-full border border-[#0B0B0B] bg-white flex items-center justify-center hover:bg-[#FFE14D] active:scale-95 transition-all cursor-pointer shadow-xs"
+              className="w-9 h-9 rounded-xl border hairline bg-white flex items-center justify-center hover:bg-studio-light active:scale-95 transition-all cursor-pointer text-muted hover:text-graphite"
               title="Quick View Specifications"
               aria-label="Quick View"
             >
-              <Eye className="w-4 h-4 text-[#0B0B0B]" />
+              <Eye className="w-4 h-4" />
             </button>
 
             <button
               type="button"
               onClick={handleAddToCart}
-              className="bg-[#E52E2E] hover:bg-[#CD2424] text-white font-display font-black text-xs px-4 py-2 rounded-full border border-[#0B0B0B] flex items-center gap-1.5 shadow-xs hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="bg-saturn-orange hover:bg-saturn-orange-hover text-white font-display font-medium text-xs px-3.5 py-2 rounded-xl border border-saturn-orange/80 flex items-center gap-1.5 shadow-precision-xs hover:shadow-precision-sm active:scale-95 transition-all cursor-pointer"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>{inCartQty > 0 ? `Added (${inCartQty})` : 'Add'}</span>
@@ -226,82 +226,82 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </div>
 
-      {/* Quick View Dialog - Only mounted on demand for high performance */}
+      {/* Quick View Dialog */}
       {quickViewOpen && (
         <Dialog open={quickViewOpen} onOpenChange={setQuickViewOpen}>
-          <DialogContent className="max-w-[92vw] sm:max-w-lg bg-[#EAF0EB] border border-[#0B0B0B] rounded-2xl p-5 sm:p-6 text-[#0B0B0B] max-h-[90vh] overflow-y-auto">
-          <div className="space-y-4">
-            <div className="flex items-start justify-between">
-              <div>
-                <span className="font-mono text-[10px] font-bold uppercase text-[#0B0B0B]/60">
-                  {product.category}
+          <DialogContent className="max-w-[92vw] sm:max-w-lg bg-white border hairline rounded-2xl p-5 sm:p-6 text-graphite max-h-[90vh] overflow-y-auto shadow-precision-lg">
+            <div className="space-y-4">
+              <div className="flex items-start justify-between">
+                <div>
+                  <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted">
+                    {product.category}
+                  </span>
+                  <h3 className="font-display font-semibold text-xl text-graphite mt-0.5">
+                    {product.name}
+                  </h3>
+                </div>
+                <span className="font-mono text-xs font-semibold text-graphite bg-studio-light border hairline px-2.5 py-1 rounded-lg">
+                  ₹{currentPrice.toLocaleString('en-IN')}
                 </span>
-                <h3 className="font-display font-black text-2xl text-[#0B0B0B]">
-                  {product.name}
-                </h3>
               </div>
-              <span className="bg-[#FFE14D] border border-[#0B0B0B] text-[#0B0B0B] text-xs font-mono font-black px-2.5 py-0.5 rounded-full">
-                ₹{currentPrice}
-              </span>
+
+              <div className="w-full aspect-[4/3] rounded-xl bg-studio-light/70 flex items-center justify-center p-4 border hairline">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="max-h-full object-contain drop-shadow-sm"
+                />
+              </div>
+
+              <p className="font-body text-xs sm:text-sm text-muted leading-relaxed">
+                {product.description}
+              </p>
+
+              <div className="grid grid-cols-2 gap-2 font-mono text-xs bg-studio-light/60 p-3.5 rounded-xl border hairline">
+                <div>
+                  <span className="text-muted block text-[10px] uppercase">Tolerance</span>
+                  <span className="font-semibold text-graphite">±0.04 mm</span>
+                </div>
+                <div>
+                  <span className="text-muted block text-[10px] uppercase">Dispatch</span>
+                  <span className="font-semibold text-graphite">24–48 hours</span>
+                </div>
+                <div>
+                  <span className="text-muted block text-[10px] uppercase">Material</span>
+                  <span className="font-semibold text-graphite">Engineering Polymer</span>
+                </div>
+                <div>
+                  <span className="text-muted block text-[10px] uppercase">Logistics</span>
+                  <span className="font-semibold text-saturn-orange">Pan-India Express</span>
+                </div>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  onClick={(e) => {
+                    handleAddToCart(e);
+                    setQuickViewOpen(false);
+                  }}
+                  className="flex-1 btn-precision-primary py-2.5 text-xs flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  <span>Add to cart &bull; ₹{currentPrice.toLocaleString('en-IN')}</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setQuickViewOpen(false);
+                    navigate(`/categories/${product.id}`);
+                  }}
+                  className="btn-precision-secondary py-2.5 px-4 text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <span>Full specs</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
-
-            <div className="w-full aspect-[4/3] rounded-xl bg-white flex items-center justify-center p-4 border border-black/10">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="max-h-full object-contain drop-shadow"
-              />
-            </div>
-
-            <p className="font-body text-sm text-[#0B0B0B]/80 leading-relaxed">
-              {product.description}
-            </p>
-
-            <div className="grid grid-cols-2 gap-2 font-mono text-xs bg-white/70 p-3 rounded-lg border border-black/10">
-              <div>
-                <span className="text-black/50 block text-[10px]">TOLERANCE:</span>
-                <span className="font-bold">±0.04 MM</span>
-              </div>
-              <div>
-                <span className="text-black/50 block text-[10px]">DISPATCH:</span>
-                <span className="font-bold">24–48 HOURS</span>
-              </div>
-              <div>
-                <span className="text-black/50 block text-[10px]">MATERIAL:</span>
-                <span className="font-bold">HIGH-DENSITY POLYMER</span>
-              </div>
-              <div>
-                <span className="text-black/50 block text-[10px]">DELIVERY:</span>
-                <span className="font-bold text-[#E52E2E]">ALL INDIA AIR EXPRESS</span>
-              </div>
-            </div>
-
-            <div className="flex gap-3 pt-2">
-              <button
-                onClick={(e) => {
-                  handleAddToCart(e);
-                  setQuickViewOpen(false);
-                }}
-                className="flex-1 bg-[#E52E2E] hover:bg-[#CD2424] text-white font-display font-black text-xs py-3 rounded-full border border-[#0B0B0B] flex items-center justify-center gap-2 shadow-xs cursor-pointer"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span>ADD TO CART &bull; ₹{currentPrice}</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setQuickViewOpen(false);
-                  navigate(`/categories/${product.id}`);
-                }}
-                className="px-4 py-3 bg-white hover:bg-neutral-50 text-[#0B0B0B] font-display font-bold text-xs rounded-full border border-[#0B0B0B] flex items-center justify-center gap-1.5 cursor-pointer"
-              >
-                <span>FULL DETAILS</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+          </DialogContent>
+        </Dialog>
       )}
     </>
   );

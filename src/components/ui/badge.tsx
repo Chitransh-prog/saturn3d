@@ -5,26 +5,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-xs border-2 border-ink px-2.5 py-0.5 text-xs font-mono font-bold uppercase tracking-wider w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 shadow-brutal-sm transition-transform hover:scale-105",
+  "inline-flex items-center justify-center rounded-full border hairline px-2.5 py-0.5 text-[11px] font-mono font-medium tracking-wide w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1.5 transition-colors",
   {
     variants: {
       variant: {
         default:
-          "bg-[#FFE14D] text-[#0B0B0B]",
+          "bg-black/[0.04] text-[#0B0D10] border-black/10 dark:bg-white/[0.08] dark:text-white dark:border-white/15",
         secondary:
-          "bg-[#FAF7F2] text-[#0B0B0B]",
+          "bg-studio-light text-muted-dark border-black/10 dark:bg-surface-dark dark:text-muted",
         destructive:
-          "bg-destructive text-white",
+          "bg-red-50 text-red-700 border-red-200 dark:bg-red-950/40 dark:text-red-400 dark:border-red-900/50",
         outline:
-          "bg-white text-[#0B0B0B]",
+          "border-black/15 text-[#0B0D10] bg-transparent dark:border-white/15 dark:text-white",
         orange:
-          "bg-[#FF5A1F] text-[#0B0B0B]",
+          "bg-[#FF5A1F]/10 text-[#FF5A1F] border-[#FF5A1F]/30 font-semibold",
         mint:
-          "bg-[#7CF2C1] text-[#0B0B0B]",
+          "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400",
         periwinkle:
-          "bg-[#8EA2FF] text-[#0B0B0B]",
+          "bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-950/30 dark:text-indigo-400",
         ink:
-          "bg-[#0B0B0B] text-[#FAF7F2]",
+          "bg-[#0B0D10] text-white border-white/15",
       },
     },
     defaultVariants: {

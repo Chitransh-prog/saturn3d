@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
 import { categories } from '@/data/categories';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,15 +13,13 @@ export default function IndustryCategories() {
   const gridRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
-  const accentColors = ['#FFE14D', '#8EA2FF', '#7CF2C1', '#FF5A1F', '#FFE14D', '#7CF2C1'];
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (gridRef.current) {
         const cards = gridRef.current.children;
         gsap.from(cards, {
           opacity: 0,
-          y: 30,
+          y: 20,
           stagger: 0.08,
           duration: 0.4,
           ease: 'power3.out',
@@ -41,63 +39,57 @@ export default function IndustryCategories() {
     <section 
       ref={sectionRef} 
       id="industry-sectors" 
-      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-white border-b-3 border-ink relative overflow-hidden"
+      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-12 bg-white border-b hairline relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        <div data-aos="fade-up">
+        <div>
           <SectionHeader
             number="06"
-            tag="TARGET DOMAINS & APPLICATIONS"
-            title="PRODUCTION SOLUTIONS AT SCALE"
-            highlightWord="SOLUTIONS"
-            subtitle="From flight-critical aerospace brackets to implantable surgical guides and functional robotics tooling — engineered to exacting industrial demands."
-            badgeText="ISO COMPLIANT"
-            badgeColor="#8EA2FF"
+            tag="Target Domains & Applications"
+            title="Production solutions at scale"
+            highlightWord="solutions"
+            subtitle="From flight-critical aerospace brackets to biocompatible surgical guides and functional robotics tooling — engineered to exacting industrial demands."
+            badgeText="Industrial QA"
+            badgeColor="#FF5A1F"
           />
         </div>
 
-        {/* Sectors Grid with Neo-Brutalist Slabs */}
+        {/* Sectors Grid */}
         <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {categories.slice(0, 6).map((cat, i) => {
             const Icon = cat.icon;
-            const accent = accentColors[i % accentColors.length];
             return (
               <div 
                 key={i} 
-                data-aos="fade-up"
-                data-aos-delay={(i % 3) * 80}
                 onClick={() => navigate(`/category/${cat.slug}`)}
-                className="card-slab bg-[#FAF7F2] p-6 sm:p-8 border-2 border-ink shadow-brutal-sm hover:shadow-brutal hover:bg-white transition-all cursor-pointer flex flex-col justify-between group"
+                className="card-precision bg-studio-light/40 p-6 sm:p-8 hover:bg-white transition-all cursor-pointer flex flex-col justify-between group hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div
-                      className="w-12 h-12 rounded-xs border-2 border-ink flex items-center justify-center shadow-brutal-sm group-hover:scale-105 transition-transform"
-                      style={{ backgroundColor: accent }}
-                    >
-                      <Icon className="w-6 h-6 text-[#0B0B0B] stroke-[2.5]" />
+                    <div className="w-10 h-10 rounded-xl bg-white border hairline flex items-center justify-center text-saturn-orange group-hover:scale-105 transition-transform shadow-precision-xs">
+                      <Icon className="w-5 h-5" />
                     </div>
 
-                    <span className="badge-sticker bg-white text-[10px]">
-                      0{i + 1} / DOMAIN
+                    <span className="font-mono text-[10px] text-muted-dark border hairline bg-white px-2.5 py-0.5 rounded-full">
+                      Domain 0{i + 1}
                     </span>
                   </div>
                   
-                  <h3 className="font-display font-black text-xl sm:text-2xl uppercase tracking-tight text-[#0B0B0B] mb-2 group-hover:text-[#FF5A1F] transition-colors">
+                  <h3 className="font-display font-semibold text-lg sm:text-xl text-graphite mb-2 group-hover:text-saturn-orange transition-colors">
                     {cat.title}
                   </h3>
                   
-                  <p className="font-body text-xs sm:text-sm text-[#333] leading-relaxed line-clamp-3 mb-6">
+                  <p className="font-body text-xs sm:text-sm text-muted leading-relaxed line-clamp-3 mb-6">
                     {cat.description}
                   </p>
                 </div>
                 
-                <div className="pt-4 border-t-2 border-ink flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#0B0B0B] group-hover:text-[#FF5A1F] transition-colors">
-                    VIEW SPECIFICATIONS
+                <div className="pt-4 border-t hairline flex items-center justify-between">
+                  <span className="font-mono text-xs font-medium text-graphite group-hover:text-saturn-orange transition-colors">
+                    View specifications
                   </span>
-                  <div className="w-8 h-8 rounded-xs bg-[#FF5A1F] text-[#0B0B0B] border-2 border-ink shadow-brutal-sm flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
-                    <ArrowUpRight className="w-4 h-4 stroke-[3]" />
+                  <div className="w-8 h-8 rounded-lg bg-white border hairline text-muted group-hover:text-saturn-orange group-hover:border-saturn-orange/30 flex items-center justify-center transition-all">
+                    <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
               </div>

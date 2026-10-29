@@ -81,13 +81,13 @@ export default function CategoriesManagement() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="h-11 px-6 border-3 border-ink bg-saturn-orange text-white font-mono font-black uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none transition-all w-full sm:w-auto"
+          className="h-11 px-6 border hairline bg-saturn-orange text-white font-mono font-black uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-precision-sm hover:-translate-y-0.5 hover:shadow-precision-md active:scale-[0.98] transition-all w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" /> Add Sector
         </button>
       </div>
 
-      <div className="card-slab bg-white border-3 border-ink shadow-brutal overflow-hidden">
+      <div className="card-precision bg-white border hairline shadow-precision-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
@@ -99,7 +99,7 @@ export default function CategoriesManagement() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm font-mono">
-              <thead className="bg-ink text-paper border-b-3 border-ink">
+              <thead className="bg-ink text-paper border-b hairline">
                 <tr>
                   <th className="px-6 py-3.5 text-left text-[10px] font-black uppercase tracking-wider text-paper border-r border-paper/10">Sector Name</th>
                   <th className="px-6 py-3.5 text-left text-[10px] font-black uppercase tracking-wider text-paper border-r border-paper/10">URI Slug</th>
@@ -109,17 +109,17 @@ export default function CategoriesManagement() {
               </thead>
               <tbody className="divide-y-2 divide-ink/10">
                 {categories.map((cat) => (
-                  <tr key={cat.id} className="hover:bg-lemon/15 transition-colors">
+                  <tr key={cat.id} className="hover:bg-amber-500/10 text-amber-700/15 transition-colors">
                     <td className="px-6 py-4 font-black text-xs text-ink">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 border-2 border-ink shadow-brutal-sm bg-lemon flex items-center justify-center text-ink">
+                        <div className="w-8 h-8 border hairline shadow-precision-xs bg-amber-500/10 text-amber-700 flex items-center justify-center text-ink">
                           <Folder className="w-4 h-4" />
                         </div>
                         <span className="font-black text-xs text-ink">{cat.name}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4 font-mono text-xs text-ink/70">
-                      <span className="bg-paper border border-ink px-2 py-0.5 shadow-[1px_1px_0px_#0B0B0B]">
+                      <span className="bg-studio-light border border-ink px-2 py-0.5 shadow-precision-xs">
                         /{cat.slug}
                       </span>
                     </td>
@@ -127,7 +127,7 @@ export default function CategoriesManagement() {
                     <td className="px-6 py-4 text-right">
                       <button
                         onClick={() => handleDelete(cat.id, cat.name)}
-                        className="w-8 h-8 border-2 border-ink bg-white flex items-center justify-center hover:bg-red-500 hover:text-white transition-all text-ink shadow-brutal-sm active:translate-x-0.5 active:translate-y-0.5 ml-auto"
+                        className="w-8 h-8 border hairline bg-white flex items-center justify-center hover:bg-red-500 hover:text-white transition-all text-ink shadow-precision-xs active:scale-[0.98] ml-auto"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -142,12 +142,12 @@ export default function CategoriesManagement() {
 
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/75">
-          <div className="card-slab bg-paper border-4 border-ink shadow-brutal-xl w-full max-w-md p-6 space-y-4 font-mono">
-            <div className="flex justify-between items-center border-b-3 border-ink pb-4 bg-lemon -mx-6 -mt-6 p-6">
+          <div className="card-precision bg-studio-light border hairline shadow-precision-lg w-full max-w-md p-6 space-y-4 font-mono">
+            <div className="flex justify-between items-center border-b hairline pb-4 bg-amber-500/10 text-amber-700 -mx-6 -mt-6 p-6">
               <h2 className="font-display font-black text-lg text-ink uppercase tracking-tight">Add Sector Category</h2>
               <button
                 onClick={() => setShowModal(false)}
-                className="w-8 h-8 border-2 border-ink bg-white flex items-center justify-center shadow-brutal-sm hover:bg-saturn-orange hover:text-white"
+                className="w-8 h-8 border hairline bg-white flex items-center justify-center shadow-precision-xs hover:bg-saturn-orange hover:text-white"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -165,7 +165,7 @@ export default function CategoriesManagement() {
                     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
                     setForm({ ...form, name, slug });
                   }}
-                  className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                  className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
                 />
               </div>
 
@@ -176,7 +176,7 @@ export default function CategoriesManagement() {
                   placeholder="aerospace-defense"
                   value={form.slug}
                   onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                  className="h-11 mt-1 font-mono text-xs font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                  className="h-11 mt-1 font-mono text-xs font-bold border hairline shadow-precision-xs bg-white"
                 />
               </div>
 
@@ -187,7 +187,7 @@ export default function CategoriesManagement() {
                   placeholder="Applications and materials used..."
                   value={form.description}
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
-                  className="w-full px-3 py-2 mt-1 border-3 border-ink text-xs font-mono font-medium resize-none focus:outline-none focus:border-saturn-orange shadow-brutal-sm bg-white"
+                  className="w-full px-3 py-2 mt-1 border hairline text-xs font-mono font-medium resize-none focus:outline-none focus:border-saturn-orange shadow-precision-xs bg-white"
                 />
               </div>
 
@@ -195,14 +195,14 @@ export default function CategoriesManagement() {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="flex-1 h-11 border-3 border-ink bg-white font-mono font-black uppercase tracking-wider text-xs shadow-brutal-sm hover:bg-paper active:translate-x-0.5 active:translate-y-0.5 transition-all"
+                  className="flex-1 h-11 border hairline bg-white font-mono font-black uppercase tracking-wider text-xs shadow-precision-xs hover:bg-studio-light active:scale-[0.98] transition-all"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={creating}
-                  className="flex-1 h-11 border-3 border-ink bg-saturn-orange text-white font-mono font-black uppercase tracking-wider text-xs shadow-brutal-sm hover:bg-ink hover:text-paper active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-2"
+                  className="flex-1 h-11 border hairline bg-saturn-orange text-white font-mono font-black uppercase tracking-wider text-xs shadow-precision-xs hover:bg-ink hover:text-paper active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                 >
                   {creating ? <Loader2 className="w-4 h-4 animate-spin text-white" /> : 'Create Category'}
                 </button>

@@ -19,15 +19,15 @@ interface InquiryItem {
 
 const StatusBadge = ({ status }: { status: string }) => {
   const styles: Record<string, string> = {
-    new: 'bg-lemon text-ink border-ink',
-    contacted: 'bg-periwinkle text-ink border-ink',
+    new: 'bg-amber-500/10 text-amber-700 text-ink border-ink',
+    contacted: 'bg-blue-500/10 text-blue-700 text-ink border-ink',
     quoted: 'bg-saturn-orange text-white border-ink',
-    completed: 'bg-mint text-ink border-ink',
+    completed: 'bg-emerald-500/10 text-emerald-700 text-ink border-ink',
     archived: 'bg-neutral-200 text-ink/70 border-ink',
   };
 
   return (
-    <span className={`px-2.5 py-0.5 border-2 font-mono text-[9px] font-black uppercase tracking-wider inline-flex items-center shadow-[2px_2px_0px_#0B0B0B] ${styles[status] || styles.new}`}>
+    <span className={`px-2.5 py-0.5 border-2 font-mono text-[9px] font-black uppercase tracking-wider inline-flex items-center shadow-precision-xs ${styles[status] || styles.new}`}>
       {status}
     </span>
   );
@@ -104,7 +104,7 @@ export default function InquiriesManagement() {
           </p>
         </div>
         <button
-          className="border-2 border-ink font-mono font-black uppercase tracking-wider text-[10px] h-10 px-4 bg-white text-ink shadow-brutal-sm hover:bg-lemon flex items-center gap-2 active:translate-x-0.5 active:translate-y-0.5 transition-all self-start sm:self-auto"
+          className="border hairline font-mono font-black uppercase tracking-wider text-[10px] h-10 px-4 bg-white text-ink shadow-precision-xs hover:bg-amber-500/10 text-amber-700 flex items-center gap-2 active:scale-[0.98] transition-all self-start sm:self-auto"
           onClick={fetchInquiries}
         >
           <RefreshCw className="w-3.5 h-3.5" />
@@ -118,10 +118,10 @@ export default function InquiriesManagement() {
           <button
             key={status}
             onClick={() => setStatusFilter(status)}
-            className={`px-3 py-1.5 border-2 text-[10px] font-black uppercase tracking-wider transition-all shadow-brutal-sm ${
+            className={`px-3 py-1.5 border-2 text-[10px] font-black uppercase tracking-wider transition-all shadow-precision-xs ${
               statusFilter === status
                 ? 'bg-saturn-orange text-white border-ink -translate-y-0.5'
-                : 'bg-white text-ink border-ink hover:bg-lemon'
+                : 'bg-white text-ink border-ink hover:bg-amber-500/10 text-amber-700'
             }`}
           >
             {status} ({status === 'all' ? inquiries.length : inquiries.filter((i) => i.status.toLowerCase() === status).length})
@@ -130,14 +130,14 @@ export default function InquiriesManagement() {
       </div>
 
       {/* Main Table / List */}
-      <div className="card-slab bg-white border-3 border-ink shadow-brutal overflow-hidden">
+      <div className="card-precision bg-white border hairline shadow-precision-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-24">
             <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
           </div>
         ) : filtered.length === 0 ? (
           <div className="py-24 text-center space-y-3 font-mono">
-            <div className="w-14 h-14 border-2 border-ink bg-paper flex items-center justify-center mx-auto text-ink shadow-brutal-sm">
+            <div className="w-14 h-14 border hairline bg-studio-light flex items-center justify-center mx-auto text-ink shadow-precision-xs">
               <Mail className="w-7 h-7" />
             </div>
             <div className="text-ink/60 font-black text-xs uppercase tracking-widest">
@@ -147,7 +147,7 @@ export default function InquiriesManagement() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm font-mono">
-              <thead className="bg-ink text-paper border-b-3 border-ink">
+              <thead className="bg-ink text-paper border-b hairline">
                 <tr>
                   <th className="px-6 py-3.5 text-left text-[10px] font-black uppercase tracking-wider text-paper border-r border-paper/10">Contact & Organization</th>
                   <th className="px-6 py-3.5 text-left text-[10px] font-black uppercase tracking-wider text-paper border-r border-paper/10">Subject / Part</th>
@@ -159,7 +159,7 @@ export default function InquiriesManagement() {
               </thead>
               <tbody className="divide-y-2 divide-ink/10">
                 {filtered.map((item) => (
-                  <tr key={item.id} className="hover:bg-lemon/15 transition-all">
+                  <tr key={item.id} className="hover:bg-amber-500/10 text-amber-700/15 transition-all">
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
                         <span className="font-black text-xs text-ink uppercase">
@@ -193,14 +193,14 @@ export default function InquiriesManagement() {
                         <button
                           title="View Inquiry Details"
                           onClick={() => setSelectedInquiry(item)}
-                          className="w-8 h-8 border-2 border-ink bg-white flex items-center justify-center text-ink shadow-brutal-sm hover:bg-lemon active:translate-x-0.5 active:translate-y-0.5 transition-all"
+                          className="w-8 h-8 border hairline bg-white flex items-center justify-center text-ink shadow-precision-xs hover:bg-amber-500/10 text-amber-700 active:scale-[0.98] transition-all"
                         >
                           <Eye className="w-3.5 h-3.5" />
                         </button>
                         <button
                           title="Delete Inquiry"
                           onClick={() => handleDelete(item.id)}
-                          className="w-8 h-8 border-2 border-ink bg-white flex items-center justify-center text-ink shadow-brutal-sm hover:bg-red-500 hover:text-white active:translate-x-0.5 active:translate-y-0.5 transition-all"
+                          className="w-8 h-8 border hairline bg-white flex items-center justify-center text-ink shadow-precision-xs hover:bg-red-500 hover:text-white active:scale-[0.98] transition-all"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -217,8 +217,8 @@ export default function InquiriesManagement() {
       {/* Inquiry Detail Modal */}
       {selectedInquiry && (
         <Dialog open={!!selectedInquiry} onOpenChange={() => setSelectedInquiry(null)}>
-          <DialogContent className="max-w-2xl bg-paper border-3 border-ink shadow-brutal p-6 font-mono">
-            <DialogHeader className="border-b-3 border-ink pb-4">
+          <DialogContent className="max-w-2xl bg-studio-light border hairline shadow-precision-sm p-6 font-mono">
+            <DialogHeader className="border-b hairline pb-4">
               <DialogTitle className="font-display font-black text-xl text-ink uppercase flex items-center justify-between">
                 <span>Inquiry Dossier</span>
                 <StatusBadge status={selectedInquiry.status} />
@@ -226,7 +226,7 @@ export default function InquiriesManagement() {
             </DialogHeader>
 
             <div className="space-y-4 py-4 text-xs font-mono">
-              <div className="grid grid-cols-2 gap-4 bg-white p-4 border-2 border-ink shadow-brutal-sm">
+              <div className="grid grid-cols-2 gap-4 bg-white p-4 border hairline shadow-precision-xs">
                 <div>
                   <span className="text-[10px] text-ink/60 uppercase font-black block">Client Contact</span>
                   <div className="font-black text-ink mt-0.5">{selectedInquiry.name}</div>
@@ -243,14 +243,14 @@ export default function InquiriesManagement() {
 
               <div>
                 <span className="text-[10px] text-ink/60 uppercase font-black block mb-1">Subject / Specification Scope</span>
-                <div className="p-3 bg-white border-2 border-ink font-bold text-ink">
+                <div className="p-3 bg-white border hairline font-bold text-ink">
                   {selectedInquiry.subject || 'Custom 3D Printing Service Request'}
                 </div>
               </div>
 
               <div>
                 <span className="text-[10px] text-ink/60 uppercase font-black block mb-1">Project Brief & Details</span>
-                <div className="p-4 bg-white border-2 border-ink whitespace-pre-wrap font-medium leading-relaxed max-h-60 overflow-y-auto">
+                <div className="p-4 bg-white border hairline whitespace-pre-wrap font-medium leading-relaxed max-h-60 overflow-y-auto">
                   {selectedInquiry.message}
                 </div>
               </div>
@@ -262,10 +262,10 @@ export default function InquiriesManagement() {
                     <button
                       key={st}
                       onClick={() => handleUpdateStatus(selectedInquiry.id, st)}
-                      className={`px-3 py-1.5 border-2 text-[10px] font-black uppercase tracking-wider transition-all shadow-brutal-sm ${
+                      className={`px-3 py-1.5 border-2 text-[10px] font-black uppercase tracking-wider transition-all shadow-precision-xs ${
                         selectedInquiry.status === st
                           ? 'bg-ink text-paper border-ink'
-                          : 'bg-white text-ink border-ink hover:bg-lemon'
+                          : 'bg-white text-ink border-ink hover:bg-amber-500/10 text-amber-700'
                       }`}
                     >
                       Mark as {st}

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { CheckCircle, Package, ArrowRight, Loader2, Printer, Truck, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { ordersApi, type Order } from '@/lib/api';
 import { useCartStore } from '@/store/cartStore';
 
@@ -51,92 +50,92 @@ export default function OrderSuccessPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-paper pattern-blueprint gap-4">
-        <div className="card-slab bg-white border-3 border-ink shadow-brutal p-8 flex flex-col items-center gap-3">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-studio-light gap-4">
+        <div className="card-precision bg-white p-8 flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
-          <p className="font-mono text-xs font-black uppercase text-ink">Confirming Order Telemetry…</p>
+          <p className="font-mono text-xs font-medium text-muted uppercase">Confirming Order Telemetry…</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-paper pattern-blueprint flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-studio-light flex items-center justify-center px-4 py-20 text-graphite">
       <div className="max-w-lg w-full space-y-6">
 
         {/* Success Icon Slab */}
-        <div className="card-slab bg-lemon border-4 border-ink shadow-brutal-xl p-8 text-center space-y-4">
-          <div className="w-20 h-20 bg-mint border-3 border-ink flex items-center justify-center mx-auto shadow-brutal">
-            <CheckCircle className="w-10 h-10 text-ink" />
+        <div className="card-precision bg-white p-8 text-center space-y-4">
+          <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-600">
+            <CheckCircle className="w-8 h-8" />
           </div>
           
           <div>
-            <div className="inline-block px-3 py-0.5 bg-ink text-paper font-mono text-[10px] font-black uppercase tracking-wider mb-2">
-              PAYMENT VERIFIED ● PRODUCTION QUEUED
+            <div className="inline-block px-3 py-1 bg-black/[0.04] text-muted-dark border hairline rounded-full font-mono text-[10px] font-medium uppercase tracking-wider mb-2">
+              Payment Verified • Production Queued
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl font-black text-ink uppercase tracking-tight">
-              ORDER CONFIRMED!
+            <h1 className="font-display text-2xl sm:text-3xl font-semibold text-graphite tracking-tight">
+              Order Confirmed
             </h1>
-            <p className="font-mono text-xs text-ink/80 font-bold mt-2">
+            <p className="font-body text-xs sm:text-sm text-muted mt-2 max-w-sm mx-auto leading-relaxed">
               {error
-                ? "Payment received! Your order is queued. Check your email for tracking info."
-                : "Thank you for manufacturing with Saturn 3D. Precision slicing has commenced!"}
+                ? "Payment received. Your order is queued. Check your email for tracking info."
+                : "Thank you for manufacturing with Saturn 3D. Precision slicing has commenced."}
             </p>
           </div>
         </div>
 
         {/* Order details card */}
         {order ? (
-          <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 space-y-3 font-mono text-xs">
+          <div className="card-precision bg-white p-6 space-y-3 font-mono text-xs">
             {isSimulated && (
               <div className="flex justify-center mb-1">
-                <span className="px-3 py-1 bg-lemon text-ink font-black uppercase text-[10px] border border-ink">
+                <span className="px-2.5 py-0.5 bg-studio-light text-muted-dark font-medium uppercase text-[10px] border hairline rounded-full">
                   Simulation Order
                 </span>
               </div>
             )}
-            <div className="flex justify-between items-center pb-2 border-b border-ink/20">
-              <span className="font-bold text-ink/70 uppercase">Order ID:</span>
-              <span className="font-black text-ink bg-paper px-2 py-0.5 border border-ink">
+            <div className="flex justify-between items-center pb-2 border-b hairline">
+              <span className="text-muted uppercase text-[11px]">Order ID</span>
+              <span className="font-semibold text-graphite bg-studio-light px-2 py-0.5 rounded border hairline">
                 #{order.id.slice(0, 8).toUpperCase()}
               </span>
             </div>
-            <div className="flex justify-between items-center pb-2 border-b border-ink/20">
-              <span className="font-bold text-ink/70 uppercase">Status:</span>
-              <span className="px-2 py-0.5 bg-mint text-ink font-black uppercase text-[10px] border border-ink shadow-brutal-sm">
+            <div className="flex justify-between items-center pb-2 border-b hairline">
+              <span className="text-muted uppercase text-[11px]">Status</span>
+              <span className="px-2.5 py-0.5 bg-emerald-50 text-emerald-700 font-medium uppercase text-[10px] rounded-full border border-emerald-200">
                 {order.status}
               </span>
             </div>
-            <div className="flex justify-between items-center pb-2 border-b border-ink/20">
-              <span className="font-bold text-ink/70 uppercase">Total Settled:</span>
-              <span className="font-black text-saturn-orange text-lg">₹{order.total_amount.toFixed(2)}</span>
+            <div className="flex justify-between items-center pb-2 border-b hairline">
+              <span className="text-muted uppercase text-[11px]">Total Settled</span>
+              <span className="font-display font-semibold text-saturn-orange text-base">₹{order.total_amount.toFixed(2)}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="font-bold text-ink/70 uppercase">Components:</span>
-              <span className="font-black text-ink">{order.order_items?.length ?? 0} item(s)</span>
+              <span className="text-muted uppercase text-[11px]">Components</span>
+              <span className="font-medium text-graphite">{order.order_items?.length ?? 0} item(s)</span>
             </div>
           </div>
         ) : !error && (
-          <div className="card-slab bg-lemon border-3 border-ink shadow-brutal p-4 text-center font-mono text-xs font-bold">
-            Payment successful! Order telemetry updating in background.
+          <div className="card-precision bg-white p-4 text-center font-mono text-xs text-muted">
+            Payment successful. Order telemetry updating in background.
           </div>
         )}
 
         {/* What's Next timeline */}
-        <div className="card-slab bg-ink text-paper border-4 border-ink shadow-brutal p-6">
-          <div className="flex items-center gap-3 mb-5 border-b border-paper/20 pb-3">
-            <Package className="w-5 h-5 text-saturn-orange" />
-            <span className="font-display font-black text-sm uppercase tracking-wider text-paper">PRODUCTION TIMELINE</span>
+        <div className="card-precision-dark bg-graphite text-studio-light p-6">
+          <div className="flex items-center gap-2.5 mb-5 border-b hairline-dark pb-3">
+            <Package className="w-4 h-4 text-saturn-orange" />
+            <span className="font-display font-semibold text-sm uppercase tracking-wider text-white">Production Timeline</span>
           </div>
           <div className="space-y-4">
             {nextSteps.map((step, i) => (
               <div key={step.title} className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-paper text-ink border-2 border-paper flex items-center justify-center flex-shrink-0 font-mono font-black text-xs shadow-brutal-sm">
+                <div className="w-7 h-7 rounded-full bg-white/10 text-white border hairline-dark flex items-center justify-center shrink-0 font-mono text-xs">
                   {i + 1}
                 </div>
-                <div className="pb-1 font-mono">
-                  <div className="text-xs font-black text-paper uppercase">{step.title}</div>
-                  <div className="text-[10px] text-paper/70 font-medium">{step.desc}</div>
+                <div>
+                  <div className="font-display font-medium text-xs text-white">{step.title}</div>
+                  <div className="font-body text-[11px] text-muted-dark leading-relaxed">{step.desc}</div>
                 </div>
               </div>
             ))}
@@ -145,20 +144,19 @@ export default function OrderSuccessPage() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-3">
-          <Button
+          <button
             onClick={() => navigate('/orders')}
-            className="flex-1 h-12 btn-brutal bg-saturn-orange text-white hover:bg-lemon hover:text-ink font-mono font-black uppercase tracking-wider text-xs border-2 border-ink shadow-brutal cursor-pointer"
+            className="flex-1 h-11 btn-precision-primary text-xs font-mono font-medium uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
           >
-            VIEW MY ORDERS
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <Button
-            variant="outline"
+            <span>View My Orders</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+          <button
             onClick={() => navigate('/categories')}
-            className="flex-1 h-12 btn-brutal bg-white hover:bg-lemon text-ink font-mono font-black uppercase tracking-wider text-xs border-2 border-ink shadow-brutal cursor-pointer"
+            className="flex-1 h-11 btn-precision-secondary text-xs font-mono font-medium uppercase tracking-wider flex items-center justify-center cursor-pointer"
           >
-            CONTINUE SHOPPING
-          </Button>
+            Continue Shopping
+          </button>
         </div>
       </div>
     </div>

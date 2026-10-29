@@ -13,7 +13,7 @@ import { useAuthStore } from '@/store/authStore';
 import Logo from '@/components/Logo';
 
 const schema = z.object({
-  email: z.string().email('Enter a valid email'),
+  email: z.string().email('Enter a valid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 type FormData = z.infer<typeof schema>;
@@ -31,7 +31,6 @@ export default function LoginPage() {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  // Already logged in — redirect away
   if (isAuthenticated) {
     if (isAdmin) return <Navigate to="/admin" replace />;
     const from = (location.state as any)?.from || consumeRedirectPath();
@@ -61,50 +60,53 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-paper pattern-blueprint flex items-center justify-center p-4 py-16 text-ink">
-      <div className="w-full max-w-[440px] relative z-10">
+    <div className="min-h-screen bg-[#0B0D10] text-[#F5F6F8] flex items-center justify-center p-4 py-20 font-body select-none">
+      <div className="w-full max-w-[420px] relative z-10">
+        
+        {/* Header */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-block mb-6">
-            <Logo className="h-10 mx-auto" />
+            <Logo variant="white" className="h-8 mx-auto" />
           </Link>
-          <div className="inline-block px-3 py-1 bg-lemon border-2 border-ink shadow-brutal-sm font-mono text-[10px] font-black uppercase tracking-wider mb-2">
-            // OPERATOR PORTAL ACCESS
+          <div className="precision-badge text-[11px] mb-3">
+            Operator Account Access
           </div>
-          <h1 className="font-display text-4xl font-black text-ink uppercase tracking-tight mb-2">
-            WELCOME BACK
+          <h1 className="text-2xl font-semibold text-white tracking-tight mb-2">
+            Sign in to Saturn 3D
           </h1>
-          <p className="font-mono text-xs font-bold text-ink/70">
-            New to Saturn 3D?{' '}
-            <Link to="/register" className="text-saturn-orange font-black hover:underline inline-flex items-center gap-1">
+          <p className="text-xs text-[#A3A9B3]">
+            New to the fabrication lab?{' '}
+            <Link to="/register" className="text-[#FF5A1F] hover:underline inline-flex items-center gap-1 font-medium">
               Create an account <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </p>
         </div>
 
-        <div className="card-slab bg-paper border-4 border-ink shadow-brutal-xl p-8 sm:p-10">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="email" className="font-mono text-xs font-black uppercase tracking-wider text-ink">
+        {/* Card */}
+        <div className="card-precision-dark p-8 sm:p-9 space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="font-mono text-xs text-[#A3A9B3] uppercase">
                 Email Address
               </Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="engineer@company.com"
-                className="h-12 bg-white border-2 border-ink font-mono text-xs shadow-brutal-sm focus:bg-lemon focus:ring-0"
+                className="h-10 bg-white/5 border-white/10 text-white rounded-xl text-xs font-mono focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
                 {...register('email')}
               />
               {errors.email && (
-                <p className="font-mono text-xs text-red-500 font-bold">{errors.email.message}</p>
+                <p className="font-mono text-[11px] text-red-400">{errors.email.message}</p>
               )}
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password" className="font-mono text-xs font-black uppercase tracking-wider text-ink">
+                <Label htmlFor="password" className="font-mono text-xs text-[#A3A9B3] uppercase">
                   Password
                 </Label>
-                <a href="#" className="font-mono text-[10px] font-black text-saturn-orange uppercase hover:underline">
+                <a href="#" className="font-mono text-[11px] text-[#FF5A1F] hover:underline">
                   Forgot?
                 </a>
               </div>
@@ -113,51 +115,47 @@ export default function LoginPage() {
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="••••••••"
-                  className="h-12 bg-white border-2 border-ink font-mono text-xs shadow-brutal-sm focus:bg-lemon focus:ring-0 pr-12"
+                  className="h-10 bg-white/5 border-white/10 text-white rounded-xl text-xs font-mono pr-10 focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
                   {...register('password')}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-ink/60 hover:text-ink cursor-pointer"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-white/40 hover:text-white cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
               {errors.password && (
-                <p className="font-mono text-xs text-red-500 font-bold">{errors.password.message}</p>
+                <p className="font-mono text-[11px] text-red-400">{errors.password.message}</p>
               )}
             </div>
 
-            <Button
+            <button
               type="submit"
               disabled={isLoading}
-              className="w-full h-14 btn-brutal bg-saturn-orange text-white hover:bg-lemon hover:text-ink font-mono font-black uppercase tracking-wider text-xs border-3 border-ink shadow-brutal cursor-pointer disabled:opacity-40"
+              className="w-full btn-precision-primary py-3 text-xs font-semibold flex items-center justify-center gap-2 mt-2"
             >
               {isLoading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
               ) : (
-                <div className="flex items-center gap-2">
+                <>
                   <LogIn className="w-4 h-4" />
-                  <span>SIGN IN TO SATURN 3D</span>
-                </div>
+                  <span>Sign In</span>
+                </>
               )}
-            </Button>
+            </button>
           </form>
         </div>
 
-        <div className="mt-4 text-center">
+        <div className="mt-5 text-center">
           <Link
             to="/admin"
-            className="font-mono text-[10px] font-bold text-ink/60 hover:text-saturn-orange uppercase tracking-wider underline"
+            className="font-mono text-[11px] text-white/40 hover:text-white transition-colors"
           >
-            System Administrator? Access Master Console →
+            System Administrator? Master Console &rarr;
           </Link>
         </div>
-
-        <p className="mt-6 text-center font-mono text-[10px] font-black text-ink/50 uppercase tracking-widest">
-          © 2026 SATURN 3D • BHOPAL MANUFACTURING HUB
-        </p>
       </div>
     </div>
   );

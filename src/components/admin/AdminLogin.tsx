@@ -12,7 +12,6 @@ import {
   AlertTriangle, 
   ArrowLeft,
   KeyRound,
-  Terminal,
   Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -58,112 +57,89 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
         password,
       });
 
-      if (res.data.success && res.data.data) {
-        const { user: loggedInUser, token } = res.data.data;
+      const user = res.data?.data?.user;
+      const token = res.data?.data?.token;
 
-        // Strict Admin Gate check
-        if (loggedInUser.role !== 'admin') {
-          setErrorMessage('Access Denied: This account does not possess Administrator privileges. Only system administrators can access this terminal.');
-          toast.error('Access Denied: Account lacks Administrator authorization');
+      if (user && token) {
+        if (user.role !== 'admin') {
+          setErrorMessage('Access Denied: Account lacks Master Console administrative permissions.');
+          toast.error('Insufficient privileges: Admin role required.');
           return;
         }
 
-        login(loggedInUser, token);
-        toast.success(`Welcome, Administrator ${loggedInUser.name || loggedInUser.email}!`);
-        if (onSuccess) {
-          onSuccess();
-        }
+        login(user, token);
+        toast.success(`Welcome back, ${user.name || 'Administrator'}!`);
+        onSuccess?.();
       } else {
-        setErrorMessage(res.data.error || 'Authentication rejected by security gateway');
+        setErrorMessage('Authentication rejected. Please verify your credentials.');
       }
-    } catch (err: any) {
-      const errorMsg = getApiError(err);
-      setErrorMessage(errorMsg);
-      toast.error(errorMsg);
+    } catch (err) {
+      const msg = getApiError(err);
+      setErrorMessage(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-paper pattern-blueprint flex flex-col justify-center items-center p-4 sm:p-6 font-mono relative selection:bg-saturn-orange selection:text-white">
-      {/* Top Bar with Return Link */}
-      <div className="w-full max-w-md mb-6 flex items-center justify-between">
-        <Link 
-          href="/" 
-          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-ink bg-white border-2 border-ink px-3 py-1.5 shadow-brutal-sm hover:bg-lemon transition-all"
+    <div className="min-h-screen bg-[#0B0D10] text-[#F5F6F8] flex flex-col items-center justify-center p-4 sm:p-6 relative select-none font-body">
+      {/* Top Bar */}
+      <div className="w-full max-w-md flex items-center justify-between mb-6 text-xs text-white/60">
+        <Link
+          href="/"
+          className="btn-precision-secondary text-xs py-1.5 px-3 flex items-center gap-1.5 text-white/80 hover:text-white"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          Storefront
+          <ArrowLeft className="w-3.5 h-3.5" /> Return to Store
         </Link>
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 border-2 border-ink bg-lemon shadow-brutal-sm text-[10px] font-black uppercase text-ink">
-          <div className="w-2 h-2 rounded-full bg-saturn-orange animate-pulse" />
-          GATEWAY::LIVE
+        <div className="flex items-center gap-2 font-mono text-[11px] text-emerald-400">
+          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          GATEWAY::ONLINE
         </div>
       </div>
 
       {/* Main Login Card */}
-      <div className="w-full max-w-md bg-white border-3 border-ink shadow-brutal-lg">
-        {/* Terminal Header */}
-        <div className="bg-ink text-paper p-4 border-b-3 border-ink flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-3 h-3 bg-red-500 border border-white/50" />
-            <div className="w-3 h-3 bg-yellow-400 border border-white/50" />
-            <div className="w-3 h-3 bg-green-500 border border-white/50" />
-            <span className="text-[10px] font-mono font-bold tracking-wider text-paper/80 uppercase ml-2 flex items-center gap-1">
-              <Terminal className="w-3.5 h-3.5 text-lemon" />
-              ADMIN_TERMINAL_V2
-            </span>
-          </div>
-          <span className="text-[9px] font-black uppercase bg-lemon text-ink px-1.5 py-0.5">
-            PORT::3000
-          </span>
-        </div>
-
+      <div className="w-full max-w-md card-precision-dark overflow-hidden border-white/10 shadow-precision-xl">
         {/* Brand Banner */}
-        <div className="p-6 pb-2 text-center border-b-2 border-ink/10 bg-paper/30">
+        <div className="p-6 text-center border-b border-white/10 bg-[#181C22]">
           <div className="inline-block mb-3">
-            <Logo className="h-7 mx-auto" />
+            <Logo variant="white" className="h-7 mx-auto" />
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-saturn-orange text-white border-2 border-ink shadow-brutal-sm mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#FF5A1F]/15 border border-[#FF5A1F]/30 text-[#FF5A1F] text-xs font-mono font-semibold mb-2">
             <ShieldCheck className="w-4 h-4" />
-            <span className="text-xs font-black uppercase tracking-wider">Master Command Console</span>
+            <span>Master Console Authentication</span>
           </div>
-          <p className="text-[11px] font-bold text-ink/70 uppercase tracking-wide">
-            Restricted System · Root Administrator Login
+          <p className="text-xs text-[#A3A9B3]">
+            Restricted Operator Access &bull; Bhopal Additive Hub
           </p>
         </div>
 
         {/* Body & Form */}
         <div className="p-6 sm:p-8 space-y-5">
-          {/* Active Non-Admin User Alert */}
           {user && user.role !== 'admin' && (
-            <div className="p-3 bg-lemon border-2 border-ink shadow-brutal-sm flex items-start gap-2.5">
-              <AlertTriangle className="w-4 h-4 text-saturn-orange flex-shrink-0 mt-0.5" />
-              <div className="text-[11px] font-bold text-ink leading-tight">
-                Currently signed in as customer <span className="font-black underline">{user.email}</span>. Master console requires Administrator authentication.
+            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-200 text-xs flex items-start gap-2.5">
+              <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                Signed in as customer <span className="underline">{user.email}</span>. Master console requires administrator authentication.
               </div>
             </div>
           )}
 
-          {/* Error Message Alert */}
           {errorMessage && (
-            <div className="p-3 bg-red-100 border-2 border-red-600 text-red-900 shadow-brutal-sm flex items-start gap-2.5">
-              <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
-              <div className="text-xs font-bold leading-tight">
-                {errorMessage}
-              </div>
+            <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-200 text-xs flex items-start gap-2.5">
+              <AlertTriangle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+              <div>{errorMessage}</div>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <Label className="text-xs font-mono font-black uppercase tracking-wider text-ink flex items-center justify-between mb-1">
+            <div className="space-y-1.5">
+              <Label className="text-xs font-mono text-[#A3A9B3] flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-saturn-orange" />
-                  Admin Email
+                  <Mail className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  Administrator Email
                 </span>
-                <span className="text-[9px] text-ink/50 uppercase font-bold">REQUIRED</span>
+                <span className="text-[10px] text-white/40">REQUIRED</span>
               </Label>
               <Input
                 type="email"
@@ -171,19 +147,19 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="saturn3d@gmail.com"
-                className="h-11 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white focus-visible:ring-0 focus-visible:border-saturn-orange"
+                className="h-10 font-mono bg-white/5 border-white/10 text-white rounded-xl focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
                 autoComplete="email"
                 autoFocus
               />
             </div>
 
-            <div>
-              <Label className="text-xs font-mono font-black uppercase tracking-wider text-ink flex items-center justify-between mb-1">
+            <div className="space-y-1.5">
+              <Label className="text-xs font-mono text-[#A3A9B3] flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-saturn-orange" />
+                  <Lock className="w-3.5 h-3.5 text-[#FF5A1F]" />
                   Master Password
                 </span>
-                <span className="text-[9px] text-ink/50 uppercase font-bold">ENCRYPTED</span>
+                <span className="text-[10px] text-white/40">ENCRYPTED</span>
               </Label>
               <div className="relative">
                 <Input
@@ -192,13 +168,13 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter administrator password"
-                  className="h-11 pr-10 font-mono font-bold border-2 border-ink shadow-brutal-sm bg-white focus-visible:ring-0 focus-visible:border-saturn-orange"
+                  className="h-10 pr-10 font-mono bg-white/5 border-white/10 text-white rounded-xl focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
                   autoComplete="current-password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/60 hover:text-ink transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -207,44 +183,44 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
             </div>
 
             {/* Quick Fill Button */}
-            <div className="pt-1 flex items-center justify-between">
+            <div className="pt-1 flex items-center justify-between font-mono text-xs">
               <button
                 type="button"
                 onClick={handleQuickFill}
-                className="inline-flex items-center gap-1 text-[10px] font-black text-saturn-orange hover:text-ink uppercase tracking-wide hover:underline cursor-pointer"
+                className="inline-flex items-center gap-1 text-[#FF5A1F] hover:underline cursor-pointer text-[11px]"
               >
-                <Zap className="w-3 h-3 fill-saturn-orange" />
-                Quick Fill Root Credentials
+                <Zap className="w-3 h-3" />
+                Fill Root Credentials
               </button>
-              <span className="text-[9px] text-ink/50 uppercase">
+              <span className="text-[10px] text-white/40">
                 Saturn3D@123
               </span>
             </div>
 
             {/* Submit Button */}
-            <Button
+            <button
               type="submit"
               disabled={loading}
-              className="w-full h-12 mt-2 bg-saturn-orange text-white hover:bg-orange-600 font-mono font-black uppercase tracking-wider border-3 border-ink shadow-brutal active:translate-x-1 active:translate-y-1 transition-all"
+              className="btn-precision-primary w-full py-3 text-xs font-semibold flex items-center justify-center gap-2 mt-2"
             >
               {loading ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  AUTHENTICATING ROOT...
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Authenticating console...</span>
                 </>
               ) : (
                 <>
-                  <KeyRound className="w-4 h-4 mr-2" />
-                  AUTHENTICATE CONSOLE
+                  <KeyRound className="w-4 h-4" />
+                  <span>Authenticate Console</span>
                 </>
               )}
-            </Button>
+            </button>
           </form>
         </div>
 
         {/* Footer Info */}
-        <div className="px-6 py-4 bg-paper/60 border-t-2 border-ink/20 text-center font-mono text-[10px] text-ink/60 font-bold uppercase">
-          Saturn 3D Precision Manufacturing Facility · Sys Node 01
+        <div className="px-6 py-3 bg-[#181C22] border-t border-white/10 text-center font-mono text-[10px] text-white/40">
+          Saturn 3D Precision Manufacturing Facility &bull; Sys Node 01
         </div>
       </div>
     </div>

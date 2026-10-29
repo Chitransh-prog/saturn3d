@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Loader2, ChevronRight, Home, Factory } from 'lucide-react';
+import { Loader2, Home, Factory } from 'lucide-react';
 import { productsApi, type Product } from '@/lib/api';
 import ProductCard from '@/components/ProductCard';
 import { categories, unslugify, getCategoryMetadata } from '@/data/categories';
@@ -35,8 +35,8 @@ export default function CategoryPage() {
         slug,
         description: `Advanced industrial solutions and precision hardware for ${title} applications.`,
         icon: metadata.icon || Factory,
-        color: metadata.color || 'bg-lemon text-ink',
-        borderColor: 'border-ink'
+        color: metadata.color || 'bg-studio-light text-graphite',
+        borderColor: 'border-black/10'
       };
       
       setCategory(dynamicCategory);
@@ -61,10 +61,10 @@ export default function CategoryPage() {
 
   if (loading && !category) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh] bg-paper pattern-blueprint">
-        <div className="card-slab bg-white border-3 border-ink shadow-brutal p-8 flex flex-col items-center gap-3">
+      <div className="flex items-center justify-center min-h-[60vh] bg-studio-light">
+        <div className="card-precision bg-white p-8 flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
-          <p className="font-mono text-xs font-black text-ink uppercase tracking-wider">Loading Sector Catalog...</p>
+          <p className="font-mono text-xs font-medium text-muted uppercase tracking-wider">Loading Sector Catalog...</p>
         </div>
       </div>
     );
@@ -72,15 +72,15 @@ export default function CategoryPage() {
 
   if (error && !category) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center bg-paper pattern-blueprint">
-        <div className="card-slab bg-white border-4 border-ink shadow-brutal-xl p-8 max-w-md">
-          <h2 className="font-display text-3xl font-black text-ink mb-2 uppercase">SECTOR NOT FOUND</h2>
-          <p className="font-mono text-xs font-bold text-ink/70 mb-6">{error}</p>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] px-6 text-center bg-studio-light">
+        <div className="card-precision bg-white p-8 max-w-md">
+          <h2 className="font-display text-2xl font-semibold text-graphite mb-2">Sector Not Found</h2>
+          <p className="font-body text-xs text-muted mb-6">{error}</p>
           <button 
             onClick={() => navigate('/categories')} 
-            className="btn-brutal bg-ink text-paper hover:bg-saturn-orange hover:text-white px-6 py-3 font-mono text-xs font-black uppercase tracking-wider border-2 border-ink shadow-brutal-sm cursor-pointer"
+            className="btn-precision-primary px-6 py-2.5 text-xs font-mono uppercase tracking-wider cursor-pointer"
           >
-            BROWSE ALL SECTORS
+            Browse All Sectors
           </button>
         </div>
       </div>
@@ -88,53 +88,53 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-paper pattern-blueprint">
+    <div className="min-h-screen bg-studio-light text-graphite">
       {/* Header / Hero */}
-      <div className="relative pt-20 sm:pt-24 pb-12 sm:pb-16 bg-paper border-b-3 border-ink">
+      <div className="relative pt-24 sm:pt-28 pb-12 sm:pb-16 bg-white border-b hairline">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 mb-8 font-mono text-xs font-black uppercase text-ink/60">
-            <button onClick={() => navigate('/')} className="hover:text-saturn-orange transition-colors flex items-center gap-1">
-              <Home className="w-3.5 h-3.5" /> HOME
+          <nav className="flex items-center gap-2 mb-6 font-mono text-xs text-muted">
+            <button onClick={() => navigate('/')} className="hover:text-saturn-orange transition-colors flex items-center gap-1 cursor-pointer">
+              <Home className="w-3.5 h-3.5" /> Home
             </button>
             <span>/</span>
-            <button onClick={() => navigate('/categories')} className="hover:text-saturn-orange transition-colors">
-              CATEGORIES
+            <button onClick={() => navigate('/categories')} className="hover:text-saturn-orange transition-colors cursor-pointer">
+              Categories
             </button>
             <span>/</span>
-            <span className="text-ink bg-lemon px-2 py-0.5 border border-ink shadow-brutal-sm">{category?.title}</span>
+            <span className="text-graphite font-medium bg-studio-light px-2.5 py-0.5 rounded-md border hairline">{category?.title}</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-ink text-paper border-2 border-ink shadow-brutal-sm font-mono text-xs font-black uppercase tracking-wider mb-4">
-                <span className="w-2.5 h-2.5 bg-saturn-orange" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/[0.04] border hairline rounded-full font-mono text-[11px] font-medium text-muted-dark mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-saturn-orange" />
                 <span>{categories.find(c => c.slug === slug) ? 'INDUSTRY SECTOR PROTOCOL' : 'HARDWARE CATEGORY PROTOCOL'}</span>
               </div>
-              <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-ink tracking-tight uppercase mb-4 leading-[0.92] break-words">
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-semibold text-graphite tracking-tight mb-4">
                 {category?.title}
               </h1>
-              <p className="font-mono text-xs sm:text-sm text-ink/80 font-bold leading-relaxed max-w-2xl bg-white/70 p-4 border-2 border-ink shadow-brutal-sm">
+              <p className="font-body text-xs sm:text-sm text-muted leading-relaxed max-w-2xl bg-studio-light/60 p-4 rounded-xl border hairline">
                 {category?.description}
               </p>
             </div>
             
             <div className="hidden lg:block">
-               <div className="w-40 h-40 card-slab bg-lemon border-3 border-ink shadow-brutal flex items-center justify-center rotate-3">
-                  {category && <category.icon className="w-20 h-20 text-ink" />}
+               <div className="w-32 h-32 card-precision bg-studio-light flex items-center justify-center">
+                  {category && <category.icon className="w-16 h-16 text-muted-dark" />}
                </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 relative z-10">
         {/* Results Header */}
-        <div className="flex items-center justify-between mb-10 pb-4 border-b-2 border-ink/20">
-           <div className="flex items-center gap-3">
-              <div className="w-3 h-3 bg-saturn-orange border border-ink" />
-              <p className="font-mono text-xs font-black text-ink uppercase tracking-wider">
-                /{products.length} PRECISION COMPONENTS READY FOR DISPATCH
+        <div className="flex items-center justify-between mb-8 pb-4 border-b hairline">
+           <div className="flex items-center gap-2.5">
+              <div className="w-2 h-2 rounded-full bg-saturn-orange" />
+              <p className="font-mono text-xs font-medium text-muted uppercase tracking-wider">
+                {products.length} precision components ready for dispatch
               </p>
            </div>
         </div>
@@ -145,26 +145,26 @@ export default function CategoryPage() {
             <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
           </div>
         ) : products.length === 0 ? (
-          <div className="card-slab bg-white border-3 border-ink shadow-brutal p-10 text-center max-w-2xl mx-auto space-y-4">
-            <span className="font-mono text-xs font-black text-saturn-orange uppercase">// BESPOKE RUN REQUIRED</span>
-            <h4 className="font-display text-2xl font-black text-ink uppercase tracking-tight">
-              NO STANDARDIZED STOCK PARTS FOR THIS SECTOR YET
+          <div className="card-precision bg-white p-10 text-center max-w-2xl mx-auto space-y-4">
+            <span className="font-mono text-xs font-medium text-saturn-orange uppercase">// Custom Run Required</span>
+            <h4 className="font-display text-xl font-semibold text-graphite">
+              No Standardized Stock Parts for This Sector Yet
             </h4>
-            <p className="font-mono text-xs text-ink/70 max-w-md mx-auto font-bold leading-relaxed">
+            <p className="font-body text-xs sm:text-sm text-muted max-w-md mx-auto leading-relaxed">
               We specialize in custom manufacturing for {category?.title}. Upload your 3D CAD files for an immediate quote or explore our custom engineering lab.
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <button 
                 onClick={() => navigate('/custom-lab')} 
-                className="btn-brutal bg-saturn-orange text-white hover:bg-lemon hover:text-ink px-6 py-3 font-mono text-xs font-black uppercase tracking-wider border-2 border-ink shadow-brutal-sm cursor-pointer"
+                className="btn-precision-primary px-5 py-2.5 text-xs font-mono uppercase tracking-wider cursor-pointer"
               >
-                LAUNCH CUSTOM LAB
+                Launch Custom Lab
               </button>
               <button 
                 onClick={() => navigate('/categories')} 
-                className="btn-brutal bg-white hover:bg-lemon text-ink px-6 py-3 font-mono text-xs font-black uppercase tracking-wider border-2 border-ink shadow-brutal-sm cursor-pointer"
+                className="btn-precision-secondary px-5 py-2.5 text-xs font-mono uppercase tracking-wider cursor-pointer"
               >
-                BROWSE ALL HARDWARE
+                Browse All Hardware
               </button>
             </div>
           </div>

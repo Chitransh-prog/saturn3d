@@ -6,23 +6,23 @@ import { ArrowLeft, Compass } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center px-4 py-20">
-      <div className="max-w-md w-full bg-paper border-4 border-ink p-8 shadow-brutal text-center">
-        <div className="w-16 h-16 bg-saturn-orange border-3 border-ink flex items-center justify-center mx-auto mb-6 shadow-[4px_4px_0px_#0B0B0B]">
-          <Compass className="w-8 h-8 text-ink animate-spin" style={{ animationDuration: '6s' }} />
+    <div className="min-h-[70vh] flex items-center justify-center px-6 py-20 font-body">
+      <div className="max-w-md w-full card-precision-dark p-8 sm:p-10 text-center">
+        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-6 text-[#FF5A1F]">
+          <Compass className="w-7 h-7 animate-spin" style={{ animationDuration: '8s' }} />
         </div>
-        <div className="font-mono text-xs uppercase tracking-wider text-ink/60 mb-2">Error 404 // Orbit Lost</div>
-        <h1 className="font-display font-black text-3xl sm:text-4xl text-ink uppercase mb-4 tracking-tight">
-          Sector Not Found
+        <div className="type-mono-eyebrow text-white/50 mb-2">Error 404 // Coordinate Out of Bounds</div>
+        <h1 className="text-2xl sm:text-3xl font-semibold text-white mb-3">
+          Coordinate Not Found
         </h1>
-        <p className="text-ink/80 text-sm mb-6 font-mono leading-relaxed">
-          The coordinate or component model you are looking for does not exist in the current Saturn 3D matrix.
+        <p className="text-[#A3A9B3] text-xs sm:text-sm mb-6 leading-relaxed">
+          The component specification or route you requested does not exist in the active Saturn 3D manufacturing database.
         </p>
         <Link
           href="/"
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-saturn-yellow border-3 border-ink font-mono text-sm uppercase font-bold tracking-wider hover:bg-saturn-orange transition-colors shadow-[4px_4px_0px_#0B0B0B] active:translate-x-1 active:translate-y-1 active:shadow-none"
+          className="btn-precision-primary text-xs py-2.5 px-5 inline-flex items-center gap-2"
         >
-          <ArrowLeft className="w-4 h-4" /> Return to Base
+          <ArrowLeft className="w-4 h-4" /> Return to Main Lab
         </Link>
       </div>
     </div>

@@ -59,27 +59,27 @@ const defaultRows: SpecRow[] = [
 
 export default function SpecTable({ rows = defaultRows, className = '' }: SpecTableProps) {
   return (
-    <div className={`card-slab p-1 bg-white overflow-x-auto ${className}`}>
-      <table className="raw-table">
-        <thead>
+    <div className={`card-precision bg-white p-0 overflow-x-auto border hairline ${className}`}>
+      <table className="w-full text-left font-mono text-xs">
+        <thead className="bg-studio-light/60 border-b hairline">
           <tr>
-            <th>PROCESS</th>
-            <th>ENGINEERING MATERIAL</th>
-            <th>TOLERANCE</th>
-            <th>BUILD ENVELOPE</th>
-            <th>YIELD STRENGTH</th>
-            <th>STARTING RATE</th>
+            <th className="px-5 py-3 text-[11px] font-medium uppercase tracking-wider text-muted">Process</th>
+            <th className="px-5 py-3 text-[11px] font-medium uppercase tracking-wider text-muted">Engineering Material</th>
+            <th className="px-5 py-3 text-[11px] font-medium uppercase tracking-wider text-muted">Tolerance</th>
+            <th className="px-5 py-3 text-[11px] font-medium uppercase tracking-wider text-muted">Build Envelope</th>
+            <th className="px-5 py-3 text-[11px] font-medium uppercase tracking-wider text-muted">Yield Strength</th>
+            <th className="px-5 py-3 text-[11px] font-medium uppercase tracking-wider text-muted">Starting Rate</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y hairline">
           {rows.map((row, idx) => (
-            <tr key={idx}>
-              <td className="font-bold text-[#0B0B0B]">{row.process}</td>
-              <td className="font-bold text-[#FF5A1F]">{row.material}</td>
-              <td className="font-mono-tech">{row.tolerance}</td>
-              <td className="font-mono-tech">{row.envelope}</td>
-              <td className="font-mono-tech">{row.strength}</td>
-              <td className="font-mono-tech font-bold text-[#0B0B0B] bg-[#FFE14D]/30">{row.rate}</td>
+            <tr key={idx} className="hover:bg-studio-light/30 transition-colors">
+              <td className="px-5 py-3.5 font-medium text-graphite">{row.process}</td>
+              <td className="px-5 py-3.5 font-medium text-saturn-orange">{row.material}</td>
+              <td className="px-5 py-3.5 text-muted">{row.tolerance}</td>
+              <td className="px-5 py-3.5 text-muted">{row.envelope}</td>
+              <td className="px-5 py-3.5 text-muted">{row.strength}</td>
+              <td className="px-5 py-3.5 font-semibold text-graphite bg-black/[0.02]">{row.rate}</td>
             </tr>
           ))}
         </tbody>

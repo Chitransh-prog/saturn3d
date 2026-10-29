@@ -72,9 +72,9 @@ export default function SettingsManagement() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Business Identity */}
-        <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 sm:p-8 space-y-6">
-          <div className="bg-lemon -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b-3 border-ink flex items-center gap-2.5">
-            <div className="w-8 h-8 border-2 border-ink bg-white flex items-center justify-center text-ink shadow-brutal-sm">
+        <div className="card-precision bg-white border hairline shadow-precision-sm p-6 sm:p-8 space-y-6">
+          <div className="bg-amber-500/10 text-amber-700 -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b hairline flex items-center gap-2.5">
+            <div className="w-8 h-8 border hairline bg-white flex items-center justify-center text-ink shadow-precision-xs">
               <Store className="w-4 h-4 text-saturn-orange" />
             </div>
             <h2 className="font-display font-black text-sm text-ink uppercase tracking-wider">
@@ -88,7 +88,7 @@ export default function SettingsManagement() {
               <Input
                 value={settings.storeName}
                 onChange={(e) => setSettings({ ...settings, storeName: e.target.value })}
-                className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
             </div>
             <div>
@@ -97,7 +97,7 @@ export default function SettingsManagement() {
                 type="email"
                 value={settings.supportEmail}
                 onChange={(e) => setSettings({ ...settings, supportEmail: e.target.value })}
-                className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function SettingsManagement() {
                 value={settings.whatsappNumber}
                 onChange={(e) => setSettings({ ...settings, whatsappNumber: e.target.value })}
                 placeholder="917999824632"
-                className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
             </div>
             <div>
@@ -118,7 +118,7 @@ export default function SettingsManagement() {
                 value={settings.gstin}
                 onChange={(e) => setSettings({ ...settings, gstin: e.target.value })}
                 placeholder="23AABCS1234F1Z5"
-                className="h-11 mt-1 font-mono uppercase font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono uppercase font-bold border hairline shadow-precision-xs bg-white"
               />
             </div>
           </div>
@@ -128,15 +128,15 @@ export default function SettingsManagement() {
             <Input
               value={settings.address}
               onChange={(e) => setSettings({ ...settings, address: e.target.value })}
-              className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+              className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
             />
           </div>
         </div>
 
         {/* Financial & Shipping */}
-        <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 sm:p-8 space-y-6">
-          <div className="bg-lemon -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b-3 border-ink flex items-center gap-2.5">
-            <div className="w-8 h-8 border-2 border-ink bg-white flex items-center justify-center text-ink shadow-brutal-sm">
+        <div className="card-precision bg-white border hairline shadow-precision-sm p-6 sm:p-8 space-y-6">
+          <div className="bg-amber-500/10 text-amber-700 -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b hairline flex items-center gap-2.5">
+            <div className="w-8 h-8 border hairline bg-white flex items-center justify-center text-ink shadow-precision-xs">
               <Truck className="w-4 h-4 text-saturn-orange" />
             </div>
             <h2 className="font-display font-black text-sm text-ink uppercase tracking-wider">
@@ -151,7 +151,7 @@ export default function SettingsManagement() {
                 type="number"
                 value={settings.freeShippingThreshold}
                 onChange={(e) => setSettings({ ...settings, freeShippingThreshold: parseFloat(e.target.value) || 0 })}
-                className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
             </div>
             <div>
@@ -160,7 +160,7 @@ export default function SettingsManagement() {
                 type="number"
                 value={settings.defaultShippingCost}
                 onChange={(e) => setSettings({ ...settings, defaultShippingCost: parseFloat(e.target.value) || 0 })}
-                className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
             </div>
             <div>
@@ -169,7 +169,7 @@ export default function SettingsManagement() {
                 type="number"
                 value={settings.taxRatePercent}
                 onChange={(e) => setSettings({ ...settings, taxRatePercent: parseFloat(e.target.value) || 18 })}
-                className="h-11 mt-1 font-mono font-bold border-3 border-ink shadow-brutal-sm bg-white"
+                className="h-11 mt-1 font-mono font-bold border hairline shadow-precision-xs bg-white"
               />
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function SettingsManagement() {
           <button
             type="submit"
             disabled={saving}
-            className="h-12 px-8 border-3 border-ink bg-saturn-orange text-white font-mono font-black uppercase tracking-wider text-xs gap-2 flex items-center justify-center shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
+            className="h-12 px-8 border hairline bg-saturn-orange text-white font-mono font-black uppercase tracking-wider text-xs gap-2 flex items-center justify-center shadow-precision-sm hover:-translate-y-0.5 hover:shadow-precision-md active:scale-[0.98] transition-all"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin text-white" /> : <Save className="w-4 h-4" />}
             Save Configuration

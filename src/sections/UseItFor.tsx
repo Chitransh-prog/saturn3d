@@ -1,70 +1,51 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, ShieldCheck, Cpu, Layers } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-interface UseCaseItem {
+interface CaseStudyItem {
   id: string;
   number: string;
   title: string;
-  caption: string;
-  specs: string;
+  industry: string;
+  problem: string;
+  solution: string;
+  telemetry: string;
   image: string;
   route: string;
 }
 
-const useCases: UseCaseItem[] = [
+const caseStudies: CaseStudyItem[] = [
   {
     id: 'drones-uav',
     number: '01',
-    title: 'DRONES & UAVS',
-    caption: 'Aerodynamic carbon airframes, motor mounts, camera gimbals, and lightweight telemetry pods.',
-    specs: 'CARBON-X PA12 // 0.08MM ACCURACY',
+    title: 'Aerospace Drone Airframe & Gimbal Spars',
+    industry: 'Autonomous UAS & Robotics',
+    problem: 'CNC aluminum motor spars added excessive mass, limiting endurance to 28 minutes.',
+    solution: 'Engineered continuous Carbon-X PA12-CF spars with optimized gyroid infill, cutting mass by 38% while retaining 180 MPa stiffness.',
+    telemetry: 'Carbon-X PA12-CF // 4h Turnaround // -38% Mass',
     image: 'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80',
     route: '/custom-lab',
   },
   {
     id: 'robotics-automation',
     number: '02',
-    title: 'ROBOTICS & AUTOMATION',
-    caption: 'Custom end-effectors, soft robotic grippers, planetary gearboxes, and sensor brackets.',
-    specs: 'PETG INDUSTRIAL & TPU 95A',
+    title: 'Industrial Robotic End-Effector Gripper',
+    industry: 'Packaging & Automation',
+    problem: 'Standard silicone grippers wore out rapidly under high-cycle conveyor friction.',
+    solution: 'Fabricated dual-hardness TPU 95A flexible fingers over a rigid PETG Industrial core, increasing cycle life to 250,000+ continuous operations.',
+    telemetry: 'PETG + TPU 95A // ±0.08 mm // 24h Dispatch',
     image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80',
     route: '/custom-lab',
   },
   {
     id: 'medical-dental',
     number: '03',
-    title: 'MEDICAL & DENTAL',
-    caption: 'Biocompatible dental study casts, surgical drill guides, and orthotic anatomical splints.',
-    specs: 'CLASS IIA BIO-RESIN // 25μm',
+    title: 'Orthotic Scanner & Drill Guide Prototypes',
+    industry: 'Biomedical & Healthcare',
+    problem: 'Required autoclave-stable, sub-50µm surface definition for surgical drill verification.',
+    solution: 'Produced on 12K optical SLA photopolymer engines using High-Temp & Biocompatible resin formulations with verified ±0.04 mm accuracy.',
+    telemetry: '12K Optical Resin // 25µm Layers // ±0.04 mm',
     image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80',
-    route: '/custom-lab',
-  },
-  {
-    id: 'product-design',
-    number: '04',
-    title: 'PRODUCT DESIGN',
-    caption: 'Consumer electronics enclosures, click-feeling button mechanisms, and packaging prototypes.',
-    specs: '12K OPTIC RESIN // 10μm SLICE',
-    image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=800&q=80',
-    route: '/custom-lab',
-  },
-  {
-    id: 'student-projects',
-    number: '05',
-    title: 'STUDENT & RESEARCH',
-    caption: 'Formula Student aerodynamics, university lab testing, robotics club chassis, and thesis models.',
-    specs: 'SPECIAL ACADEMIC DISCOUNTS',
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
-    route: '/custom-lab',
-  },
-  {
-    id: 'architecture',
-    number: '06',
-    title: 'ARCHITECTURE MODELS',
-    caption: 'High-detail facade studies, masterplan site topography, and client presentation showcases.',
-    specs: 'LARGE FORMAT PLA // SEAMLESS',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
     route: '/custom-lab',
   },
 ];
@@ -75,86 +56,90 @@ export default function UseItFor() {
   return (
     <section
       id="use-it-for"
-      data-bg="#FAF7F2"
-      data-fg="#0B0B0B"
-      className="relative w-full bg-[#FAF7F2] text-[#0B0B0B] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 overflow-hidden"
+      className="w-full bg-[#F5F6F8] text-[#0B0D10] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 overflow-hidden font-body"
+      aria-label="Saturn 3D Industrial Case Studies"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto space-y-12">
+        
         {/* Section Header */}
-        <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <span className="type-mono-eyebrow text-[#0B0B0B]/70">
-                05 // APPLICATIONS &amp; CLIENT DOMAINS
-              </span>
-              <span className="sticker-minimal">
-                VERSATILE
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="type-mono-eyebrow text-[#5B616B]">
+                05 // Case Studies & Industry Applications
               </span>
             </div>
-
-            <div className="line-reveal-mask">
-              <h2 className="type-h2 text-[#0B0B0B]">
-                USE IT
-              </h2>
-            </div>
-            <div className="line-reveal-mask">
-              <h2 className="type-h2 text-[#FF5A1F]">
-                FOR.
-              </h2>
-            </div>
+            <h2 className="type-h2 text-[#0B0D10]">
+              Built for high-demand engineering environments.
+            </h2>
+            <p className="type-body text-[#5B616B] mt-2">
+              Explore how hardware teams, aerospace startups, and research institutions leverage our rapid additive fabrication infrastructure.
+            </p>
           </div>
 
-          <p className="type-body text-[#0B0B0B]/75 max-w-md font-semibold">
-            Across industrial labs, hardware startups, racing teams, and architecture studios.
-            Engineered for high mechanical demands and rapid turnaround.
-          </p>
+          <button
+            onClick={() => navigate('/custom-lab')}
+            className="btn-precision-primary text-xs py-2.5 px-4 shrink-0"
+          >
+            <span>Start your project</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         </div>
 
-        {/* 3-Column Responsive Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-          {useCases.map((item, idx) => (
+        {/* 3-Column Precision Case Study Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {caseStudies.map((item) => (
             <div
               key={item.id}
-              data-aos="fade-up"
-              data-aos-delay={(idx % 3) * 100}
               onClick={() => navigate(item.route)}
-              className="use-case-card group cursor-pointer bg-white/70 border-2 border-ink rounded-lg p-5 flex flex-col justify-between shadow-brutal-sm hover:shadow-brutal hover:-translate-y-1 transition-all duration-200 select-none"
+              className="card-precision p-6 flex flex-col justify-between group cursor-pointer hover:border-[#FF5A1F]/30"
             >
               <div>
-                {/* Image Tile with Subdued Clean Hairline */}
-                <div className="w-full aspect-[16/10] overflow-hidden bg-neutral-200 mb-4 relative rounded-md border border-ink/20">
+                {/* Image Tile */}
+                <div className="w-full aspect-[16/10] overflow-hidden rounded-xl bg-neutral-200 mb-5 relative">
                   <img
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-500"
                   />
-                  <div className="absolute top-2.5 left-2.5 bg-[#0B0B0B] text-[#FAF7F2] font-mono text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-xs">
-                    {item.number}
+                  <div className="absolute top-2.5 left-2.5">
+                    <span className="precision-badge bg-white/90 backdrop-blur-sm text-[10px]">
+                      {item.number} // {item.industry}
+                    </span>
                   </div>
                 </div>
 
-                {/* Title & Arrow */}
-                <div className="flex items-center justify-between gap-3 mb-2">
-                  <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-[#0B0B0B] group-hover:text-[#FF5A1F] transition-colors">
+                {/* Title */}
+                <div className="flex items-start justify-between gap-2 mb-3">
+                  <h3 className="text-base sm:text-lg font-semibold text-[#0B0D10] group-hover:text-[#FF5A1F] transition-colors leading-snug">
                     {item.title}
                   </h3>
-                  <ArrowUpRight className="w-4 h-4 text-[#0B0B0B] shrink-0 transform transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-[#FF5A1F]" />
+                  <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-[#FF5A1F] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 mt-1" />
                 </div>
 
-                {/* Caption */}
-                <p className="font-body text-xs text-[#0B0B0B]/75 leading-relaxed mb-4">
-                  {item.caption}
-                </p>
+                {/* Problem & Solution Breakdown */}
+                <div className="space-y-2 text-xs text-[#5B616B] leading-relaxed mb-6">
+                  <p>
+                    <strong className="text-[#0B0D10] font-medium">Challenge: </strong>
+                    {item.problem}
+                  </p>
+                  <p>
+                    <strong className="text-[#0B0D10] font-medium">Additive Solution: </strong>
+                    {item.solution}
+                  </p>
+                </div>
               </div>
 
-              {/* Specs Badge */}
-              <div className="pt-3 border-t border-ink/10 font-mono text-[10px] font-bold text-[#FF5A1F] uppercase tracking-wider">
-                {item.specs}
+              {/* Verified Telemetry Strip */}
+              <div className="pt-4 border-t border-black/5 font-mono text-[11px] font-medium text-[#FF5A1F]">
+                {item.telemetry}
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

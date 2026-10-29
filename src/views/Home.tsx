@@ -3,10 +3,11 @@ import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Phase 2 Page Flow Sections
+// Precision Studio Overhauled Sections
 import Preloader from '@/components/Preloader';
 import Hero from '@/sections/Hero';
-import LogoTicker from '@/sections/LogoTicker';
+import StickySubNav from '@/components/StickySubNav';
+import CapabilityStrip from '@/sections/LogoTicker';
 import TheLab from '@/sections/TheLab';
 import ExploreMaterials from '@/sections/ExploreMaterials';
 import MakeItYours from '@/sections/MakeItYours';
@@ -25,77 +26,12 @@ export default function Home() {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // 1. Sync ScrollTrigger with Root Lenis instance
+    // Sync ScrollTrigger with Root Lenis instance
     const rootLenis = (window as any).__lenis as Lenis | undefined;
     if (rootLenis && !prefersReducedMotion) {
       rootLenis.on('scroll', ScrollTrigger.update);
     }
 
-    // 2. Section Color Morphing via data-bg and data-fg
-    const sections = document.querySelectorAll<HTMLElement>('[data-bg]');
-    const colorTriggers: ScrollTrigger[] = [];
-
-    sections.forEach((sec) => {
-      const bg = sec.getAttribute('data-bg');
-      const fg = sec.getAttribute('data-fg');
-
-      if (bg) {
-        const trigger = ScrollTrigger.create({
-          trigger: sec,
-          start: 'top 50%',
-          end: 'bottom 50%',
-          onEnter: () => {
-            document.body.style.backgroundColor = bg;
-            if (fg) document.body.style.color = fg;
-          },
-          onEnterBack: () => {
-            document.body.style.backgroundColor = bg;
-            if (fg) document.body.style.color = fg;
-          },
-        });
-        colorTriggers.push(trigger);
-      }
-    });
-
-    // 3. Desktop Magnetic Buttons Helper
-    const isDesktop = window.innerWidth >= 1024;
-    const magneticCleanups: Array<() => void> = [];
-
-    if (isDesktop && !prefersReducedMotion) {
-      const brutalButtons = document.querySelectorAll<HTMLElement>('.btn-brutal');
-      brutalButtons.forEach((btn) => {
-        const handleMouseMove = (e: MouseEvent) => {
-          const rect = btn.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          gsap.to(btn, {
-            x: x * 0.18,
-            y: y * 0.18,
-            duration: 0.3,
-            ease: 'power2.out',
-          });
-        };
-
-        const handleMouseLeave = () => {
-          gsap.to(btn, {
-            x: 0,
-            y: 0,
-            duration: 0.45,
-            ease: 'power3.out',
-          });
-        };
-
-        btn.addEventListener('mousemove', handleMouseMove);
-        btn.addEventListener('mouseleave', handleMouseLeave);
-
-        magneticCleanups.push(() => {
-          btn.removeEventListener('mousemove', handleMouseMove);
-          btn.removeEventListener('mouseleave', handleMouseLeave);
-        });
-      });
-    }
-
-    // 4. Refresh ScrollTrigger after font & 3D mount
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 600);
@@ -105,45 +41,63 @@ export default function Home() {
       if (rootLenis && !prefersReducedMotion) {
         rootLenis.off('scroll', ScrollTrigger.update);
       }
-      colorTriggers.forEach((t) => t.kill());
-      magneticCleanups.forEach((c) => c());
     };
   }, [preloaderDone]);
 
+  const subNavItems = [
+    { id: 'the-lab', label: 'Showcase' },
+    { id: 'materials', label: 'Materials & Specs' },
+    { id: 'configurator', label: 'Instant Quote' },
+    { id: 'how-it-works', label: 'Pipeline' },
+    { id: 'proof', label: 'Real Prints' },
+    { id: 'faq', label: 'FAQ' },
+  ];
+
   return (
-    <div ref={containerRef} className="flex flex-col w-full relative">
-      {/* 00. Preloader (Shown once per session, max 2.5s, skippable) */}
+    <div ref={containerRef} className="flex flex-col w-full relative bg-[#F5F6F8]">
+      {/* 00. Preloader */}
       <Preloader onComplete={() => setPreloaderDone(true)} />
 
-      {/* 01. Hero: Scroll-Scrubbed 3D Mecha + Saturn Ring */}
-      <Hero />
+      {/* 01. Hero: Precision Studio Dark 3D Stage */}
+      <div id="overview">
+        <Hero />
+      </div>
 
-      {/* Marquee Ticker: Single Caution Marquee with Scroll Velocity Tracking */}
-      <LogoTicker />
+      {/* Sticky Sub-Navigation Bar (Creality-Style) */}
+      <StickySubNav items={subNavItems} quoteCtaHref="/custom-lab" quoteCtaLabel="Instant CAD Quote" />
 
-      {/* 02. The Lab: Services / Catalog Open List with Underlined Tabs & Ghost 3D */}
+      {/* 02. Capability Telemetry Strip (4 Inline Metrics) */}
+      <CapabilityStrip />
+
+      {/* 03. The Lab: Powered by Saturn Cut-Out Showcase + Intent Selector */}
       <TheLab />
 
-      {/* 03. Explore Every Material: Pinned 01-05 Selector & Real-Time PBR Shaders */}
-      <ExploreMaterials />
+      {/* 04. Explore Materials: Deep Graphite Section + Process Comparison Table */}
+      <div id="specs">
+        <ExploreMaterials />
+      </div>
 
-      {/* 04. Make It Yours: Instant CAD Quote Configurator on Tint Band */}
+      {/* 05. Instant CAD Quote Configurator */}
       <MakeItYours />
 
-      {/* 05. Use It For: Horizontal Pinned Strip with Speed Parallax */}
+      {/* 06. Applications & Industrial Case Studies */}
       <UseItFor />
 
-      {/* 06. How It's Made: 5-Stage Methodological Pipeline with 3D Layer Reveal */}
+      {/* 07. Methodology & 5-Stage Fabrication Pipeline */}
       <HowItsMade />
 
-      {/* 07. Bulk Runs: Minimalist Parts x Quantity Volume Calculator */}
+      {/* 08. Small-Batch Production Volume Calculator */}
       <BulkRuns />
 
-      {/* 08. Proof: Borderless Masonry Gallery of Genuine Prints & Client Proof */}
-      <ProofGallery />
+      {/* 09. Real Prints Showcase with Verified Shop Telemetry & Testimonials */}
+      <div id="gallery">
+        <ProofGallery />
+      </div>
 
-      {/* 09. FAQ: 1px Hairline Technical Accordion */}
-      <FAQSection />
+      {/* 10. Frequently Answered Questions Accordion */}
+      <div id="faq">
+        <FAQSection />
+      </div>
     </div>
   );
 }

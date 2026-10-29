@@ -37,7 +37,7 @@ export default function AuditLogsManagement() {
         </p>
       </div>
 
-      <div className="card-slab bg-white border-3 border-ink shadow-brutal overflow-hidden">
+      <div className="card-precision bg-white border hairline shadow-precision-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
@@ -49,7 +49,7 @@ export default function AuditLogsManagement() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm font-mono">
-              <thead className="bg-ink text-paper border-b-3 border-ink">
+              <thead className="bg-ink text-paper border-b hairline">
                 <tr>
                   <th className="px-6 py-3.5 text-left text-[10px] font-black uppercase tracking-wider text-paper border-r border-paper/10">Timestamp</th>
                   <th className="px-6 py-3.5 text-left text-[10px] font-black uppercase tracking-wider text-paper border-r border-paper/10">Action</th>
@@ -60,7 +60,7 @@ export default function AuditLogsManagement() {
               </thead>
               <tbody className="divide-y-2 divide-ink/10">
                 {logs.map((log) => (
-                  <tr key={log.id} className="hover:bg-lemon/15 transition-colors">
+                  <tr key={log.id} className="hover:bg-amber-500/10 text-amber-700/15 transition-colors">
                     <td className="px-6 py-4 text-xs font-mono text-ink/70 whitespace-nowrap">
                       <div className="flex items-center gap-1.5">
                         <Calendar className="w-3.5 h-3.5 text-ink/40" />
@@ -74,7 +74,7 @@ export default function AuditLogsManagement() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="font-mono font-black text-[10px] tracking-wider uppercase px-2 py-0.5 border border-ink bg-lemon text-ink shadow-[1px_1px_0px_#0B0B0B]">
+                      <span className="font-mono font-black text-[10px] tracking-wider uppercase px-2 py-0.5 border border-ink bg-amber-500/10 text-amber-700 text-ink shadow-precision-xs">
                         {log.action}
                       </span>
                     </td>

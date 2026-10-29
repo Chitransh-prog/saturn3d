@@ -9,10 +9,10 @@ import AdminLogin from '@/components/admin/AdminLogin';
 const AdminPanel = dynamic(() => import('@/views/AdminPanel'), {
   ssr: false,
   loading: () => (
-    <div className="min-h-screen bg-paper flex items-center justify-center font-mono">
-      <div className="p-8 border-3 border-ink bg-white shadow-brutal flex flex-col items-center gap-3">
-        <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
-        <span className="text-xs font-black uppercase tracking-wider text-ink">
+    <div className="min-h-screen bg-[#0B0D10] flex items-center justify-center font-body">
+      <div className="p-8 card-precision-dark flex flex-col items-center gap-3">
+        <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+        <span className="font-mono text-xs uppercase tracking-wider text-white/70">
           Authenticating Master Console...
         </span>
       </div>
@@ -28,13 +28,12 @@ export default function AdminPage() {
     setMounted(true);
   }, []);
 
-  // Show loading indicator until client store rehydrates
   if (!mounted || isLoading) {
     return (
-      <div className="min-h-screen bg-paper flex items-center justify-center font-mono">
-        <div className="p-8 border-3 border-ink bg-white shadow-brutal flex flex-col items-center gap-3">
-          <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
-          <span className="text-xs font-black uppercase tracking-wider text-ink">
+      <div className="min-h-screen bg-[#0B0D10] flex items-center justify-center font-body">
+        <div className="p-8 card-precision-dark flex flex-col items-center gap-3">
+          <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+          <span className="font-mono text-xs uppercase tracking-wider text-white/70">
             Initializing Saturn Master Console...
           </span>
         </div>
@@ -42,11 +41,9 @@ export default function AdminPage() {
     );
   }
 
-  // If authenticated as an administrator, render Admin Panel directly
   if (isAuthenticated && isAdmin) {
     return <AdminPanel />;
   }
 
-  // Otherwise, render the dedicated Admin Master Console Login directly on /admin
   return <AdminLogin />;
 }

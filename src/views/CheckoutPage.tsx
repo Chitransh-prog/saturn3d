@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {
-  ArrowLeft, CreditCard, Loader2, Shield, Lock,
+  ArrowLeft, CreditCard, Loader2, Lock,
   Package, MapPin, ShoppingBag, CheckCheck,
-  Tag, Percent, Truck, Check, Sparkles, AlertCircle
+  Tag, Truck, Check, Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -257,40 +257,40 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-paper pattern-blueprint pt-16 sm:pt-20 text-ink">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="min-h-screen bg-studio-light pt-20 sm:pt-24 text-graphite pb-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Back navigation */}
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 font-mono text-xs font-black uppercase text-ink hover:text-saturn-orange transition-colors group mb-6 sm:mb-8 cursor-pointer"
+          className="inline-flex items-center gap-2 font-mono text-xs font-medium text-muted hover:text-saturn-orange transition-colors group mb-6 cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          BACK TO STORE
+          <span>Back to store</span>
         </button>
 
         {/* Step indicator */}
-        <div className="flex items-center justify-center mb-10 sm:mb-14">
-          <div className="flex items-center w-full max-w-md justify-between sm:justify-center">
+        <div className="flex items-center justify-center mb-10">
+          <div className="flex items-center w-full max-w-md justify-between">
             {steps.map((step, i) => {
               const active = i === 1 || i === 2;
               const done = i === 0;
               return (
-                <div key={step.label} className="flex items-center flex-1 last:flex-none sm:flex-none">
-                  <div className="flex flex-col items-center gap-1.5 min-w-[50px] sm:min-w-[64px]">
-                    <div className={`w-9 h-9 sm:w-10 sm:h-10 border-2 border-ink flex items-center justify-center transition-all ${
-                      done ? 'bg-mint text-ink shadow-brutal-sm'
-                      : active ? 'bg-lemon text-ink shadow-brutal-sm'
-                      : 'bg-white text-ink/40'
+                <div key={step.label} className="flex items-center flex-1 last:flex-none">
+                  <div className="flex flex-col items-center gap-1.5 min-w-[50px]">
+                    <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all border ${
+                      done ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/30'
+                      : active ? 'bg-saturn-orange text-white border-saturn-orange shadow-precision-xs'
+                      : 'bg-white text-muted border-black/10'
                     }`}>
                       <step.icon className="w-4 h-4" />
                     </div>
-                    <span className={`text-[9px] font-mono font-black uppercase tracking-wider text-center mt-1 sm:mt-0 ${
-                      active ? 'text-ink' : done ? 'text-saturn-orange' : 'text-ink/40'
+                    <span className={`text-[10px] font-mono uppercase tracking-wider text-center ${
+                      active ? 'text-graphite font-semibold' : done ? 'text-saturn-orange' : 'text-muted'
                     }`}>{step.label}</span>
                   </div>
                   {i < steps.length - 1 && (
-                    <div className={`flex-1 sm:w-12 h-0.5 border-b-2 border-ink mb-5`} />
+                    <div className="flex-1 h-[1px] bg-black/10 mx-2 mb-4" />
                   )}
                 </div>
               );
@@ -298,105 +298,105 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left — Shipping & Payment Selection */}
-          <div className="lg:col-span-7 order-2 lg:order-1 space-y-8">
-            <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 sm:p-8">
-              <div className="mb-6 border-b-2 border-ink/20 pb-4">
-                <span className="font-mono text-[10px] font-black uppercase tracking-wider text-saturn-orange">// STEP 1 OF 2</span>
-                <h1 className="font-display text-2xl sm:text-3xl font-black text-ink uppercase tracking-tight mt-1">SHIPPING LOGISTICS</h1>
-                <p className="font-mono text-xs text-ink/70 font-bold">Dispatch coordinates for domestic ground & air courier in India</p>
+          <div className="lg:col-span-7 order-2 lg:order-1 space-y-6">
+            <div className="card-precision bg-white p-6 sm:p-8 space-y-6">
+              <div className="border-b hairline pb-4">
+                <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-saturn-orange">// Step 1 of 2</span>
+                <h1 className="font-display text-xl sm:text-2xl font-semibold text-graphite tracking-tight mt-1">Shipping Logistics</h1>
+                <p className="font-body text-xs text-muted mt-0.5">Dispatch coordinates for domestic express courier across India.</p>
               </div>
 
-              <form id="checkout-form" onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <form id="checkout-form" onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="space-y-1.5">
-                  <Label className="font-mono text-[10px] font-black uppercase tracking-wider text-ink">Street Address & Landmark</Label>
+                  <Label className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted">Street Address & Landmark</Label>
                   <Input
                     placeholder="Plot 42, Sector C, Industrial Area"
-                    className="h-12 bg-paper border-2 border-ink font-mono text-xs shadow-brutal-sm focus:bg-lemon focus:ring-0"
+                    className="h-11 bg-white border hairline font-mono text-xs focus:border-saturn-orange focus:ring-2 focus:ring-saturn-orange/20"
                     {...register('line1')}
                   />
-                  {errors.line1 && <p className="font-mono text-xs text-red-500 font-bold">{errors.line1.message}</p>}
+                  {errors.line1 && <p className="font-mono text-xs text-red-500">{errors.line1.message}</p>}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label className="font-mono text-[10px] font-black uppercase tracking-wider text-ink">City</Label>
+                    <Label className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted">City</Label>
                     <Input
                       placeholder="Bhopal"
-                      className="h-12 bg-paper border-2 border-ink font-mono text-xs shadow-brutal-sm focus:bg-lemon focus:ring-0"
+                      className="h-11 bg-white border hairline font-mono text-xs focus:border-saturn-orange focus:ring-2 focus:ring-saturn-orange/20"
                       {...register('city')}
                     />
-                    {errors.city && <p className="font-mono text-xs text-red-500 font-bold">{errors.city.message}</p>}
+                    {errors.city && <p className="font-mono text-xs text-red-500">{errors.city.message}</p>}
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="font-mono text-[10px] font-black uppercase tracking-wider text-ink">State / Region</Label>
+                    <Label className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted">State / Region</Label>
                     <Input
                       placeholder="Madhya Pradesh"
-                      className="h-12 bg-paper border-2 border-ink font-mono text-xs shadow-brutal-sm focus:bg-lemon focus:ring-0"
+                      className="h-11 bg-white border hairline font-mono text-xs focus:border-saturn-orange focus:ring-2 focus:ring-saturn-orange/20"
                       {...register('state')}
                     />
-                    {errors.state && <p className="font-mono text-xs text-red-500 font-bold">{errors.state.message}</p>}
+                    {errors.state && <p className="font-mono text-xs text-red-500">{errors.state.message}</p>}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <Label className="font-mono text-[10px] font-black uppercase tracking-wider text-ink">PIN / Postal Code</Label>
+                    <Label className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted">PIN / Postal Code</Label>
                     <Input
                       placeholder="462023"
-                      className="h-12 bg-paper border-2 border-ink font-mono text-xs shadow-brutal-sm focus:bg-lemon focus:ring-0"
+                      className="h-11 bg-white border hairline font-mono text-xs focus:border-saturn-orange focus:ring-2 focus:ring-saturn-orange/20"
                       {...register('postal_code')}
                     />
-                    {errors.postal_code && <p className="font-mono text-xs text-red-500 font-bold">{errors.postal_code.message}</p>}
+                    {errors.postal_code && <p className="font-mono text-xs text-red-500">{errors.postal_code.message}</p>}
                   </div>
                   <div className="space-y-1.5">
-                    <Label className="font-mono text-[10px] font-black uppercase tracking-wider text-ink">Country</Label>
+                    <Label className="font-mono text-[11px] font-medium uppercase tracking-wider text-muted">Country</Label>
                     <Input
                       placeholder="India"
-                      className="h-12 bg-paper border-2 border-ink font-mono text-xs shadow-brutal-sm focus:bg-lemon focus:ring-0"
+                      className="h-11 bg-white border hairline font-mono text-xs focus:border-saturn-orange focus:ring-2 focus:ring-saturn-orange/20"
                       {...register('country')}
                     />
-                    {errors.country && <p className="font-mono text-xs text-red-500 font-bold">{errors.country.message}</p>}
+                    {errors.country && <p className="font-mono text-xs text-red-500">{errors.country.message}</p>}
                   </div>
                 </div>
               </form>
             </div>
 
             {/* Payment Method Selector */}
-            <div className="card-slab bg-white border-3 border-ink shadow-brutal p-6 sm:p-8 space-y-6">
-              <div className="border-b-2 border-ink/20 pb-4">
-                <span className="font-mono text-[10px] font-black uppercase tracking-wider text-saturn-orange">// STEP 2 OF 2</span>
-                <h2 className="font-display text-2xl sm:text-3xl font-black text-ink uppercase tracking-tight mt-1">PAYMENT PROTOCOL</h2>
-                <p className="font-mono text-xs text-ink/70 font-bold">Select direct gateway or cash on delivery</p>
+            <div className="card-precision bg-white p-6 sm:p-8 space-y-6">
+              <div className="border-b hairline pb-4">
+                <span className="font-mono text-[10px] font-medium uppercase tracking-wider text-saturn-orange">// Step 2 of 2</span>
+                <h2 className="font-display text-xl sm:text-2xl font-semibold text-graphite tracking-tight mt-1">Payment Protocol</h2>
+                <p className="font-body text-xs text-muted mt-0.5">Select direct online payment gateway or cash on delivery.</p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Razorpay Option */}
                 <div
                   onClick={() => setPaymentMethod('razorpay')}
-                  className={`p-5 border-3 border-ink transition-all cursor-pointer relative ${
+                  className={`p-5 rounded-xl border transition-all cursor-pointer relative ${
                     paymentMethod === 'razorpay'
-                      ? 'bg-lemon shadow-brutal'
-                      : 'bg-paper hover:bg-white shadow-brutal-sm'
+                      ? 'border-saturn-orange bg-saturn-orange/[0.03] shadow-precision-sm ring-1 ring-saturn-orange/40'
+                      : 'border-black/10 hover:border-black/25 bg-white'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <div className="w-10 h-10 bg-saturn-orange border-2 border-ink flex items-center justify-center text-white shadow-brutal-sm">
+                    <div className="w-10 h-10 rounded-lg bg-saturn-orange/10 border border-saturn-orange/20 flex items-center justify-center text-saturn-orange">
                       <CreditCard className="w-5 h-5" />
                     </div>
-                    <span className="px-2 py-0.5 bg-mint text-ink text-[9px] font-mono font-black uppercase tracking-wider border border-ink">
-                      RECOMMENDED
+                    <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-[10px] font-mono font-medium rounded-full border border-emerald-200">
+                      Recommended
                     </span>
                   </div>
-                  <div className="font-mono font-black text-sm text-ink">RAZORPAY GATEWAY</div>
-                  <div className="font-mono text-[11px] text-ink/70 font-bold mt-1">
+                  <div className="font-display font-semibold text-sm text-graphite">Razorpay Gateway</div>
+                  <div className="font-body text-xs text-muted mt-1 leading-relaxed">
                     UPI (GPay, PhonePe, Paytm), RuPay/Cards, NetBanking
                   </div>
                   {paymentMethod === 'razorpay' && (
-                    <div className="absolute top-4 right-4 text-ink">
-                      <Check className="w-5 h-5 text-saturn-orange" />
+                    <div className="absolute top-4 right-4">
+                      <Check className="w-4 h-4 text-saturn-orange" />
                     </div>
                   )}
                 </div>
@@ -404,37 +404,37 @@ export default function CheckoutPage() {
                 {/* Cash on Delivery Option */}
                 <div
                   onClick={() => setPaymentMethod('cod')}
-                  className={`p-5 border-3 border-ink transition-all cursor-pointer relative ${
+                  className={`p-5 rounded-xl border transition-all cursor-pointer relative ${
                     paymentMethod === 'cod'
-                      ? 'bg-lemon shadow-brutal'
-                      : 'bg-paper hover:bg-white shadow-brutal-sm'
+                      ? 'border-saturn-orange bg-saturn-orange/[0.03] shadow-precision-sm ring-1 ring-saturn-orange/40'
+                      : 'border-black/10 hover:border-black/25 bg-white'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <div className="w-10 h-10 bg-ink border-2 border-ink flex items-center justify-center text-paper shadow-brutal-sm">
+                    <div className="w-10 h-10 rounded-lg bg-black/[0.04] border hairline flex items-center justify-center text-graphite">
                       <Truck className="w-5 h-5" />
                     </div>
-                    <span className="px-2 py-0.5 bg-white text-ink text-[9px] font-mono font-black uppercase tracking-wider border border-ink">
-                      DOORSTEP
+                    <span className="px-2 py-0.5 bg-studio-light text-muted-dark text-[10px] font-mono font-medium rounded-full border hairline">
+                      Doorstep
                     </span>
                   </div>
-                  <div className="font-mono font-black text-sm text-ink">CASH ON DELIVERY (COD)</div>
-                  <div className="font-mono text-[11px] text-ink/70 font-bold mt-1">
+                  <div className="font-display font-semibold text-sm text-graphite">Cash on Delivery (COD)</div>
+                  <div className="font-body text-xs text-muted mt-1 leading-relaxed">
                     Pay in cash or UPI QR upon delivery at your facility
                   </div>
                   {paymentMethod === 'cod' && (
-                    <div className="absolute top-4 right-4 text-ink">
-                      <Check className="w-5 h-5 text-saturn-orange" />
+                    <div className="absolute top-4 right-4">
+                      <Check className="w-4 h-4 text-saturn-orange" />
                     </div>
                   )}
                 </div>
               </div>
 
               {/* Security info */}
-              <div className="flex items-start sm:items-center gap-3 p-4 bg-paper border-2 border-ink shadow-brutal-sm">
-                <Lock className="w-4 h-4 text-saturn-orange flex-shrink-0 mt-0.5 sm:mt-0" />
-                <p className="font-mono text-[11px] text-ink/80 font-bold leading-relaxed">
-                  256-bit SSL encrypted. Saturn 3D adheres to RBI payment guidelines and never stores raw card credentials.
+              <div className="flex items-start sm:items-center gap-3 p-4 bg-studio-light/60 rounded-xl border hairline">
+                <Lock className="w-4 h-4 text-saturn-orange shrink-0 mt-0.5 sm:mt-0" />
+                <p className="font-body text-xs text-muted leading-relaxed">
+                  256-bit SSL encrypted. Saturn 3D adheres to RBI payment guidelines and never stores card credentials.
                 </p>
               </div>
 
@@ -443,17 +443,17 @@ export default function CheckoutPage() {
                 type="submit"
                 form="checkout-form"
                 disabled={isLoading}
-                className="w-full h-14 btn-brutal bg-saturn-orange text-white hover:bg-lemon hover:text-ink font-mono font-black uppercase tracking-wider text-xs border-3 border-ink shadow-brutal cursor-pointer disabled:opacity-40"
+                className="w-full h-12 btn-precision-primary text-xs font-mono font-semibold uppercase tracking-wider cursor-pointer disabled:opacity-40"
               >
                 {isLoading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    Processing Order Session…
+                    <span>Processing Order Session…</span>
                   </>
                 ) : (
                   <>
-                    <span>CONFIRM & PROCEED</span>
-                    <span className="w-1.5 h-1.5 bg-white" />
+                    <span>Confirm & Proceed</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
                     <span>₹{grandTotal.toFixed(2)}</span>
                   </>
                 )}
@@ -463,33 +463,35 @@ export default function CheckoutPage() {
 
           {/* Right — Order Summary & Coupons */}
           <div className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-28 space-y-6">
-            <div className="card-slab bg-paper border-4 border-ink shadow-brutal-xl p-6 sm:p-8">
-              <div className="flex items-baseline gap-3 mb-6 pb-3 border-b-2 border-ink">
-                <Package className="w-4 h-4 text-saturn-orange" />
-                <h2 className="font-display text-xl font-black text-ink uppercase tracking-tight">ORDER SUMMARY</h2>
-                <span className="ml-auto font-mono text-xs font-black text-ink py-0.5 px-2 bg-lemon border border-ink shadow-brutal-sm">
-                  {getTotalItems()} ITEM{getTotalItems() !== 1 ? 'S' : ''}
+            <div className="card-precision bg-white p-6 sm:p-8 space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b hairline">
+                <div className="flex items-center gap-2">
+                  <Package className="w-4 h-4 text-saturn-orange" />
+                  <h2 className="font-display text-base font-semibold text-graphite">Order Summary</h2>
+                </div>
+                <span className="font-mono text-xs text-muted bg-studio-light px-2.5 py-0.5 rounded-full border hairline">
+                  {getTotalItems()} item{getTotalItems() !== 1 ? 's' : ''}
                 </span>
               </div>
 
               {/* Items List */}
-              <div className="space-y-3 mb-6 max-h-[35vh] overflow-y-auto pr-1">
+              <div className="space-y-3 max-h-[35vh] overflow-y-auto pr-1">
                 {items.map((item) => (
-                  <div key={item.cartItemId} className="flex items-center gap-3.5 p-2.5 bg-white border-2 border-ink shadow-brutal-sm">
-                    <div className="w-12 h-12 bg-paper border border-ink flex-shrink-0 relative">
+                  <div key={item.cartItemId} className="flex items-center gap-3 p-2.5 rounded-xl border hairline bg-studio-light/40">
+                    <div className="w-12 h-12 rounded-lg bg-white border hairline flex-shrink-0 relative overflow-hidden">
                       <img
                         src={item.image}
                         alt={item.name}
                         className="w-full h-full object-cover"
                         onError={(e) => { e.currentTarget.src = '/products/vase.jpg'; }}
                       />
-                      <div className="absolute -top-1.5 -right-1.5 bg-saturn-orange text-white text-[9px] font-mono font-black w-4 h-4 border border-ink flex items-center justify-center">
+                      <div className="absolute -top-1 -right-1 bg-saturn-orange text-white text-[9px] font-mono font-bold w-4 h-4 rounded-full flex items-center justify-center">
                         {item.quantity}
                       </div>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-mono font-black text-xs text-ink truncate uppercase">{item.name}</div>
-                      <div className="font-mono text-[10px] text-ink/70 font-bold flex items-center gap-1.5 mt-0.5">
+                      <div className="font-display font-medium text-xs text-graphite truncate">{item.name}</div>
+                      <div className="font-mono text-[10px] text-muted flex items-center gap-1.5 mt-0.5">
                         <span className="text-saturn-orange uppercase">{item.category}</span>
                         {item.options?.material && (
                           <>
@@ -498,11 +500,11 @@ export default function CheckoutPage() {
                           </>
                         )}
                       </div>
-                      <div className="font-mono text-[11px] text-ink font-bold mt-0.5">
+                      <div className="font-mono text-[11px] text-graphite mt-0.5">
                         ₹{item.price.toFixed(2)} × {item.quantity}
                       </div>
                     </div>
-                    <div className="font-mono font-black text-xs text-ink flex-shrink-0">
+                    <div className="font-mono font-semibold text-xs text-graphite flex-shrink-0">
                       ₹{(item.price * item.quantity).toFixed(2)}
                     </div>
                   </div>
@@ -510,17 +512,17 @@ export default function CheckoutPage() {
               </div>
 
               {/* Coupon Field */}
-              <div className="pt-4 border-t-2 border-ink/20 mb-6">
-                <Label className="font-mono text-[10px] font-black uppercase tracking-wider text-ink/70 mb-2 block">
+              <div className="pt-4 border-t hairline">
+                <Label className="font-mono text-[10px] font-medium uppercase tracking-wider text-muted mb-2 block">
                   Promotional Coupon
                 </Label>
                 {appliedCoupon ? (
-                  <div className="flex items-center justify-between p-3 bg-lemon border-2 border-ink shadow-brutal-sm">
+                  <div className="flex items-center justify-between p-3 bg-studio-light rounded-xl border hairline">
                     <div className="flex items-center gap-2">
                       <Sparkles className="w-4 h-4 text-saturn-orange" />
                       <div>
-                        <div className="font-mono text-xs font-black text-ink tracking-wider uppercase">{appliedCoupon.code}</div>
-                        <div className="font-mono text-[10px] font-black text-saturn-orange">
+                        <div className="font-mono text-xs font-semibold text-graphite">{appliedCoupon.code}</div>
+                        <div className="font-mono text-[10px] text-saturn-orange">
                           Discount: -₹{appliedCoupon.discountAmount.toFixed(2)}
                         </div>
                       </div>
@@ -528,9 +530,9 @@ export default function CheckoutPage() {
                     <button
                       type="button"
                       onClick={handleRemoveCoupon}
-                      className="font-mono text-[10px] font-black text-red-600 hover:text-ink uppercase tracking-wider px-2 py-1 cursor-pointer"
+                      className="font-mono text-[10px] text-red-600 hover:text-red-700 uppercase tracking-wider px-2 py-1 cursor-pointer"
                     >
-                      REMOVE
+                      Remove
                     </button>
                   </div>
                 ) : (
@@ -539,69 +541,69 @@ export default function CheckoutPage() {
                       placeholder="e.g. SATURN10"
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
-                      className="h-10 font-mono text-xs font-bold uppercase bg-white border-2 border-ink shadow-brutal-sm"
+                      className="h-10 font-mono text-xs uppercase bg-white border hairline"
                     />
                     <Button
                       type="button"
                       disabled={isValidatingCoupon || !couponInput.trim()}
                       onClick={handleApplyCoupon}
-                      className="h-10 px-4 btn-brutal bg-ink text-paper hover:bg-saturn-orange hover:text-white font-mono text-xs font-black uppercase tracking-wider border-2 border-ink shadow-brutal-sm cursor-pointer"
+                      className="h-10 px-4 btn-precision-secondary text-xs font-mono uppercase tracking-wider cursor-pointer"
                     >
-                      {isValidatingCoupon ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : 'APPLY'}
+                      {isValidatingCoupon ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : 'Apply'}
                     </Button>
                   </div>
                 )}
               </div>
 
               {/* Financial Breakdown */}
-              <div className="space-y-2.5 pt-4 border-t-2 border-ink/20 font-mono text-xs">
-                <div className="flex justify-between items-center text-ink/80">
-                  <span className="uppercase text-[10px] font-bold">Subtotal:</span>
-                  <span className="font-black text-ink">₹{rawSubtotal.toFixed(2)}</span>
+              <div className="space-y-2.5 pt-4 border-t hairline font-mono text-xs">
+                <div className="flex justify-between items-center text-muted">
+                  <span className="uppercase text-[10px]">Subtotal:</span>
+                  <span className="font-medium text-graphite">₹{rawSubtotal.toFixed(2)}</span>
                 </div>
 
                 {appliedCoupon && (
                   <div className="flex justify-between items-center text-saturn-orange">
-                    <span className="uppercase text-[10px] font-bold flex items-center gap-1">
+                    <span className="uppercase text-[10px] flex items-center gap-1">
                       <Tag className="w-3 h-3" /> Coupon ({appliedCoupon.code}):
                     </span>
-                    <span className="font-black">-₹{appliedCoupon.discountAmount.toFixed(2)}</span>
+                    <span className="font-semibold">-₹{appliedCoupon.discountAmount.toFixed(2)}</span>
                   </div>
                 )}
 
-                <div className="flex justify-between items-center text-ink/80">
+                <div className="flex justify-between items-center text-muted">
                   <div className="flex flex-col">
-                    <span className="uppercase text-[10px] font-bold">GST (18% SAC 9988):</span>
-                    <span className="text-[9px] text-ink/60">9% CGST + 9% SGST</span>
+                    <span className="uppercase text-[10px]">GST (18% SAC 9988):</span>
+                    <span className="text-[9px] text-muted/70">9% CGST + 9% SGST</span>
                   </div>
-                  <span className="font-black text-ink">₹{gstTax.toFixed(2)}</span>
+                  <span className="font-medium text-graphite">₹{gstTax.toFixed(2)}</span>
                 </div>
 
-                <div className="flex justify-between items-center text-ink/80">
-                  <span className="uppercase text-[10px] font-bold">Shipping:</span>
-                  <span className={`font-black ${shippingCost === 0 ? 'text-saturn-orange' : 'text-ink'}`}>
+                <div className="flex justify-between items-center text-muted">
+                  <span className="uppercase text-[10px]">Shipping:</span>
+                  <span className={`font-semibold ${shippingCost === 0 ? 'text-saturn-orange' : 'text-graphite'}`}>
                     {shippingCost === 0 ? 'FREE' : `₹${shippingCost.toFixed(2)}`}
                   </span>
                 </div>
 
                 {/* Grand Total Slab */}
-                <div className="p-4 bg-lemon border-3 border-ink shadow-brutal text-ink mt-3">
+                <div className="p-4 bg-studio-light rounded-xl border hairline mt-3">
                   <div className="flex justify-between items-baseline">
-                    <span className="font-mono text-xs font-black uppercase">GRAND TOTAL:</span>
-                    <span className="font-mono text-2xl sm:text-3xl font-black text-saturn-orange">₹{grandTotal.toFixed(2)}</span>
+                    <span className="font-mono text-xs uppercase text-muted">Grand Total:</span>
+                    <span className="font-display text-2xl font-semibold text-saturn-orange">₹{grandTotal.toFixed(2)}</span>
                   </div>
                 </div>
               </div>
 
               {/* Trust Badges */}
-              <div className="mt-6 pt-4 border-t-2 border-ink/20 grid grid-cols-2 gap-2 text-center">
-                <div className="p-2.5 bg-white border-2 border-ink shadow-brutal-sm">
-                  <div className="font-mono font-black text-[10px] text-ink uppercase">BHOPAL HUB</div>
-                  <div className="font-mono text-[9px] text-ink/70">Direct Factory Dispatch</div>
+              <div className="pt-4 border-t hairline grid grid-cols-2 gap-2 text-center">
+                <div className="p-2.5 bg-studio-light/60 rounded-lg border hairline">
+                  <div className="font-mono font-medium text-[10px] text-graphite uppercase">Bhopal Hub</div>
+                  <div className="font-body text-[10px] text-muted">Direct Factory Dispatch</div>
                 </div>
-                <div className="p-2.5 bg-white border-2 border-ink shadow-brutal-sm">
-                  <div className="font-mono font-black text-[10px] text-ink uppercase">OFFICIAL GST</div>
-                  <div className="font-mono text-[9px] text-ink/70">Tax Invoice Supplied</div>
+                <div className="p-2.5 bg-studio-light/60 rounded-lg border hairline">
+                  <div className="font-mono font-medium text-[10px] text-graphite uppercase">Official GST</div>
+                  <div className="font-body text-[10px] text-muted">Tax Invoice Included</div>
                 </div>
               </div>
             </div>

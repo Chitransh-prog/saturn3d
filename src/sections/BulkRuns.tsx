@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { MessageSquare, Calculator, ArrowRight } from 'lucide-react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState } from 'react';
+import { MessageSquare, Calculator, ArrowRight, Layers, ShieldCheck, Check } from 'lucide-react';
 
 interface PartType {
   id: string;
@@ -22,33 +18,8 @@ export default function BulkRuns() {
   const [selectedType, setSelectedType] = useState<string>('medium');
   const [quantity, setQuantity] = useState<number>(100);
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.bulk-calc-card',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '#bulk-runs',
-            start: 'top 75%',
-          },
-        }
-      );
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   const currentType = partTypes.find((p) => p.id === selectedType) || partTypes[1];
 
-  // Volume discount logic
   let discount = 0.15;
   if (quantity >= 500) discount = 0.38;
   else if (quantity >= 200) discount = 0.30;
@@ -57,15 +28,14 @@ export default function BulkRuns() {
   const unitPrice = Math.round(currentType.basePrice * (1 - discount));
   const estimatedTotal = unitPrice * quantity;
 
-  // WhatsApp prefilled message
-  const whatsappNumber = '917999824632';
+  const whatsappNumber = '918889988874';
   const getWhatsAppMsg = () => {
-    return `Hi Saturn 3D team, I would like to order a volume production run:
-- Part Size: ${currentType.label}
+    return `Hi Saturn 3D engineering, I would like to schedule a volume production run:
+- Part Size Category: ${currentType.label}
 - Batch Quantity: ${quantity} units
-- Estimated Unit Price: ₹${unitPrice}
+- Target Unit Price: ₹${unitPrice}
 - Estimated Total: ₹${estimatedTotal.toLocaleString('en-IN')}
-Please share production scheduling and lead time.`;
+Please share production slot availability and dispatch schedule.`;
   };
 
   const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(getWhatsAppMsg())}`;
@@ -73,51 +43,41 @@ Please share production scheduling and lead time.`;
   return (
     <section
       id="bulk-runs"
-      data-bg="#FAF7F2"
-      data-fg="#0B0B0B"
-      className="relative w-full bg-[#FAF7F2] text-[#0B0B0B] section-padding px-6 sm:px-10 lg:px-16 overflow-hidden hairline-t"
+      className="w-full bg-[#F5F6F8] text-[#0B0D10] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 overflow-hidden font-body border-t border-black/10"
+      aria-label="Small-Batch Production Runs"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
-        <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <span className="type-mono-eyebrow text-[#0B0B0B]/70">
-                07 // BATCH RUNS & ENTERPRISE
-              </span>
-              <span className="sticker-minimal">
-                VOLUME ESTIMATOR
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="type-mono-eyebrow text-[#5B616B]">
+                07 // Volume Production Runs
               </span>
             </div>
-
-            <div className="line-reveal-mask">
-              <h2 className="type-h2 text-[#0B0B0B]">
-                BULK RUNS &
-              </h2>
-            </div>
-            <div className="line-reveal-mask">
-              <h2 className="type-h2 text-[#FF5A1F]">
-                PRODUCTION.
-              </h2>
-            </div>
+            <h2 className="type-h2 text-[#0B0D10]">
+              Batch production without tooling costs.
+            </h2>
+            <p className="type-body text-[#5B616B] mt-2">
+              From 50 to 5,000+ units. Scale directly from prototype to bridge production with automated volume tiering and CMM quality verification.
+            </p>
           </div>
 
-          <p className="type-body text-[#0B0B0B]/75 max-w-md font-semibold">
-            Need 50 to 5,000+ units? Calculate volume discounts in real time and connect
-            directly with our factory scheduling desk.
-          </p>
+          <div className="precision-badge text-xs shrink-0">
+            Zero Injection Mold Tooling
+          </div>
         </div>
 
-        {/* Tiny Minimalist Calculator (Open 2 Columns) */}
-        <div data-aos="fade-up" data-aos-delay="100" className="bulk-calc-card grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-5 sm:p-10 hairline-ink rounded-xs shadow-brutal-sm">
+        {/* Precision Batch Calculator */}
+        <div className="card-precision p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left: Input Selection (LG: 7 cols) */}
+          {/* Left: Input Selection (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Part Size Selection */}
             <div className="space-y-2">
-              <label className="font-mono text-xs font-bold uppercase tracking-wider text-[#0B0B0B] block">
-                1. SELECT PART DIMENSION
+              <label className="font-mono text-xs text-[#5B616B] uppercase tracking-wider block">
+                1. Select Part Dimension Category
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {partTypes.map((pt) => {
@@ -126,25 +86,24 @@ Please share production scheduling and lead time.`;
                     <button
                       key={pt.id}
                       onClick={() => setSelectedType(pt.id)}
-                      className={`p-3 text-left font-mono text-xs transition-all cursor-pointer rounded-xs ${
+                      className={`p-3.5 text-left rounded-xl border transition-all cursor-pointer ${
                         isSelected
-                          ? 'bg-[#0B0B0B] text-[#FFE14D] font-bold border border-ink'
-                          : 'bg-[#FAF7F2] text-[#0B0B0B] hairline hover:bg-neutral-100'
+                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/5 text-[#0B0D10]'
+                          : 'border-black/10 bg-neutral-50 text-[#5B616B] hover:border-black/20'
                       }`}
                     >
-                      <span className="block font-bold truncate">{pt.label}</span>
-                      <span className="text-[10px] opacity-70 block mt-1">{pt.description}</span>
+                      <span className="block font-semibold text-xs text-[#0B0D10] truncate">{pt.label}</span>
+                      <span className="text-[11px] text-[#5B616B] block mt-1">{pt.description}</span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Quantity Slider */}
             <div className="space-y-2">
-              <div className="flex justify-between font-mono text-xs font-bold text-[#0B0B0B]">
-                <span className="uppercase">2. BATCH QUANTITY</span>
-                <span className="text-[#FF5A1F] text-base">{quantity} UNITS</span>
+              <div className="flex justify-between font-mono text-xs text-[#0B0D10]">
+                <span className="text-[#5B616B] uppercase">2. Batch Quantity</span>
+                <span className="font-semibold text-[#FF5A1F]">{quantity} Units</span>
               </div>
               <input
                 type="range"
@@ -155,29 +114,33 @@ Please share production scheduling and lead time.`;
                 onChange={(e) => setQuantity(Number(e.target.value))}
                 className="w-full accent-[#FF5A1F] cursor-pointer"
               />
-              <div className="flex justify-between font-mono text-[10px] text-[#0B0B0B]/60">
+              <div className="flex justify-between font-mono text-[10px] text-[#5B616B]">
                 <span>50 pcs (-15%)</span>
                 <span>200 pcs (-30%)</span>
-                <span>500+ pcs (-38% Industrial)</span>
+                <span>500+ pcs (-38% Volume Tier)</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right: Live Output & WhatsApp Button (LG: 5 cols) */}
-          <div className="lg:col-span-5 p-6 bg-[#FAF7F2] hairline-ink flex flex-col justify-between space-y-6 rounded-xs">
+          {/* Right: Output & Action (5 cols) */}
+          <div className="lg:col-span-5 p-6 sm:p-8 bg-neutral-50 border border-black/10 rounded-2xl flex flex-col justify-between space-y-6">
             
-            <div className="space-y-2">
-              <div className="flex justify-between font-mono text-xs text-[#0B0B0B]/70 font-bold">
-                <span>UNIT COST:</span>
-                <span className="text-[#FF5A1F]">₹{unitPrice} / pc (incl. discount)</span>
+            <div className="space-y-3">
+              <div className="flex justify-between font-mono text-xs text-[#5B616B]">
+                <span>Discounted Unit Cost:</span>
+                <span className="font-semibold text-[#0B0D10]">₹{unitPrice} / unit</span>
+              </div>
+              <div className="flex justify-between font-mono text-xs text-[#5B616B]">
+                <span>Production Batch Size:</span>
+                <span className="font-semibold text-[#0B0D10]">{quantity} pcs</span>
               </div>
 
-              <div className="pt-2">
-                <span className="font-mono text-[11px] text-[#0B0B0B]/60 block font-bold">
-                  ESTIMATED BATCH INVESTMENT
+              <div className="pt-3 border-t border-black/10">
+                <span className="font-mono text-[11px] text-[#5B616B] block">
+                  Estimated Batch Investment
                 </span>
-                <span className="font-display font-black text-3xl sm:text-4xl text-[#0B0B0B]">
+                <span className="font-display font-semibold text-3xl sm:text-4xl text-[#0B0D10] mt-1 block">
                   ₹{estimatedTotal.toLocaleString('en-IN')}
                 </span>
               </div>
@@ -187,10 +150,10 @@ Please share production scheduling and lead time.`;
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-brutal btn-whatsapp-brutal w-full py-3.5 text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-[3px_3px_0px_#0B0B0B]"
+              className="btn-whatsapp-precision w-full py-3.5 text-xs font-semibold flex items-center justify-center gap-2"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>DISCUSS BATCH ON WHATSAPP</span>
+              <span>Discuss Batch Scheduling on WhatsApp</span>
             </a>
 
           </div>

@@ -1,307 +1,178 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Box, Check, Copy, Flame, Layers, ShieldCheck, Sparkles, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight, Box, Check, Copy, Layers, ShieldCheck, Sparkles, Terminal, Sliders, Sun, Moon } from 'lucide-react';
 
 export default function DesignSystem() {
+  const [copied, setCopied] = useState<string | null>(null);
+
+  const copyToken = (val: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(val);
+    setTimeout(() => setCopied(null), 1800);
+  };
+
   const colors = [
-    { name: 'Base Paper', token: '--paper', hex: '#FAF7F2', text: '#0B0B0B', desc: 'Global foundation surface' },
-    { name: 'Ink Black', token: '--ink', hex: '#0B0B0B', text: '#FAF7F2', desc: 'Borders, type, hard shadows' },
-    { name: 'Saturn Orange', token: '--saturn-orange', hex: '#FF5A1F', text: '#0B0B0B', desc: 'Primary brand energy & action' },
-    { name: 'Lemon Yellow', token: '--lemon', hex: '#FFE14D', text: '#0B0B0B', desc: 'Highlight tags & warning chips' },
-    { name: 'Blueprint Periwinkle', token: '--periwinkle', hex: '#8EA2FF', text: '#0B0B0B', desc: 'Technical process & accents' },
-    { name: 'Verification Mint', token: '--mint', hex: '#7CF2C1', text: '#0B0B0B', desc: 'Accuracy & live system indicators' },
-    { name: 'WhatsApp Green', token: '--wa-green', hex: '#25D366', text: '#FFFFFF', desc: 'Dedicated customer messaging FAB' },
+    { name: 'Graphite', token: '--graphite', hex: '#0B0D10', role: 'Primary dark background & dark surfaces' },
+    { name: 'Surface Dark', token: '--surface-dark', hex: '#12151A', role: 'Dark cards, toolbars, modal sheets' },
+    { name: 'Surface Card', token: '--surface-card', hex: '#181C22', role: 'Elevated dark container surfaces' },
+    { name: 'Studio Light', token: '--studio-light', hex: '#F5F6F8', role: 'Calm engineered light background' },
+    { name: 'Studio Card', token: '--studio-card', hex: '#FFFFFF', role: 'Crisp white light cards and table panels' },
+    { name: 'Saturn Orange', token: '--saturn-orange', hex: '#FF5A1F', role: 'Sole primary action accent & nozzle glow' },
+    { name: 'WhatsApp Green', token: '--wa-green', hex: '#25D366', role: 'Dedicated customer communication channel' },
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#0B0B0B] blueprint-grid pb-24 font-mono-tech">
+    <div className="min-h-screen bg-[#0B0D10] text-[#F5F6F8] pb-24 font-body">
       {/* Top Bar */}
-      <header className="border-b-ink bg-[#FAF7F2] sticky top-0 z-50 px-6 py-4 flex flex-wrap items-center justify-between gap-4 shadow-brutal-sm">
+      <header className="glass-nav sticky top-0 z-50 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <Link
-            to="/"
-            className="btn-brutal bg-white text-xs py-1.5 px-3 flex items-center gap-1.5 font-bold"
+            href="/"
+            className="btn-precision-secondary text-xs py-1.5 px-3 flex items-center gap-1.5 text-white/80 hover:text-white"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Back to Home
+            <ArrowLeft className="w-3.5 h-3.5" /> Back to Live Lab
           </Link>
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 bg-[#FF5A1F] border-2 border-ink inline-block" />
-            <h1 className="text-xl font-display font-black tracking-wider uppercase">
-              SATURN 3D // DESIGN SYSTEM
+          <div className="flex items-center gap-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A1F] shadow-[0_0_8px_#FF5A1F] inline-block" />
+            <h1 className="text-base font-display font-semibold tracking-tight text-white">
+              Saturn 3D Precision Studio // Design System v3.0
             </h1>
           </div>
         </div>
-        <div className="badge-sticker bg-[#FFE14D]">
-          DEV ENVIRONMENT &bull; V2.0 NEO-BRUTALISM
+        <div className="precision-badge text-xs">
+          ENGINEERING SPECIFICATION // PRODUCTION
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
         {/* Section 00: Overview Banner */}
-        <section className="card-slab bg-white p-8 relative overflow-hidden">
-          <div className="absolute top-4 right-4 badge-sticker bg-[#FF5A1F] text-[#0B0B0B] rotate-2">
-            SPECIFICATION MANUAL
-          </div>
-          <span className="section-tag mb-4">00 // PHILOSOPHY</span>
-          <h2 className="text-3xl sm:text-5xl font-display font-black uppercase tracking-tight mt-2 mb-4">
-            NEO-BRUTALISM FUSED WITH 3D
+        <section className="card-precision-dark p-8 sm:p-10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF5A1F]/8 rounded-full blur-3xl pointer-events-none" />
+          <span className="type-mono-eyebrow text-[#FF5A1F] block mb-3">00 // DESIGN PHILOSOPHY</span>
+          <h2 className="type-h2 text-white mb-4">
+            Industrial Trust & Surgical Precision
           </h2>
-          <p className="font-body text-base sm:text-lg text-[#0B0B0B] max-w-3xl leading-relaxed">
-            This design system rejects generic AI-template layouts, purple gradients, and soft floating glass.
-            Every component is anchored by <strong>3px solid ink borders</strong>, <strong>hard zero-blur offset shadows</strong>, 
-            vintage blueprint paper fills (<code>#FAF7F2</code>), vibrant high-voltage accents (<code>#FF5A1F</code>), 
-            and aerospace-grade technical typography.
+          <p className="type-body text-[#A3A9B3] text-base sm:text-lg mb-6 leading-relaxed">
+            The Precision Studio design system delivers high-trust additive manufacturing aesthetics.
+            Zero comic outlines, zero brutalist offset shadows, zero saturated novelty tints. Built with 
+            calm graphite dark zones, clean studio white surfaces, 1px surgical hairlines, and single-accent 
+            Saturn Orange (<code className="text-[#FF5A1F]">#FF5A1F</code>) focus states.
           </p>
+          <div className="flex flex-wrap gap-3">
+            <span className="precision-badge">1px Surgical Hairlines</span>
+            <span className="precision-badge">14–16px Card Radii</span>
+            <span className="precision-badge">Inter & Space Mono</span>
+            <span className="precision-badge">PBR Realistic Shading</span>
+          </div>
         </section>
 
         {/* Section 01: Color Tokens */}
         <section className="space-y-6">
-          <div className="flex items-center justify-between border-b-ink pb-3">
-            <span className="section-tag">01 // COLOR TOKENS</span>
-            <span className="text-xs uppercase tracking-widest text-[#555]">Flat fills &bull; Zero soft gradients</span>
+          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <span className="type-mono-eyebrow text-white/70">01 // COLOR TOKENS</span>
+            <span className="font-mono text-xs text-[#A3A9B3]">Strict single-accent hierarchy</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {colors.map((c) => (
               <div
                 key={c.name}
-                className="card-slab p-5 flex flex-col justify-between h-48"
-                style={{ backgroundColor: c.hex, color: c.text }}
+                onClick={() => copyToken(c.hex)}
+                className="card-precision-dark p-5 flex flex-col justify-between h-44 cursor-pointer group hover:border-[#FF5A1F]/40 transition-all"
               >
-                <div className="flex items-start justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 bg-black text-white border border-black inline-block">
-                    {c.token}
+                <div className="flex items-center justify-between">
+                  <div
+                    className="w-8 h-8 rounded-md border border-white/15"
+                    style={{ backgroundColor: c.hex }}
+                  />
+                  <span className="font-mono text-xs text-[#A3A9B3] group-hover:text-white flex items-center gap-1">
+                    {copied === c.hex ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 opacity-60" />}
+                    {c.hex}
                   </span>
-                  <span className="text-sm font-bold tracking-mono">{c.hex}</span>
                 </div>
                 <div>
-                  <h3 className="font-display font-black text-lg tracking-tight uppercase">
-                    {c.name}
-                  </h3>
-                  <p className="text-xs mt-1 font-body opacity-90">{c.desc}</p>
+                  <div className="font-semibold text-sm text-white">{c.name}</div>
+                  <div className="font-mono text-[11px] text-white/40">{c.token}</div>
+                  <div className="text-xs text-[#A3A9B3] mt-1">{c.role}</div>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Section 02: Typography Scale */}
+        {/* Section 02: Typography */}
         <section className="space-y-6">
-          <div className="flex items-center justify-between border-b-ink pb-3">
-            <span className="section-tag">02 // TYPOGRAPHY</span>
-            <span className="text-xs uppercase tracking-widest text-[#555]">Space Grotesk + Space Mono</span>
+          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <span className="type-mono-eyebrow text-white/70">02 // TYPOGRAPHY HIERARCHY</span>
+            <span className="font-mono text-xs text-[#A3A9B3]">Inter Tight + Inter + Space Mono</span>
           </div>
 
-          <div className="card-slab bg-white p-8 space-y-8">
-            <div>
-              <div className="text-xs text-[#666] uppercase tracking-widest mb-1">Display Hero Headline</div>
-              <div className="text-5xl sm:text-7xl font-display font-black uppercase tracking-tight leading-none">
-                PRINT THE IMPOSSIBLE
+          <div className="space-y-6 card-precision-dark p-8">
+            <div className="border-b border-white/5 pb-6">
+              <span className="font-mono text-xs text-[#A3A9B3] block mb-2">Display (clamp 2.5rem – 5.25rem, weight 600)</span>
+              <div className="type-display text-white">
+                Additive fabrication at micron scale.
               </div>
             </div>
-
-            <div>
-              <div className="text-xs text-[#666] uppercase tracking-widest mb-1">Outline Display Type (Layered 3D Weave)</div>
-              <div className="text-5xl sm:text-7xl font-display font-black uppercase tracking-tight leading-none outline-text">
-                ADDITIVE MANUFACTURING
+            <div className="border-b border-white/5 pb-6">
+              <span className="font-mono text-xs text-[#A3A9B3] block mb-2">Section Heading 2 (clamp 2rem – 3.5rem, weight 600)</span>
+              <div className="type-h2 text-white">
+                Engineered polymers for end-use parts.
               </div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4 border-t-2 border-black">
-              <div>
-                <div className="text-xs text-[#666] uppercase tracking-widest mb-2">Technical Mono Readout (Space Mono)</div>
-                <div className="bg-[#FAF7F2] border-ink p-4 space-y-1 text-sm font-mono-tech">
-                  <div>TOLERANCE: &plusmn;0.04 MM (MICRON GRADE)</div>
-                  <div>BUILD VOLUME: 350 &times; 350 &times; 400 MM</div>
-                  <div>MATERIAL: CARBON-X PA12 HIGH TEMP</div>
-                  <div>BATCH SPEED: 24H EXPRESS DISPATCH</div>
-                </div>
+            <div className="border-b border-white/5 pb-6">
+              <span className="font-mono text-xs text-[#A3A9B3] block mb-2">Section Heading 3 (clamp 1.25rem – 2rem, weight 600)</span>
+              <div className="type-h3 text-white">
+                Continuous fiber reinforcement with Carbon-X.
               </div>
-              <div>
-                <div className="text-xs text-[#666] uppercase tracking-widest mb-2">Editorial Body Text (Manrope)</div>
-                <p className="font-body text-base text-[#111] leading-relaxed">
-                  Saturn 3D bridges digital CAD files with production-grade reality. We manufacture high-tensile 
-                  prototypes for drone airframes, medical enclosures, kinetic architectural models, and automotive 
-                  manifolds directly from our facility in Central India.
-                </p>
-              </div>
+            </div>
+            <div>
+              <span className="font-mono text-xs text-[#A3A9B3] block mb-2">Body Text (16px, line-height 1.65, max 62ch)</span>
+              <p className="type-body text-[#A3A9B3]">
+                Saturn 3D operates an industrial additive manufacturing hub delivering high-tensile 
+                prototypes and production components across India. Verified dimensional accuracy up to 
+                ±0.04 mm with automated telemetry slicing.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Section 03: Button Variations */}
+        {/* Section 03: Button Components */}
         <section className="space-y-6">
-          <div className="flex items-center justify-between border-b-ink pb-3">
-            <span className="section-tag">03 // BUTTON PRIMITIVES</span>
-            <span className="text-xs uppercase tracking-widest text-[#555]">3px Border &bull; Hard Offset Shadow &bull; Tactile Press</span>
+          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+            <span className="type-mono-eyebrow text-white/70">03 // BUTTON STATES & CTAS</span>
+            <span className="font-mono text-xs text-[#A3A9B3]">Micro-interaction lift with subtle shadows</span>
           </div>
 
-          <div className="card-slab bg-white p-8">
-            <div className="flex flex-wrap gap-4 items-center">
-              <button className="btn-brutal btn-brutal-orange">
-                <Flame className="w-4 h-4" /> Saturn Orange Action
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="card-precision-dark p-6 flex flex-col justify-between items-start gap-4">
+              <div>
+                <div className="font-semibold text-sm text-white mb-1">Primary Action</div>
+                <div className="text-xs text-[#A3A9B3]">Saturn Orange with hover lift and arrow nudge</div>
+              </div>
+              <button className="btn-precision-primary">
+                Launch Custom Lab <ArrowRight className="w-4 h-4" />
               </button>
-              <button className="btn-brutal btn-brutal-lemon">
-                <Zap className="w-4 h-4" /> Lemon Highlight
+            </div>
+
+            <div className="card-precision-dark p-6 flex flex-col justify-between items-start gap-4">
+              <div>
+                <div className="font-semibold text-sm text-white mb-1">Secondary Outline</div>
+                <div className="text-xs text-[#A3A9B3]">1px hairline border with gentle background tint</div>
+              </div>
+              <button className="btn-precision-secondary text-white">
+                Explore Materials Catalog
               </button>
-              <button className="btn-brutal btn-brutal-periwinkle">
-                <Box className="w-4 h-4" /> Periwinkle Spec
-              </button>
-              <button className="btn-brutal btn-brutal-mint">
-                <ShieldCheck className="w-4 h-4" /> Mint Verified
-              </button>
-              <button className="btn-brutal btn-brutal-ink">
-                <Layers className="w-4 h-4" /> Solid Ink
-              </button>
-              <button className="btn-brutal bg-white">
-                White Slab
-              </button>
-              <a
-                href="#wa-preview"
-                className="btn-brutal bg-[#25D366] text-white flex items-center gap-2"
-              >
-                <span className="font-black text-sm">WHATSAPP CHAT</span>
+            </div>
+
+            <div className="card-precision-dark p-6 flex flex-col justify-between items-start gap-4">
+              <div>
+                <div className="font-semibold text-sm text-white mb-1">WhatsApp FAB</div>
+                <div className="text-xs text-[#A3A9B3]">Soft ambient green shadow, rounded pill</div>
+              </div>
+              <a href="#wa" className="btn-whatsapp-precision px-4 py-2 text-xs font-semibold flex items-center gap-2">
+                Verify via WhatsApp
               </a>
-            </div>
-
-            <div className="mt-8 pt-6 border-t-2 border-black grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono-tech">
-              <div className="p-3 bg-[#FAF7F2] border border-black">
-                <strong>DEFAULT STATE:</strong> 3px solid ink, 4px 4px 0 ink shadow.
-              </div>
-              <div className="p-3 bg-[#FAF7F2] border border-black">
-                <strong>HOVER STATE:</strong> translate(-3px, -3px), 7px 7px 0 shadow.
-              </div>
-              <div className="p-3 bg-[#FAF7F2] border border-black">
-                <strong>ACTIVE STATE:</strong> translate(3px, 3px), 0px 0px 0 shadow (press feel).
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 04: Badges, Stickers & Stamps */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between border-b-ink pb-3">
-            <span className="section-tag">04 // STICKERS & BADGES</span>
-            <span className="text-xs uppercase tracking-widest text-[#555]">Rotated -3deg to +4deg</span>
-          </div>
-
-          <div className="card-slab bg-white p-8">
-            <div className="flex flex-wrap gap-6 items-center">
-              <div className="badge-sticker bg-[#FFE14D] -rotate-3">
-                &plusmn;0.04MM TOLERANCE
-              </div>
-              <div className="badge-sticker bg-[#FF5A1F] text-white rotate-2">
-                EXPRESS NATIONWIDE 24H
-              </div>
-              <div className="badge-sticker bg-[#7CF2C1] -rotate-1">
-                ISO 9001 COMPLIANT
-              </div>
-              <div className="badge-sticker bg-[#8EA2FF] rotate-3">
-                CARBON-X COMPOSITE
-              </div>
-              <div className="badge-sticker bg-white -rotate-2">
-                100% INFILL DENSITY
-              </div>
-              <div className="badge-sticker bg-[#0B0B0B] text-[#FAF7F2] rotate-1">
-                CENTRAL INDIA HUB
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 05: Raw Specification Table */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between border-b-ink pb-3">
-            <span className="section-tag">05 // RAW SPECIFICATION TABLE</span>
-            <span className="text-xs uppercase tracking-widest text-[#555]">High contrast engineering matrix</span>
-          </div>
-
-          <div className="card-slab overflow-x-auto p-2 bg-white">
-            <table className="raw-table">
-              <thead>
-                <tr>
-                  <th>PROCESS</th>
-                  <th>MATERIAL</th>
-                  <th>TOLERANCE</th>
-                  <th>TENSILE YIELD</th>
-                  <th>MAX TEMP</th>
-                  <th>PRICING</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="font-bold">FDM Engineering</td>
-                  <td>PLA / PETG</td>
-                  <td>&plusmn;0.08 mm</td>
-                  <td>55 MPa</td>
-                  <td>70&deg;C</td>
-                  <td className="font-bold text-[#FF5A1F]">₹3.50 &ndash; ₹5.00 / g</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">FDM Composite</td>
-                  <td>Carbon-X PA12</td>
-                  <td>&plusmn;0.05 mm</td>
-                  <td>115 MPa</td>
-                  <td>150&deg;C</td>
-                  <td className="font-bold text-[#FF5A1F]">₹25.00 / g</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">SLA Precision Resin</td>
-                  <td>Engineering Tough</td>
-                  <td>&plusmn;0.02 mm</td>
-                  <td>68 MPa</td>
-                  <td>85&deg;C</td>
-                  <td className="font-bold text-[#FF5A1F]">₹18.00 / ml</td>
-                </tr>
-                <tr>
-                  <td className="font-bold">Elastomeric TPU</td>
-                  <td>TPU 95A Industrial</td>
-                  <td>&plusmn;0.10 mm</td>
-                  <td>Flexible Shore 95A</td>
-                  <td>90&deg;C</td>
-                  <td className="font-bold text-[#FF5A1F]">₹8.50 / g</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Section 06: Form Elements */}
-        <section className="space-y-6">
-          <div className="flex items-center justify-between border-b-ink pb-3">
-            <span className="section-tag">06 // FORM CONTROLS</span>
-            <span className="text-xs uppercase tracking-widest text-[#555]">Thick-border inputs &bull; Mono labels</span>
-          </div>
-
-          <div className="card-slab bg-white p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider mb-2 font-mono-tech">
-                CAD FILENAME (.STL / .OBJ / .GLB / .PNG)
-              </label>
-              <input
-                type="text"
-                defaultValue="drone_chassis_v3.stl"
-                className="w-full bg-[#FAF7F2] border-ink p-3 font-mono-tech text-sm focus:outline-hidden focus:bg-white shadow-brutal-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider mb-2 font-mono-tech">
-                INFILL PERCENTAGE (%)
-              </label>
-              <select className="w-full bg-[#FAF7F2] border-ink p-3 font-mono-tech text-sm focus:outline-hidden focus:bg-white shadow-brutal-sm">
-                <option>20% &ndash; Standard Rapid Prototype</option>
-                <option>50% &ndash; Semi-Functional Assembly</option>
-                <option>100% &ndash; Solid Industrial Grade</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider mb-2 font-mono-tech">
-                TOTAL RUNTIME ESTIMATE
-              </label>
-              <div className="bg-[#FFE14D] border-ink p-3 font-mono-tech font-bold text-sm shadow-brutal-sm flex items-center justify-between">
-                <span>EST: 4.8 HOURS</span>
-                <span className="text-xs bg-black text-white px-2 py-0.5">READY</span>
-              </div>
             </div>
           </div>
         </section>

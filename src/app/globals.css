@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,72 +6,95 @@
 
 @layer base {
   :root {
-    /* Neo-Brutalist Calm & Soothing Lighter Palette */
-    --paper: #FAF7F2;
-    --ink: #0B0B0B;
+    /* Precision Studio Design System */
+    --graphite: #0B0D10;
+    --surface-dark: #12151A;
+    --surface-card: #181C22;
+    --studio-light: #F5F6F8;
+    --studio-card: #FFFFFF;
     --saturn-orange: #FF5A1F;
-    --lemon: #FFE14D;
-    --periwinkle: #8EA2FF;
-    --mint: #7CF2C1;
+    --saturn-orange-hover: #E04810;
     --wa-green: #25D366;
-    --white: #FFFFFF;
+    --text-primary: #0B0D10;
+    --text-muted: #5B616B;
+    --text-dark-primary: #F5F6F8;
+    --text-dark-muted: #A3A9B3;
 
-    /* Semantic Radix/Tailwind Tokens */
-    --background: 40 33% 97%;   /* #FAF7F2 Soothing Paper */
-    --foreground: 0 0% 4%;       /* #0B0B0B Ink */
-    --card: 40 33% 97%;         /* Open, uncarded paper */
-    --card-foreground: 0 0% 4%;
+    /* Semantic Tokens */
+    --background: 220 14% 97%;   /* #F5F6F8 Studio Light */
+    --foreground: 220 18% 5%;     /* #0B0D10 Graphite */
+    --card: 0 0% 100%;           /* #FFFFFF Pure White */
+    --card-foreground: 220 18% 5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
-    --primary: 16 100% 56%;      /* #FF5A1F Saturn Orange */
-    --primary-foreground: 0 0% 4%;
-    --secondary: 48 100% 65%;    /* #FFE14D Lemon */
-    --secondary-foreground: 0 0% 4%;
-    --muted: 40 20% 92%;
-    --muted-foreground: 0 0% 38%;
+    --popover-foreground: 220 18% 5%;
+    --primary: 16 100% 56%;       /* #FF5A1F Saturn Orange */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 93%;
+    --secondary-foreground: 220 18% 5%;
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 8% 40%;
     --accent: 16 100% 56%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 4% / 0.15;    /* 1px Hairlines */
-    --input: 0 0% 4% / 0.2;
+    --border: 220 18% 5% / 0.10;
+    --input: 220 18% 5% / 0.12;
     --ring: 16 100% 56%;
-    --radius: 0.25rem;          /* Strict 4px max */
+    --radius: 0.75rem;           /* 12px default */
+  }
+
+  .dark, [data-theme="dark"] {
+    --background: 220 18% 5%;    /* #0B0D10 Graphite */
+    --foreground: 220 14% 97%;
+    --card: 220 16% 9%;          /* #12151A Surface Dark */
+    --card-foreground: 220 14% 97%;
+    --popover: 220 16% 9%;
+    --popover-foreground: 220 14% 97%;
+    --secondary: 220 14% 15%;
+    --secondary-foreground: 220 14% 97%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 220 8% 65%;
+    --border: 0 0% 100% / 0.10;
+    --input: 0 0% 100% / 0.12;
   }
 }
 
 @layer base {
   * {
-    border-color: rgba(11, 11, 11, 0.15);
+    border-color: rgba(11, 13, 16, 0.10);
+  }
+  .dark *, [data-theme="dark"] * {
+    border-color: rgba(255, 255, 255, 0.10);
   }
   html {
     overflow-x: hidden;
     width: 100%;
-    background-color: #FAF7F2;
-    color: #0B0B0B;
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0B0D10;
+    color: #0B0D10;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    scroll-behavior: smooth;
   }
   body {
     overflow-x: hidden;
     width: 100%;
     position: relative;
-    background-color: #FAF7F2;
-    color: #0B0B0B;
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F5F6F8;
+    color: #0B0D10;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.6;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
+    font-family: 'Inter Tight', 'Space Grotesk', -apple-system, sans-serif;
+    font-weight: 600;
     letter-spacing: -0.03em;
     color: inherit;
   }
   ::selection {
     background-color: #FF5A1F;
-    color: #0B0B0B;
+    color: #FFFFFF;
   }
 }
 
@@ -80,15 +103,16 @@
     text-wrap: balance;
   }
   .font-display {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
+    font-family: 'Inter Tight', 'Space Grotesk', -apple-system, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
   }
   .font-heading {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
+    font-family: 'Inter Tight', 'Space Grotesk', -apple-system, sans-serif;
+    font-weight: 600;
   }
   .font-body {
-    font-family: 'Manrope', 'Space Grotesk', sans-serif;
+    font-family: 'Inter', 'Manrope', -apple-system, sans-serif;
   }
   .font-mono-tech {
     font-family: 'Space Mono', monospace;
@@ -96,101 +120,83 @@
   .font-mono {
     font-family: 'Space Mono', monospace;
   }
-  .font-archivo {
-    font-family: 'Archivo Black', sans-serif;
-  }
 
   /* -------------------------------------------------------------
-     DE-BOXED TYPOGRAPHY SCALES
+     PRECISION STUDIO TYPOGRAPHY SCALES (Sentence Case, Refined)
   ------------------------------------------------------------- */
   .type-display {
-    font-size: clamp(3.5rem, 11vw, 12rem);
-    line-height: 0.88;
-    letter-spacing: -0.04em;
-    font-weight: 800;
-    text-transform: uppercase;
+    font-family: 'Inter Tight', 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 5.5vw, 5.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 600;
   }
   .type-h2 {
-    font-size: clamp(2.5rem, 6vw, 6rem);
-    line-height: 0.95;
-    letter-spacing: -0.035em;
-    font-weight: 800;
-    text-transform: uppercase;
+    font-family: 'Inter Tight', 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 3.8vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    font-weight: 600;
   }
   .type-h3 {
-    font-size: clamp(1.5rem, 3.2vw, 2.75rem);
-    line-height: 1.1;
-    letter-spacing: -0.025em;
-    font-weight: 700;
+    font-family: 'Inter Tight', 'Space Grotesk', sans-serif;
+    font-size: clamp(1.25rem, 2.2vw, 2rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 600;
   }
   .type-body {
-    font-size: 17px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
     line-height: 1.65;
     max-width: 62ch;
   }
   .type-mono-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .type-section-numeral {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    line-height: 0.8;
-    letter-spacing: -0.05em;
-    opacity: 0.18;
-  }
 
-  /* Section Spacing */
+  /* Spacing Scale (8px Grid) */
   .section-padding {
-    padding-top: clamp(96px, 14vh, 200px);
-    padding-bottom: clamp(96px, 14vh, 200px);
+    padding-top: clamp(80px, 12vh, 160px);
+    padding-bottom: clamp(80px, 12vh, 160px);
   }
   .section-padding-top {
-    padding-top: clamp(96px, 14vh, 200px);
+    padding-top: clamp(80px, 12vh, 160px);
   }
   .section-padding-bottom {
-    padding-bottom: clamp(96px, 14vh, 200px);
+    padding-bottom: clamp(80px, 12vh, 160px);
   }
 
   /* -------------------------------------------------------------
-     DE-BOXING HAIRLINES
+     SURGICAL 1PX HAIRLINE BORDERS
   ------------------------------------------------------------- */
   .hairline {
-    border: 1px solid rgba(11, 11, 11, 0.15);
+    border: 1px solid rgba(11, 13, 16, 0.10);
   }
-  .hairline-ink {
-    border: 1px solid #0B0B0B;
-  }
-  .hairline-white {
-    border: 1px solid rgba(255, 255, 255, 0.18);
+  .hairline-dark {
+    border: 1px solid rgba(255, 255, 255, 0.10);
   }
   .hairline-t {
-    border-top: 1px solid rgba(11, 11, 11, 0.15);
+    border-top: 1px solid rgba(11, 13, 16, 0.10);
   }
   .hairline-b {
-    border-bottom: 1px solid rgba(11, 11, 11, 0.15);
+    border-bottom: 1px solid rgba(11, 13, 16, 0.10);
   }
   .hairline-l {
-    border-left: 1px solid rgba(11, 11, 11, 0.15);
+    border-left: 1px solid rgba(11, 13, 16, 0.10);
   }
   .hairline-r {
-    border-right: 1px solid rgba(11, 11, 11, 0.15);
+    border-right: 1px solid rgba(11, 13, 16, 0.10);
   }
-  .hairline-t-ink {
-    border-top: 1px solid #0B0B0B;
+  .hairline-t-dark {
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
   }
-  .hairline-b-ink {
-    border-bottom: 1px solid #0B0B0B;
-  }
-  .hairline-t-white {
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-  }
-  .hairline-b-white {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  .hairline-b-dark {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -202,220 +208,210 @@
   }
 
   /* -------------------------------------------------------------
-     PRIMARY BRUTALIST BUTTONS
+     PRECISION STUDIO BUTTONS
   ------------------------------------------------------------- */
-  .btn-brutal {
+  .btn-precision-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    padding: 0.8rem 1.6rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border: 2px solid #0B0B0B;
-    box-shadow: 2px 2px 0px #0B0B0B;
-    border-radius: 4px;
-    background-color: #FAF7F2;
-    color: #0B0B0B;
-    cursor: pointer;
-    transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
-  }
-  .btn-brutal:hover {
-    transform: translate(-1.5px, -1.5px);
-    box-shadow: 3.5px 3.5px 0px #0B0B0B;
-  }
-  .btn-brutal:active {
-    transform: translate(1px, 1px);
-    box-shadow: 0px 0px 0px #0B0B0B;
-  }
-  .btn-brutal:focus-visible {
-    outline: 2px solid #FF5A1F;
-    outline-offset: 3px;
-  }
-
-  .btn-brutal-orange {
-    background-color: #FF5A1F;
-    color: #0B0B0B;
-  }
-  .btn-brutal-orange:hover {
-    background-color: #FF6B35;
-  }
-
-  .btn-brutal-lemon {
-    background-color: #FFE14D;
-    color: #0B0B0B;
-  }
-  .btn-brutal-lemon:hover {
-    background-color: #FFF070;
-  }
-
-  .btn-brutal-ink {
-    background-color: #0B0B0B;
-    color: #FAF7F2;
-    border-color: #0B0B0B;
-  }
-  .btn-brutal-ink:hover {
-    background-color: #222222;
-    color: #FFFFFF;
-  }
-
-  .btn-ghost-link {
-    display: inline-flex;
-    align-items: center;
     gap: 0.5rem;
-    padding: 0.8rem 1.2rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
+    padding: 0.75rem 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
     font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: inherit;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.2s ease, transform 0.15s ease;
+    border-radius: 10px;
+    background-color: #FF5A1F;
+    color: #FFFFFF;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(255, 90, 31, 0.20);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .btn-ghost-link:hover {
-    border-bottom-color: #FF5A1F;
-    transform: translateX(4px);
+  .btn-precision-primary:hover {
+    background-color: #E04810;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(255, 90, 31, 0.28);
   }
-
-  .btn-whatsapp-brutal {
-    border: 2px solid #0B0B0B;
-    box-shadow: 2px 2px 0px #0B0B0B;
-    border-radius: 4px;
-    background-color: #25D366;
-    color: #0B0B0B;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  .btn-precision-primary:hover svg {
+    transform: translateX(3px);
   }
-  .btn-whatsapp-brutal:hover {
-    transform: translate(-1.5px, -1.5px);
-    box-shadow: 3.5px 3.5px 0px #0B0B0B;
+  .btn-precision-primary svg {
+    transition: transform 0.2s ease;
   }
-  .btn-whatsapp-brutal:active {
-    transform: translate(1px, 1px);
-    box-shadow: 0px 0px 0px #0B0B0B;
+  .btn-precision-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   }
-
-  .card-slab {
-    border: 2px solid #0B0B0B;
-    box-shadow: 3px 3px 0px #0B0B0B;
-    border-radius: 4px;
+  .btn-precision-primary:focus-visible {
+    outline: 2px solid #FF5A1F;
+    outline-offset: 2px;
   }
 
-  .badge-sticker {
+  .btn-precision-secondary {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.2rem 0.55rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    border: 1.5px solid #0B0B0B;
-    box-shadow: 1.5px 1.5px 0px #0B0B0B;
-    border-radius: 2px;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: 10px;
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid rgba(11, 13, 16, 0.15);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-precision-secondary:hover {
+    background-color: rgba(11, 13, 16, 0.04);
+    border-color: rgba(11, 13, 16, 0.3);
+  }
+  .dark .btn-precision-secondary, [data-theme="dark"] .btn-precision-secondary {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+  .dark .btn-precision-secondary:hover, [data-theme="dark"] .btn-precision-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.35);
   }
 
-  .line-reveal-mask {
-    overflow: hidden;
-    display: block;
-  }
-  .line-reveal-inner {
-    display: block;
-    transform: translateY(0);
-    will-change: transform;
-  }
-
-  .ghost-3d-text {
-    position: absolute;
-    right: 2%;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(10rem, 28vw, 32rem);
-    font-weight: 900;
-    line-height: 0.8;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(11, 11, 11, 0.07);
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-
-  .ghost-3d-text-light {
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
-  }
-
-  .blueprint-grid-subtle {
-    background-size: 48px 48px;
-    background-image: 
-      linear-gradient(to right, rgba(11, 11, 11, 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(11, 11, 11, 0.035) 1px, transparent 1px);
-  }
-
-  .sticker-minimal {
+  .btn-precision-ghost {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.2rem 0.6rem;
+    padding: 0.5rem 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: inherit;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-precision-ghost:hover {
+    border-bottom-color: #FF5A1F;
+    color: #FF5A1F;
+  }
+
+  .btn-whatsapp-precision {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: #25D366;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-whatsapp-precision:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  }
+
+  /* -------------------------------------------------------------
+     SURFACES & CARDS (14-16px Rounded, Soft Shadows, 1px Hairlines)
+  ------------------------------------------------------------- */
+  .card-precision {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(11, 13, 16, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 8px 24px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-precision:hover {
+    border-color: rgba(11, 13, 16, 0.16);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-precision-dark {
+    background-color: #12151A;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-precision-dark:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  /* -------------------------------------------------------------
+     PRECISION BADGES & TAGS
+  ------------------------------------------------------------- */
+  .precision-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
     font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border: 1px solid #0B0B0B;
-    background-color: #FFE14D;
-    color: #0B0B0B;
-    border-radius: 2px;
+    letter-spacing: 0.06em;
+    border: 1px solid rgba(11, 13, 16, 0.12);
+    background-color: #FFFFFF;
+    color: #5B616B;
+    border-radius: 6px;
+  }
+  .dark .precision-badge, [data-theme="dark"] .precision-badge {
+    border-color: rgba(255, 255, 255, 0.12);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #A3A9B3;
+  }
+
+  .precision-badge-orange {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid rgba(255, 90, 31, 0.3);
+    background-color: rgba(255, 90, 31, 0.08);
+    color: #FF5A1F;
+    border-radius: 6px;
+  }
+
+  /* Glass backdrop */
+  .glass-nav {
+    background-color: rgba(11, 13, 16, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-panel {
+    background-color: rgba(18, 21, 26, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  /* Engineering Grid */
+  .engineering-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 }
 
-/* Custom Brutalist Scrollbar */
+/* Precision Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #0B0D10;
 }
 ::-webkit-scrollbar-thumb {
-  background: #FF5A1F;
-  border: 1px solid #0B0B0B;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0B0B0B;
-}
-
-/* Film Grain Overlay */
-.grain-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* Ticker Marquee Keyframe */
-@keyframes ticker {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-.ticker-animation {
-  animation: ticker 32s linear infinite;
-}
-.ticker-animation:hover {
-  animation-play-state: paused;
+  background: #FF5A1F;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -424,8 +420,5 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-  .ticker-animation {
-    animation: none !important;
   }
 }

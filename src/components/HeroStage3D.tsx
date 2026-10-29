@@ -1,172 +1,266 @@
 'use client';
 
-import React, { useRef, useMemo, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useMemo, useEffect, useState, useCallback, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useGLTF, Outlines } from '@react-three/drei';
+import { useGLTF, ContactShadows, Html } from '@react-three/drei';
 import * as THREE from 'three';
+import { RotateCw, RefreshCw, Sliders, Box, Layers, Eye, Cpu } from 'lucide-react';
 
 interface HeroStage3DProps {
-  printProgress?: number; // 0 to 1
+  printProgress?: number;
   isPrinting?: boolean;
   reducedMotion?: boolean;
   onFirstInteract?: () => void;
   onTriggerReprint?: () => void;
 }
 
+const MODEL_ROBOT = '/tmpoaxsvpt5.glb';
+const MODEL_PRINTER = '/voron-cascade.glb';
+
 // ---------------------------------------------------------------------------
-// 1. Camera & Scene Setup
+// 1. Camera & Scene Environment
 // ---------------------------------------------------------------------------
-function CameraAndSceneSetup() {
-  const { gl, camera, scene } = useThree();
+function CameraAndSceneSetup({ viewMode }: { viewMode: 'combo' | 'robot' | 'printer' }) {
+  const { gl, camera } = useThree();
 
   useEffect(() => {
-    (window as any).__SCENE = scene;
-    (window as any).__CAMERA = camera;
-    (window as any).__GL = gl;
     gl.localClippingEnabled = true;
-    gl.toneMapping = THREE.NoToneMapping;
+    gl.toneMapping = THREE.ACESFilmicToneMapping;
+    gl.toneMappingExposure = 1.15;
     gl.outputColorSpace = THREE.SRGBColorSpace;
-    camera.position.set(0, 1.5, 6.2);
-    camera.lookAt(0, 1.5, 0);
-  }, [gl, camera, scene]);
+  }, [gl]);
 
   useFrame(() => {
-    camera.lookAt(0, 1.5, 0);
+    const targetPos = viewMode === 'robot' 
+      ? new THREE.Vector3(0, 1.5, 5.2)
+      : viewMode === 'printer'
+      ? new THREE.Vector3(0, 1.8, 6.4)
+      : new THREE.Vector3(0, 1.6, 5.8);
+
+    camera.position.lerp(targetPos, 0.05);
+    camera.lookAt(0, viewMode === 'robot' ? 1.4 : 1.6, 0);
   });
 
   return null;
 }
 
 // ---------------------------------------------------------------------------
-// 2. Max 3 Outlined Floating Low-Poly Props (Cube, Octahedron, Bolt)
+// 2. High-Precision Voron Cascade 3D Printer Model
 // ---------------------------------------------------------------------------
-function StageProps({ pointerParallax }: { pointerParallax: { x: number; y: number } }) {
-  const groupRef = useRef<THREE.Group>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
-  useFrame((state) => {
-    if (!groupRef.current || isMobile) return;
-    const t = state.clock.elapsedTime;
-    const children = groupRef.current.children;
-
-    // Prop 1: Lemon Cube (Top-Right)
-    if (children[0]) {
-      children[0].rotation.x = t * 0.35;
-      children[0].rotation.y = t * 0.4;
-      children[0].position.y = 2.45 + Math.sin(t * 1.1) * 0.08 + pointerParallax.y * 0.15;
-      children[0].position.x = 2.05 + pointerParallax.x * 0.2;
-    }
-    // Prop 2: Periwinkle Hex Bolt (Top-Left)
-    if (children[1]) {
-      children[1].rotation.y = t * 0.45;
-      children[1].rotation.z = t * 0.25;
-      children[1].position.y = 2.2 + Math.cos(t * 1.3) * 0.07 + pointerParallax.y * 0.12;
-      children[1].position.x = -2.05 + pointerParallax.x * 0.18;
-    }
-    // Prop 3: Mint Octahedron (Lower-Right)
-    if (children[2]) {
-      children[2].rotation.x = t * 0.5;
-      children[2].rotation.z = t * 0.35;
-      children[2].position.y = 0.65 + Math.sin(t * 1.4 + 1.5) * 0.06 + pointerParallax.y * 0.1;
-      children[2].position.x = 2.15 + pointerParallax.x * 0.15;
-    }
-  });
-
-  if (isMobile) return null;
-
-  return (
-    <group ref={groupRef}>
-      {/* 1. Lemon Cube (<= 8% mecha height) */}
-      <mesh position={[2.05, 2.45, -0.4]}>
-        <boxGeometry args={[0.22, 0.22, 0.22]} />
-        <meshBasicMaterial color="#FFE14D" />
-        <Outlines thickness={2} color="#0B0B0B" />
-      </mesh>
-
-      {/* 2. Periwinkle Hex Bolt */}
-      <mesh position={[-2.05, 2.2, -0.5]}>
-        <cylinderGeometry args={[0.13, 0.13, 0.08, 6]} />
-        <meshBasicMaterial color="#8EA2FF" />
-        <Outlines thickness={1.8} color="#0B0B0B" />
-      </mesh>
-
-      {/* 3. Mint Octahedron */}
-      <mesh position={[2.15, 0.65, 0.3]}>
-        <octahedronGeometry args={[0.15, 0]} />
-        <meshBasicMaterial color="#7CF2C1" />
-        <Outlines thickness={1.8} color="#0B0B0B" />
-      </mesh>
-    </group>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// 3. Real 3D Orbiting Torus Ring (Passes in front of legs, behind torso)
-// ---------------------------------------------------------------------------
-function SaturnOrbitRing({
-  isHovered,
-  scale = 1.0,
+function VoronCascadePrinter({
+  viewMode,
+  printProgress,
 }: {
-  isHovered: boolean;
-  scale?: number;
+  viewMode: 'combo' | 'robot' | 'printer';
+  printProgress: number;
 }) {
-  const primaryMeshRef = useRef<THREE.Mesh>(null);
-  const secondaryMeshRef = useRef<THREE.Mesh>(null);
+  if (viewMode === 'robot') return null;
 
-  useFrame((state, delta) => {
-    const speedMult = isHovered ? 2.5 : 1.0;
-    if (primaryMeshRef.current) {
-      primaryMeshRef.current.rotation.z += delta * 0.25 * speedMult;
-    }
-    if (secondaryMeshRef.current) {
-      secondaryMeshRef.current.rotation.z -= delta * 0.35 * speedMult;
-    }
-  });
+  const { scene } = useGLTF(MODEL_PRINTER, '/draco/');
+
+  // Normalize Voron Cascade printer assembly (size approx 1.21m x 0.87m x 0.86m)
+  const { normalizedScene, scale, offset } = useMemo(() => {
+    const clone = scene.clone();
+    clone.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const m = child as THREE.Mesh;
+        m.castShadow = true;
+        m.receiveShadow = true;
+        if (m.material) {
+          // Enhance metalness and industrial contrast
+          if (Array.isArray(m.material)) {
+            m.material.forEach((mat) => {
+              if (mat instanceof THREE.MeshStandardMaterial) {
+                mat.roughness = Math.min(mat.roughness, 0.6);
+              }
+            });
+          } else if (m.material instanceof THREE.MeshStandardMaterial) {
+            m.material.roughness = Math.min(m.material.roughness, 0.6);
+          }
+        }
+      }
+    });
+
+    const targetHeight = 3.6;
+    const s = targetHeight / 0.867; // scale factor approx 4.15
+    const ox = -0.192 * s;
+    const oy = 0.5 * s; // align feet to ground y=0
+    const oz = 0.097 * s;
+
+    return { normalizedScene: clone, scale: s, offset: new THREE.Vector3(ox, oy, oz) };
+  }, [scene]);
 
   return (
-    // Centred on waist at y = 1.5, tilted -20 deg X and 12 deg Z
-    // Radius ~1.28 circles the waist; front passes in front of legs, back passes behind torso
-    <group
-      position={[0, 1.5, 0]}
-      rotation={[-0.349, 0, 0.209]}
-      scale={scale}
-    >
-      {/* Primary Band: Saturn Orange Torus (Tube ~0.085, 128 segments, arc 2*PI) */}
-      <mesh ref={primaryMeshRef}>
-        <torusGeometry args={[1.28, 0.085, 24, 128, Math.PI * 2]} />
-        <meshBasicMaterial color="#FF5A1F" />
-        <Outlines thickness={2.0} color="#0B0B0B" />
-      </mesh>
+    <group position={offset} scale={[scale, scale, scale]}>
+      <primitive object={normalizedScene} />
+    </group>
+  );
+}
 
-      {/* Secondary Thinner Band: Lemon Ring (Radius +0.14, Tube 0.035) */}
-      <mesh ref={secondaryMeshRef}>
-        <torusGeometry args={[1.42, 0.035, 20, 128, Math.PI * 2]} />
-        <meshBasicMaterial color="#FFE14D" />
-        <Outlines thickness={1.6} color="#0B0B0B" />
+// ---------------------------------------------------------------------------
+// 3. Robot Model (tmpoaxsvpt5.glb) Printed On The Bed
+// ---------------------------------------------------------------------------
+function RobotModel({
+  printProgress,
+  isPrinting,
+  reducedMotion,
+  clippingPlane,
+  pbrMaterial,
+  viewMode,
+}: {
+  printProgress: number;
+  isPrinting: boolean;
+  reducedMotion: boolean;
+  clippingPlane: THREE.Plane;
+  pbrMaterial: THREE.Material;
+  viewMode: 'combo' | 'robot' | 'printer';
+}) {
+  if (viewMode === 'printer') return null;
+
+  const { scene } = useGLTF(MODEL_ROBOT);
+
+  const { clonedScene, scale, positionY } = useMemo(() => {
+    const clone = scene.clone();
+    clone.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const m = child as THREE.Mesh;
+        m.material = pbrMaterial;
+        m.castShadow = true;
+        m.receiveShadow = true;
+      }
+    });
+
+    // In combo mode, the robot fits inside the Voron build volume (bed height y ~ 0.5)
+    const s = viewMode === 'robot' ? 1.0 : 0.72;
+    const posY = viewMode === 'robot' ? 0.0 : 0.45;
+
+    return { clonedScene: clone, scale: s, positionY: posY };
+  }, [scene, pbrMaterial, viewMode]);
+
+  return (
+    <group position={[0, positionY, 0]} scale={[scale, scale, scale]}>
+      <primitive object={clonedScene} />
+    </group>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// 4. Hotspots (Toolhead, Heated Bed, CoreXY Gantry)
+// ---------------------------------------------------------------------------
+function CalloutHotspots({
+  active,
+  currentCut,
+  viewMode,
+}: {
+  active: boolean;
+  currentCut: number;
+  viewMode: 'combo' | 'robot' | 'printer';
+}) {
+  if (!active) return null;
+
+  const toolheadPos: [number, number, number] = [
+    0.35,
+    viewMode === 'robot' ? currentCut + 0.1 : Math.min(2.7, currentCut * 0.72 + 0.55),
+    0.2,
+  ];
+
+  return (
+    <group>
+      {/* 1. Toolhead Nozzle Hotspot */}
+      <group position={toolheadPos}>
+        <Html distanceFactor={8} position={[0.2, 0.1, 0]}>
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#0B0D10]/85 border hairline-dark shadow-precision-md backdrop-blur-md whitespace-nowrap pointer-events-none animate-in fade-in zoom-in-90 duration-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-ping" />
+            <span className="font-mono text-[10px] text-white font-medium">Toolhead Nozzle: 245°C</span>
+          </div>
+        </Html>
+      </group>
+
+      {/* 2. Heated Build Bed Hotspot */}
+      <group position={[-1.2, 0.45, 0.5]}>
+        <Html distanceFactor={8} position={[-0.2, 0.1, 0]}>
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#0B0D10]/85 border hairline-dark shadow-precision-md backdrop-blur-md whitespace-nowrap pointer-events-none animate-in fade-in zoom-in-90 duration-300">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span className="font-mono text-[10px] text-white font-medium">PEI Bed: 90°C • ±0.04 mm</span>
+          </div>
+        </Html>
+      </group>
+
+      {/* 3. CoreXY Gantry Motion Hotspot */}
+      {viewMode !== 'robot' && (
+        <group position={[1.1, 3.2, -0.4]}>
+          <Html distanceFactor={8} position={[0.2, 0.1, 0]}>
+            <div className="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#0B0D10]/85 border hairline-dark shadow-precision-md backdrop-blur-md whitespace-nowrap pointer-events-none animate-in fade-in zoom-in-90 duration-300">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+              <span className="font-mono text-[10px] text-white font-medium">Voron CoreXY: 500 mm/s</span>
+            </div>
+          </Html>
+        </group>
+      )}
+    </group>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// 5. Active Slicing Laser Ring & Nozzle Light
+// ---------------------------------------------------------------------------
+function ActiveLaserRing({
+  currentCut,
+  isPrinting,
+  printProgress,
+  viewMode,
+}: {
+  currentCut: number;
+  isPrinting: boolean;
+  printProgress: number;
+  viewMode: 'combo' | 'robot' | 'printer';
+}) {
+  if (viewMode === 'printer' || !isPrinting || printProgress >= 0.99) return null;
+
+  const actualY = viewMode === 'robot' ? currentCut : currentCut * 0.72 + 0.45;
+  const radius = viewMode === 'robot' ? 1.35 : 0.95;
+
+  return (
+    <group position={[0, actualY, 0]}>
+      {/* Concentric laser scanning ring on active layer */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.01, radius, 48]} />
+        <meshBasicMaterial
+          color="#FF5A1F"
+          side={THREE.DoubleSide}
+          transparent
+          opacity={0.85}
+        />
+      </mesh>
+      {/* Micro print bead point light */}
+      <pointLight color="#FF5A1F" intensity={6} distance={2.2} decay={2} />
+      {/* Toolhead Extruder Nozzle Tip */}
+      <mesh position={[0, 0.12, 0]}>
+        <coneGeometry args={[0.06, 0.22, 16]} />
+        <meshStandardMaterial
+          color="#D97706"
+          metalness={0.8}
+          roughness={0.25}
+        />
       </mesh>
     </group>
   );
 }
 
 // ---------------------------------------------------------------------------
-// 4. Mecha Character: Clean Toon & Inverted Hull Ink Outline
+// 6. Interactive 3D Stage Composition
 // ---------------------------------------------------------------------------
-function MechaCharacter({
-  printProgress = 1.0,
-  isPrinting = false,
-  reducedMotion = false,
+function CombinedStage({
+  printProgress,
+  isPrinting,
+  reducedMotion,
   pointerParallax,
   onInteract,
   onTriggerReprint,
   setIsHovered,
   stageRotationY,
+  viewMode,
+  showHotspots,
 }: {
   printProgress: number;
   isPrinting: boolean;
@@ -176,14 +270,12 @@ function MechaCharacter({
   onTriggerReprint?: () => void;
   setIsHovered: (hovered: boolean) => void;
   stageRotationY: number;
+  viewMode: 'combo' | 'robot' | 'printer';
+  showHotspots: boolean;
 }) {
-  console.log('[STAGE3D] MechaCharacter START RENDER');
   const groupRef = useRef<THREE.Group>(null);
 
-  // Load optimized mecha model
-  const { scene } = useGLTF('/models/saturn-mecha.glb');
-
-  // Calculate cut Y in world-space: mecha goes from y = 0 to y = 3.0
+  // World-space cut Y
   const currentCut = reducedMotion || !isPrinting || printProgress >= 0.99
     ? 999.0
     : printProgress * 3.15;
@@ -193,138 +285,27 @@ function MechaCharacter({
   }, []);
   clippingPlane.constant = currentCut;
 
-  // 3-Step Toon Gradient Map with NearestFilter [0.28, 0.6, 1.0]
-  const gradientMap = useMemo(() => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 3;
-    canvas.height = 1;
-    const ctx = canvas.getContext('2d')!;
-    ctx.fillStyle = '#CFC6B8'; // Warm grey shadow
-    ctx.fillRect(0, 0, 1, 1);
-    ctx.fillStyle = '#EAE4D9'; // Neutral midtone
-    ctx.fillRect(1, 0, 1, 1);
-    ctx.fillStyle = '#F2EEE6'; // Highlight off-white
-    ctx.fillRect(2, 0, 1, 1);
-
-    const tex = new THREE.CanvasTexture(canvas);
-    tex.minFilter = THREE.NearestFilter;
-    tex.magFilter = THREE.NearestFilter;
-    tex.needsUpdate = true;
-    return tex;
-  }, []);
-
-  // Isolate RobotMesh, ignore RockSummit, sanitize vertex colors & normalize height
-  const { robotMesh, targetScale, targetOffset } = useMemo<{
-    robotMesh: THREE.Mesh | null;
-    targetScale: number;
-    targetOffset: THREE.Vector3;
-  }>(() => {
-    let robot: THREE.Mesh | null = null;
-
-    scene.traverse((child) => {
-      if ((child as THREE.Mesh).isMesh) {
-        if (child.name.toLowerCase().includes('rock')) {
-          child.visible = false;
-        } else {
-          robot = child as THREE.Mesh;
-          robot.visible = true;
-        }
-      }
-    });
-
-    if (robot) {
-
-      scene.updateMatrixWorld(true);
-      const box = new THREE.Box3().setFromObject(robot);
-      const size = box.getSize(new THREE.Vector3());
-      const center = box.getCenter(new THREE.Vector3());
-
-      // Normalize height to exactly 3.0 units, feet at y = 0
-      const targetHeight = 3.0;
-      const scale = targetHeight / (size.y || 1);
-      const offset = new THREE.Vector3(
-        -center.x * scale,
-        -box.min.y * scale,
-        -center.z * scale
-      );
-
-      return {
-        robotMesh: robot,
-        targetScale: scale,
-        targetOffset: offset,
-      };
-    }
-
-    return {
-      robotMesh: null,
-      targetScale: 1,
-      targetOffset: new THREE.Vector3(0, 0, 0),
-    };
-  }, [scene]);
-
-  // Phase 2 Toon Material with Hardware Clipping during printing
-  const toonMaterial = useMemo(() => {
-    return new THREE.MeshToonMaterial({
-      color: new THREE.Color('#FFFFFF'),
-      gradientMap,
-      vertexColors: true,
-      side: THREE.DoubleSide,
+  // Studio PBR Material for the robot (Warm-White ABS body)
+  const pbrMaterial = useMemo(() => {
+    return new THREE.MeshStandardMaterial({
+      color: new THREE.Color('#F2EEE6'),
+      roughness: 0.38,
+      metalness: 0.12,
       clippingPlanes: isPrinting && printProgress < 0.99 ? [clippingPlane] : [],
       clipShadows: true,
     });
-  }, [gradientMap, clippingPlane, isPrinting, printProgress]);
-
-  // Phase 2 Crisp Inverted Hull Ink Outline (~2.5px along normals)
-  const outlineMaterial = useMemo(() => {
-    return new THREE.ShaderMaterial({
-      uniforms: {
-        outlineThickness: { value: 0.0065 },
-        outlineColor: { value: new THREE.Color('#0B0B0B') },
-      },
-      vertexShader: `
-        uniform float outlineThickness;
-        void main() {
-          vec3 newPos = position + normal * outlineThickness;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(newPos, 1.0);
-        }
-      `,
-      fragmentShader: `
-        uniform vec3 outlineColor;
-        void main() {
-          gl_FragColor = vec4(outlineColor, 1.0);
-        }
-      `,
-      side: THREE.BackSide,
-      clippingPlanes: isPrinting && printProgress < 0.99 ? [clippingPlane] : [],
-    });
   }, [clippingPlane, isPrinting, printProgress]);
 
-  // Attach Toon Material & Inverted Hull Ink Outline to robotMesh
-  useEffect(() => {
-    if (!robotMesh) return;
-    robotMesh.material = toonMaterial;
-    robotMesh.castShadow = false;
-    robotMesh.receiveShadow = false;
-
-    const outlineMesh = new THREE.Mesh(robotMesh.geometry, outlineMaterial);
-    robotMesh.add(outlineMesh);
-
-    return () => {
-      robotMesh.remove(outlineMesh);
-    };
-  }, [robotMesh, toonMaterial, outlineMaterial]);
-
-  // Procedural breathing + pointer parallax + stage rotation
+  // Gentle breathing & rotation lerp
   useFrame((state) => {
     if (!groupRef.current) return;
     const t = state.clock.elapsedTime;
-
-    const breath = Math.sin(t * 1.5);
-    const scaleBreath = 1.0 + breath * 0.005;
+    const breath = Math.sin(t * 1.6);
+    const scaleBreath = 1.0 + breath * 0.002;
     groupRef.current.scale.set(scaleBreath, scaleBreath, scaleBreath);
 
-    const targetPitch = -pointerParallax.y * (5 * Math.PI / 180);
-    const targetYaw = pointerParallax.x * (10 * Math.PI / 180);
+    const targetPitch = -pointerParallax.y * (3 * Math.PI / 180);
+    const targetYaw = pointerParallax.x * (6 * Math.PI / 180);
 
     groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetPitch, 0.08);
     groupRef.current.rotation.y = THREE.MathUtils.lerp(
@@ -341,61 +322,46 @@ function MechaCharacter({
       onPointerLeave={() => setIsHovered(false)}
       onDoubleClick={() => onTriggerReprint?.()}
     >
-      <group position={targetOffset} scale={targetScale}>
-        <primitive object={scene} />
-      </group>
+      {/* 1. Voron Cascade 3D Printer Assembly */}
+      <Suspense fallback={null}>
+        <VoronCascadePrinter
+          viewMode={viewMode}
+          printProgress={printProgress}
+        />
+      </Suspense>
 
-      {/* Laser Cut Glow Line during printing */}
-      {isPrinting && printProgress < 0.99 && (
-        <group position={[0, currentCut, 0]}>
-          <mesh rotation={[-Math.PI / 2, 0, 0]}>
-            <ringGeometry args={[0.01, 1.4, 48]} />
-            <meshBasicMaterial
-              color="#FF5A1F"
-              side={THREE.DoubleSide}
-              transparent
-              opacity={0.88}
-            />
-          </mesh>
-          <pointLight color="#FF5A1F" intensity={4} distance={2.0} decay={2} />
-        </group>
-      )}
+      {/* 2. Mecha Robot Model (tmpoaxsvpt5.glb) being printed */}
+      <Suspense fallback={null}>
+        <RobotModel
+          printProgress={printProgress}
+          isPrinting={isPrinting}
+          reducedMotion={reducedMotion}
+          clippingPlane={clippingPlane}
+          pbrMaterial={pbrMaterial}
+          viewMode={viewMode}
+        />
+      </Suspense>
+
+      {/* 3. Laser Cut Horizon & Nozzle Tip */}
+      <ActiveLaserRing
+        currentCut={currentCut}
+        isPrinting={isPrinting}
+        printProgress={printProgress}
+        viewMode={viewMode}
+      />
+
+      {/* 4. Hotspot Callout Overlays */}
+      <CalloutHotspots
+        active={showHotspots}
+        currentCut={currentCut}
+        viewMode={viewMode}
+      />
     </group>
   );
 }
 
 // ---------------------------------------------------------------------------
-// 5. Stage Elements: Lemon Circle Backdrop & Hard Contact Shadow
-// ---------------------------------------------------------------------------
-function StageElements({
-  discScale = 1.0,
-}: {
-  discScale?: number;
-}) {
-  return (
-    <group>
-      {/* Stage Backdrop: Flat lemon circle (no border, no shadow), ~0.85 x mecha height (radius ~1.28) */}
-      {/* Sits behind mecha and behind ring's back arc at z = -0.8 */}
-      <mesh position={[0.22, 1.4, -0.8]} scale={discScale}>
-        <circleGeometry args={[1.28, 64]} />
-        <meshBasicMaterial color="#FFE14D" />
-      </mesh>
-
-      {/* Flat Hard Contact Shadow Ellipse under feet: ink at ~18% opacity, zero blur */}
-      <mesh
-        position={[0.10, 0.002, 0.08]}
-        rotation={[-Math.PI / 2, 0, 0]}
-        scale={[1.15, 0.65, 1]}
-      >
-        <circleGeometry args={[0.72, 48]} />
-        <meshBasicMaterial color="#0B0B0B" transparent opacity={0.18} />
-      </mesh>
-    </group>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Main Hero Stage 3D Export
+// 7. Main HeroStage3D Component with CADScope Controls
 // ---------------------------------------------------------------------------
 export default function HeroStage3D({
   printProgress = 1.0,
@@ -408,12 +374,17 @@ export default function HeroStage3D({
   const [isHovered, setIsHovered] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [pointerParallax, setPointerParallax] = useState({ x: 0, y: 0 });
+  const [manualRotY, setManualRotY] = useState(0);
+  const [autoRotate, setAutoRotate] = useState(true);
+  const [showHotspots, setShowHotspots] = useState(true);
+  const [viewMode, setViewMode] = useState<'combo' | 'robot' | 'printer'>('combo');
+  const [manualScrub, setManualScrub] = useState<number | null>(null);
 
-  // Drag interaction state
   const isDraggingRef = useRef(false);
   const dragStartRef = useRef({ x: 0, rotY: 0 });
-  const [manualRotY, setManualRotY] = useState(0);
   const lastInteractionTimeRef = useRef(Date.now());
+
+  const effectiveProgress = manualScrub !== null ? manualScrub : printProgress;
 
   const registerInteraction = useCallback(() => {
     if (!hasInteracted) {
@@ -435,7 +406,7 @@ export default function HeroStage3D({
 
     if (isDraggingRef.current) {
       const deltaX = (e.clientX - dragStartRef.current.x) * 0.009;
-      const maxAngle = 80 * Math.PI / 180;
+      const maxAngle = 90 * Math.PI / 180;
       const newRot = THREE.MathUtils.clamp(dragStartRef.current.rotY + deltaX, -maxAngle, maxAngle);
       setManualRotY(newRot);
       lastInteractionTimeRef.current = Date.now();
@@ -454,43 +425,36 @@ export default function HeroStage3D({
     (e.target as HTMLElement)?.releasePointerCapture?.(e.pointerId);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      setManualRotY((r) => Math.max(r - 0.15, -80 * Math.PI / 180));
-      registerInteraction();
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      setManualRotY((r) => Math.min(r + 0.15, 80 * Math.PI / 180));
-      registerInteraction();
-    }
-  };
-
-  // Idle auto-rotate return after 3s without input
+  // Subtle turntable auto-rotation
   useEffect(() => {
+    if (!autoRotate || reducedMotion) return;
     let animId: number;
+    let angle = manualRotY;
     const tick = () => {
-      const elapsedSinceInput = Date.now() - lastInteractionTimeRef.current;
-      if (!isDraggingRef.current && elapsedSinceInput > 3000 && !reducedMotion) {
-        setManualRotY((current) => THREE.MathUtils.lerp(current, 0, 0.04));
+      const elapsed = Date.now() - lastInteractionTimeRef.current;
+      if (!isDraggingRef.current && elapsed > 2500) {
+        angle += 0.003;
+        setManualRotY(angle);
       }
       animId = requestAnimationFrame(tick);
     };
     animId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(animId);
-  }, [reducedMotion]);
+  }, [autoRotate, reducedMotion, manualRotY]);
+
+  const resetView = () => {
+    setManualRotY(0);
+    setManualScrub(null);
+    registerInteraction();
+  };
 
   return (
     <div
       ref={containerRef}
-      className="w-full h-full relative select-none cursor-grab active:cursor-grabbing outline-none"
-      tabIndex={0}
-      role="region"
-      aria-label="Interactive 3D model of Saturn 3D mecha character. Drag horizontally or use arrow keys to rotate."
+      className="w-full h-full relative select-none cursor-grab active:cursor-grabbing outline-hidden"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
-      onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
@@ -498,9 +462,40 @@ export default function HeroStage3D({
         setPointerParallax({ x: 0, y: 0 });
       }}
     >
+      {/* Soft Radial Ambient Orange Glow Behind Stage (<= 12% alpha) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-[#FF5A1F]/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Top View Mode Selector Pills */}
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 p-1 rounded-full bg-[#12151A]/85 backdrop-blur-md border hairline-dark shadow-precision-md">
+        <button
+          onClick={(e) => { e.stopPropagation(); setViewMode('combo'); registerInteraction(); }}
+          className={`px-3 py-1 rounded-full font-mono text-[11px] font-medium transition-all cursor-pointer ${
+            viewMode === 'combo' ? 'bg-[#FF5A1F] text-white shadow-precision-xs' : 'text-white/60 hover:text-white'
+          }`}
+        >
+          Voron + Robot
+        </button>
+        <button
+          onClick={(e) => { e.stopPropagation(); setViewMode('robot'); registerInteraction(); }}
+          className={`px-3 py-1 rounded-full font-mono text-[11px] font-medium transition-all cursor-pointer ${
+            viewMode === 'robot' ? 'bg-[#FF5A1F] text-white shadow-precision-xs' : 'text-white/60 hover:text-white'
+          }`}
+        >
+          Robot Part
+        </button>
+        <button
+          onClick={(e) => { e.stopPropagation(); setViewMode('printer'); registerInteraction(); }}
+          className={`px-3 py-1 rounded-full font-mono text-[11px] font-medium transition-all cursor-pointer ${
+            viewMode === 'printer' ? 'bg-[#FF5A1F] text-white shadow-precision-xs' : 'text-white/60 hover:text-white'
+          }`}
+        >
+          CoreXY Frame
+        </button>
+      </div>
+
       <Canvas
-        camera={{ position: [0, 1.5, 6.2], fov: 34 }}
-        dpr={[1, 1.75]}
+        camera={{ position: [0, 1.6, 5.8], fov: 32 }}
+        dpr={[1, 2]}
         gl={{
           alpha: true,
           localClippingEnabled: true,
@@ -508,41 +503,99 @@ export default function HeroStage3D({
           antialias: true,
         }}
         className="w-full h-full"
-        aria-hidden="true"
       >
-        <CameraAndSceneSetup />
+        <CameraAndSceneSetup viewMode={viewMode} />
 
-        {/* Phase 2 Clean Lighting: Warm key directional (top-left-front), low fill, orange rim (back-right) */}
-        <directionalLight position={[-3, 5, 4]} intensity={2.2} color="#FFF1D6" />
-        <hemisphereLight args={['#FFFFFF', '#F5EFE6', 0.55]} />
-        <directionalLight position={[4, 3, -4]} intensity={2.8} color="#FF5A1F" />
+        {/* Studio PBR Lighting Setup */}
+        <ambientLight intensity={0.45} />
+        <directionalLight position={[-5, 7, 5]} intensity={2.4} color="#FFF8F0" />
+        <directionalLight position={[5, 4, -3]} intensity={2.6} color="#FF5A1F" />
+        <directionalLight position={[0, -2, 3]} intensity={0.35} color="#FFFFFF" />
 
-        {/* Stage Lemon Disc (Behind) & Hard Contact Shadow (Floor) */}
-        <StageElements />
+        {/* Soft Contact Shadows on Floor */}
+        <ContactShadows
+          position={[0, 0, 0]}
+          opacity={0.5}
+          scale={5.5}
+          blur={2.4}
+          far={3.2}
+        />
 
-        {/* Real 3D Orbiting Saturn Ring (passes in front of legs, behind torso) */}
-        <SaturnOrbitRing isHovered={isHovered} />
-
-        {/* Mecha Robot with Clean Toon Shading & Ink Outline */}
-        <React.Suspense fallback={null}>
-          <MechaCharacter
-            printProgress={printProgress}
-            isPrinting={isPrinting}
-            reducedMotion={reducedMotion}
-            pointerParallax={pointerParallax}
-            onInteract={registerInteraction}
-            onTriggerReprint={onTriggerReprint}
-            setIsHovered={setIsHovered}
-            stageRotationY={manualRotY}
-          />
-        </React.Suspense>
-
-        {/* Max 3 Outlined Floating Props */}
-        <StageProps pointerParallax={pointerParallax} />
+        {/* 3D Combined Stage */}
+        <CombinedStage
+          printProgress={effectiveProgress}
+          isPrinting={isPrinting || manualScrub !== null}
+          reducedMotion={reducedMotion}
+          pointerParallax={pointerParallax}
+          onInteract={registerInteraction}
+          onTriggerReprint={onTriggerReprint}
+          setIsHovered={setIsHovered}
+          stageRotationY={manualRotY}
+          viewMode={viewMode}
+          showHotspots={showHotspots}
+        />
       </Canvas>
+
+      {/* CADScope-Style Floating Stage Controls Toolbar */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#12151A]/85 backdrop-blur-md border hairline-dark shadow-precision-lg max-w-[95%]">
+        <button
+          onClick={(e) => { e.stopPropagation(); resetView(); }}
+          className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+          title="Reset Camera View"
+        >
+          <RefreshCw className="w-3.5 h-3.5" />
+        </button>
+
+        <div className="w-[1px] h-3 bg-white/10" />
+
+        <button
+          onClick={(e) => { e.stopPropagation(); setAutoRotate(!autoRotate); }}
+          className={`p-1.5 rounded-full transition-colors cursor-pointer ${
+            autoRotate ? 'text-[#FF5A1F] bg-[#FF5A1F]/15' : 'text-white/70 hover:text-white hover:bg-white/10'
+          }`}
+          title={autoRotate ? 'Pause Rotation' : 'Auto Rotate'}
+        >
+          <RotateCw className="w-3.5 h-3.5" />
+        </button>
+
+        <div className="w-[1px] h-3 bg-white/10" />
+
+        {/* Interactive Layer Slicing Slider */}
+        <div className="flex items-center gap-1.5 px-2" onClick={(e) => e.stopPropagation()}>
+          <Sliders className="w-3 h-3 text-muted-dark" />
+          <input
+            type="range"
+            min="0.05"
+            max="1.0"
+            step="0.01"
+            value={effectiveProgress}
+            onChange={(e) => {
+              setManualScrub(parseFloat(e.target.value));
+              registerInteraction();
+            }}
+            className="w-16 sm:w-24 h-1 bg-white/20 accent-[#FF5A1F] rounded-lg cursor-pointer"
+            title="Interactive Layer Slicing Slider"
+          />
+          <span className="font-mono text-[9px] text-white/70 w-7">
+            {Math.round(effectiveProgress * 100)}%
+          </span>
+        </div>
+
+        <div className="w-[1px] h-3 bg-white/10" />
+
+        <button
+          onClick={(e) => { e.stopPropagation(); setShowHotspots(!showHotspots); }}
+          className={`px-2 py-0.5 rounded-full text-[10px] font-mono transition-colors cursor-pointer ${
+            showHotspots ? 'text-[#FF5A1F] bg-[#FF5A1F]/15' : 'text-white/70 hover:text-white'
+          }`}
+          title="Toggle Telemetry Hotspots"
+        >
+          Hotspots
+        </button>
+      </div>
     </div>
   );
 }
 
-// Preload optimized asset
-useGLTF.preload('/models/saturn-mecha.glb');
+useGLTF.preload(MODEL_ROBOT);
+useGLTF.preload(MODEL_PRINTER, '/draco/');

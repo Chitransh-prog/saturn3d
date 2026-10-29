@@ -1,25 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Outlines } from '@react-three/drei';
-import * as THREE from 'three';
-import { ArrowRight, Check, Move3d } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+'use client';
 
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { ContactShadows } from '@react-three/drei';
+import * as THREE from 'three';
+import { ArrowRight, Check, Layers, Cpu, ShieldCheck, Zap, Thermometer, Gauge } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface MaterialItem {
-  number: string;
   id: string;
   name: string;
+  group: 'Composites' | 'Specialty Resins' | 'Engineering' | 'Standard';
   subtitle: string;
   description: string;
   specs: {
     tensile: string;
-    temp: string;
+    hdt: string;
     density: string;
-    accuracy: string;
+    tolerance: string;
   };
   price: string;
   colorHex: string;
@@ -32,123 +30,103 @@ interface MaterialItem {
 
 const materialsData: MaterialItem[] = [
   {
-    number: '01',
-    id: 'pla-matte',
-    name: 'PLA MATTE PRO',
-    subtitle: 'Standard Rapid Bio-Polymer',
-    description: 'Crisp layered aesthetic with low reflectivity. Ideal for visual prototypes, scale architectural models, and ergonomic form validations.',
-    specs: {
-      tensile: '55 MPa (Rigid)',
-      temp: '65°C HDT',
-      density: '1.24 g/cm³',
-      accuracy: '±0.1 mm',
-    },
-    price: 'from ₹3.50 / g',
-    colorHex: '#FF5A1F',
-    roughness: 0.45,
-    metalness: 0.05,
-    transmission: 0.0,
-    opacity: 1.0,
-    transparent: false,
-  },
-  {
-    number: '02',
-    id: 'petg-industrial',
-    name: 'PETG INDUSTRIAL',
-    subtitle: 'Semi-Ductile & Water-Tight',
-    description: 'High impact resistance with glycol-enhanced ductility. Excellent for fluid tanks, outdoor enclosures, mechanical clips, and snap-latches.',
-    specs: {
-      tensile: '50 MPa (Ductile)',
-      temp: '80°C HDT',
-      density: '1.27 g/cm³',
-      accuracy: '±0.08 mm',
-    },
-    price: 'from ₹5.00 / g',
-    colorHex: '#8EA2FF',
-    roughness: 0.15,
-    metalness: 0.1,
-    transmission: 0.75,
-    opacity: 0.88,
-    transparent: true,
-  },
-  {
-    number: '03',
-    id: 'abs-esd',
-    name: 'ABS-ESD FLAME RETARDANT',
-    subtitle: 'Electrostatic Discharge Safe',
-    description: 'Surface resistivity 10^7–10^9 ohms. Engineered for semiconductor assembly trays, PCB enclosures, and under-hood automotive brackets.',
-    specs: {
-      tensile: '45 MPa (High Impact)',
-      temp: '100°C HDT',
-      density: '1.08 g/cm³',
-      accuracy: '±0.06 mm',
-    },
-    price: 'from ₹8.00 / g',
-    colorHex: '#262626',
-    roughness: 0.65,
-    metalness: 0.2,
-    transmission: 0.0,
-    opacity: 1.0,
-    transparent: false,
-  },
-  {
-    number: '04',
     id: 'carbon-x',
-    name: 'CARBON-X PA12 NYLON',
-    subtitle: 'Aerospace Structural Composite',
-    description: 'Chopped carbon fibers embedded in a polyamide 12 matrix. Replaces CNC machined aluminum in drone airframes, robotics arms, and high-load tooling.',
+    name: 'Carbon-X PA12-CF',
+    group: 'Composites',
+    subtitle: 'Continuous Carbon Fiber Matrix',
+    description: 'High-tensile polyamide 12 reinforced with micro-carbon fiber. Replaces CNC machined aluminum 6061 in drone arms, suspension links, and industrial robot effectors.',
     specs: {
-      tensile: '115 MPa (Metal Yield)',
-      temp: '150°C HDT',
-      density: '1.14 g/cm³',
-      accuracy: '±0.04 mm',
+      tensile: '115 MPa',
+      hdt: '150°C',
+      density: '1.15 g/cm³',
+      tolerance: '±0.04 mm',
     },
-    price: 'from ₹25.00 / g',
-    colorHex: '#0D0D0D',
-    roughness: 0.85,
-    metalness: 0.25,
+    price: '₹26.00 / g',
+    colorHex: '#181A1F',
+    roughness: 0.75,
+    metalness: 0.15,
     transmission: 0.0,
     opacity: 1.0,
     transparent: false,
   },
   {
-    number: '05',
-    id: 'sla-resin',
-    name: '12K OPTICAL SLA RESIN',
-    subtitle: 'Micro-Fluidic & Mirror Finish',
-    description: 'Photopolymer cured with monochrome 12K LCD screens down to 10 micron layer heights. Produces glass-smooth cosmetic surfaces and jewellery molds.',
+    id: 'sla-tough',
+    name: 'Precision Tough SLA Resin',
+    group: 'Specialty Resins',
+    subtitle: 'Sub-Micron Photopolymer',
+    description: 'Surgical accuracy with injection-molded surface smoothness. Cured with monochrome 12K LCD optical matrices down to 0.025 mm layers for fluidics and impellers.',
     specs: {
-      tensile: '65 MPa (Crisp)',
-      temp: '75°C HDT',
+      tensile: '65 MPa',
+      hdt: '75°C',
       density: '1.18 g/cm³',
-      accuracy: '±0.02 mm',
+      tolerance: '±0.04 mm',
     },
-    price: 'from ₹14.00 / g',
-    colorHex: '#FFE14D',
-    roughness: 0.08,
-    metalness: 0.15,
-    transmission: 0.65,
-    opacity: 0.92,
+    price: '₹14.00 / g',
+    colorHex: '#4A6572',
+    roughness: 0.15,
+    metalness: 0.05,
+    transmission: 0.45,
+    opacity: 0.95,
     transparent: true,
+  },
+  {
+    id: 'petg-industrial',
+    name: 'PETG Industrial Chemical Grade',
+    group: 'Engineering',
+    subtitle: 'High-Impact Ductile Thermoplastic',
+    description: 'Glycol-modified polyester with high elongation at break and chemical resistance. Ideal for snap-fits, fluid reservoirs, and factory floor positioning jigs.',
+    specs: {
+      tensile: '52 MPa',
+      hdt: '80°C',
+      density: '1.27 g/cm³',
+      tolerance: '±0.08 mm',
+    },
+    price: '₹6.00 / g',
+    colorHex: '#2B4C7E',
+    roughness: 0.25,
+    metalness: 0.1,
+    transmission: 0.6,
+    opacity: 0.9,
+    transparent: true,
+  },
+  {
+    id: 'pla-pro',
+    name: 'PLA Pro Precision Polymer',
+    group: 'Standard',
+    subtitle: 'Low-Shrinkage Fast Iteration',
+    description: 'High dimensional fidelity bio-polymer with near-zero warp. Engineered for rapid mechanical fit verification and high-detail aesthetic mockups.',
+    specs: {
+      tensile: '55 MPa',
+      hdt: '62°C',
+      density: '1.24 g/cm³',
+      tolerance: '±0.10 mm',
+    },
+    price: '₹4.50 / g',
+    colorHex: '#F2EEE6',
+    roughness: 0.4,
+    metalness: 0.02,
+    transmission: 0.0,
+    opacity: 1.0,
+    transparent: false,
   },
 ];
 
-// Interactive 3D Precision Engineering Component that responds to material props
-function InteractiveMaterialPart({ material }: { material: MaterialItem }) {
-  const meshRef = useRef<THREE.Group>(null);
+// Interactive 3D Part with Realistic PBR Shading & Rotating Hub
+function MaterialSamplePart({ material }: { material: MaterialItem }) {
+  const groupRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (!meshRef.current) return;
+    if (!groupRef.current) return;
     const t = state.clock.elapsedTime;
-    meshRef.current.rotation.y = t * 0.35 + state.pointer.x * 0.5;
-    meshRef.current.rotation.x = 0.25 + state.pointer.y * 0.3;
+    groupRef.current.rotation.y = t * 0.4 + state.pointer.x * 0.4;
+    groupRef.current.rotation.x = 0.25 + state.pointer.y * 0.2;
   });
 
   return (
-    <group ref={meshRef}>
-      {/* Precision Mechanical Impeller / Manifold Assembly */}
+    <group ref={groupRef}>
+      {/* Precision Rotor Hub Assembly */}
       <mesh castShadow receiveShadow>
-        <cylinderGeometry args={[1.35, 1.35, 0.45, 32]} />
+        <cylinderGeometry args={[1.3, 1.3, 0.4, 48]} />
         <meshPhysicalMaterial
           color={material.colorHex}
           roughness={material.roughness}
@@ -156,40 +134,37 @@ function InteractiveMaterialPart({ material }: { material: MaterialItem }) {
           transmission={material.transmission}
           opacity={material.opacity}
           transparent={material.transparent}
-          ior={1.5}
+          ior={1.48}
         />
-        <Outlines thickness={2} color="#0B0B0B" />
       </mesh>
 
-      {/* Internal Rotor Hub */}
-      <mesh position={[0, 0.4, 0]}>
-        <cylinderGeometry args={[0.65, 0.75, 0.5, 24]} />
+      {/* Internal Center Collar */}
+      <mesh position={[0, 0.35, 0]}>
+        <cylinderGeometry args={[0.6, 0.7, 0.45, 36]} />
         <meshStandardMaterial
           color={material.colorHex}
           roughness={material.roughness}
           metalness={material.metalness}
         />
-        <Outlines thickness={1.8} color="#0B0B0B" />
       </mesh>
 
-      {/* Radial Fins */}
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
+      {/* Radial Aerodynamic Vanes */}
+      {[0, 60, 120, 180, 240, 300].map((angle, i) => (
         <mesh
           key={i}
           position={[
             Math.cos((angle * Math.PI) / 180) * 1.05,
-            0.15,
+            0.12,
             Math.sin((angle * Math.PI) / 180) * 1.05,
           ]}
-          rotation={[0, -(angle * Math.PI) / 180, 0]}
+          rotation={[0, -(angle * Math.PI) / 180, 0.15]}
         >
-          <boxGeometry args={[0.08, 0.4, 0.7]} />
+          <boxGeometry args={[0.07, 0.35, 0.65]} />
           <meshStandardMaterial
             color={material.colorHex}
             roughness={material.roughness}
             metalness={material.metalness}
           />
-          <Outlines thickness={1.5} color="#0B0B0B" />
         </mesh>
       ))}
     </group>
@@ -198,234 +173,235 @@ function InteractiveMaterialPart({ material }: { material: MaterialItem }) {
 
 export default function ExploreMaterials() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentWrapRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const currentMaterial = materialsData[activeIndex];
 
-  const currentMat = materialsData[activeIndex];
-
-  // Animated material switch
-  const switchMaterial = (idx: number) => {
-    if (idx === activeIndex) return;
-    setActiveIndex(idx);
-    gsap.fromTo(
-      '.material-spec-card',
-      { opacity: 0.6, y: 10 },
-      { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }
-    );
-  };
-
-  // GSAP Scrubbed Selector Pin on Desktop + Mobile Reveal
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
-    const mm = gsap.matchMedia();
-
-    mm.add('(min-width: 1024px)', () => {
-      if (!sectionRef.current) return;
-
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: 'top 30%',
-        end: 'bottom 70%',
-        scrub: 0.5,
-        onUpdate: (self) => {
-          const idx = Math.min(
-            materialsData.length - 1,
-            Math.floor(self.progress * materialsData.length)
-          );
-          setActiveIndex(idx);
-        },
-      });
-    });
-
-    mm.add('(max-width: 1023px)', () => {
-      if (!sectionRef.current) return;
-
-      gsap.fromTo(
-        '.material-spec-card',
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.65,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-          },
-        }
-      );
-    });
-
-    return () => mm.revert();
-  }, []);
+  const comparisonRows = [
+    {
+      feature: 'Best For',
+      fdm: 'Large housings, rugged prototypes & batch runs',
+      sla: 'Micro-details, smooth cosmetic surfaces & fluidics',
+      carbon: 'Structural parts replacing machined aluminum',
+    },
+    {
+      feature: 'Max Build Volume',
+      fdm: '350 × 350 × 350 mm',
+      sla: '218 × 123 × 250 mm',
+      carbon: '300 × 300 × 300 mm',
+    },
+    {
+      feature: 'Min Layer Height',
+      fdm: '0.10 mm (100 µm)',
+      sla: '0.025 mm (25 µm)',
+      carbon: '0.12 mm (120 µm)',
+    },
+    {
+      feature: 'Shop Tolerance',
+      fdm: '±0.12 mm',
+      sla: '±0.04 mm',
+      carbon: '±0.05 mm',
+    },
+    {
+      feature: 'Tensile Strength',
+      fdm: '45–55 MPa',
+      sla: '65–75 MPa',
+      carbon: '115–140 MPa',
+    },
+    {
+      feature: 'Heat Deflection (HDT)',
+      fdm: '65–85°C',
+      sla: '75–300°C (High-Temp Resin)',
+      carbon: '150°C',
+    },
+    {
+      feature: 'Starting Rate',
+      fdm: '₹4.50 / gram',
+      sla: '₹14.00 / gram',
+      carbon: '₹26.00 / gram',
+    },
+    {
+      feature: 'Standard Turnaround',
+      fdm: '24–48 Hours',
+      sla: '24–48 Hours',
+      carbon: '48–72 Hours (Annealed)',
+    },
+  ];
 
   return (
     <section
       id="materials"
-      ref={sectionRef}
-      data-bg="#0B0B0B"
-      data-fg="#FAF7F2"
-      className="relative w-full min-h-screen bg-[#0B0B0B] text-[#FAF7F2] py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 flex flex-col justify-center overflow-hidden"
+      className="w-full bg-[#0B0D10] text-[#F5F6F8] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 relative overflow-hidden font-body"
+      aria-label="Saturn 3D Materials and Process Science"
     >
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between h-full">
+      <div className="max-w-7xl mx-auto space-y-20">
+        
         {/* Section Header */}
-        <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8 lg:mb-8">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2.5">
-              <span className="type-mono-eyebrow text-[#FFE14D] text-xs font-mono font-bold">
-                03 // MATERIAL SCIENCE
-              </span>
-              <span className="sticker-minimal bg-[#FF5A1F] text-[#0B0B0B] text-[10px] font-black px-2 py-0.5">
-                5 GRADED POLYMERS
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="type-mono-eyebrow text-white/60">
+                03 // Material Science & Processes
               </span>
             </div>
-
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black uppercase tracking-tight leading-[0.95]">
-              <span className="text-[#FAF7F2] mr-2.5">EXPLORE EVERY</span>
-              <span className="text-[#FFE14D]">MATERIAL.</span>
+            <h2 className="type-h2 text-white">
+              Engineering polymers, verified on the test bench.
             </h2>
+            <p className="type-body text-[#A3A9B3] mt-2">
+              From continuous carbon-fiber reinforcement to sub-micron optical resins, every formulation is calibrated for mechanical integrity.
+            </p>
           </div>
 
-          <p className="type-body text-[#FAF7F2]/70 max-w-md text-xs sm:text-sm font-medium leading-relaxed">
-            From flexible elastomeric seals to metal-yield carbon composites.
-            Select or scroll to inspect mechanical tolerances and real-time surface properties.
-          </p>
+          <button
+            onClick={() => navigate('/custom-lab')}
+            className="btn-precision-primary text-xs py-2.5 px-4 shrink-0"
+          >
+            <span>Configure custom material</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         </div>
 
-        {/* Mobile Horizontal Material Switcher Bar (lg:hidden) */}
-        <div className="lg:hidden flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-4 -mx-6 px-6 whitespace-nowrap">
-          {materialsData.map((mat, idx) => {
-            const isActive = activeIndex === idx;
-            return (
-              <button
-                key={mat.id}
-                onClick={() => switchMaterial(idx)}
-                className={`px-3.5 py-2 font-mono text-xs font-bold transition-all shrink-0 rounded-xs border cursor-pointer ${
-                  isActive
-                    ? 'bg-[#FF5A1F] text-[#0B0B0B] border-[#FF5A1F] shadow-sm font-black'
-                    : 'bg-white/10 text-white/70 border-white/15 hover:bg-white/20'
-                }`}
-              >
-                <span className="opacity-70 mr-1.5">{mat.number}</span>
-                <span>{mat.name.split(' ')[0]}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* 2-Column Pinned Selector Layout */}
-        <div ref={contentWrapRef} className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center flex-1 my-auto">
+        {/* Interactive Material Selector & 3D Stage */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Left Column: Numbered List 01-05 (Hidden on mobile, 40% width on desktop) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col space-y-1.5">
-            {materialsData.map((mat, idx) => {
-              const isActive = activeIndex === idx;
-              return (
-                <button
-                  key={mat.id}
-                  onClick={() => switchMaterial(idx)}
-                  className={`w-full text-left py-2.5 px-3.5 transition-all flex items-start gap-3.5 cursor-pointer hairline-b-white rounded-xs ${
-                    isActive
-                      ? 'bg-white/10 text-white pl-5'
-                      : 'text-white/40 hover:text-white/80 hover:pl-4.5'
-                  }`}
-                >
-                  <span className={`font-mono text-sm font-black ${isActive ? 'text-[#FF5A1F]' : 'text-white/30'}`}>
-                    {mat.number}
-                  </span>
-
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="font-display text-base font-bold uppercase tracking-tight">
-                        {mat.name}
+          {/* Left: Material List & Mechanical Telemetry */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {materialsData.map((mat, idx) => {
+                const isActive = activeIndex === idx;
+                return (
+                  <div
+                    key={mat.id}
+                    onClick={() => setActiveIndex(idx)}
+                    className={`card-precision-dark p-4 cursor-pointer transition-all ${
+                      isActive
+                        ? 'border-[#FF5A1F] bg-[#181C22]'
+                        : 'hover:border-white/20'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="precision-badge text-[10px]">
+                        {mat.group}
                       </span>
-                      {isActive && (
-                        <span className="w-2 h-2 bg-[#FF5A1F] inline-block shrink-0" />
-                      )}
+                      <span className="font-mono text-xs font-semibold text-[#FF5A1F]">
+                        {mat.price}
+                      </span>
                     </div>
-                    <span className="font-mono text-[11px] text-white/50 block mt-0.5">
+                    <h3 className="text-sm font-semibold text-white">
+                      {mat.name}
+                    </h3>
+                    <p className="text-xs text-[#A3A9B3] mt-1 line-clamp-2">
                       {mat.subtitle}
-                    </span>
+                    </p>
                   </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right Column: 3D Part + Changing Headline & CTA (100% on mobile, 60% width on desktop) */}
-          <div className="lg:col-span-7 flex flex-col items-center justify-center relative w-full">
-            
-            {/* 3D Part Canvas (Inspectable, drag to rotate) */}
-            <div className="w-full h-[220px] sm:h-[260px] lg:h-[280px] xl:h-[300px] relative flex items-center justify-center cursor-grab active:cursor-grabbing">
-              <Canvas
-                camera={{ position: [0, 1.8, 3.8], fov: 42 }}
-                style={{ background: 'transparent' }}
-              >
-                <ambientLight intensity={1.2} />
-                <directionalLight position={[4, 8, 4]} intensity={2.0} />
-                <pointLight position={[-4, 2, -2]} intensity={1.0} color={currentMat.colorHex} />
-                <InteractiveMaterialPart material={currentMat} />
-              </Canvas>
-
-              {/* 360 hint */}
-              <div className="absolute bottom-1 right-3 flex items-center gap-1.5 font-mono text-[10px] text-white/40 uppercase tracking-widest pointer-events-none">
-                <Move3d className="w-3 h-3 text-[#FFE14D]" />
-                <span>360&deg; PREVIEW</span>
-              </div>
+                );
+              })}
             </div>
 
-            {/* Changing Material Spec Details & Primary CTA */}
-            <div className="material-spec-card w-full mt-2 lg:mt-3 p-4 sm:p-5 bg-white/5 hairline-white space-y-2.5 rounded-xs">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <h3 className="font-display text-lg sm:text-xl font-black text-[#FFE14D] uppercase">
-                    {currentMat.name}
-                  </h3>
-                  <p className="font-mono text-xs text-white/60">
-                    {currentMat.subtitle} &bull; <span className="text-[#FF5A1F] font-bold">{currentMat.price}</span>
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => navigate('/custom-lab')}
-                  className="btn-brutal btn-brutal-orange text-xs py-2 px-4 flex items-center justify-center gap-2 cursor-pointer shadow-[2px_2px_0px_#0B0B0B] w-full sm:w-auto shrink-0"
-                >
-                  <span>CONFIGURE IN THIS MATERIAL</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+            {/* Active Material Detailed Specifications Card */}
+            <div className="card-precision-dark p-6 mt-4 border-[#FF5A1F]/30">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-base font-semibold text-white">
+                  {currentMaterial.name} Telemetry
+                </h4>
+                <span className="precision-badge-orange text-[10px]">
+                  VERIFIED SHOP SPECS
+                </span>
               </div>
-
-              <p className="font-body text-xs sm:text-[13px] text-white/70 leading-relaxed max-w-2xl line-clamp-2">
-                {currentMat.description}
+              <p className="text-xs text-[#A3A9B3] leading-relaxed mb-5">
+                {currentMaterial.description}
               </p>
 
-              {/* Minimal specs grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 font-mono text-xs hairline-t-white">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10 font-mono text-xs">
                 <div>
-                  <span className="text-white/40 block text-[10px]">TENSILE:</span>
-                  <span className="text-white font-bold">{currentMat.specs.tensile}</span>
+                  <span className="text-[10px] text-white/40 block">TENSILE YIELD</span>
+                  <span className="text-white font-semibold">{currentMaterial.specs.tensile}</span>
                 </div>
                 <div>
-                  <span className="text-white/40 block text-[10px]">HEAT RESIST:</span>
-                  <span className="text-white font-bold">{currentMat.specs.temp}</span>
+                  <span className="text-[10px] text-white/40 block">HEAT DEFLECTION</span>
+                  <span className="text-white font-semibold">{currentMaterial.specs.hdt}</span>
                 </div>
                 <div>
-                  <span className="text-white/40 block text-[10px]">DENSITY:</span>
-                  <span className="text-white font-bold">{currentMat.specs.density}</span>
+                  <span className="text-[10px] text-white/40 block">POLYMER DENSITY</span>
+                  <span className="text-white font-semibold">{currentMaterial.specs.density}</span>
                 </div>
                 <div>
-                  <span className="text-white/40 block text-[10px]">TOLERANCE:</span>
-                  <span className="text-[#FFE14D] font-bold">{currentMat.specs.accuracy}</span>
+                  <span className="text-[10px] text-white/40 block">TOLERANCE</span>
+                  <span className="text-[#FF5A1F] font-semibold">{currentMaterial.specs.tolerance}</span>
                 </div>
               </div>
             </div>
+          </div>
 
+          {/* Right: 3D Studio Material Visualizer */}
+          <div className="lg:col-span-5 h-[380px] sm:h-[440px] card-precision-dark relative overflow-hidden p-4 flex items-center justify-center">
+            <div className="absolute top-4 left-4 z-10">
+              <span className="precision-badge text-[10px]">
+                3D PBR SHADER PREVIEW // {currentMaterial.name}
+              </span>
+            </div>
+
+            <div className="w-full h-full relative">
+              <Canvas camera={{ position: [0, 1.2, 3.8], fov: 38 }} dpr={[1, 2]}>
+                <ambientLight intensity={0.5} />
+                <directionalLight position={[-3, 4, 3]} intensity={2.0} color="#FFF8F0" />
+                <directionalLight position={[3, 2, -2]} intensity={2.5} color="#FF5A1F" />
+                <ContactShadows position={[0, -0.6, 0]} opacity={0.4} scale={4} blur={2.0} />
+                <MaterialSamplePart material={currentMaterial} />
+              </Canvas>
+            </div>
           </div>
 
         </div>
+
+        {/* Creality-Style Process Comparison Table */}
+        <div className="space-y-6 pt-10 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span className="type-mono-eyebrow text-white/60">
+                BENCHMARK MATRIX
+              </span>
+              <h3 className="type-h3 text-white mt-1">
+                Process Comparison: FDM vs SLA vs Carbon-X
+              </h3>
+            </div>
+            <span className="text-xs text-[#A3A9B3]">
+              Swipe horizontally on mobile &rarr;
+            </span>
+          </div>
+
+          <div className="overflow-x-auto no-scrollbar card-precision-dark border border-white/10">
+            <table className="w-full text-left text-xs">
+              <thead>
+                <tr className="border-b border-white/10 bg-[#181C22] text-white font-semibold">
+                  <th className="py-3.5 px-4 sm:px-6">Parameter</th>
+                  <th className="py-3.5 px-4 sm:px-6 text-[#FF5A1F]">Industrial FDM</th>
+                  <th className="py-3.5 px-4 sm:px-6">12K SLA Resin</th>
+                  <th className="py-3.5 px-4 sm:px-6 text-emerald-400">Carbon-X Composite</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 font-mono text-[11px] sm:text-xs">
+                {comparisonRows.map((row, idx) => (
+                  <tr key={idx} className="hover:bg-white/5 transition-colors">
+                    <td className="py-3 px-4 sm:px-6 font-semibold text-white/90">
+                      {row.feature}
+                    </td>
+                    <td className="py-3 px-4 sm:px-6 text-[#A3A9B3]">
+                      {row.fdm}
+                    </td>
+                    <td className="py-3 px-4 sm:px-6 text-[#A3A9B3]">
+                      {row.sla}
+                    </td>
+                    <td className="py-3 px-4 sm:px-6 text-white">
+                      {row.carbon}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -17,7 +17,7 @@ function AccordionItem({
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("border-3 border-ink rounded-xs mb-4 bg-white shadow-brutal overflow-hidden", className)}
+      className={cn("border hairline dark:hairline-dark rounded-xl mb-3 bg-white dark:bg-surface-dark shadow-precision-xs overflow-hidden transition-all", className)}
       {...props}
     />
   )
@@ -33,13 +33,13 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "flex flex-1 items-center justify-between gap-4 py-4 px-6 text-left font-display font-black text-base sm:text-lg uppercase tracking-tight text-[#0B0B0B] hover:bg-[#FFE14D]/40 transition-colors outline-hidden focus-visible:outline-2 focus-visible:outline-[#FF5A1F] [&[data-state=open]>svg]:rotate-180",
+          "flex flex-1 items-center justify-between gap-4 py-4 px-6 text-left font-display font-semibold text-sm sm:text-base tracking-tight text-[#0B0D10] dark:text-studio-light hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors outline-hidden focus-visible:ring-2 focus-visible:ring-[#FF5A1F] [&[data-state=open]>svg]:rotate-180 cursor-pointer",
           className
         )}
         {...props}
       >
         {children}
-        <ChevronDownIcon className="text-[#0B0B0B] pointer-events-none size-5 shrink-0 transition-transform duration-200 stroke-[2.5]" />
+        <ChevronDownIcon className="text-muted dark:text-muted pointer-events-none size-4 shrink-0 transition-transform duration-200" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )
@@ -53,10 +53,10 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden font-body text-sm sm:text-base border-t-2 border-ink bg-[#FAF7F2]"
+      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden font-body text-xs sm:text-sm border-t hairline dark:hairline-dark bg-studio-light/40 dark:bg-black/20"
       {...props}
     >
-      <div className={cn("px-6 py-5 text-[#111111] leading-relaxed", className)}>{children}</div>
+      <div className={cn("px-6 py-4 text-muted-dark dark:text-muted leading-relaxed", className)}>{children}</div>
     </AccordionPrimitive.Content>
   )
 }

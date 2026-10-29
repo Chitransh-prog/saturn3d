@@ -5,37 +5,37 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xs text-sm font-display font-bold uppercase tracking-wider transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF5A1F] cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-xs sm:text-sm font-display font-semibold transition-all duration-150 disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-hidden focus-visible:ring-2 focus-visible:ring-[#FF5A1F] focus-visible:ring-offset-2 cursor-pointer select-none",
   {
     variants: {
       variant: {
         default:
-          "bg-[#FF5A1F] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#FF6B35]",
+          "bg-[#FF5A1F] text-white hover:bg-[#E04810] shadow-precision-sm hover:shadow-precision-md hover:-translate-y-0.5 active:translate-y-0",
         destructive:
-          "bg-destructive text-white border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
+          "bg-red-600 text-white hover:bg-red-700 shadow-precision-sm active:translate-y-0",
         outline:
-          "bg-white text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#FAF7F2]",
+          "bg-white text-[#0B0D10] border hairline hover:border-black/30 hover:bg-black/[0.02] shadow-precision-xs active:translate-y-0 dark:bg-surface-dark dark:text-studio-light dark:hairline-dark dark:hover:bg-white/[0.04]",
         secondary:
-          "bg-[#FFE14D] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#FFF070]",
+          "bg-studio-light text-[#0B0D10] border hairline hover:bg-white hover:shadow-precision-xs active:translate-y-0",
         ghost:
-          "text-[#0B0B0B] border-2 border-transparent hover:border-ink hover:bg-white hover:shadow-brutal-sm",
-        link: "text-[#FF5A1F] underline underline-offset-4 hover:text-[#0B0B0B]",
+          "text-[#0B0D10] hover:bg-black/5 dark:text-studio-light dark:hover:bg-white/5",
+        link: "text-[#FF5A1F] underline-offset-4 hover:underline hover:text-[#E04810] p-0 h-auto font-medium",
         brutal:
-          "bg-[#FAF7F2] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
+          "bg-white text-[#0B0D10] border hairline shadow-precision-sm hover:border-black/30 hover:-translate-y-0.5",
         mint:
-          "bg-[#7CF2C1] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
+          "bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100",
         periwinkle:
-          "bg-[#8EA2FF] text-[#0B0B0B] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none",
+          "bg-indigo-50 text-indigo-800 border border-indigo-200 hover:bg-indigo-100",
         ink:
-          "bg-[#0B0B0B] text-[#FAF7F2] border-3 border-ink shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-[#222222]",
+          "bg-[#0B0D10] text-white hover:bg-[#1A1F26] border border-white/10 shadow-precision-sm hover:shadow-precision-md hover:-translate-y-0.5",
       },
       size: {
         default: "h-11 px-5 py-2.5",
-        sm: "h-8 px-3 text-xs",
-        lg: "h-13 px-8 text-base",
-        icon: "size-11",
-        "icon-sm": "size-8",
-        "icon-lg": "size-13",
+        sm: "h-8 px-3.5 text-xs rounded-lg",
+        lg: "h-12 px-7 text-sm rounded-xl",
+        icon: "size-10 rounded-xl",
+        "icon-sm": "size-8 rounded-lg",
+        "icon-lg": "size-12 rounded-xl",
       },
     },
     defaultVariants: {
@@ -60,9 +60,7 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      data-variant={variant}
-      data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     />
   )

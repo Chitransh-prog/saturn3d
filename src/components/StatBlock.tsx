@@ -14,31 +14,29 @@ export default function StatBlock({
   label,
   sublabel,
   badge,
-  color = '#FFFFFF',
   className = '',
 }: StatBlockProps) {
   return (
     <div
-      className={`card-slab p-6 relative overflow-hidden flex flex-col justify-between ${className}`}
-      style={{ backgroundColor: color }}
+      className={`card-precision bg-white p-6 relative overflow-hidden flex flex-col justify-between border hairline shadow-precision-sm ${className}`}
     >
       {badge && (
-        <span className="badge-sticker absolute top-3 right-3 text-[10px] py-0.5 px-2 bg-[#FFE14D]">
+        <span className="precision-badge absolute top-3.5 right-3.5 text-[10px] py-0.5 px-2 bg-studio-light text-muted-dark border hairline rounded-full font-mono">
           {badge}
         </span>
       )}
 
       <div>
-        <div className="font-display font-black text-4xl sm:text-6xl text-[#0B0B0B] tracking-tight leading-none">
+        <div className="font-display font-semibold text-3xl sm:text-4xl text-graphite tracking-tight leading-none">
           {value}
         </div>
-        <div className="font-mono-tech text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0B0B0B] mt-2">
+        <div className="font-mono text-xs font-medium uppercase tracking-wider text-muted mt-2">
           {label}
         </div>
       </div>
 
       {sublabel && (
-        <div className="mt-4 pt-3 border-t-2 border-ink text-xs font-mono-tech text-[#555555]">
+        <div className="mt-4 pt-3 border-t hairline text-xs font-body text-muted leading-relaxed">
           {sublabel}
         </div>
       )}

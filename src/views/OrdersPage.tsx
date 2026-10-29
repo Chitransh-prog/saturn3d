@@ -1,52 +1,50 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import {
-  Package, ArrowRight, Loader2, ShoppingBag,
-  ChevronDown, ChevronUp, RotateCcw, MapPin,
-  Calendar, Hash,
+  Package, Loader2, ShoppingBag,
+  ChevronDown, ChevronUp, RotateCcw,
+  Calendar
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { ordersApi, getApiError, type Order } from '@/lib/api';
 import { useAuthStore } from '@/store/authStore';
 import CTA from '@/sections/CTA';
 
-// ─── Status config ─────────────────────────────────────────────────────────────
+// Status config
 const STATUS_CONFIG: Record<string, { colors: string; label: string; step: number }> = {
-  pending:    { colors: 'bg-lemon text-ink border-2 border-ink',   label: 'Pending',    step: 0 },
-  paid:       { colors: 'bg-mint text-ink border-2 border-ink',    label: 'Paid',       step: 1 },
-  processing: { colors: 'bg-saturn-orange text-white border-2 border-ink', label: 'Processing', step: 2 },
-  shipped:    { colors: 'bg-periwinkle text-ink border-2 border-ink', label: 'Shipped',   step: 3 },
-  delivered:  { colors: 'bg-mint text-ink border-2 border-ink',    label: 'Delivered',  step: 4 },
-  cancelled:  { colors: 'bg-red-400 text-white border-2 border-ink', label: 'Cancelled',  step: -1 },
-  refunded:   { colors: 'bg-paper text-ink border-2 border-ink',   label: 'Refunded',   step: -1 },
+  pending:    { colors: 'bg-amber-50 text-amber-700 border-amber-200', label: 'Pending', step: 0 },
+  paid:       { colors: 'bg-emerald-50 text-emerald-700 border-emerald-200', label: 'Paid', step: 1 },
+  processing: { colors: 'bg-saturn-orange/10 text-saturn-orange border-saturn-orange/30', label: 'Processing', step: 2 },
+  shipped:    { colors: 'bg-blue-50 text-blue-700 border-blue-200', label: 'Shipped', step: 3 },
+  delivered:  { colors: 'bg-emerald-50 text-emerald-700 border-emerald-200', label: 'Delivered', step: 4 },
+  cancelled:  { colors: 'bg-red-50 text-red-700 border-red-200', label: 'Cancelled', step: -1 },
+  refunded:   { colors: 'bg-black/5 text-muted-dark border-black/10', label: 'Refunded', step: -1 },
 };
 
 const TIMELINE_STEPS = ['Pending', 'Paid', 'Processing', 'Shipped', 'Delivered'];
 
-// ─── Order Timeline ─────────────────────────────────────────────────────────────
 function OrderTimeline({ status }: { status: string }) {
   const currentStep = STATUS_CONFIG[status]?.step ?? 0;
   if (currentStep < 0) return null;
 
   return (
-    <div className="flex items-center mt-4 pt-4 border-t-2 border-ink/20">
+    <div className="flex items-center mt-4 pt-4 border-t hairline">
       {TIMELINE_STEPS.map((step, i) => (
         <div key={step} className="flex items-center flex-1 last:flex-none">
-          <div className="flex flex-col items-center gap-1">
-            <div className={`w-6 h-6 border-2 border-ink flex items-center justify-center font-mono text-[10px] font-black transition-all ${
-              i < currentStep ? 'bg-mint text-ink'
-              : i === currentStep ? 'bg-saturn-orange text-white shadow-brutal-sm'
-              : 'bg-paper text-ink/40'
+          <div className="flex flex-col items-center gap-1.5">
+            <div className={`w-6 h-6 rounded-full border flex items-center justify-center font-mono text-[10px] font-medium transition-all ${
+              i < currentStep ? 'bg-emerald-50 text-emerald-700 border-emerald-300'
+              : i === currentStep ? 'bg-saturn-orange text-white border-saturn-orange shadow-precision-xs'
+              : 'bg-studio-light text-muted border-black/10'
             }`}>
               {i < currentStep ? '✓' : i + 1}
             </div>
-            <span className={`font-mono text-[9px] font-black uppercase tracking-wider whitespace-nowrap ${
-              i <= currentStep ? 'text-ink' : 'text-ink/40'
+            <span className={`font-mono text-[10px] uppercase tracking-wider whitespace-nowrap ${
+              i <= currentStep ? 'text-graphite font-medium' : 'text-muted'
             }`}>{step}</span>
           </div>
           {i < TIMELINE_STEPS.length - 1 && (
-            <div className={`flex-1 h-0.5 mx-1 mb-5 border-b-2 border-ink ${i < currentStep ? 'border-saturn-orange' : 'border-ink/20'}`} />
+            <div className={`flex-1 h-[1px] mx-2 mb-5 ${i < currentStep ? 'bg-saturn-orange' : 'bg-black/10'}`} />
           )}
         </div>
       ))}
@@ -54,17 +52,15 @@ function OrderTimeline({ status }: { status: string }) {
   );
 }
 
-// ─── Status Badge ──────────────────────────────────────────────────────────────
 function StatusBadge({ status }: { status: string }) {
   const config = STATUS_CONFIG[status] || STATUS_CONFIG.pending;
   return (
-    <span className={`px-2.5 py-1 font-mono text-[10px] font-black uppercase tracking-wider shadow-brutal-sm ${config.colors}`}>
+    <span className={`px-2.5 py-0.5 font-mono text-[11px] font-medium uppercase tracking-wide rounded-full border ${config.colors}`}>
       {config.label}
     </span>
   );
 }
 
-// ─── Main Component ─────────────────────────────────────────────────────────────
 export default function OrdersPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
@@ -98,30 +94,30 @@ export default function OrdersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-paper pattern-blueprint flex flex-col items-center justify-center gap-3">
-        <div className="card-slab bg-white border-3 border-ink shadow-brutal p-8 flex flex-col items-center gap-3">
+      <div className="min-h-screen bg-studio-light flex flex-col items-center justify-center gap-3">
+        <div className="card-precision bg-white p-8 flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin text-saturn-orange" />
-          <p className="font-mono text-xs font-black uppercase text-ink">Retrieving Order Ledger…</p>
+          <p className="font-mono text-xs font-medium uppercase text-muted">Retrieving Order Ledger…</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-paper pattern-blueprint py-12 sm:py-16 text-ink">
+    <div className="min-h-screen bg-studio-light py-20 sm:py-24 text-graphite">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b-3 border-ink">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b hairline">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-ink text-paper border-2 border-ink shadow-brutal-sm font-mono text-xs font-black uppercase tracking-wider mb-3">
-              <span className="w-2.5 h-2.5 bg-saturn-orange" />
-              <span>PRODUCTION TELEMETRY</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/[0.04] text-muted-dark border hairline rounded-full font-mono text-[11px] font-medium uppercase tracking-wider mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-saturn-orange" />
+              <span>Production Telemetry</span>
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl font-black text-ink uppercase tracking-tight">
-              MY ORDERS
+            <h1 className="font-display text-3xl sm:text-4xl font-semibold text-graphite tracking-tight">
+              My Orders
             </h1>
-            <p className="font-mono text-xs text-ink/70 font-bold mt-1">
+            <p className="font-body text-xs sm:text-sm text-muted mt-1">
               Track manufacturing progress and download tax invoices
             </p>
           </div>
@@ -129,35 +125,35 @@ export default function OrdersPage() {
           <button
             onClick={() => void fetchOrders(true)}
             disabled={refreshing}
-            className="btn-brutal bg-white hover:bg-lemon text-ink font-mono text-xs font-black uppercase tracking-wider px-4 py-2.5 border-2 border-ink shadow-brutal-sm flex items-center gap-2 cursor-pointer"
+            className="btn-precision-secondary text-xs font-mono font-medium uppercase tracking-wider px-4 py-2.5 flex items-center gap-2 cursor-pointer self-start sm:self-auto"
           >
             <RotateCcw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
-            REFRESH
+            <span>Refresh</span>
           </button>
         </div>
 
         {/* Empty state */}
         {orders.length === 0 ? (
-          <div className="card-slab bg-white border-3 border-ink shadow-brutal p-12 text-center max-w-lg mx-auto space-y-4">
-            <div className="w-16 h-16 bg-lemon border-2 border-ink flex items-center justify-center mx-auto shadow-brutal-sm">
-              <ShoppingBag className="w-8 h-8 text-ink" />
+          <div className="card-precision bg-white p-12 text-center max-w-lg mx-auto space-y-4">
+            <div className="w-14 h-14 rounded-full bg-studio-light border hairline flex items-center justify-center mx-auto text-muted">
+              <ShoppingBag className="w-6 h-6" />
             </div>
-            <h3 className="font-display text-2xl font-black uppercase text-ink">NO ORDERS LOGGED YET</h3>
-            <p className="font-mono text-xs text-ink/70 font-bold">
+            <h3 className="font-display text-xl font-semibold text-graphite">No Orders Logged Yet</h3>
+            <p className="font-body text-xs sm:text-sm text-muted max-w-sm mx-auto leading-relaxed">
               You haven't commissioned any 3D print runs yet. Upload your CAD mesh or browse standard parts.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button
                 onClick={() => navigate('/custom-lab')}
-                className="flex-1 btn-brutal bg-saturn-orange text-white hover:bg-lemon hover:text-ink font-mono text-xs font-black uppercase tracking-wider py-3 border-2 border-ink shadow-brutal cursor-pointer"
+                className="flex-1 btn-precision-primary py-2.5 text-xs font-mono font-medium uppercase tracking-wider cursor-pointer"
               >
-                LAUNCH CUSTOM LAB
+                Launch Custom Lab
               </button>
               <button
                 onClick={() => navigate('/categories')}
-                className="flex-1 btn-brutal bg-white hover:bg-lemon text-ink font-mono text-xs font-black uppercase tracking-wider py-3 border-2 border-ink shadow-brutal cursor-pointer"
+                className="flex-1 btn-precision-secondary py-2.5 text-xs font-mono font-medium uppercase tracking-wider cursor-pointer"
               >
-                BROWSE HARDWARE
+                Browse Hardware
               </button>
             </div>
           </div>
@@ -168,19 +164,19 @@ export default function OrdersPage() {
               return (
                 <div
                   key={order.id}
-                  className="card-slab bg-white border-3 border-ink shadow-brutal overflow-hidden"
+                  className="card-precision bg-white overflow-hidden p-0"
                 >
                   {/* Order header row */}
-                  <div className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-ink/20 bg-paper/50">
+                  <div className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b hairline bg-studio-light/30">
                     <div className="space-y-1">
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-sm font-black text-ink">
-                          ORDER #{order.id.slice(0, 8).toUpperCase()}
+                        <span className="font-mono text-sm font-semibold text-graphite">
+                          Order #{order.id.slice(0, 8).toUpperCase()}
                         </span>
                         <StatusBadge status={order.status} />
                       </div>
-                      <div className="font-mono text-[11px] text-ink/70 font-bold flex flex-wrap items-center gap-4">
-                        <span className="flex items-center gap-1">
+                      <div className="font-mono text-xs text-muted flex flex-wrap items-center gap-3 mt-1">
+                        <span className="flex items-center gap-1.5">
                           <Calendar className="w-3.5 h-3.5 text-saturn-orange" />
                           {new Date(order.created_at).toLocaleDateString('en-IN', {
                             day: 'numeric',
@@ -195,14 +191,14 @@ export default function OrdersPage() {
 
                     <div className="flex items-center gap-4 sm:text-right">
                       <div>
-                        <span className="font-mono text-[10px] text-ink/60 font-bold uppercase block">Settled Total</span>
-                        <span className="font-mono text-xl font-black text-saturn-orange">
+                        <span className="font-mono text-[10px] text-muted uppercase block">Settled Total</span>
+                        <span className="font-display font-semibold text-lg text-saturn-orange">
                           ₹{order.total_amount.toFixed(2)}
                         </span>
                       </div>
                       <button
                         onClick={() => setExpanded(isExpanded ? null : order.id)}
-                        className="w-9 h-9 bg-white border-2 border-ink shadow-brutal-sm flex items-center justify-center hover:bg-lemon cursor-pointer"
+                        className="w-8 h-8 rounded-lg border hairline bg-white flex items-center justify-center hover:bg-studio-light cursor-pointer text-muted hover:text-graphite transition-colors"
                       >
                         {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                       </button>
@@ -216,20 +212,20 @@ export default function OrdersPage() {
 
                   {/* Expanded Items Drawer */}
                   {isExpanded && (
-                    <div className="p-6 bg-paper border-t-3 border-ink space-y-4">
-                      <span className="font-mono text-xs font-black uppercase text-saturn-orange block">
-                        // COMPONENTS IN PRODUCTION RUN
+                    <div className="p-6 bg-studio-light/40 border-t hairline space-y-4">
+                      <span className="font-mono text-xs font-semibold uppercase text-saturn-orange block">
+                        // Components in Production Run
                       </span>
                       <div className="space-y-2">
                         {order.order_items?.map((item) => (
-                          <div key={item.id} className="p-3 bg-white border-2 border-ink flex items-center justify-between font-mono text-xs">
+                          <div key={item.id} className="p-3 bg-white rounded-xl border hairline flex items-center justify-between font-mono text-xs">
                             <div>
-                              <div className="font-black text-ink uppercase">{item.name}</div>
-                              <div className="text-[10px] text-ink/70">
+                              <div className="font-medium text-graphite">{item.name}</div>
+                              <div className="text-[11px] text-muted mt-0.5">
                                 Qty: {item.quantity} {item.options?.material ? `• Material: ${item.options.material}` : ''}
                               </div>
                             </div>
-                            <div className="font-black text-ink">
+                            <div className="font-semibold text-graphite">
                               ₹{(item.price * item.quantity).toFixed(2)}
                             </div>
                           </div>
@@ -237,15 +233,15 @@ export default function OrdersPage() {
                       </div>
 
                       {order.shipping_address && (
-                        <div className="p-3 bg-white border-2 border-ink font-mono text-xs space-y-0.5">
-                          <div className="font-black text-saturn-orange uppercase text-[10px] mb-1">
-                            // DELIVERY ADDRESS
+                        <div className="p-4 bg-white rounded-xl border hairline font-mono text-xs space-y-1">
+                          <div className="font-semibold text-saturn-orange uppercase text-[10px] mb-1">
+                            // Delivery Address
                           </div>
-                          <div>{order.shipping_address.line1}</div>
-                          <div>
+                          <div className="text-graphite">{order.shipping_address.line1}</div>
+                          <div className="text-muted">
                             {order.shipping_address.city}, {order.shipping_address.state} - {order.shipping_address.postal_code}
                           </div>
-                          <div className="font-bold">{order.shipping_address.country}</div>
+                          <div className="text-graphite font-medium">{order.shipping_address.country}</div>
                         </div>
                       )}
                     </div>

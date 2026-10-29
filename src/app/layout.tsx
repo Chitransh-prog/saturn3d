@@ -11,7 +11,7 @@ import {
 } from '@/lib/seo-config';
 
 export const viewport: Viewport = {
-  themeColor: '#FAF7F2',
+  themeColor: '#0B0D10',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,

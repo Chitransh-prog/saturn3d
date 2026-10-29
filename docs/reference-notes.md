@@ -1,96 +1,84 @@
-# Reference Notes: Scroll-Driven Storytelling & Open Layout Patterns
-Source Reference: mrmawaa.com (Audited at 1440px desktop & 390px mobile viewports)
+# Reference Notes: Modern Precision-Engineering UI Patterns
+Audited Sources: Carbon3D (carbon3d.com), Creality K2 Plus (creality.com), CADScope (cadscope.erik.build)
+Target: Saturn 3D Additive Fabrication Lab (Bhopal Hub, All-India)
 
 ---
 
-## 1. Motion Philosophy & Feel
-- **Tone**: Calm, confident, deliberate. Motion is not gratuitous; every animation clarifies state change or guides user reading flow.
-- **Easing & Durations**:
-  - Durations: `0.6s – 1.1s` for reveals; instant or `0.3s` for micro-interactions.
-  - Easing: `power3.out` and `expo.out` for organic deceleration; linear (`none`) for scroll-scrubbed timelines.
-- **One Focus Rule**: Only ONE primary element or motion dominates the viewport at any time, preventing cognitive overload.
+## 1. Carbon3D Pattern Synthesis (Industrial Trust & Enterprise Clarity)
+- **Visual Atmosphere**:
+  - Uncompromisingly clean and industrial. Alternates deep graphite (`#0B0D10` / `#12151A`) hero/viewer sections with calm, cool studio light surfaces (`#F5F6F8`, `#FFFFFF`).
+  - Zero decorative clutter, zero cartoon badges, zero hard-offset comic shadows.
+  - Generous negative space (section padding 100px-160px), hairline dividers (`1px` with 10% opacity).
+- **Mega-Menu Navigation**:
+  - Sticky glass navbar with low-profile blur (`backdrop-blur-md`).
+  - Hierarchical mega-dropdowns: 3-column categorised links (Services, Materials, Industries, Resources) accompanied by high-fidelity cut-out imagery of actual production parts.
+  - Keyboard accessible, subtle 150ms opacity/translate transitions.
+- **"What Are You Building?" Intent Filter**:
+  - Segmented pill/chip row allowing users to self-select workflow intent:
+    * *End-Use Production Parts*
+    * *Functional Prototyping*
+    * *High-Temp Tooling & Jigs*
+    * *Biocompatible / Dental Formulations*
+  - Selecting an intent seamlessly surfaces matching polymer grades, process capabilities, and case studies.
+- **Cut-Out Product Showcase**:
+  - High-precision engineering parts isolated on seamless backgrounds with realistic soft drop shadows (`0 20px 40px rgba(0,0,0,0.08)`).
+  - Subtle interactive parallax on scroll without chaotic rotation.
+- **Intake Form Flow**:
+  - Structured 2-column conversion funnel: Technical parameter selection on left (process, material, tolerances, dispatch requirements); live part visualization and breakdown on right.
 
 ---
 
-## 2. Preloader
-- **Visuals**: Center-aligned narrative animation. Circular spinning dashed stroke, brand emblem, and dynamic loading percentage (`0% -> 100%`).
-- **Narrative Subtitle**: Single status line describing the physical preparation process ("Warming the nozzle, slicing layers...").
-- **Exit Motion**: Fast vertical curtain wipe (Ink `#0B0B0B` slicing up into Paper `#FFF4E0`).
-- **Rules**: Plays once per browser session via `sessionStorage`, fully skippable via click or Esc, max duration capped at 2.5s.
+## 2. Creality K2 Plus CFS Combo Pattern Synthesis (Hardware Showcase & Specifications)
+- **Sticky Sub-Navigation Bar**:
+  - Appears right below the hero on scroll.
+  - Links: *Overview*, *Specifications*, *Materials*, *Build Volume*, *Real Prints*, *FAQ*, and an anchored *Get Instant Quote* CTA.
+  - Active section indicator highlights smoothly as viewport crosses section thresholds.
+- **Feature Chip Strip**:
+  - Clean inline horizontal pill strip right under the hero headline:
+    * `Industrial FDM`
+    * `SLA Resin`
+    * `Carbon-X Reinforced`
+    * `±0.04 mm Tolerance`
+    * `Zero MOQ`
+    * `Pan-India 24-48h Dispatch`
+  - Subtle 1px hairline border, light graphite hover fill, monospaced metadata badges.
+- **Chaptered Claims with Numbered Telemetry**:
+  - Large tabular stat metrics (`±0.04 mm`, `350°C Hotend`, `600 mm/s`, `300×300×350 mm`).
+  - Paired with monospaced label telemetry above and 2-line explanation below.
+- **Interactive Callout Hotspots**:
+  - 3D stage and hardware diagrams feature pulsating callout pins with ultra-thin leader lines (`1px`).
+  - Hover/click expands technical specification cards (e.g., "Hardened Dual-Gear Extruder", "Active Heated Chamber 60°C", "0.05 mm Layer Stepper").
+- **Real Print Time & Tolerance Cards**:
+  - Real part photographs with verified metadata badges:
+    * Part name (e.g. *Robotic Drone Arm Mount*, *Turbine Impeller*, *Ergonomic Medical Housing*)
+    * Material & layer height (e.g. *Carbon-X PA12-CF @ 0.12 mm*)
+    * Print time (e.g. *4h 18m*) & mass (e.g. *84 g*)
+    * Dimensional deviation (e.g. *< 0.03 mm verified*)
 
 ---
 
-## 3. Scroll-Scrubbed Hero & Pinned Stage
-- **Structure**: Full-bleed hero stage pinned across `~150vh` of scroll.
-- **Scrub Behavior**:
-  - As user scrolls, camera gently dollies in (`~15%`), increasing intimacy with the 3D subject.
-  - The planetary ring tilts dynamically from horizontal inclination to an orbital sweep.
-  - The 3D model smoothly rotates up to 180° revealing back thrusters and engineering joints.
-  - Display headline letters drift apart horizontally and fade out.
-  - Transition trigger: At scroll completion, the hero ring line cuts directly into the next section with an inline marker: `"ENTERING THE LAB"`.
+## 3. CADScope Pattern Synthesis (High-Utility CAD & 3D Viewer UX)
+- **Floating Stage Toolbar**:
+  - Minimal translucent glass floating controls overlaid on the 3D canvas:
+    * Standard Camera Views: *Home (Isometric)*, *Top*, *Front*, *Right*, *Left*, *Back*
+    * Camera Controls: *Zoom In / Out*, *Fit to Frame / Reset Camera*
+    * Display Modes: *Solid PBR*, *Wireframe Overlay*, *X-Ray / Transparency*
+    * Cross-Section Clipping: Z-axis slice slider revealing internal infill / wall geometries
+    * Studio Lighting: Light / Dark studio backdrop toggle, studio HDRI brightness slider
+    * Mode Toggle: Auto-rotate pause/play, Fullscreen toggle
+- **Model Information Hierarchy Panel**:
+  - Collapsible HUD drawer showing CAD telemetry:
+    * Bounding Box Dimensions: `X × Y × Z (mm)`
+    * Calculated Volume (`cm³`) & Estimated Weight by selected resin/filament density
+    * Triangle count & Mesh hierarchy
+- **URL Hash State Synchronization**:
+  - Camera position, selected material, and viewer mode encode into URL hash parameters for shareable inspection links.
 
 ---
 
-## 4. The Open Catalog / The Lab
-- **De-boxed Structure**: Zero card boxes or 3px container borders. Open grid with subtle 1px ink hairlines separating rows/columns.
-- **Filter Navigation**: Pure text-based underlined tabs (`All / FDM / SLA Resin / Carbon-X`), eliminating pill and button clutter.
-- **Hover Micro-interactions**: Smooth image scale (`scale(1.03)` with `cubic-bezier(0.16, 1, 0.3, 1)`), subtle diagonal arrow slide-in (`translate(4px, -4px)`).
-
----
-
-## 5. Pinned Material Selector (03)
-- **Layout**: 2-column editorial split screen pinned for `(items * 80vh)`.
-  - **Left Rail**: Monospaced numbered list (`01`, `02`, `03`...), active indicator hairline, bold material headline, one-line spec summary, and direct CTA button.
-  - **Right Stage**: Prominent 3D engineering part floating in space.
-- **Interaction**:
-  - Scroll-scrub advances the active material step-by-step.
-  - Direct click on any material index jumps the scroll smoothly to that item.
-  - The 3D part transitions physical materials (color, metalness, roughness, translucency) with seamless shader lerping.
-
----
-
-## 6. Configurator on Tint Band (04 - Make It Yours)
-- **Background**: Full-bleed solid tint band (e.g. warm lemon `#FFE14D` or periwinkle `#8EA2FF`) spanning the complete viewport width, giving section rhythm without card boundaries.
-- **Dropzone & Configurator**: Clean 1px hairline drag-and-drop container for CAD files (`.STL`, `.OBJ`, `.STEP`).
-- **Tiered Table**: Clean unboxed tiered price calculation with live total, "Request Quote", and WhatsApp prefill integration.
-
----
-
-## 7. Horizontal Use-Case Strip (05)
-- **Desktop**: Pinned horizontal scroll track converting vertical wheel motion into a smooth horizontal pan. Open image tiles parallax at subtle staggered speeds (`-8%` to `+8%`).
-- **Mobile**: Seamless native touch scroll with touch momentum and snap alignment.
-
----
-
-## 8. Progressive Step-by-Step Process (06 - How It's Made)
-- **Flow**: `01 Upload` > `02 Slice` > `03 Print` > `04 Finish` > `05 Deliver`.
-- **Pinned Storytelling**:
-  - Left vertical number rail highlights the active operational phase.
-  - Center/Right 3D build plate displays the part progressively fabricating via hardware clipping shader / layer reveal.
-
----
-
-## 9. Color Morphing & Section Rhythm
-- **Seamless Atmosphere**: Full-bleed background color transitions triggered by ScrollTrigger (`data-bg` and `data-fg`):
-  - Hero: Paper Cream (`#FFF4E0`)
-  - The Lab: Paper Cream (`#FFF4E0`)
-  - Materials: Deep Industrial Ink (`#0B0B0B`)
-  - Quote Configurator: Lemon Tint Band (`#FFE14D`)
-  - How It's Made: Paper Cream (`#FFF4E0`)
-  - Footer: Deep Industrial Ink (`#0B0B0B`)
-
----
-
-## 10. Typography, Spacing & Layout Hierarchy
-- **Type System**:
-  - Display: Uppercase heavy geometric sans, `clamp(3.5rem, 11vw, 12rem)` for mega titles, `clamp(2.5rem, 6vw, 6rem)` for H2.
-  - Body: Clean humanist grotesque sans, 17–18px, max line-length `62ch` for effortless readability.
-  - Eyebrows & Tech Specs: Monospaced uppercase with generous letter-spacing (`tracking-widest`).
-- **Spacing Grid**: 8px modular scale. Section padding `clamp(96px, 14vh, 200px)` for high-end luxury editorial air.
-- **Hairlines**: 1px crisp ink borders replacing heavy 3px outlines across all non-action components.
-
----
-
-## 11. Cart Drawer & Header
-- **Navigation**: Clean transparent header with left wordmark, 4 links, and one primary CTA button. Hides on scroll-down, smoothly reveals on scroll-up; subtle hairline appears only when scrolled.
-- **Cart Drawer**: Clean side-sheet with dynamic free-delivery meter (`Complimentary Pan-India Express above ₹1,499`) and instant checkout CTA.
+## 4. Design Guidelines Derived for Saturn 3D
+1. **Mood**: Pure German/Swiss precision engineering, surgical cleanliness, authoritative industrial trust.
+2. **Palette**: Dark graphite (`#0B0D10`), dark surface (`#12151A`), off-white studio light (`#F5F6F8`), pure white (`#FFFFFF`), neutral muted text (`#5B616B` / `#A3A9B3`), and single accent Saturn orange (`#FF5A1F`).
+3. **Typography**: Inter / Inter Tight / Space Grotesk in sentence case (never all-caps screaming), Space Mono strictly for engineering tolerances, units, and spec tags.
+4. **Surfaces**: 1px crisp hairlines (`rgba(11,13,16,0.10)` on light, `rgba(255,255,255,0.10)` on dark), rounded 12px-16px cards, rounded 10px buttons. Zero 3px borders, zero comic offset drop-shadows.
+5. **3D Representation**: Realistic Studio PBR lighting with soft contact shadows, subtle studio reflections, and interactive leader-line hotspots.

@@ -20,37 +20,37 @@ export default function SectionHeader({
   highlightWord,
   align = 'left',
   badgeText,
-  badgeColor = '#FFE14D',
   className = '',
 }: SectionHeaderProps) {
   const isCenter = align === 'center';
 
   return (
-    <div className={`space-y-4 mb-10 sm:mb-14 ${isCenter ? 'text-center mx-auto max-w-3xl' : ''} ${className}`}>
+    <div className={`space-y-3 mb-10 sm:mb-12 ${isCenter ? 'text-center mx-auto max-w-3xl' : ''} ${className}`}>
       {/* Numbered Tag & Stamp */}
-      <div className={`flex flex-wrap items-center gap-3 ${isCenter ? 'justify-center' : 'justify-start'}`}>
-        <span className="section-tag">
-          {number} // {tag}
+      <div className={`flex flex-wrap items-center gap-2.5 ${isCenter ? 'justify-center' : 'justify-start'}`}>
+        <span className="inline-flex items-center gap-2 px-3 py-1 bg-black/[0.04] text-muted-dark border hairline rounded-full font-mono text-[11px] font-medium uppercase tracking-wider">
+          <span className="w-1.5 h-1.5 rounded-full bg-saturn-orange" />
+          <span>{number} // {tag}</span>
         </span>
         {badgeText && (
-          <span
-            className="badge-sticker"
-            style={{ backgroundColor: badgeColor }}
-          >
+          <span className="precision-badge font-mono text-[10px] text-saturn-orange bg-saturn-orange/10 border border-saturn-orange/20 px-2.5 py-0.5 rounded-full">
             {badgeText}
           </span>
         )}
       </div>
 
       {/* Primary Display Title */}
-      <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-black uppercase tracking-tight text-[#0B0B0B] leading-[0.95]">
-        {highlightWord && title.includes(highlightWord) ? (
+      <h2 className="text-2xl sm:text-4xl lg:text-5xl font-display font-semibold tracking-tight text-graphite leading-tight">
+        {highlightWord && title.toLowerCase().includes(highlightWord.toLowerCase()) ? (
           <>
-            {title.split(highlightWord)[0]}
-            <span className="text-[#FF5A1F] inline-block px-1 bg-[#0B0B0B] text-white mx-1 transform -rotate-1">
-              {highlightWord}
+            {title.slice(0, title.toLowerCase().indexOf(highlightWord.toLowerCase()))}
+            <span className="text-saturn-orange">
+              {title.slice(
+                title.toLowerCase().indexOf(highlightWord.toLowerCase()),
+                title.toLowerCase().indexOf(highlightWord.toLowerCase()) + highlightWord.length
+              )}
             </span>
-            {title.split(highlightWord)[1]}
+            {title.slice(title.toLowerCase().indexOf(highlightWord.toLowerCase()) + highlightWord.length)}
           </>
         ) : (
           title
@@ -59,7 +59,7 @@ export default function SectionHeader({
 
       {/* Subtitle */}
       {subtitle && (
-        <p className={`font-body text-base sm:text-lg text-[#222222] font-medium leading-relaxed max-w-2xl ${isCenter ? 'mx-auto' : ''}`}>
+        <p className="font-body text-xs sm:text-sm text-muted max-w-2xl leading-relaxed">
           {subtitle}
         </p>
       )}

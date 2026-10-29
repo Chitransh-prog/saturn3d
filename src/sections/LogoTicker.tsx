@@ -1,64 +1,64 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React from 'react';
+import { ShieldCheck, Clock, Zap, Truck } from 'lucide-react';
 
-const partners = [
-  'DRDO LABS // DEFENSE PROTOCOLS',
-  'ISRO COMPONENT VENDORS',
-  'AEROSPACE DRONE CELLS',
-  'AUTOMOTIVE EV MANIFOLDS',
-  'BHOPAL ADDITIVE BATCH HUB',
-  'PRECISION ROBOTICS INDIA',
-  'BIOMEDICAL SCALE IMPLANTS',
-  'KINETIC FACADE ARCHITECTURE',
-];
-
-export default function LogoTicker() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const tickerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let scrollVelocity = 0;
-    let lastScrollTop = 0;
-
-    const updateVelocity = () => {
-      const st = window.pageYOffset || document.documentElement.scrollTop;
-      scrollVelocity = st - lastScrollTop;
-      lastScrollTop = st;
-
-      if (tickerRef.current) {
-        const currentAnimation = gsap.getTweensOf(tickerRef.current);
-        if (currentAnimation.length > 0) {
-          const boost = Math.min(3, 1 + Math.abs(scrollVelocity) * 0.05);
-          gsap.to(currentAnimation[0], {
-            timeScale: boost,
-            duration: 0.3,
-            ease: 'power1.out',
-          });
-        }
-      }
-    };
-
-    window.addEventListener('scroll', updateVelocity, { passive: true });
-    return () => window.removeEventListener('scroll', updateVelocity);
-  }, []);
+export default function CapabilityStrip() {
+  const capabilities = [
+    {
+      metric: '±0.04 mm',
+      label: 'Verified Tolerance',
+      desc: 'Precision SLA & calibrated FDM micro-metrology',
+      icon: ShieldCheck,
+    },
+    {
+      metric: '24–48h',
+      label: 'Express Turnaround',
+      desc: 'Rapid production dispatch from Bhopal hub',
+      icon: Clock,
+    },
+    {
+      metric: 'Zero MOQ',
+      label: 'Prototyping & Batches',
+      desc: 'Single part iteration to 5,000 unit production',
+      icon: Zap,
+    },
+    {
+      metric: 'All India',
+      label: 'Secure Logistics',
+      desc: 'Insured air courier dispatch across tier 1-3 cities',
+      icon: Truck,
+    },
+  ];
 
   return (
     <section
-      ref={sectionRef}
-      className="w-full bg-[#FFE14D] hairline-t-ink hairline-b-ink py-3.5 relative overflow-hidden select-none z-10"
-      aria-label="Industry Verification Marquee"
+      className="w-full bg-[#12151A] text-[#F5F6F8] border-y border-white/10 py-6 sm:py-8 px-6 sm:px-10 lg:px-16 relative z-10"
+      aria-label="Saturn 3D Precision Fabrication Capabilities"
     >
-      <div className="flex overflow-hidden py-0.5">
-        <div ref={tickerRef} className="flex ticker-animation gap-10 sm:gap-14 items-center whitespace-nowrap">
-          {[...partners, ...partners, ...partners].map((item, index) => (
-            <div key={index} className="flex items-center gap-4 shrink-0">
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#0B0B0B]">
-                {item}
-              </span>
-              <span className="w-1.5 h-1.5 bg-[#FF5A1F] rounded-none inline-block" />
+      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
+        {capabilities.map((cap, idx) => {
+          const Icon = cap.icon;
+          return (
+            <div
+              key={idx}
+              className={`flex flex-col justify-center ${
+                idx > 0 ? 'pt-4 lg:pt-0 lg:pl-8' : ''
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <Icon className="w-4 h-4 text-[#FF5A1F]" />
+                <span className="font-mono text-xs text-white/50 uppercase tracking-wider">
+                  {cap.label}
+                </span>
+              </div>
+              <div className="text-2xl sm:text-3xl font-display font-semibold text-white tracking-tight">
+                {cap.metric}
+              </div>
+              <p className="text-xs text-[#A3A9B3] mt-1 font-body">
+                {cap.desc}
+              </p>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );
