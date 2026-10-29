@@ -11,6 +11,7 @@ import Hero from '@/sections/Hero';
 import StickySubNav from '@/components/StickySubNav';
 import CapabilityStrip from '@/sections/LogoTicker';
 import TechResultsDuo from '@/sections/TechResultsDuo';
+import FeaturedProductsViewer from '@/sections/FeaturedProductsViewer';
 import PrinterFleet from '@/sections/PrinterFleet';
 import ExploreMaterials from '@/sections/ExploreMaterials';
 import MakeItYours from '@/sections/MakeItYours';
@@ -93,6 +94,7 @@ export default function Home() {
   }, [preloaderDone]);
 
   const subNavItems = [
+    { id: 'products', label: '3D Products' },
     { id: 'hardware', label: 'Hardware Fleet' },
     { id: 'specs', label: 'Materials & Specs' },
     { id: 'configurator', label: 'Instant Quote' },
@@ -118,6 +120,11 @@ export default function Home() {
 
       {/* 03. Technology & Results Duo Showcase (Carbon-Style) */}
       <TechResultsDuo />
+
+      {/* 03.5 3D Component Inspection Workstation */}
+      <div id="products">
+        <FeaturedProductsViewer />
+      </div>
 
       {/* 04. Hardware Fleet Showcase (Creality / SparkX Style) */}
       <div id="hardware">
