@@ -576,7 +576,7 @@ export default function HeroStage3D({
   }, []);
 
   return (
-    <div className="relative w-full h-full min-h-[420px] rounded-3xl overflow-hidden bg-gradient-to-b from-[#0B0D10] via-[#101318] to-[#0B0D10] border border-white/10 shadow-2xl flex flex-col justify-between select-none">
+    <div className="relative w-full h-full min-h-[420px] rounded-3xl overflow-hidden bg-gradient-to-b from-white via-[#F4F5F8] to-[#E9EBF0] border border-black/10 shadow-xl flex flex-col justify-between select-none">
       
       {/* 3D Canvas Renders 100% INSTANTLY with 0 delay */}
       <Canvas
@@ -598,7 +598,7 @@ export default function HeroStage3D({
         {/* Studio Soft Floor Contact Shadow */}
         <ContactShadows
           position={[0, -0.01, 0]}
-          opacity={0.65}
+          opacity={0.5}
           scale={7}
           blur={1.8}
           far={3}
@@ -624,10 +624,10 @@ export default function HeroStage3D({
         <button
           onClick={() => setIsAutoPrinting(!isAutoPrinting)}
           title={isAutoPrinting ? 'Pause Print Kinematics' : 'Resume Print Kinematics'}
-          className={`p-2 rounded-xl border backdrop-blur-md transition-all ${
+          className={`p-2 rounded-xl border backdrop-blur-md transition-all shadow-xs ${
             isAutoPrinting
-              ? 'bg-[#FF5A1F]/20 border-[#FF5A1F] text-[#FF5A1F]'
-              : 'bg-[#0B0D10]/80 border-white/10 text-[#A3A9B3] hover:text-white'
+              ? 'bg-[#FF5A1F]/15 border-[#FF5A1F] text-[#FF5A1F]'
+              : 'bg-white/90 border-black/10 text-[#5E6573] hover:text-[#111215]'
           }`}
         >
           {isAutoPrinting ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -636,10 +636,10 @@ export default function HeroStage3D({
         <button
           onClick={() => setAutoRotate(!autoRotate)}
           title="Toggle Smooth Auto-Rotation"
-          className={`p-2 rounded-xl border backdrop-blur-md transition-all ${
+          className={`p-2 rounded-xl border backdrop-blur-md transition-all shadow-xs ${
             autoRotate
-              ? 'bg-[#FF5A1F]/20 border-[#FF5A1F] text-[#FF5A1F]'
-              : 'bg-[#0B0D10]/80 border-white/10 text-[#A3A9B3] hover:text-white'
+              ? 'bg-[#FF5A1F]/15 border-[#FF5A1F] text-[#FF5A1F]'
+              : 'bg-white/90 border-black/10 text-[#5E6573] hover:text-[#111215]'
           }`}
         >
           <RotateCw className="w-3.5 h-3.5" />
@@ -648,17 +648,17 @@ export default function HeroStage3D({
         <button
           onClick={handleResetCamera}
           title="Reset Isometric Angle"
-          className="p-2 rounded-xl bg-[#0B0D10]/80 border border-white/10 text-[#A3A9B3] hover:text-white backdrop-blur-md transition-all"
+          className="p-2 rounded-xl bg-white/90 border border-black/10 text-[#5E6573] hover:text-[#111215] backdrop-blur-md transition-all shadow-xs"
         >
           <RefreshCw className="w-3.5 h-3.5" />
         </button>
       </div>
 
       {/* Minimalist Engineered Bottom Bar: Layer Scrubber + Real-Time Telemetry */}
-      <div className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-2xl bg-[#0B0D10]/90 border border-white/10 backdrop-blur-md z-20 pointer-events-auto shadow-xl">
+      <div className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-2xl bg-white/92 border border-black/10 backdrop-blur-md z-20 pointer-events-auto shadow-xl">
         {/* Layer Slicing Scrubber */}
         <div className="flex items-center gap-3 w-full sm:w-auto flex-1">
-          <div className="flex items-center gap-1.5 text-xs font-mono text-[#A3A9B3] flex-shrink-0">
+          <div className="flex items-center gap-1.5 text-xs font-mono text-[#5E6573] flex-shrink-0">
             <Sliders className="w-3.5 h-3.5 text-[#FF5A1F]" />
             <span>Layer Slicing:</span>
           </div>
@@ -670,7 +670,7 @@ export default function HeroStage3D({
             step="0.01"
             value={activeProgress}
             onChange={(e) => setManualProgress(parseFloat(e.target.value))}
-            className="w-full h-1.5 bg-white/15 rounded-lg appearance-none cursor-pointer accent-[#FF5A1F]"
+            className="w-full h-1.5 bg-black/15 rounded-lg appearance-none cursor-pointer accent-[#FF5A1F]"
           />
 
           <span className="font-mono text-xs text-[#FF5A1F] font-semibold flex-shrink-0 min-w-[36px]">
@@ -679,19 +679,19 @@ export default function HeroStage3D({
         </div>
 
         {/* Real-Time Live Kinematics Telemetry Readout */}
-        <div className="flex items-center gap-2.5 text-[11px] font-mono text-[#A3A9B3] border-t sm:border-t-0 sm:border-l border-white/10 pt-2 sm:pt-0 sm:pl-3 flex-shrink-0">
-          <span className="flex items-center gap-1.5 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <div className="flex items-center gap-2.5 text-[11px] font-mono text-[#5E6573] border-t sm:border-t-0 sm:border-l border-black/10 pt-2 sm:pt-0 sm:pl-3 flex-shrink-0">
+          <span className="flex items-center gap-1.5 text-emerald-600 font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Printing PA12-CF
           </span>
           <span className="text-[#FF5A1F]">•</span>
           <span>X: {dynamicCoords.x > 0 ? `+${dynamicCoords.x}` : dynamicCoords.x}</span>
-          <span className="text-white/40">/</span>
+          <span className="text-black/30">/</span>
           <span>Y: {dynamicCoords.y > 0 ? `+${dynamicCoords.y}` : dynamicCoords.y}</span>
           <span className="text-[#FF5A1F]">•</span>
           <span>Z: {(activeProgress * 58).toFixed(1)}mm</span>
           <span className="text-[#FF5A1F]">•</span>
-          <span className="text-white">±0.04mm</span>
+          <span className="text-[#111215] font-semibold">±0.04mm</span>
         </div>
       </div>
     </div>

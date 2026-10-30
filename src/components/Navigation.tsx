@@ -242,8 +242,8 @@ export default function Navigation() {
         isVisible || isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
       } ${
         isScrolled || isMobileMenuOpen || activeMegaMenu
-          ? 'glass-nav py-2.5 px-4 sm:px-8 border-b border-white/10 shadow-lg'
-          : 'bg-[#0B0D10]/90 backdrop-blur-md py-3 px-4 sm:px-8 border-b border-white/5'
+          ? 'glass-nav py-2.5 px-4 sm:px-8 border-b border-black/10 shadow-sm'
+          : 'bg-white/90 backdrop-blur-md py-3 px-4 sm:px-8 border-b border-black/5'
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
@@ -258,7 +258,7 @@ export default function Navigation() {
               setActiveMegaMenu(null);
             }}
           >
-            <Logo variant="white" className="h-6 sm:h-7" />
+            <Logo variant="dark" className="h-6 sm:h-7" />
           </Link>
         </div>
 
@@ -271,8 +271,8 @@ export default function Navigation() {
               onClick={() => setActiveMegaMenu(activeMegaMenu === 'services' ? null : 'services')}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
                 activeMegaMenu === 'services'
-                  ? 'text-white bg-white/15'
-                  : 'text-white/75 hover:text-white hover:bg-white/5'
+                  ? 'text-[#111215] bg-black/10'
+                  : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
               }`}
             >
               <span>Services</span>
@@ -290,7 +290,7 @@ export default function Navigation() {
                 className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                   isActive
                     ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/30'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                    : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
                 }`}
               >
                 {sec.label}
@@ -304,7 +304,7 @@ export default function Navigation() {
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
               pathname === '/categories'
                 ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm'
-                : 'text-white/70 hover:text-white hover:bg-white/5'
+                : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
             }`}
             onClick={() => setActiveMegaMenu(null)}
           >
@@ -319,7 +319,7 @@ export default function Navigation() {
           {/* Quick Search Link */}
           <Link
             to="/categories"
-            className="p-1.5 sm:p-2 text-white/70 hover:text-white hover:bg-white/5 rounded-full transition-all flex items-center"
+            className="p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-full transition-all flex items-center"
             title="Search parts"
           >
             <Search className="w-4 h-4" />
@@ -328,7 +328,7 @@ export default function Navigation() {
           {/* Cart Trigger */}
           <button
             onClick={toggleCart}
-            className="relative p-1.5 sm:p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-full transition-all cursor-pointer"
+            className="relative p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-full transition-all cursor-pointer"
             aria-label="Open Cart"
           >
             <ShoppingBag className="w-4 h-4" />
@@ -344,7 +344,7 @@ export default function Navigation() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
-                  className="p-1.5 sm:p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-full transition-all cursor-pointer"
+                  className="p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-full transition-all cursor-pointer"
                   aria-label="User Account"
                 >
                   <User className="w-4 h-4" />
@@ -352,28 +352,28 @@ export default function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                className="w-52 bg-[#12151A] border border-white/10 p-1.5 font-body text-xs shadow-precision-lg rounded-xl text-white"
+                className="w-52 bg-white border border-black/10 p-1.5 font-body text-xs shadow-xl rounded-xl text-[#111215]"
               >
-                <DropdownMenuLabel className="font-medium text-[11px] text-white/60 truncate px-2 py-1.5">
+                <DropdownMenuLabel className="font-medium text-[11px] text-[#5E6573] truncate px-2 py-1.5">
                   {user?.name || user?.email}
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator className="bg-white/10" />
+                <DropdownMenuSeparator className="bg-black/10" />
                 {isAdmin && (
                   <DropdownMenuItem asChild>
-                    <Link to="/admin" className="cursor-pointer font-medium px-2 py-2 hover:bg-white/10 rounded-lg text-white">
+                    <Link to="/admin" className="cursor-pointer font-medium px-2 py-2 hover:bg-black/5 rounded-lg text-[#111215]">
                       Admin Dashboard
                     </Link>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem asChild>
-                  <Link to="/orders" className="cursor-pointer px-2 py-2 hover:bg-white/10 rounded-lg text-white/80 hover:text-white">
+                  <Link to="/orders" className="cursor-pointer px-2 py-2 hover:bg-black/5 rounded-lg text-[#5E6573] hover:text-[#111215]">
                     Order History
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-white/10" />
+                <DropdownMenuSeparator className="bg-black/10" />
                 <DropdownMenuItem
                   onClick={handleLogout}
-                  className="cursor-pointer text-red-400 px-2 py-2 flex items-center gap-2 hover:bg-red-500/10 rounded-lg"
+                  className="cursor-pointer text-red-600 px-2 py-2 flex items-center gap-2 hover:bg-red-50 rounded-lg"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Log out</span>
@@ -383,7 +383,7 @@ export default function Navigation() {
           ) : (
             <Link
               to="/login"
-              className="hidden md:inline-block font-body text-xs font-medium text-white/80 hover:text-white px-2.5 py-1.5 transition-colors"
+              className="hidden md:inline-block font-body text-xs font-medium text-[#4B5262] hover:text-[#111215] px-2.5 py-1.5 transition-colors"
             >
               Sign in
             </Link>
@@ -402,7 +402,7 @@ export default function Navigation() {
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-1.5 sm:p-2 text-white/80 hover:text-white hover:bg-white/5 rounded-md"
+            className="lg:hidden p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-md"
             aria-label="Toggle Mobile Menu"
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -412,7 +412,7 @@ export default function Navigation() {
 
       {/* Mega Menu Dropdown Panel (Desktop) */}
       {activeMegaMenu && megaMenuData[activeMegaMenu as keyof typeof megaMenuData] && (
-        <div className="hidden lg:block absolute top-full left-0 right-0 bg-[#0B0D10]/98 backdrop-blur-xl border-b border-white/10 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="hidden lg:block absolute top-full left-0 right-0 bg-white/98 backdrop-blur-xl border-b border-black/10 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="max-w-7xl mx-auto px-8 py-6">
             <div className="grid grid-cols-12 gap-8">
               
@@ -420,7 +420,7 @@ export default function Navigation() {
               <div className="col-span-8 grid grid-cols-2 gap-8">
                 {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].columns.map((col, idx) => (
                   <div key={idx} className="space-y-3">
-                    <h3 className="type-mono-eyebrow text-white/50 text-[11px] pb-1 border-b border-white/10 uppercase tracking-wider">
+                    <h3 className="type-mono-eyebrow text-[#8A91A0] text-[11px] pb-1 border-b border-black/10 uppercase tracking-wider">
                       {col.title}
                     </h3>
                     <ul className="space-y-2">
@@ -429,13 +429,13 @@ export default function Navigation() {
                           <Link
                             to={link.href}
                             onClick={() => setActiveMegaMenu(null)}
-                            className="group block p-2 rounded-lg hover:bg-white/5 transition-colors"
+                            className="group block p-2 rounded-lg hover:bg-black/5 transition-colors"
                           >
-                            <div className="text-sm font-medium text-white group-hover:text-[#FF5A1F] transition-colors flex items-center justify-between">
+                            <div className="text-sm font-medium text-[#111215] group-hover:text-[#FF5A1F] transition-colors flex items-center justify-between">
                               <span>{link.name}</span>
                               <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#FF5A1F]" />
                             </div>
-                            <p className="text-xs text-[#A3A9B3] mt-0.5 line-clamp-1">
+                            <p className="text-xs text-[#5E6573] mt-0.5 line-clamp-1">
                               {link.desc}
                             </p>
                           </Link>
@@ -447,23 +447,23 @@ export default function Navigation() {
               </div>
 
               {/* Column 3: Featured Part Showcase */}
-              <div className="col-span-4 pl-6 border-l border-white/10">
-                <div className="type-mono-eyebrow text-white/50 text-[11px] pb-1 border-b border-white/10 mb-3 uppercase tracking-wider">
+              <div className="col-span-4 pl-6 border-l border-black/10">
+                <div className="type-mono-eyebrow text-[#8A91A0] text-[11px] pb-1 border-b border-black/10 mb-3 uppercase tracking-wider">
                   {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.badge}
                 </div>
                 <Link
                   to={megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.href}
                   onClick={() => setActiveMegaMenu(null)}
-                  className="block card-precision-dark p-4 group hover:border-[#FF5A1F]/40 transition-all rounded-xl"
+                  className="block card-precision p-4 group hover:border-[#FF5A1F]/40 transition-all rounded-xl bg-[#F8F9FA] border border-black/10"
                 >
-                  <div className="aspect-video w-full rounded-lg bg-[#181C22] border border-white/5 flex items-center justify-center mb-3 relative overflow-hidden">
+                  <div className="aspect-video w-full rounded-lg bg-[#EEF0F4] border border-black/5 flex items-center justify-center mb-3 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-tr from-[#FF5A1F]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <Cpu className="w-8 h-8 text-white/30 group-hover:text-[#FF5A1F] transition-colors" />
+                    <Cpu className="w-8 h-8 text-[#8A91A0] group-hover:text-[#FF5A1F] transition-colors" />
                   </div>
-                  <h4 className="text-sm font-semibold text-white group-hover:text-[#FF5A1F] transition-colors">
+                  <h4 className="text-sm font-semibold text-[#111215] group-hover:text-[#FF5A1F] transition-colors">
                     {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.title}
                   </h4>
-                  <p className="font-mono text-xs text-[#A3A9B3] mt-1">
+                  <p className="font-mono text-xs text-[#5E6573] mt-1">
                     {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.spec}
                   </p>
                 </Link>
@@ -476,11 +476,11 @@ export default function Navigation() {
 
       {/* Mobile Accordion Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-[#0B0D10]/98 backdrop-blur-xl border-t border-white/10 py-5 px-5 mt-2.5 max-h-[calc(100vh-70px)] overflow-y-auto">
+        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-black/10 py-5 px-5 mt-2.5 max-h-[calc(100vh-70px)] overflow-y-auto">
           
           {/* Mobile Jump Section Pills */}
-          <div className="pb-4 mb-4 border-b border-white/10">
-            <span className="font-mono text-[10px] text-white/50 uppercase tracking-widest block mb-2">
+          <div className="pb-4 mb-4 border-b border-black/10">
+            <span className="font-mono text-[10px] text-[#8A91A0] uppercase tracking-widest block mb-2">
               Page Navigation
             </span>
             <div className="grid grid-cols-2 gap-2">
@@ -491,7 +491,7 @@ export default function Navigation() {
                   className={`px-3 py-2 rounded-lg text-xs font-medium text-left transition-all ${
                     isHomePage && activeSection === sec.id
                       ? 'bg-[#FF5A1F] text-white font-semibold'
-                      : 'bg-white/5 text-white/80 hover:bg-white/10'
+                      : 'bg-black/5 text-[#111215] hover:bg-black/10'
                   }`}
                 >
                   {sec.label}
@@ -504,13 +504,13 @@ export default function Navigation() {
             {Object.entries(megaMenuData).map(([key, item]) => {
               const isExpanded = mobileExpandedSection === key;
               return (
-                <div key={key} className="border-b border-white/5 pb-2">
+                <div key={key} className="border-b border-black/5 pb-2">
                   <button
                     onClick={() => setMobileExpandedSection(isExpanded ? null : key)}
-                    className="w-full py-2 flex items-center justify-between text-sm font-semibold text-white"
+                    className="w-full py-2 flex items-center justify-between text-sm font-semibold text-[#111215]"
                   >
                     <span>{item.title}</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-[#FF5A1F]' : 'text-white/50'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-[#FF5A1F]' : 'text-[#8A91A0]'}`} />
                   </button>
                   {isExpanded && (
                     <div className="pl-3 py-2 space-y-2.5">
@@ -519,10 +519,10 @@ export default function Navigation() {
                           key={idx}
                           to={link.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="block text-xs text-white/70 hover:text-white py-1"
+                          className="block text-xs text-[#5E6573] hover:text-[#111215] py-1"
                         >
-                          <div className="font-medium text-white/90">{link.name}</div>
-                          <div className="text-[11px] text-[#A3A9B3] line-clamp-1">{link.desc}</div>
+                          <div className="font-medium text-[#111215]">{link.name}</div>
+                          <div className="text-[11px] text-[#5E6573] line-clamp-1">{link.desc}</div>
                         </Link>
                       ))}
                     </div>
@@ -534,7 +534,7 @@ export default function Navigation() {
             <Link
               to="/categories"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="py-2.5 text-sm font-semibold text-white border-b border-white/5"
+              className="py-2.5 text-sm font-semibold text-[#111215] border-b border-black/5"
             >
               Catalog
             </Link>
@@ -544,7 +544,7 @@ export default function Navigation() {
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="btn-precision-secondary text-xs text-center py-2.5 text-white"
+                  className="btn-precision-secondary text-xs text-center py-2.5 text-[#111215] border-black/15"
                 >
                   Sign in / Register
                 </Link>

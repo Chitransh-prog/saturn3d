@@ -278,12 +278,20 @@ export default function PartViewer({
       </Canvas>
 
       {/* Top Floating View Presets Bar (CADScope Style) */}
-      <div className="absolute top-3 left-3 z-20 flex items-center gap-1 p-1 rounded-xl bg-[#12151A]/85 backdrop-blur-md border border-white/10 shadow-precision-md text-white text-xs">
+      <div className={`absolute top-3 left-3 z-20 flex items-center gap-1 p-1 rounded-xl backdrop-blur-md border shadow-precision-md text-xs ${
+        backdropTheme === 'dark'
+          ? 'bg-[#12151A]/85 border-white/10 text-white'
+          : 'bg-white/92 border-black/10 text-[#111215]'
+      }`}>
         {['home', 'top', 'front', 'right', 'left', 'back'].map((v) => (
           <button
             key={v}
             onClick={() => setTargetView(v)}
-            className="px-2.5 py-1 rounded-lg uppercase font-mono text-[10px] text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className={`px-2.5 py-1 rounded-lg uppercase font-mono text-[10px] transition-colors cursor-pointer ${
+              backdropTheme === 'dark'
+                ? 'text-white/70 hover:text-white hover:bg-white/10'
+                : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+            }`}
           >
             {v}
           </button>
@@ -291,24 +299,40 @@ export default function PartViewer({
       </div>
 
       {/* Top Right Controls (Fullscreen, Share, Theme) */}
-      <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5 p-1 rounded-xl bg-[#12151A]/85 backdrop-blur-md border border-white/10 shadow-precision-md text-white">
+      <div className={`absolute top-3 right-3 z-20 flex items-center gap-1.5 p-1 rounded-xl backdrop-blur-md border shadow-precision-md ${
+        backdropTheme === 'dark'
+          ? 'bg-[#12151A]/85 border-white/10 text-white'
+          : 'bg-white/92 border-black/10 text-[#111215]'
+      }`}>
         <button
           onClick={() => setBackdropTheme(backdropTheme === 'dark' ? 'light' : 'dark')}
-          className="p-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+          className={`p-1.5 rounded-lg transition-colors ${
+            backdropTheme === 'dark'
+              ? 'text-white/70 hover:text-white hover:bg-white/10'
+              : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+          }`}
           title="Toggle Studio Backdrop"
         >
           {backdropTheme === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
         </button>
         <button
           onClick={shareState}
-          className="p-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+          className={`p-1.5 rounded-lg transition-colors ${
+            backdropTheme === 'dark'
+              ? 'text-white/70 hover:text-white hover:bg-white/10'
+              : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+          }`}
           title="Share View Link"
         >
           <Share2 className="w-3.5 h-3.5" />
         </button>
         <button
           onClick={toggleFullscreen}
-          className="p-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+          className={`p-1.5 rounded-lg transition-colors ${
+            backdropTheme === 'dark'
+              ? 'text-white/70 hover:text-white hover:bg-white/10'
+              : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+          }`}
           title="Fullscreen"
         >
           {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
@@ -316,26 +340,34 @@ export default function PartViewer({
       </div>
 
       {/* Bottom Floating CAD Stage Toolbar */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 p-1.5 rounded-full bg-[#12151A]/90 backdrop-blur-md border border-white/10 shadow-precision-lg text-white text-xs">
+      <div className={`absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 p-1.5 rounded-full backdrop-blur-md border shadow-precision-lg text-xs ${
+        backdropTheme === 'dark'
+          ? 'bg-[#12151A]/90 border-white/10 text-white'
+          : 'bg-white/92 border-black/10 text-[#111215]'
+      }`}>
         <button
           onClick={() => setZoomAction('in')}
-          className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10"
+          className={`p-1.5 rounded-full ${
+            backdropTheme === 'dark' ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+          }`}
           title="Zoom In"
         >
           <ZoomIn className="w-3.5 h-3.5" />
         </button>
         <button
           onClick={() => setZoomAction('out')}
-          className="p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10"
+          className={`p-1.5 rounded-full ${
+            backdropTheme === 'dark' ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+          }`}
           title="Zoom Out"
         >
           <ZoomOut className="w-3.5 h-3.5" />
         </button>
-        <div className="w-[1px] h-3 bg-white/15" />
+        <div className={`w-[1px] h-3 ${backdropTheme === 'dark' ? 'bg-white/15' : 'bg-black/10'}`} />
         <button
           onClick={() => setWireframe(!wireframe)}
           className={`px-2 py-0.5 rounded-full font-mono text-[10px] transition-colors ${
-            wireframe ? 'bg-[#FF5A1F] text-white font-medium' : 'text-white/70 hover:text-white'
+            wireframe ? 'bg-[#FF5A1F] text-white font-medium' : backdropTheme === 'dark' ? 'text-white/70 hover:text-white' : 'text-[#5E6573] hover:text-[#111215]'
           }`}
           title="Toggle Mesh Wireframe"
         >

@@ -11,7 +11,7 @@ import {
 } from '@/lib/seo-config';
 
 export const viewport: Viewport = {
-  themeColor: '#0B0D10',
+  themeColor: '#F8F9FB',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -128,7 +128,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="bg-[#0B0D10] text-[#0B0D10] font-body selection:bg-[#FF5A1F] selection:text-white antialiased">
+      <body className="bg-[#F8F9FB] text-[#111215] font-body selection:bg-[#FF5A1F] selection:text-white antialiased">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

@@ -31,10 +31,10 @@ export default function CapabilityStrip() {
 
   return (
     <section
-      className="w-full bg-[#12151A] text-[#F5F6F8] border-y border-white/10 py-6 sm:py-8 px-6 sm:px-10 lg:px-16 relative z-10"
+      className="w-full bg-white text-[#111215] border-y border-black/10 py-6 sm:py-8 px-6 sm:px-10 lg:px-16 relative z-10"
       aria-label="Saturn 3D Precision Fabrication Capabilities"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 divide-y lg:divide-y-0 lg:divide-x divide-black/10">
         {capabilities.map((cap, idx) => {
           const Icon = cap.icon;
           return (
@@ -46,14 +46,14 @@ export default function CapabilityStrip() {
             >
               <div className="flex items-center gap-2 mb-1">
                 <Icon className="w-4 h-4 text-[#FF5A1F]" />
-                <span className="font-mono text-xs text-white/50 uppercase tracking-wider">
+                <span className="font-mono text-xs text-[#8A91A0] uppercase tracking-wider font-semibold">
                   {cap.label}
                 </span>
               </div>
-              <div className="text-2xl sm:text-3xl font-display font-semibold text-white tracking-tight">
+              <div className="text-2xl sm:text-3xl font-display font-bold text-[#111215] tracking-tight">
                 {cap.metric}
               </div>
-              <p className="text-xs text-[#A3A9B3] mt-1 font-body">
+              <p className="text-xs text-[#5E6573] mt-1 font-body">
                 {cap.desc}
               </p>
             </div>

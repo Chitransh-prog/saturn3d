@@ -104,7 +104,7 @@ export default function FloatingWhatsApp() {
       {(showTooltip || isHovered) && (
         <div
           ref={tooltipRef}
-          className="hidden sm:flex items-center gap-2 bg-[#12151A] text-white text-xs font-body font-medium px-3.5 py-2 mr-3 rounded-lg border border-white/10 shadow-precision-lg animate-in fade-in slide-in-from-right-2 duration-150"
+          className="hidden sm:flex items-center gap-2 bg-white text-[#111215] text-xs font-body font-medium px-3.5 py-2 mr-3 rounded-lg border border-black/10 shadow-precision-lg animate-in fade-in slide-in-from-right-2 duration-150"
         >
           <span>Chat with Engineering</span>
           <button
@@ -112,7 +112,7 @@ export default function FloatingWhatsApp() {
               e.stopPropagation();
               setShowTooltip(false);
             }}
-            className="text-white/60 hover:text-white p-0.5 cursor-pointer ml-1"
+            className="text-[#5E6573] hover:text-[#111215] p-0.5 cursor-pointer ml-1"
             aria-label="Close tooltip"
           >
             <X className="w-3.5 h-3.5" />

@@ -179,14 +179,14 @@ export default function PrinterFleet() {
         </div>
 
         {/* Bottom Capabilities Banner */}
-        <div className="mt-12 rounded-2xl bg-[#0B0D10] text-white p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 rounded-2xl bg-white border border-black/10 text-[#111215] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#FF5A1F]">
+            <div className="w-12 h-12 rounded-xl bg-[#FF5A1F]/10 flex items-center justify-center flex-shrink-0 text-[#FF5A1F]">
               <Sparkles className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-white">Need a Dedicated Fleet Production Run?</h4>
-              <p className="text-sm text-[#A3A9B3] mt-0.5">
+              <h4 className="text-lg font-semibold text-[#111215]">Need a Dedicated Fleet Production Run?</h4>
+              <p className="text-sm text-[#5E6573] mt-0.5">
                 We operate multiple synchronized Voron, CoreXY, and SLA print farms with 24-48h dispatch across India.
               </p>
             </div>
@@ -194,7 +194,7 @@ export default function PrinterFleet() {
 
           <button
             onClick={() => navigate('/custom-lab')}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5A1F] hover:bg-[#e04e18] text-white font-medium text-sm transition-all duration-200 flex-shrink-0 shadow-lg shadow-[#FF5A1F]/20"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5A1F] hover:bg-[#e04e18] text-white font-medium text-sm transition-all duration-200 flex-shrink-0 shadow-md shadow-[#FF5A1F]/20 cursor-pointer"
           >
             Launch Instant Lab
             <ArrowRight className="w-4 h-4" />

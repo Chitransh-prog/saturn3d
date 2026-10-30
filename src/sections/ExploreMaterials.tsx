@@ -230,24 +230,24 @@ export default function ExploreMaterials() {
   return (
     <section
       id="materials"
-      className="w-full bg-[#0B0D10] text-[#F5F6F8] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 relative overflow-hidden font-body"
+      className="w-full bg-[#F8F9FA] text-[#111215] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 relative overflow-hidden font-body border-t border-black/10"
       aria-label="Saturn 3D Materials and Process Science"
     >
       <div className="max-w-7xl mx-auto space-y-20">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10 scroll-reveal">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
-              <span className="type-mono-eyebrow text-white/60">
+              <span className="type-mono-eyebrow text-[#5E6573] font-semibold">
                 03 // Material Science & Processes
               </span>
             </div>
-            <h2 className="type-h2 text-white">
+            <h2 className="type-h2 text-[#111215] font-bold">
               Engineering polymers, verified on the test bench.
             </h2>
-            <p className="type-body text-[#A3A9B3] mt-2">
+            <p className="type-body text-[#5E6573] mt-2">
               From continuous carbon-fiber reinforcement to sub-micron optical resins, every formulation is calibrated for mechanical integrity.
             </p>
           </div>
@@ -273,24 +273,24 @@ export default function ExploreMaterials() {
                   <div
                     key={mat.id}
                     onClick={() => setActiveIndex(idx)}
-                    className={`card-precision-dark p-4 cursor-pointer transition-all ${
+                    className={`card-precision p-4 cursor-pointer transition-all ${
                       isActive
-                        ? 'border-[#FF5A1F] bg-[#181C22]'
-                        : 'hover:border-white/20'
+                        ? 'border-[#FF5A1F] bg-white ring-1 ring-[#FF5A1F] shadow-sm'
+                        : 'bg-[#F8F9FB] border border-black/10 hover:border-black/20 hover:bg-white'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="precision-badge text-[10px]">
+                      <span className="precision-badge text-[10px] bg-white border-black/10 text-[#5E6573]">
                         {mat.group}
                       </span>
-                      <span className="font-mono text-xs font-semibold text-[#FF5A1F]">
+                      <span className="font-mono text-xs font-bold text-[#FF5A1F]">
                         {mat.price}
                       </span>
                     </div>
-                    <h3 className="text-sm font-semibold text-white">
+                    <h3 className="text-sm font-semibold text-[#111215]">
                       {mat.name}
                     </h3>
-                    <p className="text-xs text-[#A3A9B3] mt-1 line-clamp-2">
+                    <p className="text-xs text-[#5E6573] mt-1 line-clamp-2">
                       {mat.subtitle}
                     </p>
                   </div>
@@ -299,54 +299,54 @@ export default function ExploreMaterials() {
             </div>
 
             {/* Active Material Detailed Specifications Card */}
-            <div className="card-precision-dark p-6 mt-4 border-[#FF5A1F]/30">
+            <div className="card-precision p-6 mt-4 border-[#FF5A1F]/30 bg-white shadow-sm">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="text-base font-semibold text-white">
+                <h4 className="text-base font-bold text-[#111215]">
                   {currentMaterial.name} Telemetry
                 </h4>
                 <span className="precision-badge-orange text-[10px]">
                   VERIFIED SHOP SPECS
                 </span>
               </div>
-              <p className="text-xs text-[#A3A9B3] leading-relaxed mb-5">
+              <p className="text-xs text-[#5E6573] leading-relaxed mb-5">
                 {currentMaterial.description}
               </p>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10 font-mono text-xs">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-black/10 font-mono text-xs">
                 <div>
-                  <span className="text-[10px] text-white/40 block">TENSILE YIELD</span>
-                  <span className="text-white font-semibold">{currentMaterial.specs.tensile}</span>
+                  <span className="text-[10px] text-[#8A91A0] block font-semibold">TENSILE YIELD</span>
+                  <span className="text-[#111215] font-bold">{currentMaterial.specs.tensile}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-white/40 block">HEAT DEFLECTION</span>
-                  <span className="text-white font-semibold">{currentMaterial.specs.hdt}</span>
+                  <span className="text-[10px] text-[#8A91A0] block font-semibold">HEAT DEFLECTION</span>
+                  <span className="text-[#111215] font-bold">{currentMaterial.specs.hdt}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-white/40 block">POLYMER DENSITY</span>
-                  <span className="text-white font-semibold">{currentMaterial.specs.density}</span>
+                  <span className="text-[10px] text-[#8A91A0] block font-semibold">POLYMER DENSITY</span>
+                  <span className="text-[#111215] font-bold">{currentMaterial.specs.density}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-white/40 block">TOLERANCE</span>
-                  <span className="text-[#FF5A1F] font-semibold">{currentMaterial.specs.tolerance}</span>
+                  <span className="text-[10px] text-[#8A91A0] block font-semibold">TOLERANCE</span>
+                  <span className="text-[#FF5A1F] font-bold">{currentMaterial.specs.tolerance}</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right: 3D Studio Material Visualizer */}
-          <div className="lg:col-span-5 h-[380px] sm:h-[440px] card-precision-dark relative overflow-hidden p-4 flex items-center justify-center">
+          <div className="lg:col-span-5 h-[380px] sm:h-[440px] card-precision relative overflow-hidden p-4 flex items-center justify-center bg-white border border-black/10 shadow-sm">
             <div className="absolute top-4 left-4 z-10">
-              <span className="precision-badge text-[10px]">
+              <span className="precision-badge text-[10px] bg-white border-black/10 text-[#5E6573] shadow-xs">
                 3D PBR SHADER PREVIEW // {currentMaterial.name}
               </span>
             </div>
 
             <div className="w-full h-full relative">
               <Canvas camera={{ position: [0, 1.2, 3.8], fov: 38 }} dpr={[1, 2]}>
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[-3, 4, 3]} intensity={2.0} color="#FFF8F0" />
-                <directionalLight position={[3, 2, -2]} intensity={2.5} color="#FF5A1F" />
-                <ContactShadows position={[0, -0.6, 0]} opacity={0.4} scale={4} blur={2.0} />
+                <ambientLight intensity={0.7} />
+                <directionalLight position={[-3, 4, 3]} intensity={2.2} color="#FFF8F0" />
+                <directionalLight position={[3, 2, -2]} intensity={2.0} color="#FF5A1F" />
+                <ContactShadows position={[0, -0.6, 0]} opacity={0.3} scale={4} blur={2.0} color="#000000" />
                 <MaterialSamplePart material={currentMaterial} />
               </Canvas>
             </div>
@@ -355,44 +355,44 @@ export default function ExploreMaterials() {
         </div>
 
         {/* Creality-Style Process Comparison Table */}
-        <div className="space-y-6 pt-10 border-t border-white/10">
+        <div className="space-y-6 pt-10 border-t border-black/10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <span className="type-mono-eyebrow text-white/60">
+              <span className="type-mono-eyebrow text-[#5E6573] font-semibold">
                 BENCHMARK MATRIX
               </span>
-              <h3 className="type-h3 text-white mt-1">
+              <h3 className="type-h3 text-[#111215] font-bold mt-1">
                 Process Comparison: FDM vs SLA vs Carbon-X
               </h3>
             </div>
-            <span className="text-xs text-[#A3A9B3]">
+            <span className="text-xs text-[#5E6573]">
               Swipe horizontally on mobile &rarr;
             </span>
           </div>
 
-          <div className="overflow-x-auto no-scrollbar card-precision-dark border border-white/10">
+          <div className="overflow-x-auto no-scrollbar card-precision border border-black/10 bg-white shadow-xs">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-white/10 bg-[#181C22] text-white font-semibold">
+                <tr className="border-b border-black/10 bg-[#F4F5F8] text-[#111215] font-semibold">
                   <th className="py-3.5 px-4 sm:px-6">Parameter</th>
                   <th className="py-3.5 px-4 sm:px-6 text-[#FF5A1F]">Industrial FDM</th>
                   <th className="py-3.5 px-4 sm:px-6">12K SLA Resin</th>
-                  <th className="py-3.5 px-4 sm:px-6 text-emerald-400">Carbon-X Composite</th>
+                  <th className="py-3.5 px-4 sm:px-6 text-emerald-600">Carbon-X Composite</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 font-mono text-[11px] sm:text-xs">
+              <tbody className="divide-y divide-black/10 font-mono text-[11px] sm:text-xs">
                 {comparisonRows.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-white/5 transition-colors">
-                    <td className="py-3 px-4 sm:px-6 font-semibold text-white/90">
+                  <tr key={idx} className="hover:bg-[#F8F9FA] transition-colors">
+                    <td className="py-3 px-4 sm:px-6 font-semibold text-[#111215]">
                       {row.feature}
                     </td>
-                    <td className="py-3 px-4 sm:px-6 text-[#A3A9B3]">
+                    <td className="py-3 px-4 sm:px-6 text-[#5E6573]">
                       {row.fdm}
                     </td>
-                    <td className="py-3 px-4 sm:px-6 text-[#A3A9B3]">
+                    <td className="py-3 px-4 sm:px-6 text-[#5E6573]">
                       {row.sla}
                     </td>
-                    <td className="py-3 px-4 sm:px-6 text-white">
+                    <td className="py-3 px-4 sm:px-6 text-[#111215] font-semibold">
                       {row.carbon}
                     </td>
                   </tr>

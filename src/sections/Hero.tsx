@@ -96,7 +96,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-[100svh] lg:h-[100svh] bg-[#0B0D10] text-[#F5F6F8] pt-20 sm:pt-24 pb-6 px-6 sm:px-10 lg:px-16 flex flex-col justify-between overflow-hidden select-none"
+      className="relative w-full min-h-[100svh] lg:h-[100svh] bg-gradient-to-b from-white via-[#F8F9FC] to-[#F1F3F7] text-[#111215] pt-20 sm:pt-24 pb-6 px-6 sm:px-10 lg:px-16 flex flex-col justify-between overflow-hidden select-none"
       aria-label="Saturn 3D Printing Service Bhopal India"
     >
       {/* Precision Blueprint Grid */}
@@ -106,11 +106,11 @@ export default function Hero() {
       <div className="relative z-20 flex items-center justify-between gap-4 pt-1 pb-2">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#FF5A1F] animate-pulse" />
-          <span className="font-mono text-xs font-medium text-white/70 tracking-wider uppercase">
+          <span className="font-mono text-xs font-semibold text-[#111215] tracking-wider uppercase">
             SATURN 3D // PRECISION ADDITIVE MANUFACTURING LAB
           </span>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/80">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-black/10 text-xs font-mono text-[#5E6573] shadow-xs">
           <MapPin className="w-3 h-3 text-[#FF5A1F]" />
           <span>Govindpura Hub, Bhopal • Indore Corridor (Pithampur) • 24–48h Dispatch</span>
         </div>
@@ -125,14 +125,14 @@ export default function Hero() {
           className="lg:col-span-6 flex flex-col justify-center items-start z-20 space-y-5"
         >
           {/* Eyebrow / SEO Category Tag */}
-          <div className="font-mono text-xs font-semibold tracking-wider text-[#FF5A1F] uppercase flex items-center gap-2">
+          <div className="font-mono text-xs font-bold tracking-wider text-[#FF5A1F] uppercase flex items-center gap-2">
             <span>Online 3D Printing Service • Indore & Bhopal, Central India</span>
           </div>
 
           {/* Primary H1 Keyword Headline */}
           <h1
             ref={h1ContainerRef}
-            className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white select-none leading-[1.08] font-sans"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#111215] select-none leading-[1.08] font-sans"
           >
             <div className="overflow-hidden">
               <span className="hero-line block">
@@ -140,7 +140,7 @@ export default function Hero() {
               </span>
             </div>
             <div className="overflow-hidden">
-              <span className="hero-line block text-white/90">
+              <span className="hero-line block text-[#2A2E39]">
                 In Indore & Bhopal<span className="text-[#FF5A1F]">.</span>
               </span>
             </div>
@@ -149,7 +149,7 @@ export default function Hero() {
           {/* Direct, Concise, High-Authority Copy */}
           <p
             ref={copyRef}
-            className="text-[#A3A9B3] text-sm sm:text-base leading-relaxed max-w-[48ch]"
+            className="text-[#5E6573] text-sm sm:text-base leading-relaxed max-w-[48ch]"
           >
             Central India’s premier additive manufacturing facility serving Bhopal and Indore. Precision FDM, 12K optical SLA resin, and Carbon-X PA12 printing with ±0.04&nbsp;mm accuracy. Same-day Bhopal pickup, 12–24h express dispatch to Indore (Pithampur, Sanwer Road), zero MOQ, and instant CAD pricing.
           </p>
@@ -161,7 +161,7 @@ export default function Hero() {
           >
             <button
               onClick={() => navigate('/custom-lab')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF5A1F] text-white text-sm font-medium tracking-wide shadow-lg shadow-[#FF5A1F]/25 hover:bg-[#e04e18] transition-all duration-200 active:scale-95"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF5A1F] text-white text-sm font-semibold tracking-wide shadow-lg shadow-[#FF5A1F]/25 hover:bg-[#e04e18] transition-all duration-200 active:scale-95 cursor-pointer"
             >
               <span>Instant CAD Slicing Quote</span>
               <ArrowRight className="w-4 h-4" />
@@ -169,7 +169,7 @@ export default function Hero() {
 
             <button
               onClick={() => navigate('/categories')}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white border border-black/15 text-sm font-medium text-[#111215] hover:bg-black/5 hover:border-black/30 transition-all duration-200 shadow-xs cursor-pointer"
             >
               Browse Engineering Catalog
             </button>
@@ -185,7 +185,7 @@ export default function Hero() {
               return (
                 <div
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] font-mono text-[#A3A9B3]"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-black/10 text-[11px] font-mono text-[#4B5262] shadow-2xs"
                 >
                   <Icon className="w-3 h-3 text-[#FF5A1F]" />
                   <span>{chip.label}</span>
@@ -197,7 +197,7 @@ export default function Hero() {
           {/* Telemetry & Geographic Specs Line */}
           <div
             ref={specRef}
-            className="font-mono text-xs text-white/50 tracking-wide pt-1 flex flex-wrap items-center gap-2"
+            className="font-mono text-xs text-[#8A91A0] tracking-wide pt-1 flex flex-wrap items-center gap-2"
           >
             <span>Govindpura Hub, Bhopal</span>
             <span className="text-[#FF5A1F]">&bull;</span>

@@ -75,29 +75,29 @@ Can an engineer review my file geometry for additive fabrication?`;
   return (
     <section
       id="configurator"
-      className="w-full bg-[#12151A] text-[#F5F6F8] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 relative overflow-hidden font-body border-t border-white/10"
+      className="w-full bg-white text-[#111215] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 relative overflow-hidden font-body border-t border-black/10"
       aria-label="Instant CAD Quote Configurator"
     >
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10 scroll-reveal">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
-              <span className="type-mono-eyebrow text-white/60">
+              <span className="type-mono-eyebrow text-[#5E6573] font-semibold">
                 04 // Instant CAD Telemetry
               </span>
             </div>
-            <h2 className="type-h2 text-white">
+            <h2 className="type-h2 text-[#111215] font-bold">
               Instant quote configurator.
             </h2>
-            <p className="type-body text-[#A3A9B3] mt-2">
+            <p className="type-body text-[#5E6573] mt-2">
               Upload your CAD geometry (.STL, .STEP, .OBJ, .GLB) or reference drawings, select industrial polymer grades, and review live tiered pricing.
             </p>
           </div>
 
-          <div className="precision-badge text-xs shrink-0">
+          <div className="precision-badge text-xs shrink-0 bg-white border-black/10 text-[#5E6573] shadow-xs">
             Automated Slicing Engine v3.0
           </div>
         </div>
@@ -111,7 +111,7 @@ Can an engineer review my file geometry for additive fabrication?`;
             {/* 1px Hairline CAD Dropzone */}
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="group cursor-pointer p-8 sm:p-10 border border-dashed border-white/20 hover:border-[#FF5A1F] rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] transition-all flex flex-col items-center justify-center text-center relative overflow-hidden"
+              className="group cursor-pointer p-8 sm:p-10 border border-dashed border-black/20 hover:border-[#FF5A1F] rounded-2xl bg-[#F8F9FA] hover:bg-white transition-all flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xs"
             >
               <input
                 ref={fileInputRef}
@@ -121,25 +121,25 @@ Can an engineer review my file geometry for additive fabrication?`;
                 className="hidden"
               />
 
-              <div className="w-12 h-12 mb-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 group-hover:text-[#FF5A1F] group-hover:border-[#FF5A1F]/40 transition-colors">
+              <div className="w-12 h-12 mb-3 rounded-xl bg-white border border-black/10 flex items-center justify-center text-[#5E6573] group-hover:text-[#FF5A1F] group-hover:border-[#FF5A1F]/40 transition-colors shadow-2xs">
                 {selectedFile ? <FileCheck className="w-6 h-6 text-[#FF5A1F]" /> : <UploadCloud className="w-6 h-6" />}
               </div>
 
               {selectedFile ? (
                 <div>
-                  <div className="font-semibold text-sm text-white truncate max-w-sm">
+                  <div className="font-semibold text-sm text-[#111215] truncate max-w-sm">
                     {selectedFile.name}
                   </div>
-                  <div className="font-mono text-xs text-[#A3A9B3] mt-0.5">
+                  <div className="font-mono text-xs text-[#5E6573] mt-0.5">
                     {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB &bull; Click to swap CAD file
                   </div>
                 </div>
               ) : (
                 <div>
-                  <div className="text-sm font-semibold text-white group-hover:text-[#FF5A1F] transition-colors">
+                  <div className="text-sm font-semibold text-[#111215] group-hover:text-[#FF5A1F] transition-colors">
                     Drop your CAD model or technical drawing here
                   </div>
-                  <div className="font-mono text-xs text-[#A3A9B3] mt-1">
+                  <div className="font-mono text-xs text-[#5E6573] mt-1">
                     .STL, .STEP, .OBJ, .GLB up to 100 MB &bull; Instant Slicing Ready
                   </div>
                 </div>
@@ -148,7 +148,7 @@ Can an engineer review my file geometry for additive fabrication?`;
 
             {/* Material Selection Pills */}
             <div className="space-y-3">
-              <label className="font-mono text-xs text-white/60 uppercase tracking-wider block">
+              <label className="font-mono text-xs text-[#5E6573] uppercase tracking-wider font-semibold block">
                 Engineering Polymer Selection
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -160,14 +160,14 @@ Can an engineer review my file geometry for additive fabrication?`;
                       onClick={() => setMaterial(key)}
                       className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                         isSelected
-                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/10 text-white'
-                          : 'border-white/10 bg-white/[0.02] text-white/70 hover:border-white/20'
+                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/10 text-[#111215] shadow-xs'
+                          : 'border-black/10 bg-[#F8F9FA] hover:bg-white text-[#5E6573] hover:text-[#111215] hover:border-black/20'
                       }`}
                     >
-                      <div className="font-semibold text-xs text-white truncate">
+                      <div className="font-semibold text-xs text-[#111215] truncate">
                         {config.label}
                       </div>
-                      <div className="font-mono text-[11px] text-[#A3A9B3] mt-0.5">
+                      <div className="font-mono text-[11px] text-[#5E6573] mt-0.5">
                         ₹{config.basePerGram}/g &bull; {config.tolerance}
                       </div>
                     </button>
@@ -177,12 +177,12 @@ Can an engineer review my file geometry for additive fabrication?`;
             </div>
 
             {/* Infill Density Slider */}
-            <div className="card-precision-dark p-5 space-y-3">
+            <div className="card-precision p-5 space-y-3 bg-[#F8F9FA] border border-black/10">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-mono text-white/60 uppercase tracking-wider">
+                <span className="font-mono text-[#5E6573] uppercase tracking-wider font-semibold">
                   Internal Infill Density
                 </span>
-                <span className="font-mono font-semibold text-[#FF5A1F]">
+                <span className="font-mono font-bold text-[#FF5A1F]">
                   {infill}% Gyroid Infill
                 </span>
               </div>
@@ -195,7 +195,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                 onChange={(e) => setInfill(Number(e.target.value))}
                 className="w-full accent-[#FF5A1F] cursor-pointer"
               />
-              <div className="flex justify-between font-mono text-[10px] text-white/40">
+              <div className="flex justify-between font-mono text-[10px] text-[#8A91A0]">
                 <span>10% Light Mockup</span>
                 <span>30% Standard Functional</span>
                 <span>100% Solid Solidified</span>
@@ -203,19 +203,19 @@ Can an engineer review my file geometry for additive fabrication?`;
             </div>
 
             {/* Quantity Stepper */}
-            <div className="card-precision-dark p-5 flex items-center justify-between">
+            <div className="card-precision p-5 flex items-center justify-between bg-[#F8F9FA] border border-black/10">
               <div>
-                <span className="font-mono text-xs text-white/60 uppercase tracking-wider block">
+                <span className="font-mono text-xs text-[#5E6573] uppercase tracking-wider font-semibold block">
                   Batch Quantity
                 </span>
-                <span className="text-xs text-[#A3A9B3]">
+                <span className="text-xs text-[#5E6573]">
                   {activeTier.label}
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-8 h-8 rounded-lg border border-white/10 hover:border-white/30 text-white flex items-center justify-center text-sm cursor-pointer"
+                  className="w-8 h-8 rounded-lg border border-black/15 hover:border-black/30 bg-white text-[#111215] flex items-center justify-center text-sm cursor-pointer shadow-2xs"
                 >
                   -
                 </button>
@@ -225,11 +225,11 @@ Can an engineer review my file geometry for additive fabrication?`;
                   max="10000"
                   value={quantity}
                   onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-16 h-8 text-center bg-white/5 border border-white/10 rounded-lg text-white font-mono text-xs"
+                  className="w-16 h-8 text-center bg-white border border-black/15 rounded-lg text-[#111215] font-mono text-xs font-semibold"
                 />
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="w-8 h-8 rounded-lg border border-white/10 hover:border-white/30 text-white flex items-center justify-center text-sm cursor-pointer"
+                  className="w-8 h-8 rounded-lg border border-black/15 hover:border-black/30 bg-white text-[#111215] flex items-center justify-center text-sm cursor-pointer shadow-2xs"
                 >
                   +
                 </button>
@@ -239,56 +239,56 @@ Can an engineer review my file geometry for additive fabrication?`;
           </div>
 
           {/* Right Column: Live Quotation Summary Card */}
-          <div className="lg:col-span-5 card-precision-dark p-6 sm:p-8 space-y-6 border-white/15">
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
-              <h3 className="text-base font-semibold text-white">
+          <div className="lg:col-span-5 card-precision p-6 sm:p-8 space-y-6 bg-white border border-black/10 shadow-lg">
+            <div className="flex items-center justify-between pb-4 border-b border-black/10">
+              <h3 className="text-base font-bold text-[#111215]">
                 Quotation Telemetry
               </h3>
-              <span className="precision-badge text-[10px]">
+              <span className="precision-badge text-[10px] bg-white border-black/10 text-[#5E6573]">
                 ESTIMATE
               </span>
             </div>
 
             <div className="space-y-3 font-mono text-xs">
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-[#5E6573]">
                 <span>Selected Polymer:</span>
-                <span className="text-white font-medium">{currentMat.label}</span>
+                <span className="text-[#111215] font-semibold">{currentMat.label}</span>
               </div>
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-[#5E6573]">
                 <span>Process Standard:</span>
-                <span className="text-white font-medium">{currentMat.process}</span>
+                <span className="text-[#111215] font-semibold">{currentMat.process}</span>
               </div>
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-[#5E6573]">
                 <span>Estimated Mass:</span>
-                <span className="text-white font-medium">~{estimatedGrams}g / unit</span>
+                <span className="text-[#111215] font-semibold">~{estimatedGrams}g / unit</span>
               </div>
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-[#5E6573]">
                 <span>Base Unit Rate:</span>
-                <span className="text-white font-medium">₹{baseUnitPrice}</span>
+                <span className="text-[#111215] font-semibold">₹{baseUnitPrice}</span>
               </div>
               {activeTier.discount > 0 && (
-                <div className="flex justify-between text-emerald-400">
+                <div className="flex justify-between text-emerald-600 font-semibold">
                   <span>Batch Volume Discount:</span>
                   <span>-{(activeTier.discount * 100).toFixed(0)}%</span>
                 </div>
               )}
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-[#5E6573]">
                 <span>Discounted Unit:</span>
-                <span className="text-white font-medium">₹{discountedUnitPrice}</span>
+                <span className="text-[#111215] font-semibold">₹{discountedUnitPrice}</span>
               </div>
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-[#5E6573]">
                 <span>Total Quantity:</span>
-                <span className="text-white font-medium">{quantity} pcs</span>
+                <span className="text-[#111215] font-semibold">{quantity} pcs</span>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex items-baseline justify-between">
+            <div className="pt-4 border-t border-black/10 flex items-baseline justify-between">
               <div>
-                <span className="text-xs text-[#A3A9B3] block">Estimated Subtotal</span>
-                <span className="font-mono text-[10px] text-white/40">Exclusive of GST & Shipping</span>
+                <span className="text-xs text-[#5E6573] block">Estimated Subtotal</span>
+                <span className="font-mono text-[10px] text-[#8A91A0]">Exclusive of GST & Shipping</span>
               </div>
               <div className="text-right">
-                <span className="text-2xl sm:text-3xl font-display font-semibold text-white">
+                <span className="text-2xl sm:text-3xl font-display font-bold text-[#111215]">
                   ₹{totalEstimate.toLocaleString('en-IN')}
                 </span>
               </div>
@@ -314,7 +314,7 @@ Can an engineer review my file geometry for additive fabrication?`;
               </a>
             </div>
 
-            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-white/40">
+            <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#5E6573]">
               <Info className="w-3.5 h-3.5 text-[#FF5A1F]" />
               <span>Quotes confirmed within 30 minutes during shop hours.</span>
             </div>

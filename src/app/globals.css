@@ -69,8 +69,8 @@
   html {
     overflow-x: hidden;
     width: 100%;
-    background-color: #0B0D10;
-    color: #0B0D10;
+    background-color: #F8F9FB;
+    color: #111215;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     scroll-behavior: smooth;
   }
@@ -78,8 +78,8 @@
     overflow-x: hidden;
     width: 100%;
     position: relative;
-    background-color: #F5F6F8;
-    color: #0B0D10;
+    background-color: #F8F9FB;
+    color: #111215;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
@@ -377,24 +377,24 @@
 
   /* Glass backdrop */
   .glass-nav {
-    background-color: rgba(11, 13, 16, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(11, 13, 16, 0.08);
   }
   .glass-panel {
-    background-color: rgba(18, 21, 26, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(11, 13, 16, 0.08);
   }
 
   /* Engineering Grid */
   .engineering-grid {
     background-size: 40px 40px;
     background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(11, 13, 16, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 13, 16, 0.04) 1px, transparent 1px);
   }
 }
 
@@ -404,10 +404,10 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0D10;
+  background: #F5F6F8;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(11, 13, 16, 0.2);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {

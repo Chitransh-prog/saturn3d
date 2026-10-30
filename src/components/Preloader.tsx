@@ -85,7 +85,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   return (
     <div
       ref={curtainRef}
-      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#0B0D10] text-[#F5F6F8] select-none font-body"
+      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#FAFAFC] text-[#111215] select-none font-body"
       role="dialog"
       aria-label="Saturn 3D Precision Lab Initialization"
       aria-live="polite"
@@ -93,7 +93,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       {/* Skip button in top corner */}
       <button
         onClick={skipPreloader}
-        className="absolute top-6 right-6 z-50 flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-white/60 hover:text-white transition-colors border border-white/10 hover:border-white/30 rounded-lg cursor-pointer"
+        className="absolute top-6 right-6 z-50 flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-[#5E6573] hover:text-[#111215] transition-colors border border-black/10 hover:border-black/30 rounded-lg cursor-pointer bg-white shadow-xs"
       >
         <FastForward className="w-3.5 h-3.5 text-[#FF5A1F]" />
         <span>Skip [Esc]</span>
@@ -104,11 +104,11 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         <div className="relative w-32 h-44 sm:w-36 sm:h-50 mb-8 flex items-center justify-center">
           <svg
             viewBox="0 0 100 130"
-            className="w-full h-full stroke-white/10 fill-transparent stroke-[1.5]"
+            className="w-full h-full stroke-black/15 fill-transparent stroke-[1.5]"
           >
             <path d="M42 10 L58 10 L62 24 L76 34 L74 60 L66 68 L66 100 L76 122 L62 122 L54 102 L46 102 L38 122 L24 122 L34 100 L34 68 L26 60 L24 34 L38 24 Z" />
-            <line x1="44" y1="20" x2="56" y2="20" stroke="#333" strokeWidth="1.5" />
-            <ellipse cx="50" cy="62" rx="46" ry="14" stroke="#333" strokeWidth="1" />
+            <line x1="44" y1="20" x2="56" y2="20" stroke="#CBD5E1" strokeWidth="1.5" />
+            <ellipse cx="50" cy="62" rx="46" ry="14" stroke="#CBD5E1" strokeWidth="1" />
           </svg>
 
           {/* Sliced Layer Rising */}
@@ -134,22 +134,22 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         </div>
 
         {/* Title */}
-        <h2 className="font-display text-lg sm:text-xl font-semibold text-white mb-1 tracking-tight">
+        <h2 className="font-display text-lg sm:text-xl font-semibold text-[#111215] mb-1 tracking-tight">
           Saturn 3D Precision Lab
         </h2>
 
         {/* Subtitle */}
-        <p className="font-mono text-xs text-white/50 tracking-wider mb-5">
+        <p className="font-mono text-xs text-[#5E6573] tracking-wider mb-5">
           Initializing telemetry & slicing engine...
         </p>
 
         {/* Live % and Progress Bar */}
         <div className="w-full max-w-xs space-y-2">
-          <div className="flex justify-between font-mono text-xs text-white/70">
+          <div className="flex justify-between font-mono text-xs text-[#5E6573]">
             <span>Layer {Math.round((percent / 100) * 320)} / 320</span>
             <span className="text-[#FF5A1F] font-semibold">{percent}%</span>
           </div>
-          <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+          <div className="w-full h-1 bg-black/10 rounded-full overflow-hidden">
             <div
               className="h-full bg-[#FF5A1F] transition-all duration-75"
               style={{ width: `${percent}%` }}
