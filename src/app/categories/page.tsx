@@ -12,24 +12,24 @@ import {
 } from '@/lib/seo-config';
 
 export const metadata: Metadata = {
-  title: '3D Printed Hardware Catalog | Rapid Prototyping & Parts Bhopal, India',
+  title: '3D Printed Hardware Catalog | Rapid Prototyping Indore & Bhopal, India',
   description:
-    'Browse industrial 3D printed components, precision robotics joints, electronic chassis, and aerospace parts fabricated in Bhopal, MP, India. Instant dispatch across India.',
+    'Browse industrial 3D printed components, precision robotics joints, electronic chassis, and automotive parts fabricated in Central MP. Express delivery to Indore, Pithampur & pan-India.',
   keywords: [
-    '3D printed hardware catalog',
-    'buy 3D printed parts India',
-    'rapid prototyping Bhopal',
-    'custom 3D parts catalog',
-    'industrial 3D printing Bhopal',
+    '3D printed hardware catalog Indore',
+    'buy 3D printed parts Bhopal',
+    'rapid prototyping Indore Bhopal',
+    'custom 3D parts catalog Madhya Pradesh',
+    'industrial 3D printing Pithampur',
     '3D printing products India',
   ],
   alternates: {
     canonical: `${SITE_URL}/categories`,
   },
   openGraph: {
-    title: '3D Printed Hardware Catalog | Saturn 3D Bhopal, India',
+    title: '3D Printed Hardware Catalog | Saturn 3D Indore & Bhopal, India',
     description:
-      'Engineered 3D printed parts, rapid prototypes, and custom enclosures fabricated with micron precision in Bhopal, Madhya Pradesh, India.',
+      'Engineered 3D printed parts, rapid prototypes, and custom enclosures fabricated with micron precision for clients across Indore, Bhopal, and India.',
     url: `${SITE_URL}/categories`,
     siteName: SITE_NAME,
     locale: 'en_IN',
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '3D Printed Hardware Catalog | Saturn 3D Bhopal, India',
-    description: 'Precision 3D printed components and rapid prototypes fabricated in Bhopal, MP, India.',
+    title: '3D Printed Hardware Catalog | Saturn 3D Indore & Bhopal',
+    description: 'Precision 3D printed components and rapid prototypes fabricated in Central India.',
     site: '@saturn3d_in',
   },
   other: {
     'geo.region': GEO_CONFIG.regionCode,
-    'geo.placename': `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
+    'geo.placename': 'Indore and Bhopal, Madhya Pradesh, India',
     'geo.position': `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`,
     'ICBM': `${GEO_CONFIG.latitude}, ${GEO_CONFIG.longitude}`,
   },
@@ -82,7 +82,7 @@ export default async function Page() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Saturn 3D Precision Hardware Catalog',
-    description: 'Industrial 3D printed hardware, prototyping parts, and mechanical assemblies fabricated in Bhopal, India.',
+    description: 'Industrial 3D printed hardware, prototyping parts, and mechanical assemblies fabricated in Central India for Indore and Bhopal.',
     url: `${SITE_URL}/categories`,
     mainEntity: {
       '@type': 'ItemList',
@@ -110,10 +110,7 @@ export default async function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <CategoriesPage
-        initialProducts={initialProducts}
-        initialCategories={initialCategories}
-      />
+      <CategoriesPage initialProducts={initialProducts} initialCategories={initialCategories} />
     </>
   );
 }

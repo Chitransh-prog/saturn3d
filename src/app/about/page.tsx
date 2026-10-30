@@ -9,25 +9,27 @@ import {
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'About Saturn 3D | Bhopal Manufacturing Facility & Engineering Team',
+    absolute: 'About Saturn 3D | Manufacturing Facility Serving Indore & Bhopal, India',
   },
   description:
-    'Learn about Saturn 3D additive manufacturing laboratory in Govindpura Industrial Area, Bhopal, MP, India. Our ISO-calibrated print farm, team of hardware engineers, and mission to accelerate Indian hardware innovation.',
+    'Learn about Saturn 3D additive manufacturing laboratory serving Indore, Bhopal, and Central MP. Our ISO-calibrated print farm in Govindpura, rapid logistics to Pithampur, team of hardware engineers, and mission to accelerate Indian innovation.',
   keywords: [
     'About Saturn 3D',
+    '3D printing company Indore',
     '3D printing company Bhopal',
     'Additive manufacturing lab Madhya Pradesh',
     'Govindpura Bhopal 3D print farm',
-    '3D printing engineers India',
+    'Pithampur rapid prototyping partner',
+    '3D printing engineers Central India',
     'Saturn 3D story',
   ],
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
-    title: 'About Saturn 3D | Bhopal Manufacturing Facility & Team',
+    title: 'About Saturn 3D | Manufacturing Facility Serving Indore & Bhopal',
     description:
-      'Industrial additive manufacturing laboratory based in Bhopal, MP, India. High-precision CoreXY FDM, SLA 12K resin, and Carbon-X production.',
+      'Industrial additive manufacturing laboratory serving Indore, Bhopal, and all India. High-precision CoreXY FDM, SLA 12K resin, and Carbon-X production.',
     url: `${SITE_URL}/about`,
     siteName: SITE_NAME,
     locale: 'en_IN',
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
   },
   other: {
     'geo.region': GEO_CONFIG.regionCode,
-    'geo.placename': `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
+    'geo.placename': 'Indore and Bhopal, Madhya Pradesh, India',
     'geo.position': `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`,
     'ICBM': `${GEO_CONFIG.latitude}, ${GEO_CONFIG.longitude}`,
   },
@@ -46,25 +48,32 @@ export default function Page() {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: 'About Saturn 3D Precision Manufacturing',
-    description: 'Overview of Saturn 3D industrial print farm, engineering capabilities, and Bhopal laboratory.',
+    description: 'Overview of Saturn 3D industrial print farm, engineering capabilities, and Central India laboratory serving Indore and Bhopal.',
     url: `${SITE_URL}/about`,
     mainEntity: {
-      '@type': 'ManufacturingBusiness',
+      '@type': 'LocalBusiness',
       name: SITE_NAME,
+      url: SITE_URL,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: GEO_CONFIG.streetAddress,
-        addressLocality: GEO_CONFIG.city,
+        streetAddress: GEO_CONFIG.bhopalFacility.streetAddress,
+        addressLocality: GEO_CONFIG.bhopalFacility.city,
         addressRegion: GEO_CONFIG.state,
-        postalCode: GEO_CONFIG.postalCode,
+        postalCode: GEO_CONFIG.bhopalFacility.postalCode,
         addressCountry: GEO_CONFIG.countryCode,
       },
+      areaServed: [
+        { '@type': 'City', name: 'Indore' },
+        { '@type': 'City', name: 'Bhopal' },
+        { '@type': 'AdministrativeArea', name: 'Madhya Pradesh' },
+        { '@type': 'Country', name: 'India' },
+      ],
     },
   };
 
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Home', url: '/' },
-    { name: 'About Lab', url: '/about' },
+    { name: 'About Facility', url: '/about' },
   ]);
 
   return (

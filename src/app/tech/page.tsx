@@ -9,24 +9,25 @@ import {
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Additive Materials Science & Tolerances Guide India | Saturn 3D',
+    absolute: 'Additive Materials Science & Precision Tolerances | Indore & Bhopal | Saturn 3D',
   },
   description:
-    'Comprehensive engineering guide to 3D printing polymers, resins, and tolerances in India. Compare Carbon-X PA12, ABS-ESD, PETG, PLA Pro, and 12K SLA resin specs fabricated in Bhopal, MP.',
+    'Comprehensive engineering guide to 3D printing polymers, resins, and tolerances in Central India. Compare Carbon-X PA12, ABS-ESD, PETG, PLA Pro, and 12K SLA resin specs for Pithampur, Bhopal, and Indore manufacturing.',
   keywords: [
-    '3D printing materials India',
-    'Carbon fiber nylon 3D print specs',
-    'SLA resin tolerances India',
-    'FDM vs SLA printing India',
-    '3D printing engineering polymers Bhopal',
+    '3D printing materials Indore',
+    '3D printing materials Bhopal',
+    'Carbon fiber nylon 3D print specs Pithampur',
+    'SLA resin tolerances Indore Bhopal',
+    'FDM vs SLA printing Central India',
+    'automotive 3D printing engineering polymers MP',
   ],
   alternates: {
     canonical: `${SITE_URL}/tech`,
   },
   openGraph: {
-    title: '3D Printing Materials & Tolerances Guide | Saturn 3D India',
+    title: '3D Printing Materials & Tolerances Guide | Indore & Bhopal | Saturn 3D',
     description:
-      'Engineering data sheets, tensile strengths, heat deflection temperatures, and micron tolerances for industrial additive manufacturing in India.',
+      'Engineering data sheets, tensile strengths, heat deflection temperatures, and micron tolerances for industrial additive manufacturing in Indore and Bhopal.',
     url: `${SITE_URL}/tech`,
     siteName: SITE_NAME,
     locale: 'en_IN',
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   },
   other: {
     'geo.region': GEO_CONFIG.regionCode,
-    'geo.placename': `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
+    'geo.placename': `${GEO_CONFIG.primaryCity}, ${GEO_CONFIG.secondaryCity}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
     'geo.position': `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`,
     'ICBM': `${GEO_CONFIG.latitude}, ${GEO_CONFIG.longitude}`,
   },
@@ -44,8 +45,8 @@ export default function Page() {
   const techGuideSchema = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
-    headline: 'Engineering Guide to Industrial 3D Printing Materials & Precision Tolerances in India',
-    description: 'Technical comparison of industrial thermoplastics and photopolymers for functional additive manufacturing.',
+    headline: 'Engineering Guide to Industrial 3D Printing Materials & Precision Tolerances in Indore & Bhopal',
+    description: 'Technical comparison of industrial thermoplastics and photopolymers for functional additive manufacturing across the Bhopal-Indore industrial corridor.',
     author: {
       '@type': 'Organization',
       name: SITE_NAME,

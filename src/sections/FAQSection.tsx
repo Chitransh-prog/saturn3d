@@ -11,40 +11,52 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
+    tag: 'Indore & Bhopal',
+    question: 'Where can I get industrial 3D printing in Indore and Bhopal?',
+    shortAnswer: 'Saturn 3D operates Central India’s premier additive manufacturing facility in Govindpura Industrial Area, Bhopal, with a dedicated daily express supply corridor to Indore (Pithampur Auto Cluster, Sanwer Road, Electronic Complex).',
+    detailedAnswer: 'Clients across Indore and Bhopal enjoy instant online CAD quotation, local engineering support, same-day facility pickup in Bhopal, and 12-to-24 hour express courier delivery to Indore. We eliminate the multi-day delays and exorbitant transit costs of ordering from Mumbai, Pune, or Bengaluru.',
+  },
+  {
     tag: 'Pricing & Cost',
-    question: 'How much does custom 3D printing cost in India and what drives the price?',
-    shortAnswer: 'In India, custom 3D printing typically costs between ₹4.50 to ₹18 per gram for standard polymers (PLA/PETG), ₹14 to ₹35 per ml for precision SLA resin, and ₹26 to ₹65 per gram for Carbon-X PA12 engineering nylon.',
-    detailedAnswer: 'Final pricing is determined by four verifiable factors: (1) Material mass and volume, (2) Machine runtime based on layer height (e.g. 0.05mm vs 0.20mm), (3) Infill density percentage (15% for aesthetic mockups vs 60%+ for structural mounts), and (4) Secondary support removal, thermal annealing, and UV post-curing. Saturn 3D provides transparent automated pricing with zero hidden machine calibration fees and volume discounts up to 32% for production runs.',
+    question: 'How much does custom 3D printing cost in Indore and Bhopal?',
+    shortAnswer: 'Custom 3D printing at Saturn 3D starts at ₹3.50 to ₹12 per gram for FDM polymers (PLA+, PETG, ABS), ₹14 to ₹28 per ml for 12K optical SLA photopolymer resin, and ₹25 to ₹55 per gram for Carbon-X PA12 engineering nylon.',
+    detailedAnswer: 'Pricing is transparently calculated in our web slicer based on material mass, layer resolution, and infill density. There are zero machine calibration charges, zero tooling setup fees, zero minimum order quantities (MOQ = 1), and production volume discounts up to 32% for runs over 50 units.',
   },
   {
-    tag: 'CAD File Prep',
-    question: 'What CAD file formats do you accept, and how should I export them?',
-    shortAnswer: 'We accept 3D CAD formats (.STEP, .STP, .STL, .OBJ, .GLB, .3MF) and 2D engineering blueprints (.PNG, .JPG, .PDF).',
-    detailedAnswer: 'Exporting as STEP or STP preserves the original mathematical NURBS curvature of your model, eliminating faceted polygon chord errors on curved bearings and cylinders. STL, OBJ, and GLB files are parsed directly client-side in our real-time 3D slicer. For custom reverse engineering from physical parts, you can upload dimensioned reference drawings.',
+    tag: 'Lead Time & Delivery',
+    question: 'How fast can 3D printed parts be delivered from Bhopal to Indore or Pithampur?',
+    shortAnswer: 'Standard turnaround is 24 to 48 hours. Urgent engineering prototypes can be produced and delivered to Indore, Pithampur, or Sanwer Road within 12 to 24 hours via the 195 km expressway corridor.',
+    detailedAnswer: 'For Bhopal clients, completed parts can be picked up the same day directly from our Govindpura manufacturing lab. For Indore, Mandideep, Dewas, and Ujjain clients, parts are vacuum-sealed with desiccant and dispatched via same-day regional express line-haul.',
   },
   {
-    tag: 'Technology Selection',
-    question: 'What is the practical difference between FDM and SLA Resin printing?',
-    shortAnswer: 'FDM is ideal for durable, structural parts and larger enclosures in engineering polymers. SLA Resin delivers injection-mold surface smoothness and micron-level detail for intricate or micro-fluidic geometries.',
-    detailedAnswer: 'Choose Industrial FDM when you need functional impact resistance, snap-fit latches, large build volumes (up to 350×350×350 mm), or high heat deflection (ABS/Carbon-X up to 150°C). Choose SLA (Stereolithography) when layer lines must be imperceptible (<25µm), such as for fluidic manifolds, dental/medical anatomical replicas, or cosmetic enclosures.',
+    tag: 'Materials & Auto',
+    question: 'What engineering materials can you 3D print for automotive parts in Pithampur and Govindpura?',
+    shortAnswer: 'We print Carbon-Fiber Nylon (Carbon-X PA12), High-Temp ABS/ASA (heat deflection up to 105°C), Flexible TPU 95A, Tough SLA Photopolymer Resin, and ESD-safe polymers for electronics.',
+    detailedAnswer: 'These materials are chosen specifically for functional testing, under-the-hood engine bay bracketry, jigs, fixtures, robotic end-effectors, fluid conduits, and interior snap-fit clips used by automotive OEMs and Tier-1 suppliers across Pithampur and Mandideep.',
   },
   {
-    tag: 'Tolerances & Quality',
-    question: 'What tolerances and layer resolutions can Saturn 3D achieve?',
-    shortAnswer: 'We guarantee dimensional tolerances down to ±0.04 mm on precision SLA resin components and ±0.08 mm to ±0.15 mm on calibrated industrial FDM printers.',
-    detailedAnswer: 'Our print fleet utilizes active heated chambers, closed-loop linear motors, and laser-guided bed leveling to eliminate thermal warping. Critical bore holes and pin joints are dimensionally compensated to account for isotropic polymer shrinkage.',
+    tag: 'Indore & Bhopal',
+    question: 'Can engineering students and researchers from IIT Indore and MANIT Bhopal get discounts?',
+    shortAnswer: 'Yes. Saturn 3D offers a verified 15% academic discount for students, research scholars, and robotics teams from IIT Indore, MANIT Bhopal, SGSITS Indore, IISER, and IIITDM Jabalpur.',
+    detailedAnswer: 'We proudly sponsor Formula Student SAE teams, BAJA racing prototypes, drone robotics research, and medical innovation projects across Madhya Pradesh universities with discounted rates, free DFM design reviews, and fast track turnaround.',
   },
   {
-    tag: 'Lead Time & Shipping',
-    question: 'What is the typical turnaround and delivery time to Indian cities?',
-    shortAnswer: 'Standard prototype fabrication takes 24 to 48 hours. Express same-day production is available for urgent engineering sprints.',
-    detailedAnswer: 'Once fabrication passes QA inspection, parts are vacuum-sealed with desiccant and dispatched via insured air express courier. Transit time is 24 hours to major metros including Mumbai, Delhi-NCR, Bengaluru, Pune, Hyderabad, and Indore, and 48 hours for tier-2/3 industrial hubs.',
+    tag: 'Tech & CAD',
+    question: 'What CAD file formats do you accept for online 3D slicing quotes?',
+    shortAnswer: 'We accept STEP (.step, .stp), STL (.stl), OBJ (.obj), 3MF (.3mf), and GLTF/GLB (.glb) 3D model formats, as well as 2D engineering drawings (.PDF, .PNG, .JPG).',
+    detailedAnswer: 'Exporting in STEP or STP format is recommended because it retains original mathematical NURBS curvatures for pristine cylindrical bearing bores and mounting holes. Our in-browser custom slicer parses files instantly without storing your IP on external clouds.',
   },
   {
-    tag: 'Facility & Location',
-    question: 'Where is Saturn 3D based and do you support local pickups?',
-    shortAnswer: 'Saturn 3D is headquartered in Govindpura Industrial Area, Bhopal, Madhya Pradesh (PIN 462023). We welcome same-day local pickups.',
-    detailedAnswer: 'Centrally located in Bhopal, we serve as an agile manufacturing partner for local engineering colleges (MANIT Bhopal, IISER, AIIMS) as well as the Mandideep, Govindpura, and Pithampur industrial corridors, with overnight air and rail freight connectivity across India.',
+    tag: 'Tech & CAD',
+    question: 'What dimensional tolerances and surface finishes can Saturn 3D achieve?',
+    shortAnswer: 'We guarantee dimensional tolerances down to ±0.04 mm on precision 12K SLA resin components and ±0.08 mm to ±0.15 mm on calibrated industrial CoreXY FDM printers.',
+    detailedAnswer: 'Our fleet uses enclosed active heated chambers, Voron kinematics, and closed-loop steppers to eliminate thermal warping. Secondary post-processing includes ultrasonic solvent wash, multi-wavelength UV curing, vapor smoothing, bead blasting, and threaded brass heat-set inserts.',
+  },
+  {
+    tag: 'Pricing & Cost',
+    question: 'Can Saturn 3D manufacture small-batch production runs without tooling?',
+    shortAnswer: 'Yes. Saturn 3D specializes in bridge manufacturing and on-demand batches from 10 to 5,000 units with zero tooling or mold charges.',
+    detailedAnswer: 'By bypassing traditional injection mold tooling lead times (4-8 weeks) and upfront costs (₹1.5L to ₹8L), hardware startups and tier suppliers in MP can take new industrial products to market in days rather than months.',
   },
 ];
 
@@ -53,7 +65,7 @@ export default function FAQSection() {
   const [selectedTag, setSelectedTag] = useState<string>('All');
   const navigate = useNavigate();
 
-  const tags = ['All', 'Pricing & Cost', 'CAD File Prep', 'Technology Selection', 'Tolerances & Quality', 'Lead Time & Shipping'];
+  const tags = ['All', 'Indore & Bhopal', 'Pricing & Cost', 'Materials & Auto', 'Lead Time & Delivery', 'Tech & CAD'];
 
   const filteredFaqs = selectedTag === 'All'
     ? faqs

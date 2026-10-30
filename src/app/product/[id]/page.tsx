@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!product) {
     return {
-      title: 'Product Not Found | Saturn 3D Printing Bhopal, India',
+      title: 'Product Not Found | Saturn 3D Printing Bhopal & Indore, India',
       description: 'The requested custom 3D printed component could not be located in the Saturn 3D hardware catalog.',
     };
   }
@@ -79,9 +79,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const priceInr = Math.round(product.price * (product.price < 500 ? 83 : 1));
   const customSeo = product.customSeo;
 
-  const title = customSeo?.seo?.meta_title || `${product.name} | 3D Printing Bhopal & India | Saturn 3D`;
-  const description = customSeo?.seo?.meta_description || 
-    `${product.description} Precision 3D printed with ${product.material} at Saturn 3D lab in Bhopal, MP. Tolerance: ${product.tolerances}. Turnaround: ${product.leadTime}. Starting ₹${priceInr}. Pan-India express air dispatch.`;
+  const title = customSeo?.seo?.meta_title || customSeo?.seoTitle || `${product.name} | 3D Printing Indore & Bhopal | Saturn 3D`;
+  const description = customSeo?.seo?.meta_description || customSeo?.seoDescription ||
+    `${product.description} Precision 3D printed with ${product.material} by Saturn 3D serving Bhopal & Indore. Tolerance: ${product.tolerances}. Turnaround: ${product.leadTime}. Starting ₹${priceInr}. Express dispatch to Indore (12-24h) and pan-India air cargo.`;
   
   const customCanonical = customSeo?.seo?.canonical_url;
   const canonicalUrl = customCanonical 
@@ -90,24 +90,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     
   const imageUrl = product.image.startsWith('http') ? product.image : `${SITE_URL}${product.image}`;
 
-  const keywords = customSeo?.seo?.keywords
-    ? customSeo.seo.keywords.split(',').map((k: string) => k.trim()).filter(Boolean)
+  const keywords = customSeo?.seo?.keywords || customSeo?.keywords
+    ? (typeof (customSeo?.seo?.keywords || customSeo?.keywords) === 'string' ? (customSeo?.seo?.keywords || customSeo?.keywords).split(',').map((k: string) => k.trim()).filter(Boolean) : [])
     : [
         product.name,
-        `${product.name} 3D print`,
+        `${product.name} 3D print Indore`,
+        `${product.name} 3D print Bhopal`,
         `${product.category} 3D printing`,
-        `${product.material} 3D printing India`,
+        `${product.material} 3D printing Indore Bhopal`,
+        '3D printing Indore',
         '3D printing Bhopal',
-        '3D printing service Bhopal',
-        '3D printing India',
-        'industrial 3D printing India',
-        'custom rapid prototyping India',
+        'Pithampur automotive 3D printing',
+        'industrial 3D printing Central India',
+        'custom rapid prototyping MP',
         'Saturn 3D hardware catalog',
-        'Govindpura Bhopal 3D printing',
       ];
 
   const targetRegion = customSeo?.geo?.target_region || GEO_CONFIG.regionCode;
-  const targetPlacename = customSeo?.geo?.geo_placename || `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`;
+  const targetPlacename = customSeo?.geo?.geo_placename || customSeo?.geoTarget || `${GEO_CONFIG.primaryCity}, ${GEO_CONFIG.secondaryCity}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`;
   const targetPosition = customSeo?.geo?.geo_position || `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`;
 
   return {
@@ -135,7 +135,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: imageUrl,
           width: 800,
           height: 800,
-          alt: `${product.name} - Precision 3D Printed in Bhopal, India by Saturn 3D`,
+          alt: `${product.name} - Precision 3D Printed for Indore & Bhopal by Saturn 3D`,
         },
       ],
     },
@@ -193,7 +193,7 @@ export default async function ProductPage({ params }: PageProps) {
 
   const priceInr = Math.round(product.price * (product.price < 500 ? 83 : 1));
   const directAnswer = customSeo?.aeo?.direct_answer || 
-    `Saturn 3D fabricates ${product.name} in Bhopal, Madhya Pradesh with micron tolerance (${product.tolerances}) using ${product.material}. Available with zero MOQ and 24-48h dispatch across India.`;
+    `Saturn 3D fabricates ${product.name} in Govindpura, Bhopal with express same-day pickup and 12-24h delivery to Indore & Pithampur. Built with micron tolerance (${product.tolerances}) using ${product.material}. Available with zero MOQ and pan-India dispatch.`;
 
   return (
     <>
@@ -237,9 +237,9 @@ export default async function ProductPage({ params }: PageProps) {
           <dt>Lead Time</dt>
           <dd>{product.leadTime}</dd>
           <dt>Fabrication Hub</dt>
-          <dd>{customSeo?.geo?.geo_placename || 'Sector B, Govindpura Industrial Area, Bhopal, Madhya Pradesh 462023, India'}</dd>
+          <dd>{customSeo?.geo?.geo_placename || 'Sector B, Govindpura Industrial Area, Bhopal & Indore Corridor (Pithampur), Madhya Pradesh'}</dd>
           <dt>Shipping</dt>
-          <dd>{customSeo?.geo?.service_scope || 'Pan-India Express Air Shipping to Mumbai, Bengaluru, Delhi-NCR, Pune, Hyderabad, and all Indian cities'}</dd>
+          <dd>{customSeo?.geo?.service_scope || 'Bhopal Facility Pickup (Same-Day) • Indore & Pithampur Express (12-24h) • 24-48h Pan-India Air Cargo'}</dd>
         </dl>
       </article>
 

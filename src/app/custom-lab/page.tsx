@@ -9,26 +9,27 @@ import {
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Instant 3D Printing Quote India | Upload CAD STEP/STL Online | Saturn 3D',
+    absolute: 'Instant 3D Printing Quote Indore & Bhopal | Upload CAD STEP/STL Online | Saturn 3D',
   },
   description:
-    'Upload your 3D CAD files (.STEP, .STP, .STL, .OBJ, .3MF) for instant automated pricing, wall-thickness analysis, and rapid 24-48h fabrication in Bhopal, MP, India. Zero MOQ, pan-India dispatch.',
+    'Upload 3D CAD files (.STEP, .STP, .STL, .OBJ, .3MF) for instant automated pricing, wall-thickness analysis, and rapid 12-24h fabrication serving Indore, Bhopal, Pithampur, and all India. Zero MOQ.',
   keywords: [
-    'instant 3D printing quote India',
-    'online 3D print quote Bhopal',
-    'upload STL 3D print India',
-    'STEP file 3D printing online',
-    'CAD 3D printing cost calculator India',
-    'custom 3D printing lab',
+    'instant 3D printing quote Indore',
+    '3D printing quote Bhopal',
+    'online 3D print quote Pithampur',
+    'upload STL 3D print Indore',
+    'STEP file 3D printing online India',
+    'CAD 3D printing cost calculator Indore Bhopal',
+    'custom 3D printing lab Bhopal',
     'Saturn 3D custom lab',
   ],
   alternates: {
     canonical: `${SITE_URL}/custom-lab`,
   },
   openGraph: {
-    title: 'Instant 3D Printing Quote Online India | Saturn 3D Custom Lab',
+    title: 'Instant 3D Printing Quote Online Indore & Bhopal | Saturn 3D Custom Lab',
     description:
-      'Upload STEP, STP, STL or OBJ files for real-time automated pricing, material selection, and 24-48h rapid dispatch from Bhopal across India.',
+      'Upload STEP, STP, STL or OBJ files for real-time automated pricing, material selection, and 12-24h rapid dispatch to Indore, Bhopal, Pithampur, and nationwide across India.',
     url: `${SITE_URL}/custom-lab`,
     siteName: SITE_NAME,
     locale: 'en_IN',
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   },
   other: {
     'geo.region': GEO_CONFIG.regionCode,
-    'geo.placename': `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
+    'geo.placename': `${GEO_CONFIG.primaryCity}, ${GEO_CONFIG.secondaryCity}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
     'geo.position': `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`,
     'ICBM': `${GEO_CONFIG.latitude}, ${GEO_CONFIG.longitude}`,
   },
@@ -60,7 +61,13 @@ export default function Page() {
         addressCountry: GEO_CONFIG.countryCode,
       },
     },
-    areaServed: 'All India',
+    areaServed: [
+      { '@type': 'City', name: 'Bhopal' },
+      { '@type': 'City', name: 'Indore' },
+      { '@type': 'AdministrativeArea', name: 'Pithampur' },
+      { '@type': 'AdministrativeArea', name: 'Madhya Pradesh' },
+      { '@type': 'Country', name: 'India' },
+    ],
     offers: {
       '@type': 'Offer',
       priceCurrency: 'INR',

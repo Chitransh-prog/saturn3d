@@ -41,7 +41,7 @@ export default function CTA() {
             </h2>
             <p className="text-sm sm:text-base text-[#8E95A2] leading-relaxed max-w-2xl">
               Upload your proprietary CAD models for instant volumetric telemetry and automated slicing. 
-              For large-format production runs, custom polymer formulations, or scheduled enterprise batches, connect directly with our engineering lab in Bhopal.
+              For large-format production runs, custom polymer formulations, or scheduled enterprise batches, connect directly with our engineering lab serving Bhopal, Indore, and Central India.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ export default function CTA() {
 
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span>Govindpura Industrial Hub, Bhopal &bull; Express Air Delivery Across India</span>
+              <span>Govindpura (Bhopal) &bull; Indore Express Corridor (Pithampur) &bull; 24–48h Nationwide</span>
             </div>
           </div>
 

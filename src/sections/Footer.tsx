@@ -74,10 +74,10 @@ export default function Footer() {
           <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 font-mono text-[11px] text-[#8E95A2] tracking-wider uppercase text-center px-4">
             <span className="text-[#FF5A1F] font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
-              Additive Fabrication Facility
+              Bhopal Facility (Govindpura)
             </span>
             <span className="opacity-40">&bull;</span>
-            <span>Bhopal Industrial Hub, MP</span>
+            <span>Indore Express Corridor (Pithampur / Sanwer Rd)</span>
             <span className="opacity-40">&bull;</span>
             <span className="text-emerald-400">24–48h Pan-India Express Air Cargo</span>
           </div>
@@ -98,17 +98,17 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-[#8E95A2] leading-relaxed max-w-sm">
-              Central India&apos;s premier additive manufacturing center. High-speed CoreXY kinematics, 
+              Central India&apos;s premier additive manufacturing hub serving Indore and Bhopal. High-speed CoreXY kinematics, 
               12K SLA optics, and aerospace-certified composites engineered with micron repeatability.
             </p>
             <div className="pt-1 flex flex-col gap-2 font-mono text-xs text-[#A3A9B3]">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#FF5A1F] shrink-0" />
-                <span>Sector B, Govindpura Industrial Hub, Bhopal</span>
+                <span>Govindpura Hub, Bhopal • Indore Express Line (Pithampur)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#FF5A1F] shrink-0" />
-                <span>+91 88899 88874 &bull; Mon–Sat 9AM–8PM IST</span>
+                <span>+91 88899 88874 / +91 79998 24632 &bull; Mon–Sat 9AM–8PM IST</span>
               </div>
             </div>
           </div>
@@ -228,7 +228,7 @@ export default function Footer() {
             </span>
             <span className="text-white/20">&bull;</span>
             <span className="font-mono text-[11px] text-white/40">
-              Precision Additive Manufacturing &bull; Bhopal, MP, India
+              Precision Additive Manufacturing &bull; Bhopal &amp; Indore, MP, India
             </span>
           </div>
 

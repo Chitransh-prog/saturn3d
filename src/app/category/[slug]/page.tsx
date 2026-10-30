@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!category) {
     return {
-      title: 'Category Not Found | Saturn 3D Bhopal, India',
+      title: 'Category Not Found | Saturn 3D Indore & Bhopal, India',
     };
   }
 
-  const title = `${category.title} 3D Printing in Bhopal & India | Saturn 3D`;
-  const description = `${category.description} Industrial-grade ${category.title.toLowerCase()} additive manufacturing in Bhopal, Madhya Pradesh, India. Micron tolerances (±0.04mm), instant CAD quotes, 24-48h dispatch across India.`;
+  const title = `${category.title} 3D Printing in Indore & Bhopal | Saturn 3D`;
+  const description = `${category.description} Industrial-grade ${category.title.toLowerCase()} additive manufacturing serving Indore, Bhopal, and Pithampur. Micron tolerances (±0.04mm), instant CAD quotes, 12-24h Indore delivery, zero MOQ.`;
   const canonicalUrl = `${SITE_URL}/category/${slug}`;
 
   return {
@@ -40,12 +40,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     description,
     keywords: [
-      `${category.title} 3D printing`,
-      `${category.title} 3D printing India`,
+      `${category.title} 3D printing Indore`,
       `${category.title} 3D printing Bhopal`,
-      `custom ${category.title.toLowerCase()} prototyping`,
-      'industrial 3D printing India',
-      'Saturn 3D additive lab Bhopal',
+      `${category.title} 3D printing Pithampur`,
+      `custom ${category.title.toLowerCase()} prototyping MP`,
+      'industrial 3D printing Central India',
+      'Saturn 3D additive lab',
     ],
     alternates: {
       canonical: canonicalUrl,
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     other: {
       'geo.region': GEO_CONFIG.regionCode,
-      'geo.placename': `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
+      'geo.placename': `${GEO_CONFIG.primaryCity}, ${GEO_CONFIG.secondaryCity}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
       'geo.position': `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`,
       'ICBM': `${GEO_CONFIG.latitude}, ${GEO_CONFIG.longitude}`,
     },
@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: `${category.title} 3D Printing Services & Hardware`,
+    name: `${category.title} 3D Printing Services & Hardware (Indore & Bhopal)`,
     description: category.description,
     url: `${SITE_URL}/category/${slug}`,
     mainEntity: {

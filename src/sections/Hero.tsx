@@ -112,7 +112,7 @@ export default function Hero() {
         </div>
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/80">
           <MapPin className="w-3 h-3 text-[#FF5A1F]" />
-          <span>Govindpura, Bhopal Hub • 24–48h Pan-India Air Dispatch</span>
+          <span>Govindpura Hub, Bhopal • Indore Corridor (Pithampur) • 24–48h Dispatch</span>
         </div>
       </div>
 
@@ -126,7 +126,7 @@ export default function Hero() {
         >
           {/* Eyebrow / SEO Category Tag */}
           <div className="font-mono text-xs font-semibold tracking-wider text-[#FF5A1F] uppercase flex items-center gap-2">
-            <span>Online 3D Printing Service • Bhopal & All India</span>
+            <span>Online 3D Printing Service • Indore & Bhopal, Central India</span>
           </div>
 
           {/* Primary H1 Keyword Headline */}
@@ -141,7 +141,7 @@ export default function Hero() {
             </div>
             <div className="overflow-hidden">
               <span className="hero-line block text-white/90">
-                In Bhopal & All India<span className="text-[#FF5A1F]">.</span>
+                In Indore & Bhopal<span className="text-[#FF5A1F]">.</span>
               </span>
             </div>
           </h1>
@@ -151,7 +151,7 @@ export default function Hero() {
             ref={copyRef}
             className="text-[#A3A9B3] text-sm sm:text-base leading-relaxed max-w-[48ch]"
           >
-            Central India’s premier additive manufacturing facility. Precision FDM, 12K optical SLA resin, and Carbon-X PA12 printing with ±0.04&nbsp;mm accuracy. Upload your CAD file for an instant price quote, zero minimum order quantity, and 24–48h express nationwide delivery.
+            Central India’s premier additive manufacturing facility serving Bhopal and Indore. Precision FDM, 12K optical SLA resin, and Carbon-X PA12 printing with ±0.04&nbsp;mm accuracy. Same-day Bhopal pickup, 12–24h express dispatch to Indore (Pithampur, Sanwer Road), zero MOQ, and instant CAD pricing.
           </p>
 
           {/* Core Action CTAs */}
@@ -201,11 +201,13 @@ export default function Hero() {
           >
             <span>Govindpura Hub, Bhopal</span>
             <span className="text-[#FF5A1F]">&bull;</span>
+            <span>Indore Express (Pithampur & Sanwer Rd)</span>
+            <span className="text-[#FF5A1F]">&bull;</span>
             <span>±0.04 mm verified</span>
             <span className="text-[#FF5A1F]">&bull;</span>
             <span>Zero MOQ</span>
             <span className="text-[#FF5A1F]">&bull;</span>
-            <span>Express Air Dispatch: Mumbai, Delhi, Bengaluru, Pune, Hyderabad</span>
+            <span>24–48h All-India Air Cargo</span>
           </div>
         </div>
 

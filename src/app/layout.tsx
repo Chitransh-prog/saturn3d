@@ -20,17 +20,17 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Saturn 3D Precision Manufacturing | Industrial 3D Printing Bhopal & India',
-    template: '%s | Saturn 3D - 3D Printing Bhopal, India',
+    default: 'Saturn 3D Precision Manufacturing | Industrial 3D Printing Indore & Bhopal',
+    template: '%s | Saturn 3D - 3D Printing Indore & Bhopal, India',
   },
   description:
-    'Leading industrial 3D printing & rapid prototyping facility in Bhopal, Madhya Pradesh, India. FDM, SLA 12K resin & Carbon-X printing with ±0.04mm precision. Instant online CAD quotes, zero MOQ, 24-48h pan-India express air dispatch.',
+    'Leading industrial 3D printing & rapid prototyping facility serving Indore and Bhopal, Madhya Pradesh, India. FDM, SLA 12K resin & Carbon-X printing with ±0.04mm precision. Instant online CAD quotes, zero MOQ, express 12-24h dispatch to Indore, Pithampur & pan-India.',
   applicationName: SITE_NAME,
   authors: [{ name: 'Saturn 3D Engineering Team', url: SITE_URL }],
   generator: 'Next.js',
   keywords: CORE_KEYWORDS,
   referrer: 'origin-when-cross-origin',
-  creator: 'Saturn 3D Bhopal',
+  creator: 'Saturn 3D Indore & Bhopal',
   publisher: 'Saturn 3D Precision Manufacturing Lab',
   formatDetection: {
     telephone: true,
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Saturn 3D Precision Manufacturing | Industrial 3D Printing Bhopal & India',
+    title: 'Saturn 3D Precision Manufacturing | Industrial 3D Printing Indore & Bhopal',
     description:
-      'Premier industrial 3D printing lab in Bhopal, MP, India. Rapid prototyping, Carbon-X engineering parts, SLA 12K optical resin. Instant CAD file quote, 24-48h dispatch nationwide.',
+      'Premier industrial 3D printing lab serving Indore & Bhopal, MP, India. Rapid prototyping, Carbon-X engineering parts, SLA 12K optical resin. Instant CAD file quotes, same-day Bhopal pickup, 12-24h delivery to Indore & nationwide.',
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: 'en_IN',
@@ -57,15 +57,15 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Saturn 3D Industrial 3D Printing Facility in Bhopal, MP, India',
+        alt: 'Saturn 3D Industrial 3D Printing Facility Serving Indore & Bhopal, MP, India',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Saturn 3D | Industrial 3D Printing Bhopal & India',
+    title: 'Saturn 3D | Industrial 3D Printing Indore & Bhopal',
     description:
-      'Precision rapid prototyping & additive manufacturing in Bhopal, MP, India. FDM, SLA, Carbon-X PA12 with micron tolerances. Pan-India 24-48h dispatch.',
+      'Precision rapid prototyping & additive manufacturing in Indore & Bhopal, MP, India. FDM, SLA, Carbon-X PA12 with ±0.04mm tolerances. Express 12-24h delivery across MP & nationwide.',
     site: '@saturn3d_in',
     creator: '@saturn3d_in',
     images: ['/og-image.jpg'],
@@ -91,18 +91,18 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   other: {
-    // Geographic Local SEO & AEO Meta Tags
+    // Geographic Local SEO & AEO Meta Tags for Indore & Bhopal
     'geo.region': GEO_CONFIG.regionCode,
-    'geo.placename': `${GEO_CONFIG.city}, ${GEO_CONFIG.state}, ${GEO_CONFIG.country}`,
+    'geo.placename': 'Indore and Bhopal, Madhya Pradesh, India',
     'geo.position': `${GEO_CONFIG.latitude};${GEO_CONFIG.longitude}`,
     'ICBM': `${GEO_CONFIG.latitude}, ${GEO_CONFIG.longitude}`,
-    'city': GEO_CONFIG.city,
-    'state': GEO_CONFIG.state,
-    'country': GEO_CONFIG.country,
-    'DC.title': 'Saturn 3D - 3D Printing Bhopal & India',
+    'city': 'Indore, Bhopal',
+    'state': 'Madhya Pradesh',
+    'country': 'India',
+    'DC.title': 'Saturn 3D - 3D Printing Indore & Bhopal, India',
     'DC.creator': 'Saturn 3D Engineering',
-    'DC.coverage': 'Bhopal, Madhya Pradesh, India, Worldwide',
-    'DC.description': 'Industrial 3D Printing and Rapid Prototyping Laboratory in Bhopal, Madhya Pradesh, India.',
+    'DC.coverage': 'Indore, Bhopal, Pithampur, Mandideep, Madhya Pradesh, India, Worldwide',
+    'DC.description': 'Industrial 3D Printing and Rapid Prototyping Laboratory Serving Indore and Bhopal, Madhya Pradesh, India.',
   },
 };
 
