@@ -1,8 +1,10 @@
 [build]
-  # Next.js app lives at the repository root. Netlify's Next.js runtime
-  # handles pages, API routes and server rendering from the .next output.
   command = "npm run build"
   publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22.12.0"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

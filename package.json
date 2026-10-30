@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "private": true,
   "description": "Saturn 3D Precision Manufacturing - Next.js Full Stack",
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
