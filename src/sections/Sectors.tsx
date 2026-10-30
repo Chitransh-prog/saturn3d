@@ -117,55 +117,51 @@ export default function IndustryCategories() {
                 className="group relative rounded-2xl bg-white border border-black/10 hover:border-[#FF5A1F] shadow-sm hover:shadow-xl hover:shadow-black/5 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
                 style={{ opacity: 1 }} // Explicit guarantee to prevent any GSAP hiding
               >
-                {/* Visual Thumbnail Bar with Sector Badge */}
-                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#0B0D10]">
+                {/* Visual Thumbnail Bar with Sector Badge: Full 100% Uncut Visibility */}
+                <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-b from-[#F7F8FA] to-[#EEF0F4] border-b border-black/5 flex items-center justify-center p-3 sm:p-4">
                   {cat.image ? (
                     <img
                       src={cat.image}
                       alt={cat.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                      loading="lazy"
+                      className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-104"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-stone-900 text-stone-600">
+                    <div className="w-full h-full flex items-center justify-center bg-stone-100 text-stone-400">
                       <Boxes className="w-12 h-12" />
                     </div>
                   )}
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
                   {/* Top Badges */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md bg-black/60 backdrop-blur-md text-white border border-white/10">
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none z-10">
+                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md text-white border border-white/10 shadow-sm">
                       Sector 0{i + 1}
                     </span>
 
                     {cat.leadTime && (
-                      <span className="inline-flex items-center gap-1 font-mono text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/90 text-white font-medium shadow-sm">
+                      <span className="inline-flex items-center gap-1 font-mono text-[10px] px-2.5 py-1 rounded-md bg-emerald-500 text-white font-semibold shadow-sm">
                         <Clock className="w-3 h-3" />
                         <span>{cat.leadTime}</span>
                       </span>
                     )}
-                  </div>
-
-                  {/* Bottom Category Icon & Technical Badge */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-lg bg-white/95 backdrop-blur-md text-[#FF5A1F] flex items-center justify-center shadow-md">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      {cat.badge && (
-                        <span className="font-mono text-[10px] font-semibold text-white/90 bg-white/15 backdrop-blur-md px-2 py-0.5 rounded border border-white/20">
-                          {cat.badge}
-                        </span>
-                      )}
-                    </div>
                   </div>
                 </div>
 
                 {/* Card Content */}
                 <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
                   <div>
+                    {/* Category Icon & Technical Badge */}
+                    <div className="flex items-center gap-2 mb-3.5">
+                      <div className="w-8 h-8 rounded-lg bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      {cat.badge && (
+                        <span className="font-mono text-[10px] sm:text-[11px] font-semibold text-[#4B5262] bg-[#F3F4F6] px-2.5 py-1 rounded-md border border-black/5 truncate">
+                          {cat.badge}
+                        </span>
+                      )}
+                    </div>
+
                     <h3 className="font-sans font-bold text-lg sm:text-xl text-[#111215] mb-2 group-hover:text-[#FF5A1F] transition-colors leading-snug">
                       {cat.title}
                     </h3>
