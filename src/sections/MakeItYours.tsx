@@ -27,18 +27,40 @@ const materialsConfig: Record<string, { basePerGram: number; process: string; la
 
 export default function MakeItYours() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const [material, setMaterial] = useState<string>('carbon');
   const [quantity, setQuantity] = useState<number>(1);
   const [infill, setInfill] = useState<number>(30);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const processFile = (file: File) => {
+    setSelectedFile(file);
+    toast.success(`Loaded CAD File: ${file.name}`, {
+      description: `${(file.size / (1024 * 1024)).toFixed(2)} MB • Ready for automated volumetric analysis`,
+    });
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setSelectedFile(file);
-      toast.success(`Loaded CAD File: ${file.name}`, {
-        description: `${(file.size / (1024 * 1024)).toFixed(2)} MB • Ready for automated volumetric analysis`,
-      });
+      processFile(e.target.files[0]);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      processFile(e.dataTransfer.files[0]);
     }
   };
 
@@ -108,10 +130,26 @@ Can an engineer review my file geometry for additive fabrication?`;
           {/* Left Column: Dropzone + Sliders */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* 1px Hairline CAD Dropzone */}
+            {/* 1px Hairline CAD Dropzone with Accessible Drag & Drop */}
             <div
+              tabIndex={0}
+              role="button"
+              aria-label="Upload CAD model file"
               onClick={() => fileInputRef.current?.click()}
-              className="group cursor-pointer p-8 sm:p-10 border border-dashed border-black/20 hover:border-[#FF5A1F] rounded-2xl bg-[#F8F9FA] hover:bg-white transition-all flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xs"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  fileInputRef.current?.click();
+                }
+              }}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              className={`group cursor-pointer p-8 sm:p-10 border-2 rounded-2xl transition-all flex flex-col items-center justify-center text-center relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+                isDragging
+                  ? 'border-[#FF5A1F] bg-[#FF5A1F]/10 ring-4 ring-[#FF5A1F]/20 scale-[1.01]'
+                  : 'border-dashed border-black/20 hover:border-[#FF5A1F] bg-[#F8F9FA] hover:bg-white shadow-2xs'
+              }`}
             >
               <input
                 ref={fileInputRef}
@@ -121,7 +159,11 @@ Can an engineer review my file geometry for additive fabrication?`;
                 className="hidden"
               />
 
-              <div className="w-12 h-12 mb-3 rounded-xl bg-white border border-black/10 flex items-center justify-center text-[#5E6573] group-hover:text-[#FF5A1F] group-hover:border-[#FF5A1F]/40 transition-colors shadow-2xs">
+              <div className={`w-12 h-12 mb-3 rounded-xl border flex items-center justify-center transition-all shadow-2xs ${
+                isDragging
+                  ? 'bg-[#FF5A1F] text-white border-[#FF5A1F]'
+                  : 'bg-white border-black/10 text-[#5E6573] group-hover:text-[#FF5A1F] group-hover:border-[#FF5A1F]/40'
+              }`}>
                 {selectedFile ? <FileCheck className="w-6 h-6 text-[#FF5A1F]" /> : <UploadCloud className="w-6 h-6" />}
               </div>
 
@@ -131,13 +173,13 @@ Can an engineer review my file geometry for additive fabrication?`;
                     {selectedFile.name}
                   </div>
                   <div className="font-mono text-xs text-[#5E6573] mt-0.5">
-                    {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB &bull; Click to swap CAD file
+                    {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB &bull; Click or drop another file to swap
                   </div>
                 </div>
               ) : (
                 <div>
                   <div className="text-sm font-semibold text-[#111215] group-hover:text-[#FF5A1F] transition-colors">
-                    Drop your CAD model or technical drawing here
+                    {isDragging ? 'Release to upload CAD geometry' : 'Drop your CAD model or technical drawing here'}
                   </div>
                   <div className="font-mono text-xs text-[#5E6573] mt-1">
                     .STL, .STEP, .OBJ, .GLB up to 100 MB &bull; Instant Slicing Ready

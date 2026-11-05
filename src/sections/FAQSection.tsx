@@ -118,15 +118,20 @@ export default function FAQSection() {
           ))}
         </div>
 
-        {/* Precision Hairline Accordion */}
+        {/* Precision Hairline Accordion with Accessible Semantics */}
         <div className="card-precision divide-y divide-black/5 overflow-hidden scroll-reveal">
           {filteredFaqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
+            const contentId = `faq-answer-${idx}`;
+            const headerId = `faq-header-${idx}`;
             return (
               <div key={faq.question} className="transition-colors">
                 <button
+                  id={headerId}
+                  aria-expanded={isOpen}
+                  aria-controls={contentId}
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full py-5 px-6 sm:px-8 text-left flex items-start justify-between gap-4 cursor-pointer hover:bg-neutral-50/60 transition-colors"
+                  className="w-full py-5 px-6 sm:px-8 text-left flex items-start justify-between gap-4 cursor-pointer hover:bg-neutral-50/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] focus-visible:ring-inset"
                 >
                   <div className="flex items-start gap-4">
                     <span className="font-mono text-xs font-medium text-[#FF5A1F] mt-0.5 shrink-0">
@@ -143,7 +148,12 @@ export default function FAQSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 sm:px-8 pb-6 pl-14 sm:pl-16 space-y-3 text-sm text-[#5B616B] leading-relaxed">
+                  <div
+                    id={contentId}
+                    role="region"
+                    aria-labelledby={headerId}
+                    className="px-6 sm:px-8 pb-6 pl-14 sm:pl-16 space-y-3 text-sm text-[#5E6573] leading-relaxed animate-in fade-in slide-in-from-top-1 duration-150"
+                  >
                     <p className="font-medium text-[#0B0D10]">
                       {faq.shortAnswer}
                     </p>

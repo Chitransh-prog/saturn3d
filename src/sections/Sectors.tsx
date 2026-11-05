@@ -71,33 +71,39 @@ export default function IndustryCategories() {
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2 self-start lg:self-end bg-white p-1 rounded-xl border border-black/10 shadow-sm">
+          {/* Filter Pills with Tablist Semantics */}
+          <div role="tablist" aria-label="Filter target sectors" className="flex items-center gap-1.5 self-start lg:self-end bg-white p-1 rounded-xl border border-black/10 shadow-sm">
             <button
+              role="tab"
+              aria-selected={activeFilter === 'all'}
               onClick={() => setActiveFilter('all')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeFilter === 'all'
-                  ? 'bg-[#111215] text-white font-semibold shadow-sm'
+                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/20'
                   : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
               }`}
             >
               All Sectors ({categories.length})
             </button>
             <button
+              role="tab"
+              aria-selected={activeFilter === 'industrial'}
               onClick={() => setActiveFilter('industrial')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeFilter === 'industrial'
-                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm'
+                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/20'
                   : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
               }`}
             >
               Industrial & Robotics
             </button>
             <button
+              role="tab"
+              aria-selected={activeFilter === 'consumer'}
               onClick={() => setActiveFilter('consumer')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeFilter === 'consumer'
-                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm'
+                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/20'
                   : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
               }`}
             >

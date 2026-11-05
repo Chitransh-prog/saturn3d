@@ -654,13 +654,13 @@ export default function HeroStage3D({
         </button>
       </div>
 
-      {/* Minimalist Engineered Bottom Bar: Layer Scrubber + Real-Time Telemetry */}
-      <div className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-2xl bg-white/92 border border-black/10 backdrop-blur-md z-20 pointer-events-auto shadow-xl">
-        {/* Layer Slicing Scrubber */}
-        <div className="flex items-center gap-3 w-full sm:w-auto flex-1">
+      {/* Engineered Bottom Control Deck: Layer Scrubber + Real-Time Telemetry */}
+      <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-2 p-2.5 sm:p-3 rounded-2xl bg-white/95 border border-black/10 backdrop-blur-md z-20 pointer-events-auto shadow-xl">
+        {/* Row 1: Layer Slicing Scrubber */}
+        <div className="flex items-center gap-2.5 w-full">
           <div className="flex items-center gap-1.5 text-xs font-mono text-[#5E6573] flex-shrink-0">
             <Sliders className="w-3.5 h-3.5 text-[#FF5A1F]" />
-            <span>Layer Slicing:</span>
+            <span className="font-semibold text-[#111215]">Layer Slicing:</span>
           </div>
 
           <input
@@ -670,28 +670,33 @@ export default function HeroStage3D({
             step="0.01"
             value={activeProgress}
             onChange={(e) => setManualProgress(parseFloat(e.target.value))}
-            className="w-full h-1.5 bg-black/15 rounded-lg appearance-none cursor-pointer accent-[#FF5A1F]"
+            aria-label="3D Slicing Layer Progress"
+            className="flex-1 h-1.5 bg-black/15 rounded-lg appearance-none cursor-pointer accent-[#FF5A1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F]"
           />
 
-          <span className="font-mono text-xs text-[#FF5A1F] font-semibold flex-shrink-0 min-w-[36px]">
-            {Math.round(activeProgress * 100)}%
-          </span>
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            <span className="font-mono text-xs text-[#FF5A1F] font-bold px-2 py-0.5 rounded-md bg-[#FF5A1F]/10 border border-[#FF5A1F]/20 min-w-[42px] text-center">
+              {Math.round(activeProgress * 100)}%
+            </span>
+          </div>
         </div>
 
-        {/* Real-Time Live Kinematics Telemetry Readout */}
-        <div className="flex items-center gap-2.5 text-[11px] font-mono text-[#5E6573] border-t sm:border-t-0 sm:border-l border-black/10 pt-2 sm:pt-0 sm:pl-3 flex-shrink-0">
-          <span className="flex items-center gap-1.5 text-emerald-600 font-medium">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Printing PA12-CF
-          </span>
-          <span className="text-[#FF5A1F]">•</span>
-          <span>X: {dynamicCoords.x > 0 ? `+${dynamicCoords.x}` : dynamicCoords.x}</span>
-          <span className="text-black/30">/</span>
-          <span>Y: {dynamicCoords.y > 0 ? `+${dynamicCoords.y}` : dynamicCoords.y}</span>
-          <span className="text-[#FF5A1F]">•</span>
-          <span>Z: {(activeProgress * 58).toFixed(1)}mm</span>
-          <span className="text-[#FF5A1F]">•</span>
-          <span className="text-[#111215] font-semibold">±0.04mm</span>
+        {/* Row 2: Real-Time Live Kinematics Telemetry Readout */}
+        <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] font-mono text-[#5E6573] border-t border-black/10 pt-2">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1.5 text-emerald-700 font-semibold px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Printing PA12-CF
+            </span>
+            <span className="text-black/20">•</span>
+            <span>Z: {(activeProgress * 58).toFixed(1)}mm</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span>X: {dynamicCoords.x > 0 ? `+${dynamicCoords.x}` : dynamicCoords.x} / Y: {dynamicCoords.y > 0 ? `+${dynamicCoords.y}` : dynamicCoords.y}</span>
+            <span className="text-black/20">•</span>
+            <span className="text-[#111215] font-bold px-1.5 py-0.5 rounded bg-black/5 border border-black/10">±0.04mm</span>
+          </div>
         </div>
       </div>
     </div>

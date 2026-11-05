@@ -278,17 +278,18 @@ export default function Footer() {
 
       {/* Mobile Sticky Quick Action Bar */}
       <div
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-black/10 p-3 flex items-center justify-between gap-3 shadow-lg"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-black/10 px-4 py-3 flex items-center justify-between gap-3 shadow-lg"
         style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}
       >
-        <div className="font-mono text-[11px] text-[#111215] pl-24 truncate font-medium">
-          <span>±0.04 mm</span> &bull; <span>24-48h Air Cargo</span>
+        <div className="font-mono text-[11px] text-[#111215] truncate font-medium flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Bhopal Hub &bull; ±0.04mm Express</span>
         </div>
         <button
           onClick={() => navigate('/custom-lab')}
-          className="btn-precision-primary text-xs py-2 px-3.5 flex items-center gap-1.5"
+          className="btn-precision-primary text-xs py-2 px-3.5 flex items-center gap-1.5 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F]"
         >
-          <span>Get Quote</span>
+          <span>Instant Quote</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>

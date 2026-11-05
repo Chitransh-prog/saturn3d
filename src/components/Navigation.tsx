@@ -20,11 +20,10 @@ import { authApi } from '@/lib/api';
 
 // Home Page Section Jump Items (Merged from SubNav)
 const HOME_SECTIONS = [
-  { id: 'products', label: '3D Products' },
+  { id: 'products', label: 'Products' },
   { id: 'categories', label: 'Categories' },
-  { id: 'hardware', label: 'Hardware Fleet' },
-  { id: 'specs', label: 'Materials & Specs' },
-  { id: 'configurator', label: 'Instant Quote' },
+  { id: 'hardware', label: 'Fleet' },
+  { id: 'specs', label: 'Materials' },
   { id: 'gallery', label: 'Real Prints' },
   { id: 'faq', label: 'FAQ' },
 ];
@@ -268,8 +267,10 @@ export default function Navigation() {
           {/* Mega-Menu Services Trigger */}
           <div className="relative">
             <button
+              aria-expanded={activeMegaMenu === 'services'}
+              aria-haspopup="true"
               onClick={() => setActiveMegaMenu(activeMegaMenu === 'services' ? null : 'services')}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeMegaMenu === 'services'
                   ? 'text-[#111215] bg-black/10'
                   : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
@@ -287,7 +288,7 @@ export default function Navigation() {
               <button
                 key={sec.id}
                 onClick={() => scrollToSection(sec.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                   isActive
                     ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/30'
                     : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
@@ -301,7 +302,7 @@ export default function Navigation() {
           {/* Direct Link: Catalog */}
           <Link
             to="/categories"
-            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
               pathname === '/categories'
                 ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm'
                 : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
