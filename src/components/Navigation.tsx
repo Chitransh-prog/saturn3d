@@ -261,8 +261,8 @@ export default function Navigation() {
           </Link>
         </div>
 
-        {/* Center: Merged Navigation (Pills + Dropdowns) */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+        {/* Center: Clean Modern SaaS Navigation */}
+        <nav className="hidden lg:flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5">
           
           {/* Mega-Menu Services Trigger */}
           <div className="relative">
@@ -270,28 +270,28 @@ export default function Navigation() {
               aria-expanded={activeMegaMenu === 'services'}
               aria-haspopup="true"
               onClick={() => setActiveMegaMenu(activeMegaMenu === 'services' ? null : 'services')}
-              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeMegaMenu === 'services'
-                  ? 'text-[#111215] bg-black/10'
-                  : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
+                  ? 'text-neutral-900 bg-neutral-100 font-semibold'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
               }`}
             >
               <span>Services</span>
-              <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${activeMegaMenu === 'services' ? 'rotate-180 text-[#FF5A1F]' : 'opacity-60'}`} />
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMegaMenu === 'services' ? 'rotate-180 text-[#FF5A1F]' : 'opacity-50'}`} />
             </button>
           </div>
 
-          {/* Integrated Home Page Section Pills (with Active Orange Pill Indicator) */}
+          {/* Integrated Home Page Section Links */}
           {HOME_SECTIONS.map((sec) => {
             const isActive = isHomePage && activeSection === sec.id;
             return (
               <button
                 key={sec.id}
                 onClick={() => scrollToSection(sec.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                   isActive
-                    ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/30'
-                    : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
+                    ? 'text-neutral-900 bg-neutral-100 font-semibold'
+                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
                 }`}
               >
                 {sec.label}
@@ -302,10 +302,10 @@ export default function Navigation() {
           {/* Direct Link: Catalog */}
           <Link
             to="/categories"
-            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
               pathname === '/categories'
-                ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm'
-                : 'text-[#4B5262] hover:text-[#111215] hover:bg-black/5'
+                ? 'text-neutral-900 bg-neutral-100 font-semibold'
+                : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
             }`}
             onClick={() => setActiveMegaMenu(null)}
           >
@@ -314,13 +314,13 @@ export default function Navigation() {
 
         </nav>
 
-        {/* Right Action Cluster: Search + Cart + Auth + Orange "Instant CAD Quote" Button */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        {/* Right Action Cluster: Search + Cart + Auth + Orange "Get Quote" Button */}
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           
           {/* Quick Search Link */}
           <Link
             to="/categories"
-            className="p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-full transition-all flex items-center"
+            className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors flex items-center"
             title="Search parts"
           >
             <Search className="w-4 h-4" />
@@ -329,12 +329,12 @@ export default function Navigation() {
           {/* Cart Trigger */}
           <button
             onClick={toggleCart}
-            className="relative p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-full transition-all cursor-pointer"
+            className="relative p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer"
             aria-label="Open Cart"
           >
             <ShoppingBag className="w-4 h-4" />
             {totalItems > 0 && (
-              <span className="absolute top-0 right-0 w-4 h-4 bg-[#FF5A1F] text-white font-mono text-[9px] font-bold flex items-center justify-center rounded-full shadow-sm">
+              <span className="absolute top-1 right-1 w-4 h-4 bg-[#FF5A1F] text-white font-mono text-[9px] font-bold flex items-center justify-center rounded-full shadow-xs">
                 {totalItems}
               </span>
             )}
@@ -345,7 +345,7 @@ export default function Navigation() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
-                  className="p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-full transition-all cursor-pointer"
+                  className="p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer"
                   aria-label="User Account"
                 >
                   <User className="w-4 h-4" />
@@ -353,25 +353,25 @@ export default function Navigation() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                className="w-52 bg-white border border-black/10 p-1.5 font-body text-xs shadow-xl rounded-xl text-[#111215]"
+                className="w-52 bg-white border border-neutral-200 p-1.5 font-body text-xs shadow-xl rounded-xl text-neutral-900"
               >
-                <DropdownMenuLabel className="font-medium text-[11px] text-[#5E6573] truncate px-2 py-1.5">
+                <DropdownMenuLabel className="font-medium text-[11px] text-neutral-500 truncate px-2 py-1.5">
                   {user?.name || user?.email}
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator className="bg-black/10" />
+                <DropdownMenuSeparator className="bg-neutral-200" />
                 {isAdmin && (
                   <DropdownMenuItem asChild>
-                    <Link to="/admin" className="cursor-pointer font-medium px-2 py-2 hover:bg-black/5 rounded-lg text-[#111215]">
+                    <Link to="/admin" className="cursor-pointer font-medium px-2 py-2 hover:bg-neutral-100 rounded-lg text-neutral-900">
                       Admin Dashboard
                     </Link>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem asChild>
-                  <Link to="/orders" className="cursor-pointer px-2 py-2 hover:bg-black/5 rounded-lg text-[#5E6573] hover:text-[#111215]">
+                  <Link to="/orders" className="cursor-pointer px-2 py-2 hover:bg-neutral-100 rounded-lg text-neutral-600 hover:text-neutral-900">
                     Order History
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-black/10" />
+                <DropdownMenuSeparator className="bg-neutral-200" />
                 <DropdownMenuItem
                   onClick={handleLogout}
                   className="cursor-pointer text-red-600 px-2 py-2 flex items-center gap-2 hover:bg-red-50 rounded-lg"
@@ -384,16 +384,16 @@ export default function Navigation() {
           ) : (
             <Link
               to="/login"
-              className="hidden md:inline-block font-body text-xs font-medium text-[#4B5262] hover:text-[#111215] px-2.5 py-1.5 transition-colors"
+              className="hidden md:inline-block font-body text-xs font-medium text-neutral-600 hover:text-neutral-900 px-3 py-1.5 transition-colors"
             >
               Sign in
             </Link>
           )}
 
-          {/* Merged Single Orange CAD Quote Button */}
+          {/* SaaS Primary Action Button */}
           <Link
             to="/custom-lab"
-            className="btn-precision-primary text-xs py-1.5 sm:py-2 px-3 sm:px-4 rounded-xl flex items-center gap-1.5 shadow-sm"
+            className="inline-flex items-center justify-center gap-1.5 bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs font-semibold px-3.5 sm:px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all active:scale-[0.98]"
           >
             <span className="hidden sm:inline whitespace-nowrap">Instant CAD Quote</span>
             <span className="sm:hidden whitespace-nowrap text-[11px]">Quote</span>
@@ -403,7 +403,7 @@ export default function Navigation() {
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-1.5 sm:p-2 text-[#4B5262] hover:text-[#111215] hover:bg-black/5 rounded-md"
+            className="lg:hidden p-2 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-lg transition-colors"
             aria-label="Toggle Mobile Menu"
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

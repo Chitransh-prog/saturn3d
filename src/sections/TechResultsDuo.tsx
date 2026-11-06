@@ -16,14 +16,14 @@ export default function TechResultsDuo() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Eyebrow */}
-        <div className="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-black/10 rounded-full font-mono text-[11px] font-semibold uppercase tracking-wider text-[#5E6573] mb-4 shadow-xs">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 scroll-reveal">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 rounded-full mb-3 shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
-            <span>Industrial Additive Ecosystem</span>
+            <span>Core Capabilities</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#111215] tracking-tight">
+          <h2 className="font-sans font-bold text-3xl sm:text-5xl text-neutral-900 tracking-tight">
             Engineered hardware. <br className="hidden sm:block" />
-            <span className="text-[#5E6573]">Radically superior results.</span>
+            <span className="text-neutral-400">Superior production results.</span>
           </h2>
         </div>
 
@@ -31,19 +31,16 @@ export default function TechResultsDuo() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch scroll-stagger">
           
           {/* Card 1: Our Technology with Live 3D Metamaterial Lattice & Optical Engine */}
-          <div className="group relative bg-white border border-black/10 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-xl hover:border-[#FF5A1F]/40 transition-all duration-300">
-            {/* Top Light Accent */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-indigo-500/10 transition-all duration-500" />
-
+          <div className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
             <div className="relative z-10">
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#4F46E5] block mb-2">
-                Software // Hardware // Materials
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#FF5A1F] block mb-2 font-mono">
+                Technology &bull; Kinematics &bull; Resins
               </span>
-              <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#111215] tracking-tight leading-tight">
-                Our Technology
+              <h3 className="font-sans text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight">
+                Precision Additive Systems
               </h3>
-              <p className="font-body text-xs sm:text-sm text-[#5E6573] mt-3 max-w-md leading-relaxed">
-                High-speed Voron CoreXY kinematic gantries and 12K Stereolithography light engines integrated with automated neural slicing and aerospace-certified polymers.
+              <p className="text-sm text-neutral-600 mt-2.5 max-w-md leading-relaxed">
+                Voron CoreXY high-speed motion gantries and 12K Stereolithography engines engineered for sub-micron surface accuracy and thermal stability.
               </p>
             </div>
 
@@ -89,19 +86,16 @@ export default function TechResultsDuo() {
           </div>
 
           {/* Card 2: Your Results with Live 3D Printed Parts */}
-          <div className="group relative bg-white border border-black/10 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-xl hover:border-emerald-500/40 transition-all duration-300">
-            {/* Top Light Accent */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/10 transition-all duration-500" />
-
+          <div className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
             <div className="relative z-10">
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-2">
-                Real-World Products // End-Use Parts
+              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 block mb-2 font-mono">
+                Aerospace &bull; Robotics &bull; Tooling
               </span>
-              <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#111215] tracking-tight leading-tight">
-                Your Results
+              <h3 className="font-sans text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight">
+                Production-Ready Parts
               </h3>
-              <p className="font-body text-xs sm:text-sm text-[#5E6573] mt-3 max-w-md leading-relaxed">
-                Our customers' engineering vision is the essential catalyst that unlocks radically superior parts across aerospace, robotics, automotive, and medical hardware.
+              <p className="text-sm text-neutral-600 mt-2.5 max-w-md leading-relaxed">
+                From lightweight drone airframes and lattice cushions to high-torque robotics gears, manufactured with aerospace repeatability.
               </p>
             </div>
 

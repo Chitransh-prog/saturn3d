@@ -236,27 +236,25 @@ export default function ExploreMaterials() {
       <div className="max-w-7xl mx-auto space-y-20">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
-              <span className="type-mono-eyebrow text-[#5E6573] font-semibold">
-                03 // Material Science & Processes
-              </span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+              <span>Materials Science</span>
             </div>
-            <h2 className="type-h2 text-[#111215] font-bold">
-              Engineering polymers, verified on the test bench.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
+              Engineering polymers, calibrated for production.
             </h2>
-            <p className="type-body text-[#5E6573] mt-2">
-              From continuous carbon-fiber reinforcement to sub-micron optical resins, every formulation is calibrated for mechanical integrity.
+            <p className="text-sm sm:text-base text-neutral-600 mt-2">
+              From continuous carbon-fiber composites to sub-micron optical resins, tested for dimensional accuracy and thermal endurance.
             </p>
           </div>
 
           <button
             onClick={() => navigate('/custom-lab')}
-            className="btn-precision-primary text-xs py-2.5 px-4 shrink-0"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs font-medium transition-all shadow-sm shrink-0 cursor-pointer"
           >
-            <span>Configure custom material</span>
+            <span>Configure Custom Material</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

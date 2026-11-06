@@ -83,16 +83,16 @@ export default function PrinterFleet() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 scroll-reveal">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F6F8] border border-[#0B0D10]/10 text-xs font-mono tracking-wider text-[#5B616B] mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
-            SATURN INDUSTRIAL HARDWARE FLEET
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 scroll-reveal">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+            <span>Hardware Fleet</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#0B0D10] font-sans">
-            Engineered Machines for Demanding Parts
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
+            Dedicated production machines.
           </h2>
-          <p className="mt-4 text-base md:text-lg text-[#5B616B] leading-relaxed">
-            From lightning-fast mechanical validation to temperature-controlled composite production, our precision printer fleet delivers micron-level repeatability on every job.
+          <p className="mt-3 text-sm sm:text-base text-neutral-600 leading-relaxed">
+            Voron CoreXY kinematic gantries and 12K SLA engines calibrated for round-the-clock throughput with micron-level repeatability.
           </p>
         </div>
 

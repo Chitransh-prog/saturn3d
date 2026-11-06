@@ -88,31 +88,30 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
         {/* =================================================================
             1. REFINED ARCHITECTURAL HEADER
         ================================================================= */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-black/10">
-          <div className="max-w-3xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[#FF5A1F] font-mono text-[11px] uppercase tracking-widest">
-              <Layers className="w-3.5 h-3.5" />
-              <span>05 // Hardware Catalog Matrix &bull; Bhopal Additive Lab</span>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-200">
+          <div className="max-w-2xl space-y-2.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700">
+              <Layers className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <span>Hardware Catalog</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111215]">
-              Engineered Components <br className="hidden sm:inline" />
-              <span className="text-[#FF5A1F]">&amp; Stock Production Prints.</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
+              Engineered components <br className="hidden sm:inline" />
+              <span className="text-neutral-400">&amp; production prints.</span>
             </h1>
 
-            <p className="text-sm sm:text-base text-[#5E6573] leading-relaxed max-w-2xl">
-              Precision functional fixtures, drone spars, micro-fluidic impellers, and custom architecture models. 
-              Manufactured with &plusmn;0.04mm verified metrology tolerances and express 24&ndash;48h pan-India dispatch.
+            <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+              Precision functional fixtures, drone spars, micro-fluidic impellers, and architectural scale models with &plusmn;0.04mm verified tolerances and express 24&ndash;48h dispatch.
             </p>
           </div>
 
-          {/* Quick Stats & Custom Upload Button */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+          {/* Custom Upload Button */}
+          <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/custom-lab"
-              className="px-5 py-3 rounded-xl bg-[#111215] hover:bg-[#20242D] text-white font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-98"
+              className="px-4 py-2.5 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
             >
-              <Sparkles className="w-4 h-4 text-[#FF5A1F]" />
+              <Sparkles className="w-3.5 h-3.5" />
               <span>Upload Custom CAD</span>
             </Link>
           </div>

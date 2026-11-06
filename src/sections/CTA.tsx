@@ -13,46 +13,42 @@ export default function CTA() {
       <BulkOrderForm isOpen={isBulkFormOpen} onClose={() => setIsBulkFormOpen(false)} />
 
       <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#F8F9FA] border-t border-black/10 font-sans">
-        <div className="max-w-7xl mx-auto rounded-3xl bg-white text-[#111215] p-8 sm:p-14 lg:p-16 relative overflow-hidden border border-black/10 shadow-xl">
+        <div className="max-w-7xl mx-auto rounded-3xl bg-white text-neutral-900 p-8 sm:p-12 lg:p-14 relative overflow-hidden border border-neutral-200/90 shadow-lg">
           
-          {/* Subtle Orange Radial Glow */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FF5A1F]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Orange Ambient Accent */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FF5A1F]/5 rounded-full blur-3xl pointer-events-none" />
 
           {/* Top Telemetry Strip */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-5 border-b border-black/10 relative z-10">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A1F] animate-pulse" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[#FF5A1F] font-bold">
-                10 // Rapid Additive Protocol
-              </span>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-5 border-b border-neutral-200 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
+              <span>Production Dispatch Desk</span>
             </div>
 
-            <div className="flex items-center gap-2 font-mono text-[11px] text-[#5E6573] bg-[#F8F9FA] px-3 py-1 rounded-full border border-black/10 shadow-2xs">
-              <span className="text-emerald-600 font-bold">● Active Farm:</span>
-              <span>12K SLA &amp; Voron High-Speed CoreXY</span>
+            <div className="flex items-center gap-2 font-mono text-[11px] text-neutral-500">
+              <span className="text-emerald-600 font-semibold">&bull; Active Farm:</span>
+              <span>12K SLA &amp; Voron CoreXY</span>
             </div>
           </div>
 
           {/* Core Content */}
-          <div className="relative z-10 max-w-3xl space-y-4 mb-8">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111215] leading-tight">
-              Ready to fabricate your next breakthrough?
+          <div className="relative z-10 max-w-2xl space-y-3 mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 leading-tight">
+              Ready to fabricate your next production run?
             </h2>
-            <p className="text-sm sm:text-base text-[#5E6573] leading-relaxed max-w-2xl">
-              Upload your proprietary CAD models for instant volumetric telemetry and automated slicing. 
-              For large-format production runs, custom polymer formulations, or scheduled enterprise batches, connect directly with our engineering lab serving Bhopal, Indore, and Central India.
+            <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+              Upload your CAD models for instant volumetric slicing, or contact our engineering desk for custom enterprise batches and express 24&ndash;48h dispatch across Central India.
             </p>
           </div>
 
           {/* Actions Row */}
-          <div className="relative z-10 flex flex-wrap items-center gap-3.5 pt-2">
+          <div className="relative z-10 flex flex-wrap items-center gap-3">
             <Link
               href="/custom-lab"
-              className="px-6 py-3.5 rounded-xl bg-[#FF5A1F] hover:bg-[#E04F1A] text-white font-mono text-xs font-bold flex items-center gap-2 transition-all shadow-md shadow-[#FF5A1F]/25 active:scale-98"
+              className="px-5 py-3 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-sm active:scale-[0.98]"
             >
               <Sparkles className="w-4 h-4" />
-              <span>Launch Custom CAD Lab</span>
+              <span>Upload CAD for Quote</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
 
@@ -60,18 +56,18 @@ export default function CTA() {
               href="https://wa.me/918889988874?text=Hi%20Saturn%203D%20team%2C%20I%20would%20like%20to%20discuss%20a%20custom%20fabrication%20project."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs font-bold flex items-center gap-2 transition-all shadow-md shadow-emerald-600/20 active:scale-98"
+              className="px-4 py-3 rounded-lg bg-white hover:bg-neutral-50 text-neutral-800 border border-neutral-200 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all shadow-2xs active:scale-[0.98]"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>Direct WhatsApp Line</span>
+              <MessageSquare className="w-4 h-4 text-emerald-600" />
+              <span>Direct WhatsApp Desk</span>
             </a>
 
             <button
               type="button"
               onClick={() => setIsBulkFormOpen(true)}
-              className="px-5 py-3.5 rounded-xl bg-[#F8F9FA] hover:bg-[#EEF0F4] text-[#111215] border border-black/15 font-mono text-xs font-medium flex items-center gap-2 transition-all cursor-pointer active:scale-98 shadow-2xs"
+              className="px-4 py-3 rounded-lg bg-neutral-100 hover:bg-neutral-200/80 text-neutral-800 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all cursor-pointer active:scale-[0.98]"
             >
-              <FileText className="w-4 h-4 text-[#5E6573]" />
+              <FileText className="w-4 h-4 text-neutral-500" />
               <span>Enterprise Batch RFP</span>
             </button>
           </div>

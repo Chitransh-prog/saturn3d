@@ -54,33 +54,32 @@ export default function IndustryCategories() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[#FF5A1F] font-mono text-[11px] uppercase tracking-widest mb-3.5">
-              <Layers className="w-3.5 h-3.5" />
-              <span>Target Sectors // Verified Capabilities</span>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
+              <Layers className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <span>Industry Solutions</span>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111215] mb-4">
-              Our Categories. <br className="hidden sm:inline" />
-              <span className="text-[#FF5A1F]">Solutions at Scale.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 mb-3 font-sans">
+              Engineered solutions across 8 key sectors.
             </h2>
             
-            <p className="text-base sm:text-lg text-[#5E6573] leading-relaxed max-w-2xl">
-              &ldquo;From concept to cosmos&rdquo; &mdash; we serve specialized sectors where micron-level precision is mandatory and innovation is the baseline.
+            <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+              Specialized additive workflows tailored for aerospace, robotics, architecture, and high-volume batch manufacturing.
             </p>
           </div>
 
           {/* Filter Pills with Tablist Semantics */}
-          <div role="tablist" aria-label="Filter target sectors" className="flex items-center gap-1.5 self-start lg:self-end bg-white p-1 rounded-xl border border-black/10 shadow-sm">
+          <div role="tablist" aria-label="Filter target sectors" className="flex items-center gap-1.5 self-start lg:self-end bg-white p-1 rounded-xl border border-neutral-200 shadow-sm">
             <button
               role="tab"
               aria-selected={activeFilter === 'all'}
               onClick={() => setActiveFilter('all')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeFilter === 'all'
-                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/20'
-                  : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+                  ? 'bg-neutral-900 text-white font-semibold shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
               All Sectors ({categories.length})
@@ -89,25 +88,25 @@ export default function IndustryCategories() {
               role="tab"
               aria-selected={activeFilter === 'industrial'}
               onClick={() => setActiveFilter('industrial')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeFilter === 'industrial'
-                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/20'
-                  : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+                  ? 'bg-neutral-900 text-white font-semibold shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
-              Industrial & Robotics
+              Industrial &amp; Robotics
             </button>
             <button
               role="tab"
               aria-selected={activeFilter === 'consumer'}
               onClick={() => setActiveFilter('consumer')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 activeFilter === 'consumer'
-                  ? 'bg-[#FF5A1F] text-white font-semibold shadow-sm shadow-[#FF5A1F]/20'
-                  : 'text-[#5E6573] hover:text-[#111215] hover:bg-black/5'
+                  ? 'bg-neutral-900 text-white font-semibold shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
-              Corporate, Interior & Gifts
+              Corporate &amp; Interior
             </button>
           </div>
         </div>
@@ -120,11 +119,11 @@ export default function IndustryCategories() {
               <Link 
                 key={cat.slug} 
                 href={`/category/${cat.slug}`}
-                className="group relative rounded-2xl bg-white border border-black/10 hover:border-[#FF5A1F] shadow-sm hover:shadow-xl hover:shadow-black/5 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
+                className="group relative rounded-2xl bg-white border border-neutral-200/90 hover:border-[#FF5A1F]/60 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1"
                 style={{ opacity: 1 }} // Explicit guarantee to prevent any GSAP hiding
               >
                 {/* Visual Thumbnail Bar with Sector Badge: Full 100% Uncut Visibility */}
-                <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-b from-[#F7F8FA] to-[#EEF0F4] border-b border-black/5 flex items-center justify-center p-3 sm:p-4">
+                <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-b from-neutral-50 to-neutral-100/70 border-b border-neutral-100 flex items-center justify-center p-4">
                   {cat.image ? (
                     <img
                       src={cat.image}
@@ -133,24 +132,20 @@ export default function IndustryCategories() {
                       className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 ease-out group-hover:scale-104"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-stone-100 text-stone-400">
+                    <div className="w-full h-full flex items-center justify-center bg-neutral-100 text-neutral-400">
                       <Boxes className="w-12 h-12" />
                     </div>
                   )}
 
-                  {/* Top Badges */}
-                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none z-10">
-                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md text-white border border-white/10 shadow-sm">
-                      Sector 0{i + 1}
-                    </span>
-
-                    {cat.leadTime && (
-                      <span className="inline-flex items-center gap-1 font-mono text-[10px] px-2.5 py-1 rounded-md bg-emerald-500 text-white font-semibold shadow-sm">
-                        <Clock className="w-3 h-3" />
+                  {/* Top Badge: Turnaround Tag */}
+                  {cat.leadTime && (
+                    <div className="absolute top-3 right-3 pointer-events-none z-10">
+                      <span className="inline-flex items-center gap-1 font-mono text-[10px] px-2 py-0.5 rounded-md bg-white/90 border border-neutral-200 text-neutral-700 font-medium shadow-2xs backdrop-blur-sm">
+                        <Clock className="w-3 h-3 text-[#FF5A1F]" />
                         <span>{cat.leadTime}</span>
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Content */}

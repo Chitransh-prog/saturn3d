@@ -71,15 +71,15 @@ export default function Footer() {
           </div>
 
           {/* Clean Modern Geotag & Facility Strip */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 font-mono text-[11px] text-[#5E6573] tracking-wider uppercase text-center px-4">
-            <span className="text-[#FF5A1F] font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
-              Bhopal Facility (Govindpura)
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-neutral-500 text-center px-4">
+            <span className="text-neutral-900 font-medium flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Bhopal Engineering Facility (Govindpura)
             </span>
-            <span className="opacity-40">&bull;</span>
-            <span>Indore Express Corridor (Pithampur / Sanwer Rd)</span>
-            <span className="opacity-40">&bull;</span>
-            <span className="text-emerald-600 font-semibold">24–48h Pan-India Express Air Cargo</span>
+            <span className="text-neutral-300">&bull;</span>
+            <span>Indore Industrial Corridor (Pithampur)</span>
+            <span className="text-neutral-300">&bull;</span>
+            <span className="text-emerald-700 font-medium">24–48h Air Cargo Dispatch</span>
           </div>
 
         </div>

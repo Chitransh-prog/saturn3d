@@ -80,24 +80,22 @@ export default function FAQSection() {
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
-              <span className="type-mono-eyebrow text-[#5B616B]">
-                09 // Knowledge Base
-              </span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+              <span>FAQ &amp; Knowledge Base</span>
             </div>
-            <h2 className="type-h2 text-[#0B0D10]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
               Frequently answered questions.
             </h2>
-            <p className="type-body text-[#5B616B] mt-2">
-              Transparent, verifiable answers on custom 3D printing costs in India, tolerances, material selections, and express dispatch.
+            <p className="text-sm sm:text-base text-neutral-600 mt-2">
+              Transparent specifications on tolerances, material formulations, CAD file preparation, and express dispatch.
             </p>
           </div>
 
-          <div className="precision-badge text-xs shrink-0">
-            Additive FAQ &bull; 2026
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 font-mono text-xs text-neutral-600 shrink-0">
+            <span>Engineering Helpdesk</span>
           </div>
         </div>
 
@@ -107,10 +105,10 @@ export default function FAQSection() {
             <button
               key={t}
               onClick={() => setSelectedTag(t)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
                 selectedTag === t
-                  ? 'bg-[#0B0D10] text-white shadow-sm'
-                  : 'bg-white border border-black/10 text-[#5B616B] hover:text-[#0B0D10] hover:border-black/20'
+                  ? 'bg-neutral-900 text-white font-semibold shadow-xs'
+                  : 'bg-white border border-neutral-200 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
               }`}
             >
               {t}

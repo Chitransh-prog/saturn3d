@@ -50,20 +50,16 @@ export default function FeaturedProductsViewer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="scroll-reveal max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[#FF5A1F] font-mono text-[11px] font-semibold uppercase tracking-widest mb-4 shadow-xs">
-            <Box className="w-3.5 h-3.5" />
-            <span>Interactive 3D Hardware Telemetry // Bhopal Facility</span>
+        <div className="scroll-reveal max-w-2xl mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
+            <Box className="w-3.5 h-3.5 text-[#FF5A1F]" />
+            <span>Interactive 3D Inspection</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111215] mb-4">
-            Real Engineered Parts. <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#111215] via-[#2A2E39] to-[#FF5A1F]">
-              Inspect in Full 3D CAD.
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 mb-3 font-sans">
+            Inspect production parts in real-time 3D.
           </h2>
-          <p className="text-base sm:text-lg text-[#5E6573] leading-relaxed">
-            Rotate, zoom, and test material formulations on real production components manufactured at our 
-            Bhopal precision facility. Order instant units or download specifications.
+          <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+            Rotate, zoom, and test polymer formulations on certified production components manufactured at our facility.
           </p>
         </div>
 
@@ -159,17 +155,17 @@ export default function FeaturedProductsViewer() {
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <Link
                 href={`/product/${activeProduct.id}`}
-                className="w-full sm:w-auto flex-1 h-12 px-6 rounded-xl bg-[#FF5A1F] hover:bg-[#E04F1A] text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-[#FF5A1F]/20 active:scale-[0.99]"
+                className="w-full sm:w-auto flex-1 h-11 px-5 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
               >
-                <span>Open Full Product Page & Order (₹{activeProduct.price.toLocaleString('en-IN')})</span>
+                <span>Order Component &bull; ₹{activeProduct.price.toLocaleString('en-IN')}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               
               <Link
                 href="/custom-lab"
-                className="w-full sm:w-auto h-12 px-5 rounded-xl bg-white hover:bg-black/5 border border-black/15 text-[#111215] font-medium text-sm flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs"
+                className="w-full sm:w-auto h-11 px-4 rounded-lg bg-white hover:bg-neutral-50 border border-neutral-200 text-neutral-800 font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-2xs"
               >
-                <Sparkles className="w-4 h-4 text-[#FF5A1F]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#FF5A1F]" />
                 <span>Upload Custom CAD</span>
               </Link>
             </div>
@@ -177,13 +173,13 @@ export default function FeaturedProductsViewer() {
           </div>
 
           {/* RIGHT: Product Showcase Cards & Quick Selector (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-3">
-            <div className="flex items-center justify-between pb-2 border-b border-black/10">
-              <span className="font-mono text-xs text-[#8A91A0] uppercase tracking-wider font-semibold">
-                Select Part to Inspect ({premierProducts.length} Ready CAD Models)
+          <div className="lg:col-span-5 flex flex-col gap-2.5">
+            <div className="flex items-center justify-between pb-2 border-b border-neutral-200">
+              <span className="text-xs text-neutral-500 font-medium">
+                Production Models ({premierProducts.length})
               </span>
-              <span className="font-mono text-[11px] text-[#FF5A1F] font-semibold">
-                Click card to view in 3D
+              <span className="text-[11px] text-[#FF5A1F] font-medium">
+                Select to view in 3D &rarr;
               </span>
             </div>
 

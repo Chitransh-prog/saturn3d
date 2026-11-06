@@ -103,24 +103,22 @@ Can an engineer review my file geometry for additive fabrication?`;
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
-              <span className="type-mono-eyebrow text-[#5E6573] font-semibold">
-                04 // Instant CAD Telemetry
-              </span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+              <span>Instant Pricing Engine</span>
             </div>
-            <h2 className="type-h2 text-[#111215] font-bold">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
               Instant quote configurator.
             </h2>
-            <p className="type-body text-[#5E6573] mt-2">
-              Upload your CAD geometry (.STL, .STEP, .OBJ, .GLB) or reference drawings, select industrial polymer grades, and review live tiered pricing.
+            <p className="text-sm sm:text-base text-neutral-600 mt-2">
+              Upload your CAD geometry (.STL, .STEP, .OBJ, .GLB), select polymer grades, and calculate live volume pricing.
             </p>
           </div>
 
-          <div className="precision-badge text-xs shrink-0 bg-white border-black/10 text-[#5E6573] shadow-xs">
-            Automated Slicing Engine v3.0
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 font-mono text-xs text-neutral-600 shrink-0">
+            <span>Automated Slicing v3.0</span>
           </div>
         </div>
 

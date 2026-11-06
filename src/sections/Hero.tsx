@@ -96,62 +96,49 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-[100svh] lg:h-[100svh] bg-gradient-to-b from-white via-[#F8F9FC] to-[#F1F3F7] text-[#111215] pt-20 sm:pt-24 pb-6 px-6 sm:px-10 lg:px-16 flex flex-col justify-between overflow-hidden select-none"
-      aria-label="Saturn 3D Printing Service Bhopal India"
+      className="relative w-full min-h-[100svh] lg:h-[100svh] bg-gradient-to-b from-white via-[#F8F9FC] to-[#F1F3F7] text-neutral-900 pt-20 sm:pt-24 pb-8 px-6 sm:px-10 lg:px-16 flex flex-col justify-between overflow-hidden select-none"
+      aria-label="Saturn 3D Printing Service Central India"
     >
       {/* Precision Blueprint Grid */}
-      <div className="absolute inset-0 engineering-grid pointer-events-none" />
-
-      {/* Top Status & Geotag Strip */}
-      <div className="relative z-20 flex items-center justify-between gap-4 pt-1 pb-2">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#FF5A1F] animate-pulse" />
-          <span className="font-mono text-xs font-semibold text-[#111215] tracking-wider uppercase">
-            SATURN 3D // PRECISION ADDITIVE MANUFACTURING LAB
-          </span>
-        </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-black/10 text-xs font-mono text-[#5E6573] shadow-xs">
-          <MapPin className="w-3 h-3 text-[#FF5A1F]" />
-          <span>Govindpura Hub, Bhopal • Indore Corridor (Pithampur) • 24–48h Dispatch</span>
-        </div>
-      </div>
+      <div className="absolute inset-0 engineering-grid pointer-events-none opacity-60" />
 
       {/* 12-Column Main Hero Grid */}
-      <div className="relative z-20 flex-1 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-10 my-auto">
+      <div className="relative z-20 flex-1 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 my-auto">
         
-        {/* Left: Columns 1-6 High-Rank Technical Editorial Content */}
+        {/* Left: Columns 1-6 Clean SaaS Value Proposition */}
         <div
           ref={leftColRef}
-          className="lg:col-span-6 flex flex-col justify-center items-start z-20 space-y-5"
+          className="lg:col-span-6 flex flex-col justify-center items-start z-20 space-y-6"
         >
-          {/* Eyebrow / SEO Category Tag */}
-          <div className="font-mono text-xs font-bold tracking-wider text-[#FF5A1F] uppercase flex items-center gap-2">
-            <span>Online 3D Printing Service • Indore & Bhopal, Central India</span>
+          {/* Clean SaaS Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-xs text-neutral-700 font-medium shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
+            <span>Central India&apos;s Precision Additive Hub &bull; Bhopal &amp; Indore</span>
           </div>
 
           {/* Primary H1 Keyword Headline */}
           <h1
             ref={h1ContainerRef}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#111215] select-none leading-[1.08] font-sans"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 select-none leading-[1.08] font-sans"
           >
             <div className="overflow-hidden">
               <span className="hero-line block">
-                Industrial 3D Printing,
+                Industrial 3D printing.
               </span>
             </div>
             <div className="overflow-hidden">
-              <span className="hero-line block text-[#2A2E39]">
-                In Indore & Bhopal<span className="text-[#FF5A1F]">.</span>
+              <span className="hero-line block text-neutral-400">
+                Engineered for production.
               </span>
             </div>
           </h1>
 
-          {/* Direct, Concise, High-Authority Copy */}
+          {/* Direct, Concise, High-Clarity Copy */}
           <p
             ref={copyRef}
-            className="text-[#5E6573] text-sm sm:text-base leading-relaxed max-w-[48ch]"
+            className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[50ch]"
           >
-            Central India’s premier additive manufacturing facility serving Bhopal and Indore. Precision FDM, 12K optical SLA resin, and Carbon-X PA12 printing with ±0.04&nbsp;mm accuracy. Same-day Bhopal pickup, 12–24h express dispatch to Indore (Pithampur, Sanwer Road), zero MOQ, and instant CAD pricing.
+            Turn CAD models into precision functional parts. High-speed CoreXY FDM, 12K optical SLA resin, and Carbon-X PA12 composites with &plusmn;0.04&nbsp;mm repeatability &mdash; dispatched across Central India in 24&ndash;48 hours with zero MOQ.
           </p>
 
           {/* Core Action CTAs */}
@@ -161,53 +148,41 @@ export default function Hero() {
           >
             <button
               onClick={() => navigate('/custom-lab')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF5A1F] text-white text-sm font-semibold tracking-wide shadow-lg shadow-[#FF5A1F]/25 hover:bg-[#e04e18] transition-all duration-200 active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF5A1F] text-white text-sm font-semibold tracking-wide shadow-md shadow-[#FF5A1F]/20 hover:bg-[#EA4D14] transition-all duration-200 active:scale-[0.98] cursor-pointer"
             >
-              <span>Instant CAD Slicing Quote</span>
+              <span>Upload CAD for Quote</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
               onClick={() => navigate('/categories')}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white border border-black/15 text-sm font-medium text-[#111215] hover:bg-black/5 hover:border-black/30 transition-all duration-200 shadow-xs cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white border border-neutral-200 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:border-neutral-300 transition-all duration-200 shadow-2xs cursor-pointer"
             >
-              Browse Engineering Catalog
+              Browse Parts Catalog
             </button>
           </div>
 
-          {/* Technology & Capability Badges */}
+          {/* Clean SaaS 4-Metric Strip */}
           <div
             ref={chipsRef}
-            className="flex flex-wrap items-center gap-2 pt-1"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 w-full max-w-lg border-t border-neutral-200/80"
           >
-            {featureChips.map((chip, idx) => {
-              const Icon = chip.icon;
-              return (
-                <div
-                  key={idx}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-black/10 text-[11px] font-mono text-[#4B5262] shadow-2xs"
-                >
-                  <Icon className="w-3 h-3 text-[#FF5A1F]" />
-                  <span>{chip.label}</span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Telemetry & Geographic Specs Line */}
-          <div
-            ref={specRef}
-            className="font-mono text-xs text-[#8A91A0] tracking-wide pt-1 flex flex-wrap items-center gap-2"
-          >
-            <span>Govindpura Hub, Bhopal</span>
-            <span className="text-[#FF5A1F]">&bull;</span>
-            <span>Indore Express (Pithampur & Sanwer Rd)</span>
-            <span className="text-[#FF5A1F]">&bull;</span>
-            <span>±0.04 mm verified</span>
-            <span className="text-[#FF5A1F]">&bull;</span>
-            <span>Zero MOQ</span>
-            <span className="text-[#FF5A1F]">&bull;</span>
-            <span>24–48h All-India Air Cargo</span>
+            <div>
+              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">&plusmn;0.04 mm</div>
+              <div className="text-[11px] text-neutral-500 font-medium">Precision Tolerance</div>
+            </div>
+            <div>
+              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">24&ndash;48h</div>
+              <div className="text-[11px] text-neutral-500 font-medium">Express Dispatch</div>
+            </div>
+            <div>
+              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">0 MOQ</div>
+              <div className="text-[11px] text-neutral-500 font-medium">No Minimum Units</div>
+            </div>
+            <div>
+              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">15+</div>
+              <div className="text-[11px] text-neutral-500 font-medium">Certified Polymers</div>
+            </div>
           </div>
         </div>
 
