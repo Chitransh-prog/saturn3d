@@ -176,57 +176,6 @@ export default function ExploreMaterials() {
   const navigate = useNavigate();
   const currentMaterial = materialsData[activeIndex];
 
-  const comparisonRows = [
-    {
-      feature: 'Best For',
-      fdm: 'Large housings, rugged prototypes & batch runs',
-      sla: 'Micro-details, smooth cosmetic surfaces & fluidics',
-      carbon: 'Structural parts replacing machined aluminum',
-    },
-    {
-      feature: 'Max Build Volume',
-      fdm: '350 × 350 × 350 mm',
-      sla: '218 × 123 × 250 mm',
-      carbon: '300 × 300 × 300 mm',
-    },
-    {
-      feature: 'Min Layer Height',
-      fdm: '0.10 mm (100 µm)',
-      sla: '0.025 mm (25 µm)',
-      carbon: '0.12 mm (120 µm)',
-    },
-    {
-      feature: 'Shop Tolerance',
-      fdm: '±0.12 mm',
-      sla: '±0.04 mm',
-      carbon: '±0.05 mm',
-    },
-    {
-      feature: 'Tensile Strength',
-      fdm: '45–55 MPa',
-      sla: '65–75 MPa',
-      carbon: '115–140 MPa',
-    },
-    {
-      feature: 'Heat Deflection (HDT)',
-      fdm: '65–85°C',
-      sla: '75–300°C (High-Temp Resin)',
-      carbon: '150°C',
-    },
-    {
-      feature: 'Starting Rate',
-      fdm: '₹4.50 / gram',
-      sla: '₹14.00 / gram',
-      carbon: '₹26.00 / gram',
-    },
-    {
-      feature: 'Standard Turnaround',
-      fdm: '24–48 Hours',
-      sla: '24–48 Hours',
-      carbon: '48–72 Hours (Annealed)',
-    },
-  ];
-
   return (
     <section
       id="materials"
@@ -350,54 +299,6 @@ export default function ExploreMaterials() {
             </div>
           </div>
 
-        </div>
-
-        {/* Creality-Style Process Comparison Table */}
-        <div className="space-y-6 pt-10 border-t border-black/10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <span className="type-mono-eyebrow text-[#5E6573] font-semibold">
-                BENCHMARK MATRIX
-              </span>
-              <h3 className="type-h3 text-[#111215] font-bold mt-1">
-                Process Comparison: FDM vs SLA vs Carbon-X
-              </h3>
-            </div>
-            <span className="text-xs text-[#5E6573]">
-              Swipe horizontally on mobile &rarr;
-            </span>
-          </div>
-
-          <div className="overflow-x-auto no-scrollbar card-precision border border-black/10 bg-white shadow-xs">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="border-b border-black/10 bg-[#F4F5F8] text-[#111215] font-semibold">
-                  <th className="py-3.5 px-4 sm:px-6">Parameter</th>
-                  <th className="py-3.5 px-4 sm:px-6 text-[#FF5A1F]">Industrial FDM</th>
-                  <th className="py-3.5 px-4 sm:px-6">12K SLA Resin</th>
-                  <th className="py-3.5 px-4 sm:px-6 text-emerald-600">Carbon-X Composite</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-black/10 font-mono text-[11px] sm:text-xs">
-                {comparisonRows.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-[#F8F9FA] transition-colors">
-                    <td className="py-3 px-4 sm:px-6 font-semibold text-[#111215]">
-                      {row.feature}
-                    </td>
-                    <td className="py-3 px-4 sm:px-6 text-[#5E6573]">
-                      {row.fdm}
-                    </td>
-                    <td className="py-3 px-4 sm:px-6 text-[#5E6573]">
-                      {row.sla}
-                    </td>
-                    <td className="py-3 px-4 sm:px-6 text-[#111215] font-semibold">
-                      {row.carbon}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
 
       </div>

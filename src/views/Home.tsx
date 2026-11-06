@@ -133,7 +133,7 @@ export default function Home() {
         <PrinterFleet />
       </div>
 
-      {/* 05. Explore Materials: Deep Graphite Section + Process Comparison Table */}
+      {/* 05. Explore Materials */}
       <div id="specs">
         <ExploreMaterials />
       </div>
