@@ -1,38 +1,51 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { categories } from '@/data/categories';
 import { 
   ArrowUpRight, Layers, ShieldCheck, 
-  Sparkles, Clock, CheckCircle2, ChevronRight,
+  Sparkles, Clock, CheckCircle2, ChevronRight, ChevronDown,
   Boxes
 } from 'lucide-react';
 
 export default function IndustryCategories() {
   const [activeFilter, setActiveFilter] = useState<'all' | 'industrial' | 'consumer'>('all');
+  const [showAll, setShowAll] = useState(false);
 
-  const filteredCategories = categories.filter((cat) => {
-    if (activeFilter === 'all') return true;
-    if (activeFilter === 'industrial') {
-      return [
-        'rapid-prototyping',
-        'industrial-parts-manufacturing',
-        'small-batch-manufacturing',
-        'drone-robotics',
-        'architectural-scale-down-models'
-      ].includes(cat.slug);
-    }
-    if (activeFilter === 'consumer') {
-      return [
-        'corporate-bulk-gifting',
-        'marriage-gifts',
-        'education',
-        'interior'
-      ].includes(cat.slug);
-    }
-    return true;
-  });
+  const filteredCategories = useMemo(() => {
+    return categories.filter((cat) => {
+      if (activeFilter === 'all') return true;
+      if (activeFilter === 'industrial') {
+        return [
+          'rapid-prototyping',
+          'industrial-parts-manufacturing',
+          'small-batch-manufacturing',
+          'drone-robotics',
+          'architectural-scale-down-models'
+        ].includes(cat.slug);
+      }
+      if (activeFilter === 'consumer') {
+        return [
+          'corporate-bulk-gifting',
+          'marriage-gifts',
+          'education',
+          'interior'
+        ].includes(cat.slug);
+      }
+      return true;
+    });
+  }, [activeFilter]);
+
+  const hasMore = filteredCategories.length > 4;
+  const visibleCategories = (!showAll && hasMore)
+    ? filteredCategories.slice(0, 4)
+    : filteredCategories;
+
+  const handleFilterChange = (filter: 'all' | 'industrial' | 'consumer') => {
+    setActiveFilter(filter);
+    setShowAll(false);
+  };
 
   return (
     <section 
@@ -75,7 +88,7 @@ export default function IndustryCategories() {
             <button
               role="tab"
               aria-selected={activeFilter === 'all'}
-              onClick={() => setActiveFilter('all')}
+              onClick={() => handleFilterChange('all')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                 activeFilter === 'all'
                   ? 'bg-neutral-900 text-white font-semibold shadow-xs'
@@ -87,7 +100,7 @@ export default function IndustryCategories() {
             <button
               role="tab"
               aria-selected={activeFilter === 'industrial'}
-              onClick={() => setActiveFilter('industrial')}
+              onClick={() => handleFilterChange('industrial')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                 activeFilter === 'industrial'
                   ? 'bg-neutral-900 text-white font-semibold shadow-xs'
@@ -99,7 +112,7 @@ export default function IndustryCategories() {
             <button
               role="tab"
               aria-selected={activeFilter === 'consumer'}
-              onClick={() => setActiveFilter('consumer')}
+              onClick={() => handleFilterChange('consumer')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                 activeFilter === 'consumer'
                   ? 'bg-neutral-900 text-white font-semibold shadow-xs'
@@ -113,7 +126,7 @@ export default function IndustryCategories() {
 
         {/* Categories Grid - Rich with Visual Photography & Telemetry */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {filteredCategories.map((cat, i) => {
+          {visibleCategories.map((cat, i) => {
             const Icon = cat.icon;
             return (
               <Link 
@@ -191,6 +204,37 @@ export default function IndustryCategories() {
             );
           })}
         </div>
+
+        {/* View All / Show Less Action Bar */}
+        {hasMore && (
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              className="w-full sm:w-auto px-7 py-3 rounded-xl bg-[#412f91] hover:bg-[#342575] text-white font-mono font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-[#412f91]/25 active:scale-95 cursor-pointer"
+              aria-expanded={showAll}
+            >
+              <span>
+                {showAll
+                  ? 'Show Less Sectors'
+                  : `View All (${filteredCategories.length}) Sectors`}
+              </span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 ${
+                  showAll ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+
+            <Link
+              href="/categories"
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white hover:bg-neutral-50 border border-neutral-300 text-neutral-800 font-mono font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-2xs active:scale-95 text-center"
+            >
+              <span>Browse Full Component Catalog</span>
+              <ArrowUpRight className="w-4 h-4 text-[#412f91]" />
+            </Link>
+          </div>
+        )}
 
         {/* Bottom Facility Guarantee Bar */}
         <div className="mt-12 sm:mt-16 p-4 sm:p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">

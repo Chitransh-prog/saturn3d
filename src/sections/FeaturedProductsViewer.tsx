@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { 
   Box, Eye, ArrowRight, Layers, ShieldCheck, 
-  Sparkles, CheckCircle2, ChevronRight, Compass,
+  Sparkles, CheckCircle2, ChevronRight, ChevronDown, Compass,
   SlidersHorizontal, Cpu, Scale, Clock, Ruler
 } from 'lucide-react';
 import { products, type Product } from '@/data/products';
@@ -25,6 +25,11 @@ export default function FeaturedProductsViewer() {
 
   const [activeProductId, setActiveProductId] = useState<string>(premierProducts[0]?.id || '1');
   const [selectedMaterial, setSelectedMaterial] = useState<string>('PLA');
+  const [showAllModels, setShowAllModels] = useState<boolean>(false);
+
+  const visiblePremier = useMemo(() => {
+    return showAllModels ? premierProducts : premierProducts.slice(0, 4);
+  }, [premierProducts, showAllModels]);
 
   const activeProduct = useMemo(() => {
     return premierProducts.find((p) => p.id === activeProductId) || premierProducts[0];
@@ -184,7 +189,7 @@ export default function FeaturedProductsViewer() {
             </div>
 
             <div className="space-y-2.5 max-h-[660px] overflow-y-auto pr-1 custom-scrollbar">
-              {premierProducts.map((p) => {
+              {visiblePremier.map((p) => {
                 const isSelected = p.id === activeProductId;
                 return (
                   <div
@@ -262,6 +267,26 @@ export default function FeaturedProductsViewer() {
                 );
               })}
             </div>
+
+            {/* Toggle View All / Show Less for Models */}
+            {premierProducts.length > 4 && (
+              <button
+                type="button"
+                onClick={() => setShowAllModels((prev) => !prev)}
+                className="w-full py-2.5 px-3 rounded-lg bg-white hover:bg-neutral-50 border border-neutral-200 text-[#111215] hover:text-[#412f91] text-xs font-mono font-medium flex items-center justify-center gap-1.5 transition-all shadow-2xs cursor-pointer active:scale-[0.99]"
+              >
+                <span>
+                  {showAllModels
+                    ? 'Show Less Models'
+                    : `View All (${premierProducts.length}) Models`}
+                </span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                    showAllModels ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+            )}
 
             {/* Bottom Catalog Link */}
             <div className="pt-3">
