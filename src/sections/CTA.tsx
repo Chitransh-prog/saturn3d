@@ -12,8 +12,8 @@ export default function CTA() {
     <>
       <BulkOrderForm isOpen={isBulkFormOpen} onClose={() => setIsBulkFormOpen(false)} />
 
-      <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#F8F9FA] border-t border-black/10 font-sans">
-        <div data-aos="fade-up" className="max-w-7xl mx-auto rounded-3xl bg-white text-neutral-900 p-8 sm:p-12 lg:p-14 relative overflow-hidden border border-neutral-200/90 shadow-lg">
+      <section className="w-full py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-[#F8F9FA] border-t border-black/10 font-sans">
+        <div data-aos="fade-up" className="max-w-7xl mx-auto rounded-3xl bg-white text-neutral-900 p-5 sm:p-10 lg:p-14 relative overflow-hidden border border-neutral-200/90 shadow-lg">
           
           {/* Subtle Orange Ambient Accent */}
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FF5A1F]/5 rounded-full blur-3xl pointer-events-none" />
@@ -42,10 +42,10 @@ export default function CTA() {
           </div>
 
           {/* Actions Row */}
-          <div data-aos="fade-up" data-aos-delay="100" className="relative z-10 flex flex-wrap items-center gap-3">
+          <div data-aos="fade-up" data-aos-delay="100" className="relative z-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
             <Link
               href="/custom-lab"
-              className="px-5 py-3 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-sm active:scale-[0.98]"
+              className="px-5 py-3 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
             >
               <Sparkles className="w-4 h-4" />
               <span>Upload CAD for Quote</span>
@@ -56,7 +56,7 @@ export default function CTA() {
               href="https://wa.me/918889988874?text=Hi%20Saturn%203D%20team%2C%20I%20would%20like%20to%20discuss%20a%20custom%20fabrication%20project."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-3 rounded-lg bg-white hover:bg-neutral-50 text-neutral-800 border border-neutral-200 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all shadow-2xs active:scale-[0.98]"
+              className="px-4 py-3 rounded-lg bg-white hover:bg-neutral-50 text-neutral-800 border border-neutral-200 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-2xs active:scale-[0.98]"
             >
               <MessageSquare className="w-4 h-4 text-emerald-600" />
               <span>Direct WhatsApp Desk</span>
@@ -65,7 +65,7 @@ export default function CTA() {
             <button
               type="button"
               onClick={() => setIsBulkFormOpen(true)}
-              className="px-4 py-3 rounded-lg bg-neutral-100 hover:bg-neutral-200/80 text-neutral-800 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all cursor-pointer active:scale-[0.98]"
+              className="px-4 py-3 rounded-lg bg-neutral-100 hover:bg-neutral-200/80 text-neutral-800 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-[0.98]"
             >
               <FileText className="w-4 h-4 text-neutral-500" />
               <span>Enterprise Batch RFP</span>

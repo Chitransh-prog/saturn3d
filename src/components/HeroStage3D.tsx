@@ -576,7 +576,7 @@ export default function HeroStage3D({
   }, []);
 
   return (
-    <div className="relative w-full h-full min-h-[420px] rounded-3xl overflow-hidden bg-gradient-to-b from-white via-[#F4F5F8] to-[#E9EBF0] border border-black/10 shadow-xl flex flex-col justify-between select-none">
+    <div className="relative w-full h-full min-h-[340px] sm:min-h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-b from-white via-[#F4F5F8] to-[#E9EBF0] border border-black/10 shadow-xl flex flex-col justify-between select-none">
       
       {/* 3D Canvas Renders 100% INSTANTLY with 0 delay */}
       <Canvas
@@ -584,6 +584,7 @@ export default function HeroStage3D({
         camera={{ position: [3.4, 2.7, 4.2], fov: 36 }}
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true }}
+        style={{ touchAction: 'pan-y' }}
         className="w-full h-full cursor-grab active:cursor-grabbing"
       >
         <CameraAndStudioSetup />
@@ -620,11 +621,11 @@ export default function HeroStage3D({
       </Canvas>
 
       {/* Top Right Discreet View & Playback Controls */}
-      <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 pointer-events-auto">
+      <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 flex items-center gap-1 sm:gap-1.5 pointer-events-auto">
         <button
           onClick={() => setIsAutoPrinting(!isAutoPrinting)}
           title={isAutoPrinting ? 'Pause Print Kinematics' : 'Resume Print Kinematics'}
-          className={`p-2 rounded-xl border backdrop-blur-md transition-all shadow-xs ${
+          className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl border backdrop-blur-md transition-all shadow-xs ${
             isAutoPrinting
               ? 'bg-[#FF5A1F]/15 border-[#FF5A1F] text-[#FF5A1F]'
               : 'bg-white/90 border-black/10 text-[#5E6573] hover:text-[#111215]'
@@ -636,7 +637,7 @@ export default function HeroStage3D({
         <button
           onClick={() => setAutoRotate(!autoRotate)}
           title="Toggle Smooth Auto-Rotation"
-          className={`p-2 rounded-xl border backdrop-blur-md transition-all shadow-xs ${
+          className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl border backdrop-blur-md transition-all shadow-xs ${
             autoRotate
               ? 'bg-[#FF5A1F]/15 border-[#FF5A1F] text-[#FF5A1F]'
               : 'bg-white/90 border-black/10 text-[#5E6573] hover:text-[#111215]'
@@ -648,19 +649,20 @@ export default function HeroStage3D({
         <button
           onClick={handleResetCamera}
           title="Reset Isometric Angle"
-          className="p-2 rounded-xl bg-white/90 border border-black/10 text-[#5E6573] hover:text-[#111215] backdrop-blur-md transition-all shadow-xs"
+          className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-white/90 border border-black/10 text-[#5E6573] hover:text-[#111215] backdrop-blur-md transition-all shadow-xs"
         >
           <RefreshCw className="w-3.5 h-3.5" />
         </button>
       </div>
 
       {/* Engineered Bottom Control Deck: Layer Scrubber + Real-Time Telemetry */}
-      <div className="absolute bottom-3 left-3 right-3 flex flex-col gap-2 p-2.5 sm:p-3 rounded-2xl bg-white/95 border border-black/10 backdrop-blur-md z-20 pointer-events-auto shadow-xl">
+      <div className="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex flex-col gap-1.5 sm:gap-2 p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white/95 border border-black/10 backdrop-blur-md z-20 pointer-events-auto shadow-xl">
         {/* Row 1: Layer Slicing Scrubber */}
-        <div className="flex items-center gap-2.5 w-full">
-          <div className="flex items-center gap-1.5 text-xs font-mono text-[#5E6573] flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-2.5 w-full">
+          <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-[#5E6573] flex-shrink-0">
             <Sliders className="w-3.5 h-3.5 text-[#FF5A1F]" />
-            <span className="font-semibold text-[#111215]">Layer Slicing:</span>
+            <span className="font-semibold text-[#111215] hidden xs:inline">Layer Slicing:</span>
+            <span className="font-semibold text-[#111215] xs:hidden">Slice:</span>
           </div>
 
           <input
@@ -675,27 +677,27 @@ export default function HeroStage3D({
           />
 
           <div className="flex items-center gap-1.5 flex-shrink-0">
-            <span className="font-mono text-xs text-[#FF5A1F] font-bold px-2 py-0.5 rounded-md bg-[#FF5A1F]/10 border border-[#FF5A1F]/20 min-w-[42px] text-center">
+            <span className="font-mono text-[11px] sm:text-xs text-[#FF5A1F] font-bold px-1.5 sm:px-2 py-0.5 rounded-md bg-[#FF5A1F]/10 border border-[#FF5A1F]/20 min-w-[38px] sm:min-w-[42px] text-center">
               {Math.round(activeProgress * 100)}%
             </span>
           </div>
         </div>
 
         {/* Row 2: Real-Time Live Kinematics Telemetry Readout */}
-        <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] font-mono text-[#5E6573] border-t border-black/10 pt-2">
-          <div className="flex items-center gap-2">
-            <span className="flex items-center gap-1.5 text-emerald-700 font-semibold px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200">
+        <div className="flex items-center justify-between gap-1 text-[10px] sm:text-[11px] font-mono text-[#5E6573] border-t border-black/10 pt-1.5 sm:pt-2">
+          <div className="flex items-center gap-1.5 truncate">
+            <span className="flex items-center gap-1 text-emerald-700 font-semibold px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-[9px] sm:text-[10px] shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Printing PA12-CF
+              PA12-CF
             </span>
-            <span className="text-black/20">•</span>
-            <span>Z: {(activeProgress * 58).toFixed(1)}mm</span>
+            <span className="text-black/20 hidden xs:inline">•</span>
+            <span className="text-[10px] sm:text-[11px]">Z: {(activeProgress * 58).toFixed(1)}mm</span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span>X: {dynamicCoords.x > 0 ? `+${dynamicCoords.x}` : dynamicCoords.x} / Y: {dynamicCoords.y > 0 ? `+${dynamicCoords.y}` : dynamicCoords.y}</span>
-            <span className="text-black/20">•</span>
-            <span className="text-[#111215] font-bold px-1.5 py-0.5 rounded bg-black/5 border border-black/10">±0.04mm</span>
+          <div className="flex items-center gap-1.5 shrink-0 text-[10px] sm:text-[11px]">
+            <span className="hidden sm:inline">X: {dynamicCoords.x > 0 ? `+${dynamicCoords.x}` : dynamicCoords.x} / Y: {dynamicCoords.y > 0 ? `+${dynamicCoords.y}` : dynamicCoords.y}</span>
+            <span className="text-black/20 hidden sm:inline">•</span>
+            <span className="text-[#111215] font-bold px-1.5 py-0.5 rounded bg-black/5 border border-black/10 text-[9px] sm:text-[10px]">±0.04mm</span>
           </div>
         </div>
       </div>

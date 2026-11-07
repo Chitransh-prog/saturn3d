@@ -103,7 +103,7 @@ export default function PrinterFleet() {
               key={printer.id}
               data-aos="fade-up"
               data-aos-delay={idx * 150}
-              className="group relative flex flex-col justify-between bg-[#FAFAFB] hover:bg-white rounded-3xl p-8 md:p-12 border border-[#0B0D10]/10 transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.04]"
+              className="group relative flex flex-col justify-between bg-[#FAFAFB] hover:bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border border-[#0B0D10]/10 transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.04]"
             >
               {/* Top Typography & CTAs (Exact Creality / SparkX Studio Layout) */}
               <div className="flex flex-col items-center text-center">
@@ -111,19 +111,19 @@ export default function PrinterFleet() {
                   {printer.badge}
                 </span>
 
-                <h3 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#0B0D10] font-sans">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#0B0D10] font-sans">
                   {printer.name}
                 </h3>
 
-                <p className="text-base md:text-lg text-[#5B616B] mt-2 mb-6 font-medium max-w-md">
+                <p className="text-sm sm:text-base md:text-lg text-[#5B616B] mt-2 mb-6 font-medium max-w-md">
                   {printer.headline}
                 </p>
 
-                {/* Pill Action Buttons */}
-                <div className="flex items-center gap-3 mb-8">
+                {/* Pill Action Buttons - Mobile Responsive Wrap */}
+                <div className="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 mb-6 sm:mb-8 w-full">
                   <button
                     onClick={() => navigate(printer.primaryCta.href)}
-                    className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-[#0B0D10] text-white text-sm font-medium tracking-wide transition-all duration-200 hover:bg-[#FF5A1F] hover:shadow-lg hover:shadow-[#FF5A1F]/20 active:scale-95"
+                    className="w-full xs:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#0B0D10] text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-200 hover:bg-[#FF5A1F] hover:shadow-lg hover:shadow-[#FF5A1F]/20 active:scale-95"
                   >
                     {printer.primaryCta.label}
                   </button>
@@ -131,7 +131,7 @@ export default function PrinterFleet() {
                   {printer.secondaryCta && (
                     <button
                       onClick={() => navigate(printer.secondaryCta!.href)}
-                      className="inline-flex items-center justify-center px-7 py-3 rounded-full bg-white text-[#0B0D10] border border-[#0B0D10]/20 text-sm font-medium tracking-wide transition-all duration-200 hover:border-[#0B0D10] hover:bg-[#F5F6F8] active:scale-95"
+                      className="w-full xs:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-white text-[#0B0D10] border border-[#0B0D10]/20 text-xs sm:text-sm font-medium tracking-wide transition-all duration-200 hover:border-[#0B0D10] hover:bg-[#F5F6F8] active:scale-95"
                     >
                       {printer.secondaryCta.label}
                     </button>

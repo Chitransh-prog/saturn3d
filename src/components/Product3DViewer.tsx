@@ -1201,6 +1201,7 @@ export default function Product3DViewer({ product, selectedMaterial = "PLA" }: P
           }
         >
             <Canvas
+              style={{ touchAction: 'pan-y' }}
               camera={{ position: [0, 1.5, 5.8], fov: 44 }}
               gl={{
                 antialias: true,

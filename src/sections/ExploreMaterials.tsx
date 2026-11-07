@@ -179,7 +179,7 @@ export default function ExploreMaterials() {
   return (
     <section
       id="materials"
-      className="w-full bg-[#F8F9FA] text-[#111215] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 relative overflow-hidden font-body border-t border-black/10"
+      className="w-full bg-[#F8F9FA] text-[#111215] py-20 sm:py-28 px-4 sm:px-8 lg:px-16 relative overflow-hidden font-body border-t border-black/10"
       aria-label="Saturn 3D Materials and Process Science"
     >
       <div className="max-w-7xl mx-auto space-y-20">
@@ -289,7 +289,7 @@ export default function ExploreMaterials() {
             </div>
 
             <div className="w-full h-full relative">
-              <Canvas camera={{ position: [0, 1.2, 3.8], fov: 38 }} dpr={[1, 2]}>
+              <Canvas camera={{ position: [0, 1.2, 3.8], fov: 38 }} dpr={[1, 2]} style={{ touchAction: 'pan-y' }}>
                 <ambientLight intensity={0.7} />
                 <directionalLight position={[-3, 4, 3]} intensity={2.2} color="#FFF8F0" />
                 <directionalLight position={[3, 2, -2]} intensity={2.0} color="#FF5A1F" />

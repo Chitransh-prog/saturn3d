@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Layers, Cpu, ShieldCheck, Zap, MapPin } from 'lucide-react';
+import { ArrowRight, Layers, Cpu, ShieldCheck, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import HeroStage3D from '@/components/HeroStage3D';
 
@@ -86,40 +86,33 @@ export default function Hero() {
     return () => ctx.revert();
   }, [reducedMotion]);
 
-  const featureChips = [
-    { label: 'Industrial FDM & CoreXY', icon: Layers },
-    { label: '12K SLA Photopolymer Resin', icon: Cpu },
-    { label: 'Carbon-X PA12 Composite', icon: ShieldCheck },
-    { label: '±0.04 mm Dimensional Precision', icon: Zap },
-  ];
-
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-[100svh] lg:h-[100svh] bg-gradient-to-b from-white via-[#F8F9FC] to-[#F1F3F7] text-neutral-900 pt-20 sm:pt-24 pb-8 px-6 sm:px-10 lg:px-16 flex flex-col justify-between overflow-hidden select-none"
+      className="relative w-full min-h-[100svh] lg:h-[100svh] bg-gradient-to-b from-white via-[#F8F9FC] to-[#F1F3F7] text-neutral-900 pt-20 sm:pt-24 pb-12 lg:pb-8 px-4 sm:px-8 lg:px-16 flex flex-col justify-between overflow-x-clip select-none"
       aria-label="Saturn 3D Printing Service Central India"
     >
       {/* Precision Blueprint Grid */}
       <div className="absolute inset-0 engineering-grid pointer-events-none opacity-60" />
 
       {/* 12-Column Main Hero Grid */}
-      <div className="relative z-20 flex-1 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 my-auto">
+      <div className="relative z-20 flex-1 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 my-auto py-2 sm:py-4">
         
         {/* Left: Columns 1-6 Clean SaaS Value Proposition */}
         <div
           ref={leftColRef}
-          className="lg:col-span-6 flex flex-col justify-center items-start z-20 space-y-6"
+          className="lg:col-span-6 flex flex-col justify-center items-start z-20 space-y-4 sm:space-y-6"
         >
           {/* Clean SaaS Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-xs text-neutral-700 font-medium shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
-            <span>Central India&apos;s Precision Additive Hub &bull; Bhopal &amp; Indore</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-[11px] sm:text-xs text-neutral-700 font-medium shadow-2xs max-w-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse shrink-0" />
+            <span className="truncate">Central India&apos;s Precision Hub &bull; Bhopal &amp; Indore</span>
           </div>
 
-          {/* Primary H1 Keyword Headline */}
+          {/* Primary H1 Keyword Headline - Mobile Optimized Clamp */}
           <h1
             ref={h1ContainerRef}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 select-none leading-[1.08] font-sans"
+            className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-neutral-900 select-none leading-[1.12] sm:leading-[1.08] font-sans"
           >
             <div className="overflow-hidden">
               <span className="hero-line block">
@@ -136,19 +129,19 @@ export default function Hero() {
           {/* Direct, Concise, High-Clarity Copy */}
           <p
             ref={copyRef}
-            className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[50ch]"
+            className="text-neutral-600 text-xs sm:text-sm lg:text-base leading-relaxed max-w-[50ch]"
           >
             Turn CAD models into precision functional parts. High-speed CoreXY FDM, 12K optical SLA resin, and Carbon-X PA12 composites with &plusmn;0.04&nbsp;mm repeatability &mdash; dispatched across Central India in 24&ndash;48 hours with zero MOQ.
           </p>
 
-          {/* Core Action CTAs */}
+          {/* Core Action CTAs - Responsive Full Width on Mobile */}
           <div
             ref={ctaGroupRef}
-            className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 w-full sm:w-auto pt-1"
           >
             <button
               onClick={() => navigate('/custom-lab')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF5A1F] text-white text-sm font-semibold tracking-wide shadow-md shadow-[#FF5A1F]/20 hover:bg-[#EA4D14] transition-all duration-200 active:scale-[0.98] cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF5A1F] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-md shadow-[#FF5A1F]/20 hover:bg-[#EA4D14] transition-all duration-200 active:scale-[0.98] cursor-pointer"
             >
               <span>Upload CAD for Quote</span>
               <ArrowRight className="w-4 h-4" />
@@ -156,7 +149,7 @@ export default function Hero() {
 
             <button
               onClick={() => navigate('/categories')}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white border border-neutral-200 text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:border-neutral-300 transition-all duration-200 shadow-2xs cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white border border-neutral-200 text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-50 hover:border-neutral-300 transition-all duration-200 shadow-2xs cursor-pointer"
             >
               Browse Parts Catalog
             </button>
@@ -165,23 +158,23 @@ export default function Hero() {
           {/* Clean SaaS 4-Metric Strip */}
           <div
             ref={chipsRef}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 w-full max-w-lg border-t border-neutral-200/80"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-3 w-full max-w-lg border-t border-neutral-200/80"
           >
-            <div>
-              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">&plusmn;0.04 mm</div>
-              <div className="text-[11px] text-neutral-500 font-medium">Precision Tolerance</div>
+            <div className="p-2 sm:p-0 rounded-lg bg-white/60 sm:bg-transparent border border-neutral-200/50 sm:border-0">
+              <div className="text-sm sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">&plusmn;0.04 mm</div>
+              <div className="text-[10px] sm:text-[11px] text-neutral-500 font-medium">Precision Tolerance</div>
             </div>
-            <div>
-              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">24&ndash;48h</div>
-              <div className="text-[11px] text-neutral-500 font-medium">Express Dispatch</div>
+            <div className="p-2 sm:p-0 rounded-lg bg-white/60 sm:bg-transparent border border-neutral-200/50 sm:border-0">
+              <div className="text-sm sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">24&ndash;48h</div>
+              <div className="text-[10px] sm:text-[11px] text-neutral-500 font-medium">Express Dispatch</div>
             </div>
-            <div>
-              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">0 MOQ</div>
-              <div className="text-[11px] text-neutral-500 font-medium">No Minimum Units</div>
+            <div className="p-2 sm:p-0 rounded-lg bg-white/60 sm:bg-transparent border border-neutral-200/50 sm:border-0">
+              <div className="text-sm sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">0 MOQ</div>
+              <div className="text-[10px] sm:text-[11px] text-neutral-500 font-medium">No Minimum Units</div>
             </div>
-            <div>
-              <div className="text-base sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">15+</div>
-              <div className="text-[11px] text-neutral-500 font-medium">Certified Polymers</div>
+            <div className="p-2 sm:p-0 rounded-lg bg-white/60 sm:bg-transparent border border-neutral-200/50 sm:border-0">
+              <div className="text-sm sm:text-lg font-bold text-neutral-900 font-mono tracking-tight">15+</div>
+              <div className="text-[10px] sm:text-[11px] text-neutral-500 font-medium">Certified Polymers</div>
             </div>
           </div>
         </div>
@@ -189,7 +182,7 @@ export default function Hero() {
         {/* Right: Columns 7-12 3D Printer Stage */}
         <div
           ref={stageColRef}
-          className="lg:col-span-6 relative w-full h-[46svh] sm:h-[50svh] lg:h-[72svh] flex flex-col items-center justify-center z-10"
+          className="lg:col-span-6 relative w-full h-[360px] sm:h-[440px] lg:h-[72svh] flex flex-col items-center justify-center z-10"
         >
           <div className="w-full h-full relative">
             <React.Suspense fallback={null}>

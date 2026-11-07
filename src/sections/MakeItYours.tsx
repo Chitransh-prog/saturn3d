@@ -97,7 +97,7 @@ Can an engineer review my file geometry for additive fabrication?`;
   return (
     <section
       id="configurator"
-      className="w-full bg-white text-[#111215] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 relative overflow-hidden font-body border-t border-black/10"
+      className="w-full bg-white text-[#111215] py-20 sm:py-28 px-4 sm:px-8 lg:px-16 relative overflow-hidden font-body border-t border-black/10"
       aria-label="Instant CAD Quote Configurator"
     >
       <div className="max-w-7xl mx-auto space-y-12">

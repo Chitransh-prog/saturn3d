@@ -31,21 +31,21 @@ export default function TechResultsDuo() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch scroll-stagger">
           
           {/* Card 1: Our Technology with Live 3D Metamaterial Lattice & Optical Engine */}
-          <div data-aos="fade-up" data-aos-delay="100" className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+          <div data-aos="fade-up" data-aos-delay="100" className="group relative bg-white border border-neutral-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
             <div className="relative z-10">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#FF5A1F] block mb-2 font-mono">
                 Technology &bull; Kinematics &bull; Resins
               </span>
-              <h3 className="font-sans text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight">
+              <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900 tracking-tight">
                 Precision Additive Systems
               </h3>
-              <p className="text-sm text-neutral-600 mt-2.5 max-w-md leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 mt-2 max-w-md leading-relaxed">
                 Voron CoreXY high-speed motion gantries and 12K Stereolithography engines engineered for sub-micron surface accuracy and thermal stability.
               </p>
             </div>
 
             {/* Live Interactive 3D Technology Viewport */}
-            <div className="relative my-6 h-72 sm:h-80 w-full flex items-center justify-center rounded-2xl bg-[#F4F5F8] border border-black/10 overflow-hidden shadow-inner">
+            <div className="relative my-5 sm:my-6 h-56 sm:h-72 lg:h-80 w-full flex items-center justify-center rounded-xl sm:rounded-2xl bg-[#F4F5F8] border border-black/10 overflow-hidden shadow-inner">
               {/* 3D Canvas */}
               <TechnologyCard3D />
 
@@ -62,7 +62,7 @@ export default function TechResultsDuo() {
             </div>
 
             {/* Bottom Actions */}
-            <div className="relative z-10 pt-4 border-t border-black/10 flex flex-wrap items-center justify-between gap-4">
+            <div className="relative z-10 pt-4 border-t border-black/10 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
               <div className="flex items-center gap-2">
                 <span className="px-2.5 py-1 rounded-md bg-[#F1F3F7] border border-black/10 font-mono text-[10px] text-[#5E6573] font-medium">
                   CoreXY Precision
@@ -77,7 +77,7 @@ export default function TechResultsDuo() {
                   const el = document.getElementById('specs');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="btn-precision-secondary text-xs font-mono font-medium uppercase tracking-wider py-2.5 px-4 inline-flex items-center gap-2 cursor-pointer bg-white border-black/15 text-[#111215] hover:bg-black/5"
+                className="btn-precision-secondary text-xs font-mono font-medium uppercase tracking-wider py-2 sm:py-2.5 px-3 sm:px-4 inline-flex items-center gap-2 cursor-pointer bg-white border-black/15 text-[#111215] hover:bg-black/5"
               >
                 <span>View Tech Specs</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -86,21 +86,21 @@ export default function TechResultsDuo() {
           </div>
 
           {/* Card 2: Your Results with Live 3D Printed Parts */}
-          <div data-aos="fade-up" data-aos-delay="200" className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+          <div data-aos="fade-up" data-aos-delay="200" className="group relative bg-white border border-neutral-200/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
             <div className="relative z-10">
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 block mb-2 font-mono">
                 Aerospace &bull; Robotics &bull; Tooling
               </span>
-              <h3 className="font-sans text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight">
+              <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900 tracking-tight">
                 Production-Ready Parts
               </h3>
-              <p className="text-sm text-neutral-600 mt-2.5 max-w-md leading-relaxed">
+              <p className="text-xs sm:text-sm text-neutral-600 mt-2 max-w-md leading-relaxed">
                 From lightweight drone airframes and lattice cushions to high-torque robotics gears, manufactured with aerospace repeatability.
               </p>
             </div>
 
             {/* Live Interactive 3D Results Viewport */}
-            <div className="relative my-6 h-72 sm:h-80 w-full flex items-center justify-center rounded-2xl bg-[#F4F5F8] border border-black/10 overflow-hidden shadow-inner">
+            <div className="relative my-5 sm:my-6 h-56 sm:h-72 lg:h-80 w-full flex items-center justify-center rounded-xl sm:rounded-2xl bg-[#F4F5F8] border border-black/10 overflow-hidden shadow-inner">
               {/* 3D Canvas */}
               <ResultsCard3D />
 

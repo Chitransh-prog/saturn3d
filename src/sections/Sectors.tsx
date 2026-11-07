@@ -37,7 +37,7 @@ export default function IndustryCategories() {
   return (
     <section 
       id="categories" 
-      className="w-full py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#F8F9FB] border-b border-black/10 relative overflow-hidden"
+      className="w-full py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F9FB] border-b border-black/10 relative overflow-hidden"
     >
       {/* Background Subtle Precision Grid */}
       <div 

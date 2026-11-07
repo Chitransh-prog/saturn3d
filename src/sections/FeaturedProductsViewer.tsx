@@ -47,7 +47,7 @@ export default function FeaturedProductsViewer() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FF5A1F]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
         
         {/* Section Header */}
         <div data-aos="fade-up" className="scroll-reveal max-w-2xl mb-10 sm:mb-14">
@@ -104,7 +104,7 @@ export default function FeaturedProductsViewer() {
               </div>
 
               {/* 3D Canvas Container */}
-              <div className="relative w-full h-[400px] sm:h-[480px] bg-[#F4F5F8]">
+              <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[480px] bg-[#F4F5F8]">
                 <Product3DViewer
                   product={activeProduct}
                   selectedMaterial={selectedMaterial}

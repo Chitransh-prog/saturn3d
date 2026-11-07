@@ -199,11 +199,11 @@ export default function Footer() {
         ================================================================= */}
         <div className="pt-8 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#5E6573]">
           
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 text-center sm:text-left">
             <span className="font-mono text-[11px] text-[#5E6573]">
               &copy; {new Date().getFullYear()} Saturn 3D Printing Co.
             </span>
-            <span className="text-black/20">&bull;</span>
+            <span className="text-black/20 hidden xs:inline">&bull;</span>
             <span className="font-mono text-[11px] text-[#8A91A0]">
               Precision Additive Manufacturing &bull; Bhopal &amp; Indore, MP, India
             </span>

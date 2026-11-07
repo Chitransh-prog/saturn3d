@@ -74,7 +74,7 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="w-full bg-[#F5F6F8] text-[#0B0D10] py-20 sm:py-28 px-6 sm:px-10 lg:px-16 overflow-hidden font-body border-t border-black/10"
+      className="w-full bg-[#F5F6F8] text-[#0B0D10] py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 overflow-hidden font-body border-t border-black/10"
       aria-label="Frequently Asked Questions"
     >
       <div className="max-w-7xl mx-auto space-y-12">
@@ -129,9 +129,9 @@ export default function FAQSection() {
                   aria-expanded={isOpen}
                   aria-controls={contentId}
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full py-5 px-6 sm:px-8 text-left flex items-start justify-between gap-4 cursor-pointer hover:bg-neutral-50/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] focus-visible:ring-inset"
+                  className="w-full py-4 sm:py-5 px-4 sm:px-8 text-left flex items-start justify-between gap-3 sm:gap-4 cursor-pointer hover:bg-neutral-50/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] focus-visible:ring-inset"
                 >
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     <span className="font-mono text-xs font-medium text-[#FF5A1F] mt-0.5 shrink-0">
                       0{idx + 1}
                     </span>
@@ -150,7 +150,7 @@ export default function FAQSection() {
                     id={contentId}
                     role="region"
                     aria-labelledby={headerId}
-                    className="px-6 sm:px-8 pb-6 pl-14 sm:pl-16 space-y-3 text-sm text-[#5E6573] leading-relaxed animate-in fade-in slide-in-from-top-1 duration-150"
+                    className="px-4 sm:px-8 pb-5 sm:pb-6 pl-10 sm:pl-16 space-y-3 text-sm text-[#5E6573] leading-relaxed animate-in fade-in slide-in-from-top-1 duration-150"
                   >
                     <p className="font-medium text-[#0B0D10]">
                       {faq.shortAnswer}

@@ -169,7 +169,7 @@ export default function ProofGallery() {
   return (
     <section
       id="proof"
-      className="w-full bg-[#F5F6F8] text-[#0B0D10] py-20 sm:py-28 px-4 sm:px-8 lg:px-12 overflow-hidden font-body border-t border-black/10"
+      className="w-full bg-[#F5F6F8] text-[#0B0D10] py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 overflow-hidden font-body border-t border-black/10"
       aria-label="Real Prints Bento Gallery"
     >
       <div className="max-w-7xl mx-auto space-y-12">
@@ -239,7 +239,7 @@ export default function ProofGallery() {
         {/* =================================================================
             MASTER BENTO GRID (4-Column Layout directly matching user collage)
         ================================================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[220px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 auto-rows-[190px] sm:auto-rows-[220px]">
           {filteredPrints.map((item, idx) => {
             const isTall = item.colSpan.includes('row-span-2');
             return (
@@ -252,7 +252,7 @@ export default function ProofGallery() {
                   group relative overflow-hidden rounded-2xl bg-white border border-neutral-200/90 
                   shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer
                   ${item.colSpan}
-                  ${isTall ? 'min-h-[456px]' : 'min-h-[220px]'}
+                  ${isTall ? 'min-h-[300px] sm:min-h-[456px]' : 'min-h-[190px] sm:min-h-[220px]'}
                 `}
               >
                 {/* Image Surface with Zoom */}
