@@ -40,7 +40,7 @@ export default function Footer() {
         {/* =================================================================
             1. MONUMENTAL ONE-LINE BRAND BANNER WITH 3D REVOLVING SATURN EMBLEM
         ================================================================= */}
-        <div className="relative w-full py-4 sm:py-8 flex flex-col items-center justify-center">
+        <div data-aos="fade-up" className="relative w-full py-4 sm:py-8 flex flex-col items-center justify-center">
           
           <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-4 md:gap-6 w-full max-w-full overflow-hidden select-none">
             
@@ -87,7 +87,7 @@ export default function Footer() {
         {/* =================================================================
             2. SIMPLISTIC & MODERN 3-COLUMN ARCHITECTURE
         ================================================================= */}
-        <div className="pt-8 border-t border-black/10 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+        <div data-aos="fade-up" data-aos-delay="100" className="pt-8 border-t border-black/10 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           
           {/* Col 1: About / Facility Telemetry (4 Cols) */}
           <div className="md:col-span-4 space-y-4">

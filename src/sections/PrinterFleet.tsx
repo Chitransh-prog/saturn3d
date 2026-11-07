@@ -83,7 +83,7 @@ export default function PrinterFleet() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 scroll-reveal">
+        <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-12 md:mb-16 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
             <span>Hardware Fleet</span>
@@ -98,9 +98,11 @@ export default function PrinterFleet() {
 
         {/* 2-Column Creality / SparkX Style Hardware Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 scroll-stagger">
-          {fleetData.map((printer) => (
+          {fleetData.map((printer, idx) => (
             <div
               key={printer.id}
+              data-aos="fade-up"
+              data-aos-delay={idx * 150}
               className="group relative flex flex-col justify-between bg-[#FAFAFB] hover:bg-white rounded-3xl p-8 md:p-12 border border-[#0B0D10]/10 transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.04]"
             >
               {/* Top Typography & CTAs (Exact Creality / SparkX Studio Layout) */}
@@ -179,7 +181,7 @@ export default function PrinterFleet() {
         </div>
 
         {/* Bottom Capabilities Banner */}
-        <div className="mt-12 rounded-2xl bg-white border border-black/10 text-[#111215] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+        <div data-aos="fade-up" data-aos-delay="200" className="mt-12 rounded-2xl bg-white border border-black/10 text-[#111215] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-[#FF5A1F]/10 flex items-center justify-center flex-shrink-0 text-[#FF5A1F]">
               <Sparkles className="w-6 h-6" />

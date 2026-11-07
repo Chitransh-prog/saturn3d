@@ -103,7 +103,7 @@ Can an engineer review my file geometry for additive fabrication?`;
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
+        <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
@@ -126,7 +126,7 @@ Can an engineer review my file geometry for additive fabrication?`;
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-reveal">
           
           {/* Left Column: Dropzone + Sliders */}
-          <div className="lg:col-span-7 space-y-6">
+          <div data-aos="fade-up" data-aos-delay="100" className="lg:col-span-7 space-y-6">
             
             {/* 1px Hairline CAD Dropzone with Accessible Drag & Drop */}
             <div
@@ -279,7 +279,7 @@ Can an engineer review my file geometry for additive fabrication?`;
           </div>
 
           {/* Right Column: Live Quotation Summary Card */}
-          <div className="lg:col-span-5 card-precision p-6 sm:p-8 space-y-6 bg-white border border-black/10 shadow-lg">
+          <div data-aos="fade-up" data-aos-delay="200" className="lg:col-span-5 card-precision p-6 sm:p-8 space-y-6 bg-white border border-black/10 shadow-lg">
             <div className="flex items-center justify-between pb-4 border-b border-black/10">
               <h3 className="text-base font-bold text-[#111215]">
                 Quotation Telemetry

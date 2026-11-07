@@ -185,7 +185,7 @@ export default function ExploreMaterials() {
       <div className="max-w-7xl mx-auto space-y-20">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
+        <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
@@ -212,7 +212,7 @@ export default function ExploreMaterials() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left: Material List & Mechanical Telemetry */}
-          <div className="lg:col-span-7 space-y-4">
+          <div data-aos="fade-up" data-aos-delay="100" className="lg:col-span-7 space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {materialsData.map((mat, idx) => {
                 const isActive = activeIndex === idx;
@@ -281,7 +281,7 @@ export default function ExploreMaterials() {
           </div>
 
           {/* Right: 3D Studio Material Visualizer */}
-          <div className="lg:col-span-5 h-[380px] sm:h-[440px] card-precision relative overflow-hidden p-4 flex items-center justify-center bg-white border border-black/10 shadow-sm">
+          <div data-aos="fade-up" data-aos-delay="200" className="lg:col-span-5 h-[380px] sm:h-[440px] card-precision relative overflow-hidden p-4 flex items-center justify-center bg-white border border-black/10 shadow-sm">
             <div className="absolute top-4 left-4 z-10">
               <span className="precision-badge text-[10px] bg-white border-black/10 text-[#5E6573] shadow-xs">
                 3D PBR SHADER PREVIEW // {currentMaterial.name}

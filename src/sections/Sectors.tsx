@@ -54,7 +54,7 @@ export default function IndustryCategories() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
+        <div data-aos="fade-up" className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
               <Layers className="w-3.5 h-3.5 text-[#FF5A1F]" />
@@ -119,6 +119,8 @@ export default function IndustryCategories() {
               <Link 
                 key={cat.slug} 
                 href={`/category/${cat.slug}`}
+                data-aos="fade-up"
+                data-aos-delay={(i % 3) * 80}
                 className="group relative rounded-2xl bg-white border border-neutral-200/90 hover:border-[#FF5A1F]/60 shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1"
                 style={{ opacity: 1 }} // Explicit guarantee to prevent any GSAP hiding
               >

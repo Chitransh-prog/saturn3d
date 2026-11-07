@@ -16,7 +16,7 @@ export default function TechResultsDuo() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Eyebrow */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 scroll-reveal">
+        <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 rounded-full mb-3 shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
             <span>Core Capabilities</span>
@@ -31,7 +31,7 @@ export default function TechResultsDuo() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch scroll-stagger">
           
           {/* Card 1: Our Technology with Live 3D Metamaterial Lattice & Optical Engine */}
-          <div className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+          <div data-aos="fade-up" data-aos-delay="100" className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
             <div className="relative z-10">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#FF5A1F] block mb-2 font-mono">
                 Technology &bull; Kinematics &bull; Resins
@@ -86,7 +86,7 @@ export default function TechResultsDuo() {
           </div>
 
           {/* Card 2: Your Results with Live 3D Printed Parts */}
-          <div className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
+          <div data-aos="fade-up" data-aos-delay="200" className="group relative bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg hover:border-neutral-300 transition-all duration-300">
             <div className="relative z-10">
               <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600 block mb-2 font-mono">
                 Aerospace &bull; Robotics &bull; Tooling

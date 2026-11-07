@@ -13,7 +13,7 @@ export default function CTA() {
       <BulkOrderForm isOpen={isBulkFormOpen} onClose={() => setIsBulkFormOpen(false)} />
 
       <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#F8F9FA] border-t border-black/10 font-sans">
-        <div className="max-w-7xl mx-auto rounded-3xl bg-white text-neutral-900 p-8 sm:p-12 lg:p-14 relative overflow-hidden border border-neutral-200/90 shadow-lg">
+        <div data-aos="fade-up" className="max-w-7xl mx-auto rounded-3xl bg-white text-neutral-900 p-8 sm:p-12 lg:p-14 relative overflow-hidden border border-neutral-200/90 shadow-lg">
           
           {/* Subtle Orange Ambient Accent */}
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FF5A1F]/5 rounded-full blur-3xl pointer-events-none" />
@@ -42,7 +42,7 @@ export default function CTA() {
           </div>
 
           {/* Actions Row */}
-          <div className="relative z-10 flex flex-wrap items-center gap-3">
+          <div data-aos="fade-up" data-aos-delay="100" className="relative z-10 flex flex-wrap items-center gap-3">
             <Link
               href="/custom-lab"
               className="px-5 py-3 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-sm active:scale-[0.98]"

@@ -50,7 +50,7 @@ export default function FeaturedProductsViewer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="scroll-reveal max-w-2xl mb-10 sm:mb-14">
+        <div data-aos="fade-up" className="scroll-reveal max-w-2xl mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
             <Box className="w-3.5 h-3.5 text-[#FF5A1F]" />
             <span>Interactive 3D Inspection</span>
@@ -67,7 +67,7 @@ export default function FeaturedProductsViewer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
           {/* LEFT: 3D CAD Interactive Stage (7 Cols) */}
-          <div className="lg:col-span-7 flex flex-col gap-4">
+          <div data-aos="fade-up" data-aos-delay="100" className="lg:col-span-7 flex flex-col gap-4">
             
             {/* Main 3D Canvas Box */}
             <div className="relative w-full rounded-2xl bg-gradient-to-b from-[#FFFFFF] via-[#F8F9FB] to-[#F1F3F7] border border-black/10 shadow-xl overflow-hidden flex flex-col">
@@ -173,7 +173,7 @@ export default function FeaturedProductsViewer() {
           </div>
 
           {/* RIGHT: Product Showcase Cards & Quick Selector (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-2.5">
+          <div data-aos="fade-up" data-aos-delay="200" className="lg:col-span-5 flex flex-col gap-2.5">
             <div className="flex items-center justify-between pb-2 border-b border-neutral-200">
               <span className="text-xs text-neutral-500 font-medium">
                 Production Models ({premierProducts.length})

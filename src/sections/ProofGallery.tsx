@@ -91,7 +91,7 @@ export default function ProofGallery() {
       <div className="max-w-7xl mx-auto space-y-16">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
+        <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10 scroll-reveal">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
@@ -114,9 +114,11 @@ export default function ProofGallery() {
 
         {/* Creality-Style Real Prints Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger">
-          {realPrints.map((item) => (
+          {realPrints.map((item, idx) => (
             <div
               key={item.id}
+              data-aos="fade-up"
+              data-aos-delay={(idx % 4) * 80}
               onClick={() => setSelectedItem(item)}
               className="card-precision overflow-hidden group cursor-pointer flex flex-col justify-between hover:border-[#FF5A1F]/30"
             >

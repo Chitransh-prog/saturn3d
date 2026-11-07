@@ -40,6 +40,8 @@ export default function CapabilityStrip() {
           return (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={idx * 75}
               className={`flex flex-col justify-center ${
                 idx > 0 ? 'pt-4 lg:pt-0 lg:pl-8' : ''
               }`}
