@@ -11,12 +11,6 @@ import { useAuthStore } from '@/store/authStore';
 import Lenis from 'lenis';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() || '';
@@ -47,36 +41,58 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
     (window as any).__lenis = lenis;
 
-    // Synchronize AOS and ScrollTrigger on scroll
-    lenis.on('scroll', () => {
-      AOS.refresh();
-      ScrollTrigger.update();
-    });
+    let progressTrigger: any = null;
+    let updateLenis: ((time: number) => void) | null = null;
+    let isCleanedUp = false;
 
-    // Hook Lenis into GSAP ticker for 120fps sync
-    const updateLenis = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-    gsap.ticker.add(updateLenis);
-    gsap.ticker.lagSmoothing(0);
+    // Load GSAP & ScrollTrigger strictly on client side to avoid SSR chunk issues
+    if (!prefersReducedMotion) {
+      Promise.all([
+        import('gsap'),
+        import('gsap/ScrollTrigger'),
+      ]).then(([{ gsap }, { ScrollTrigger }]) => {
+        if (isCleanedUp) return;
 
-    // Subtle reading scroll progress bar (GPU accelerated scaleX)
-    let progressTrigger: ScrollTrigger | null = null;
-    if (progressBarRef.current && !prefersReducedMotion) {
-      progressTrigger = ScrollTrigger.create({
-        start: 'top top',
-        end: 'bottom bottom',
-        onUpdate: (self) => {
-          if (progressBarRef.current) {
-            progressBarRef.current.style.transform = `scaleX(${self.progress})`;
-          }
-        },
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Synchronize AOS and ScrollTrigger on scroll
+        lenis.on('scroll', () => {
+          AOS.refresh();
+          ScrollTrigger.update();
+        });
+
+        // Hook Lenis into GSAP ticker for 120fps sync
+        updateLenis = (time: number) => {
+          lenis.raf(time * 1000);
+        };
+        gsap.ticker.add(updateLenis);
+        gsap.ticker.lagSmoothing(0);
+
+        // Subtle reading scroll progress bar (GPU accelerated scaleX)
+        if (progressBarRef.current) {
+          progressTrigger = ScrollTrigger.create({
+            start: 'top top',
+            end: 'bottom bottom',
+            onUpdate: (self) => {
+              if (progressBarRef.current) {
+                progressBarRef.current.style.transform = `scaleX(${self.progress})`;
+              }
+            },
+          });
+        }
+      }).catch((err) => {
+        console.warn('[Animation] Failed to load GSAP on client:', err);
       });
     }
 
     return () => {
+      isCleanedUp = true;
       progressTrigger?.kill();
-      gsap.ticker.remove(updateLenis);
+      if (updateLenis) {
+        import('gsap').then(({ gsap }) => {
+          if (updateLenis) gsap.ticker.remove(updateLenis);
+        }).catch(() => {});
+      }
       lenis.destroy();
       delete (window as any).__lenis;
     };
@@ -86,7 +102,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   useEffect(() => {
     const t = setTimeout(() => {
       AOS.refresh();
-      ScrollTrigger.refresh();
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        ScrollTrigger.refresh();
+      }).catch(() => {});
     }, 150);
     return () => clearTimeout(t);
   }, [pathname]);

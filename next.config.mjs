@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: ['gsap'],
   outputFileTracingRoot: path.resolve(__dirname),
   serverExternalPackages: ['node:sqlite'],
   images: {
