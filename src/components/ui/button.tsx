@@ -5,12 +5,12 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-xs sm:text-sm font-display font-semibold transition-all duration-150 disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-hidden focus-visible:ring-2 focus-visible:ring-[#FF5A1F] focus-visible:ring-offset-2 cursor-pointer select-none",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-xs sm:text-sm font-display font-semibold transition-all duration-150 disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-hidden focus-visible:ring-2 focus-visible:ring-[#412f91] focus-visible:ring-offset-2 cursor-pointer select-none",
   {
     variants: {
       variant: {
         default:
-          "bg-[#FF5A1F] text-white hover:bg-[#E04810] shadow-precision-sm hover:shadow-precision-md hover:-translate-y-0.5 active:translate-y-0",
+          "bg-[#412f91] text-white hover:bg-[#342575] shadow-precision-sm hover:shadow-precision-md hover:-translate-y-0.5 active:translate-y-0",
         destructive:
           "bg-red-600 text-white hover:bg-red-700 shadow-precision-sm active:translate-y-0",
         outline:
@@ -19,7 +19,7 @@ const buttonVariants = cva(
           "bg-studio-light text-[#0B0D10] border hairline hover:bg-white hover:shadow-precision-xs active:translate-y-0",
         ghost:
           "text-[#0B0D10] hover:bg-black/5 dark:text-studio-light dark:hover:bg-white/5",
-        link: "text-[#FF5A1F] underline-offset-4 hover:underline hover:text-[#E04810] p-0 h-auto font-medium",
+        link: "text-[#412f91] underline-offset-4 hover:underline hover:text-[#342575] p-0 h-auto font-medium",
         brutal:
           "bg-white text-[#0B0D10] border hairline shadow-precision-sm hover:border-black/30 hover:-translate-y-0.5",
         mint:

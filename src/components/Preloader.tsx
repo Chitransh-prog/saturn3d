@@ -95,7 +95,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         onClick={skipPreloader}
         className="absolute top-6 right-6 z-50 flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-[#5E6573] hover:text-[#111215] transition-colors border border-black/10 hover:border-black/30 rounded-lg cursor-pointer bg-white shadow-xs"
       >
-        <FastForward className="w-3.5 h-3.5 text-[#FF5A1F]" />
+        <FastForward className="w-3.5 h-3.5 text-[#412f91]" />
         <span>Skip [Esc]</span>
       </button>
 
@@ -119,14 +119,14 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             <div className="w-32 h-44 sm:w-36 sm:h-50 relative shrink-0">
               <svg
                 viewBox="0 0 100 130"
-                className="w-full h-full stroke-[#FF5A1F] fill-[#FF5A1F]/20 stroke-[1.8]"
+                className="w-full h-full stroke-[#412f91] fill-[#412f91]/20 stroke-[1.8]"
               >
                 <path d="M42 10 L58 10 L62 24 L76 34 L74 60 L66 68 L66 100 L76 122 L62 122 L54 102 L46 102 L38 122 L24 122 L34 100 L34 68 L26 60 L24 34 L38 24 Z" />
-                <line x1="44" y1="20" x2="56" y2="20" stroke="#FF5A1F" strokeWidth="2" />
-                <ellipse cx="50" cy="62" rx="46" ry="14" stroke="#FF5A1F" strokeWidth="1.5" />
+                <line x1="44" y1="20" x2="56" y2="20" stroke="#412f91" strokeWidth="2" />
+                <ellipse cx="50" cy="62" rx="46" ry="14" stroke="#412f91" strokeWidth="1.5" />
               </svg>
               <div
-                className="absolute left-0 right-0 h-[2px] bg-[#FF5A1F] shadow-[0_0_10px_#FF5A1F]"
+                className="absolute left-0 right-0 h-[2px] bg-[#412f91] shadow-[0_0_10px_#412f91]"
                 style={{ top: 0 }}
               />
             </div>
@@ -147,11 +147,11 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         <div className="w-full max-w-xs space-y-2">
           <div className="flex justify-between font-mono text-xs text-[#5E6573]">
             <span>Layer {Math.round((percent / 100) * 320)} / 320</span>
-            <span className="text-[#FF5A1F] font-semibold">{percent}%</span>
+            <span className="text-[#412f91] font-semibold">{percent}%</span>
           </div>
           <div className="w-full h-1 bg-black/10 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#FF5A1F] transition-all duration-75"
+              className="h-full bg-[#412f91] transition-all duration-75"
               style={{ width: `${percent}%` }}
             />
           </div>

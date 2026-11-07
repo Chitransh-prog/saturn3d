@@ -120,7 +120,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       {!isAdminOrAuth && (
         <div
           ref={progressBarRef}
-          className="fixed top-0 left-0 right-0 h-[2px] bg-[#FF5A1F] origin-left z-[9999] pointer-events-none transform-gpu"
+          className="fixed top-0 left-0 right-0 h-[2px] bg-[#412f91] origin-left z-[9999] pointer-events-none transform-gpu"
           style={{ transform: 'scaleX(0)' }}
           aria-hidden="true"
         />

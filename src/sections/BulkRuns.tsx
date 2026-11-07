@@ -51,7 +51,7 @@ Please share production slot availability and dispatch schedule.`;
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="w-2 h-2 rounded-full bg-[#412f91]" />
               <span className="type-mono-eyebrow text-[#5B616B]">
                 07 // Volume Production Runs
               </span>
@@ -88,7 +88,7 @@ Please share production slot availability and dispatch schedule.`;
                       onClick={() => setSelectedType(pt.id)}
                       className={`p-3.5 text-left rounded-xl border transition-all cursor-pointer ${
                         isSelected
-                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/5 text-[#0B0D10]'
+                          ? 'border-[#412f91] bg-[#412f91]/5 text-[#0B0D10]'
                           : 'border-black/10 bg-neutral-50 text-[#5B616B] hover:border-black/20'
                       }`}
                     >
@@ -103,7 +103,7 @@ Please share production slot availability and dispatch schedule.`;
             <div className="space-y-2">
               <div className="flex justify-between font-mono text-xs text-[#0B0D10]">
                 <span className="text-[#5B616B] uppercase">2. Batch Quantity</span>
-                <span className="font-semibold text-[#FF5A1F]">{quantity} Units</span>
+                <span className="font-semibold text-[#412f91]">{quantity} Units</span>
               </div>
               <input
                 type="range"
@@ -112,7 +112,7 @@ Please share production slot availability and dispatch schedule.`;
                 step="50"
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full accent-[#FF5A1F] cursor-pointer"
+                className="w-full accent-[#412f91] cursor-pointer"
               />
               <div className="flex justify-between font-mono text-[10px] text-[#5B616B]">
                 <span>50 pcs (-15%)</span>

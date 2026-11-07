@@ -44,7 +44,7 @@ export default function AuditLogsManagement() {
       <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           </div>
         ) : logs.length === 0 ? (
           <div className="py-16 text-center text-[#5B616B] font-mono text-xs uppercase tracking-widest">
@@ -78,7 +78,7 @@ export default function AuditLogsManagement() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="font-mono font-medium text-[10px] tracking-wide uppercase px-2.5 py-0.5 rounded-full border border-[#FF5A1F]/20 bg-[#FF5A1F]/10 text-[#FF5A1F]">
+                      <span className="font-mono font-medium text-[10px] tracking-wide uppercase px-2.5 py-0.5 rounded-full border border-[#412f91]/20 bg-[#412f91]/10 text-[#412f91]">
                         {log.action}
                       </span>
                     </td>

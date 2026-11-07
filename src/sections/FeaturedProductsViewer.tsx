@@ -44,7 +44,7 @@ export default function FeaturedProductsViewer() {
         }}
       />
       {/* Subtle Glows */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FF5A1F]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#412f91]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
@@ -52,7 +52,7 @@ export default function FeaturedProductsViewer() {
         {/* Section Header */}
         <div data-aos="fade-up" className="scroll-reveal max-w-2xl mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
-            <Box className="w-3.5 h-3.5 text-[#FF5A1F]" />
+            <Box className="w-3.5 h-3.5 text-[#412f91]" />
             <span>Interactive 3D Inspection</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 mb-3 font-sans">
@@ -79,7 +79,7 @@ export default function FeaturedProductsViewer() {
                   <span className="font-mono text-xs font-bold text-[#111215] tracking-wide truncate max-w-[220px] sm:max-w-none">
                     {activeProduct.name}
                   </span>
-                  <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-[#FF5A1F]/10 border border-[#FF5A1F]/25 text-[#FF5A1F] font-semibold">
+                  <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-[#412f91]/10 border border-[#412f91]/25 text-[#412f91] font-semibold">
                     {activeProduct.tolerances || '±0.04 mm'}
                   </span>
                 </div>
@@ -92,7 +92,7 @@ export default function FeaturedProductsViewer() {
                       onClick={() => setSelectedMaterial(mat.id)}
                       className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all uppercase tracking-wider ${
                         selectedMaterial === mat.id
-                          ? 'bg-[#FF5A1F] text-white font-bold shadow-xs'
+                          ? 'bg-[#412f91] text-white font-bold shadow-xs'
                           : 'bg-black/5 text-[#5E6573] hover:text-[#111215] hover:bg-black/10'
                       }`}
                       title={mat.name}
@@ -115,7 +115,7 @@ export default function FeaturedProductsViewer() {
               <div className="p-4 sm:p-5 bg-white/90 backdrop-blur-md border-t border-black/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
                 <div className="p-2.5 rounded-lg bg-[#F8F9FA] border border-black/5">
                   <div className="text-[10px] text-[#8A91A0] uppercase flex items-center gap-1 font-semibold">
-                    <Ruler className="w-3 h-3 text-[#FF5A1F]" /> Dimensions
+                    <Ruler className="w-3 h-3 text-[#412f91]" /> Dimensions
                   </div>
                   <div className="font-bold text-[#111215] mt-0.5 truncate">
                     {activeProduct.dimensions || 'Standard CAD'}
@@ -124,7 +124,7 @@ export default function FeaturedProductsViewer() {
 
                 <div className="p-2.5 rounded-lg bg-[#F8F9FA] border border-black/5">
                   <div className="text-[10px] text-[#8A91A0] uppercase flex items-center gap-1 font-semibold">
-                    <Scale className="w-3 h-3 text-[#FF5A1F]" /> Mass
+                    <Scale className="w-3 h-3 text-[#412f91]" /> Mass
                   </div>
                   <div className="font-bold text-[#111215] mt-0.5">
                     {activeProduct.weight || '52 g'}
@@ -133,7 +133,7 @@ export default function FeaturedProductsViewer() {
 
                 <div className="p-2.5 rounded-lg bg-[#F8F9FA] border border-black/5">
                   <div className="text-[10px] text-[#8A91A0] uppercase flex items-center gap-1 font-semibold">
-                    <Cpu className="w-3 h-3 text-[#FF5A1F]" /> Material
+                    <Cpu className="w-3 h-3 text-[#412f91]" /> Material
                   </div>
                   <div className="font-bold text-[#111215] mt-0.5 truncate">
                     {activeProduct.material || 'Engineering Polymer'}
@@ -142,7 +142,7 @@ export default function FeaturedProductsViewer() {
 
                 <div className="p-2.5 rounded-lg bg-[#F8F9FA] border border-black/5">
                   <div className="text-[10px] text-[#8A91A0] uppercase flex items-center gap-1 font-semibold">
-                    <Clock className="w-3 h-3 text-[#FF5A1F]" /> Lead Time
+                    <Clock className="w-3 h-3 text-[#412f91]" /> Lead Time
                   </div>
                   <div className="font-bold text-emerald-600 mt-0.5">
                     {activeProduct.leadTime || '24-48 Hours'}
@@ -155,7 +155,7 @@ export default function FeaturedProductsViewer() {
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <Link
                 href={`/product/${activeProduct.id}`}
-                className="w-full sm:w-auto flex-1 h-11 px-5 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
+                className="w-full sm:w-auto flex-1 h-11 px-5 rounded-lg bg-[#412f91] hover:bg-[#342575] text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
               >
                 <span>Order Component &bull; ₹{activeProduct.price.toLocaleString('en-IN')}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -165,7 +165,7 @@ export default function FeaturedProductsViewer() {
                 href="/custom-lab"
                 className="w-full sm:w-auto h-11 px-4 rounded-lg bg-white hover:bg-neutral-50 border border-neutral-200 text-neutral-800 font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-2xs"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#412f91]" />
                 <span>Upload Custom CAD</span>
               </Link>
             </div>
@@ -178,7 +178,7 @@ export default function FeaturedProductsViewer() {
               <span className="text-xs text-neutral-500 font-medium">
                 Production Models ({premierProducts.length})
               </span>
-              <span className="text-[11px] text-[#FF5A1F] font-medium">
+              <span className="text-[11px] text-[#412f91] font-medium">
                 Select to view in 3D &rarr;
               </span>
             </div>
@@ -192,7 +192,7 @@ export default function FeaturedProductsViewer() {
                     onClick={() => setActiveProductId(p.id)}
                     className={`group relative p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer flex items-center gap-3.5 select-none ${
                       isSelected
-                        ? 'bg-white border-[#FF5A1F] shadow-md ring-1 ring-[#FF5A1F]'
+                        ? 'bg-white border-[#412f91] shadow-md ring-1 ring-[#412f91]'
                         : 'bg-[#F8F9FB] border-black/10 hover:border-black/20 hover:bg-white'
                     }`}
                   >
@@ -204,14 +204,14 @@ export default function FeaturedProductsViewer() {
                         className="w-full h-full object-contain mix-blend-multiply p-1 transition-transform duration-300 group-hover:scale-105"
                       />
                       {isSelected && (
-                        <div className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-[#FF5A1F] ring-2 ring-white" />
+                        <div className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-[#412f91] ring-2 ring-white" />
                       )}
                     </div>
 
                     {/* Meta info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1 mb-1">
-                        <span className="font-mono text-[10px] text-[#FF5A1F] uppercase tracking-wider font-semibold truncate">
+                        <span className="font-mono text-[10px] text-[#412f91] uppercase tracking-wider font-semibold truncate">
                           {p.category}
                         </span>
                         <span className="font-mono text-xs font-bold text-[#111215] shrink-0">
@@ -219,7 +219,7 @@ export default function FeaturedProductsViewer() {
                         </span>
                       </div>
 
-                      <h4 className="text-sm font-semibold text-[#111215] tracking-tight leading-snug truncate group-hover:text-[#FF5A1F] transition-colors">
+                      <h4 className="text-sm font-semibold text-[#111215] tracking-tight leading-snug truncate group-hover:text-[#412f91] transition-colors">
                         {p.name}
                       </h4>
 
@@ -240,7 +240,7 @@ export default function FeaturedProductsViewer() {
                         }}
                         className={`p-2 rounded-lg text-xs font-mono transition-all flex items-center gap-1 cursor-pointer ${
                           isSelected
-                            ? 'bg-[#FF5A1F] text-white shadow-xs'
+                            ? 'bg-[#412f91] text-white shadow-xs'
                             : 'bg-black/5 text-[#5E6573] group-hover:text-[#111215] group-hover:bg-black/10'
                         }`}
                         title="Inspect in 3D"
@@ -267,10 +267,10 @@ export default function FeaturedProductsViewer() {
             <div className="pt-3">
               <Link
                 href="/categories"
-                className="w-full py-3 px-4 rounded-xl border border-dashed border-black/20 hover:border-[#FF5A1F] bg-[#F8F9FB] hover:bg-white text-xs font-mono text-center flex items-center justify-center gap-2 text-[#5E6573] hover:text-[#111215] transition-all shadow-2xs"
+                className="w-full py-3 px-4 rounded-xl border border-dashed border-black/20 hover:border-[#412f91] bg-[#F8F9FB] hover:bg-white text-xs font-mono text-center flex items-center justify-center gap-2 text-[#5E6573] hover:text-[#111215] transition-all shadow-2xs"
               >
                 <span>Browse All 20+ Production Parts in Hardware Catalog</span>
-                <ChevronRight className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                <ChevronRight className="w-3.5 h-3.5 text-[#412f91]" />
               </Link>
             </div>
 

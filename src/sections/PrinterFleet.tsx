@@ -85,7 +85,7 @@ export default function PrinterFleet() {
         {/* Section Header */}
         <div data-aos="fade-up" className="text-center max-w-2xl mx-auto mb-12 md:mb-16 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#412f91]" />
             <span>Hardware Fleet</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
@@ -123,7 +123,7 @@ export default function PrinterFleet() {
                 <div className="flex flex-wrap justify-center items-center gap-2.5 sm:gap-3 mb-6 sm:mb-8 w-full">
                   <button
                     onClick={() => navigate(printer.primaryCta.href)}
-                    className="w-full xs:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#0B0D10] text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-200 hover:bg-[#FF5A1F] hover:shadow-lg hover:shadow-[#FF5A1F]/20 active:scale-95"
+                    className="w-full xs:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#0B0D10] text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-200 hover:bg-[#412f91] hover:shadow-lg hover:shadow-[#412f91]/20 active:scale-95"
                   >
                     {printer.primaryCta.label}
                   </button>
@@ -141,7 +141,7 @@ export default function PrinterFleet() {
 
               {/* Product Photography Centerpiece */}
               <div className="relative w-full aspect-square max-w-[440px] mx-auto my-4 flex items-center justify-center">
-                <div className="absolute inset-0 bg-radial from-[#FF5A1F]/5 via-transparent to-transparent rounded-full filter blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-radial from-[#412f91]/5 via-transparent to-transparent rounded-full filter blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <img
                   src={printer.image}
@@ -170,7 +170,7 @@ export default function PrinterFleet() {
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
                   {printer.highlights.map((highlight, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-xs text-[#5B616B]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#FF5A1F] flex-shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#412f91] flex-shrink-0" />
                       <span>{highlight}</span>
                     </div>
                   ))}
@@ -183,7 +183,7 @@ export default function PrinterFleet() {
         {/* Bottom Capabilities Banner */}
         <div data-aos="fade-up" data-aos-delay="200" className="mt-12 rounded-2xl bg-white border border-black/10 text-[#111215] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#FF5A1F]/10 flex items-center justify-center flex-shrink-0 text-[#FF5A1F]">
+            <div className="w-12 h-12 rounded-xl bg-[#412f91]/10 flex items-center justify-center flex-shrink-0 text-[#412f91]">
               <Sparkles className="w-6 h-6" />
             </div>
             <div>
@@ -196,7 +196,7 @@ export default function PrinterFleet() {
 
           <button
             onClick={() => navigate('/custom-lab')}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5A1F] hover:bg-[#e04e18] text-white font-medium text-sm transition-all duration-200 flex-shrink-0 shadow-md shadow-[#FF5A1F]/20 cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#412f91] hover:bg-[#342575] text-white font-medium text-sm transition-all duration-200 flex-shrink-0 shadow-md shadow-[#412f91]/20 cursor-pointer"
           >
             Launch Instant Lab
             <ArrowRight className="w-4 h-4" />

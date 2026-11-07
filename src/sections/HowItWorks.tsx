@@ -112,7 +112,7 @@ export default function HowItWorks() {
                     <span className="font-monumental text-4xl font-black text-black">
                       {step.number}
                     </span>
-                    <span className="font-mono-tech text-[9px] font-bold uppercase tracking-[0.2em] text-[#F7931E] bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+                    <span className="font-mono-tech text-[9px] font-bold uppercase tracking-[0.2em] text-[#412f91] bg-[#412f91]/10 px-3 py-1 rounded-full border border-[#412f91]/20">
                       {step.phase}
                     </span>
                   </div>
@@ -123,7 +123,7 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Title & Desc */}
-                  <h3 className="font-monumental text-2xl sm:text-3xl font-black text-black tracking-wide uppercase mb-3 group-hover:text-[#F7931E] transition-colors">
+                  <h3 className="font-monumental text-2xl sm:text-3xl font-black text-black tracking-wide uppercase mb-3 group-hover:text-[#412f91] transition-colors">
                     {step.title}
                   </h3>
 

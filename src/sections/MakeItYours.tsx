@@ -106,7 +106,7 @@ Can an engineer review my file geometry for additive fabrication?`;
         <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#412f91]" />
               <span>Instant Pricing Engine</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
@@ -143,10 +143,10 @@ Can an engineer review my file geometry for additive fabrication?`;
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
-              className={`group cursor-pointer p-8 sm:p-10 border-2 rounded-2xl transition-all flex flex-col items-center justify-center text-center relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`group cursor-pointer p-8 sm:p-10 border-2 rounded-2xl transition-all flex flex-col items-center justify-center text-center relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                 isDragging
-                  ? 'border-[#FF5A1F] bg-[#FF5A1F]/10 ring-4 ring-[#FF5A1F]/20 scale-[1.01]'
-                  : 'border-dashed border-black/20 hover:border-[#FF5A1F] bg-[#F8F9FA] hover:bg-white shadow-2xs'
+                  ? 'border-[#412f91] bg-[#412f91]/10 ring-4 ring-[#412f91]/20 scale-[1.01]'
+                  : 'border-dashed border-black/20 hover:border-[#412f91] bg-[#F8F9FA] hover:bg-white shadow-2xs'
               }`}
             >
               <input
@@ -159,10 +159,10 @@ Can an engineer review my file geometry for additive fabrication?`;
 
               <div className={`w-12 h-12 mb-3 rounded-xl border flex items-center justify-center transition-all shadow-2xs ${
                 isDragging
-                  ? 'bg-[#FF5A1F] text-white border-[#FF5A1F]'
-                  : 'bg-white border-black/10 text-[#5E6573] group-hover:text-[#FF5A1F] group-hover:border-[#FF5A1F]/40'
+                  ? 'bg-[#412f91] text-white border-[#412f91]'
+                  : 'bg-white border-black/10 text-[#5E6573] group-hover:text-[#412f91] group-hover:border-[#412f91]/40'
               }`}>
-                {selectedFile ? <FileCheck className="w-6 h-6 text-[#FF5A1F]" /> : <UploadCloud className="w-6 h-6" />}
+                {selectedFile ? <FileCheck className="w-6 h-6 text-[#412f91]" /> : <UploadCloud className="w-6 h-6" />}
               </div>
 
               {selectedFile ? (
@@ -176,7 +176,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                 </div>
               ) : (
                 <div>
-                  <div className="text-sm font-semibold text-[#111215] group-hover:text-[#FF5A1F] transition-colors">
+                  <div className="text-sm font-semibold text-[#111215] group-hover:text-[#412f91] transition-colors">
                     {isDragging ? 'Release to upload CAD geometry' : 'Drop your CAD model or technical drawing here'}
                   </div>
                   <div className="font-mono text-xs text-[#5E6573] mt-1">
@@ -200,7 +200,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                       onClick={() => setMaterial(key)}
                       className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                         isSelected
-                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/10 text-[#111215] shadow-xs'
+                          ? 'border-[#412f91] bg-[#412f91]/10 text-[#111215] shadow-xs'
                           : 'border-black/10 bg-[#F8F9FA] hover:bg-white text-[#5E6573] hover:text-[#111215] hover:border-black/20'
                       }`}
                     >
@@ -222,7 +222,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                 <span className="font-mono text-[#5E6573] uppercase tracking-wider font-semibold">
                   Internal Infill Density
                 </span>
-                <span className="font-mono font-bold text-[#FF5A1F]">
+                <span className="font-mono font-bold text-[#412f91]">
                   {infill}% Gyroid Infill
                 </span>
               </div>
@@ -233,7 +233,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                 step="5"
                 value={infill}
                 onChange={(e) => setInfill(Number(e.target.value))}
-                className="w-full accent-[#FF5A1F] cursor-pointer"
+                className="w-full accent-[#412f91] cursor-pointer"
               />
               <div className="flex justify-between font-mono text-[10px] text-[#8A91A0]">
                 <span>10% Light Mockup</span>
@@ -355,7 +355,7 @@ Can an engineer review my file geometry for additive fabrication?`;
             </div>
 
             <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#5E6573]">
-              <Info className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <Info className="w-3.5 h-3.5 text-[#412f91]" />
               <span>Quotes confirmed within 30 minutes during shop hours.</span>
             </div>
           </div>

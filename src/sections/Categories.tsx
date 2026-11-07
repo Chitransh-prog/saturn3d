@@ -91,7 +91,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-200">
           <div className="max-w-2xl space-y-2.5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700">
-              <Layers className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <Layers className="w-3.5 h-3.5 text-[#412f91]" />
               <span>Hardware Catalog</span>
             </div>
 
@@ -109,7 +109,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/custom-lab"
-              className="px-4 py-2.5 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
+              className="px-4 py-2.5 rounded-lg bg-[#412f91] hover:bg-[#342575] text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Upload Custom CAD</span>
@@ -133,7 +133,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
                 placeholder="Search by part name, material (e.g. Carbon-X, SLA, PETG), or sector..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-9 py-2.5 bg-[#F8F9FA] hover:bg-[#F3F4F6] focus:bg-white border border-black/10 rounded-xl font-mono text-xs text-[#111215] placeholder:text-[#8E95A2] focus:outline-none focus:border-[#FF5A1F] focus:ring-2 focus:ring-[#FF5A1F]/20 transition-all"
+                className="w-full pl-10 pr-9 py-2.5 bg-[#F8F9FA] hover:bg-[#F3F4F6] focus:bg-white border border-black/10 rounded-xl font-mono text-xs text-[#111215] placeholder:text-[#8E95A2] focus:outline-none focus:border-[#412f91] focus:ring-2 focus:ring-[#412f91]/20 transition-all"
               />
               {searchQuery && (
                 <button
@@ -156,7 +156,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
                 aria-label="Sort components by"
-                className="bg-[#F8F9FA] hover:bg-[#F3F4F6] border border-black/10 px-3 py-2 text-xs font-mono font-medium rounded-xl text-[#111215] focus:outline-none focus:border-[#FF5A1F] cursor-pointer"
+                className="bg-[#F8F9FA] hover:bg-[#F3F4F6] border border-black/10 px-3 py-2 text-xs font-mono font-medium rounded-xl text-[#111215] focus:outline-none focus:border-[#412f91] cursor-pointer"
               >
                 <option value="featured">Featured Precision Order</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -208,7 +208,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
               <strong className="text-[#111215]">{products.length}</strong> production components
             </span>
             {(selectedCategory !== 'All' || searchQuery) && (
-              <span className="text-[#FF5A1F] font-semibold">
+              <span className="text-[#412f91] font-semibold">
                 (Filtered by {selectedCategory !== 'All' ? selectedCategory : `"${searchQuery}"`})
               </span>
             )}
@@ -221,7 +221,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
                 setSelectedCategory('All');
                 setSearchQuery('');
               }}
-              className="text-[#FF5A1F] hover:underline flex items-center gap-1 cursor-pointer font-medium"
+              className="text-[#412f91] hover:underline flex items-center gap-1 cursor-pointer font-medium"
             >
               <RefreshCw className="w-3 h-3" />
               <span>Reset all filters</span>
@@ -234,7 +234,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
         ================================================================= */}
         {displayedProducts.length === 0 ? (
           <div className="p-12 sm:p-16 rounded-2xl bg-white border border-black/10 text-center space-y-4 max-w-lg mx-auto shadow-sm">
-            <div className="w-12 h-12 rounded-2xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center mx-auto">
+            <div className="w-12 h-12 rounded-2xl bg-[#412f91]/10 text-[#412f91] flex items-center justify-center mx-auto">
               <PackageOpen className="w-6 h-6" />
             </div>
             
@@ -260,7 +260,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
               
               <Link
                 href="/custom-lab"
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#FF5A1F] hover:bg-[#E04F1A] text-white text-xs font-mono font-bold transition-all shadow-sm"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#412f91] hover:bg-[#342575] text-white text-xs font-mono font-bold transition-all shadow-sm"
               >
                 Upload Custom CAD File &rarr;
               </Link>
@@ -282,7 +282,7 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#111215] hover:bg-[#20242D] text-white font-mono text-xs font-bold transition-all shadow-md active:scale-98"
             >
               <span>Explore All {products.length} Parts in Full Catalog</span>
-              <ArrowRight className="w-4 h-4 text-[#FF5A1F]" />
+              <ArrowRight className="w-4 h-4 text-[#412f91]" />
             </Link>
           </div>
         )}

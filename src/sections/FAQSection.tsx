@@ -83,7 +83,7 @@ export default function FAQSection() {
         <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#412f91]" />
               <span>FAQ &amp; Knowledge Base</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
@@ -105,7 +105,7 @@ export default function FAQSection() {
             <button
               key={t}
               onClick={() => setSelectedTag(t)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                 selectedTag === t
                   ? 'bg-neutral-900 text-white font-semibold shadow-xs'
                   : 'bg-white border border-neutral-200 text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
@@ -129,10 +129,10 @@ export default function FAQSection() {
                   aria-expanded={isOpen}
                   aria-controls={contentId}
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full py-4 sm:py-5 px-4 sm:px-8 text-left flex items-start justify-between gap-3 sm:gap-4 cursor-pointer hover:bg-neutral-50/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] focus-visible:ring-inset"
+                  className="w-full py-4 sm:py-5 px-4 sm:px-8 text-left flex items-start justify-between gap-3 sm:gap-4 cursor-pointer hover:bg-neutral-50/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] focus-visible:ring-inset"
                 >
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <span className="font-mono text-xs font-medium text-[#FF5A1F] mt-0.5 shrink-0">
+                    <span className="font-mono text-xs font-medium text-[#412f91] mt-0.5 shrink-0">
                       0{idx + 1}
                     </span>
                     <span className="text-base sm:text-lg font-semibold text-[#0B0D10] leading-snug">
@@ -140,7 +140,7 @@ export default function FAQSection() {
                     </span>
                   </div>
 
-                  <div className={`w-7 h-7 rounded-full border border-black/10 flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#FF5A1F] text-white border-transparent' : 'text-[#5B616B]'}`}>
+                  <div className={`w-7 h-7 rounded-full border border-black/10 flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#412f91] text-white border-transparent' : 'text-[#5B616B]'}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>

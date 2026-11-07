@@ -65,7 +65,7 @@ export default function UseItFor() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="w-2 h-2 rounded-full bg-[#412f91]" />
               <span className="type-mono-eyebrow text-[#5B616B]">
                 05 // Case Studies & Industry Applications
               </span>
@@ -93,7 +93,7 @@ export default function UseItFor() {
             <div
               key={item.id}
               onClick={() => navigate(item.route)}
-              className="card-precision p-6 flex flex-col justify-between group cursor-pointer hover:border-[#FF5A1F]/30"
+              className="card-precision p-6 flex flex-col justify-between group cursor-pointer hover:border-[#412f91]/30"
             >
               <div>
                 {/* Image Tile */}
@@ -113,10 +113,10 @@ export default function UseItFor() {
 
                 {/* Title */}
                 <div className="flex items-start justify-between gap-2 mb-3">
-                  <h3 className="text-base sm:text-lg font-semibold text-[#0B0D10] group-hover:text-[#FF5A1F] transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-semibold text-[#0B0D10] group-hover:text-[#412f91] transition-colors leading-snug">
                     {item.title}
                   </h3>
-                  <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-[#FF5A1F] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 mt-1" />
+                  <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-[#412f91] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 mt-1" />
                 </div>
 
                 {/* Problem & Solution Breakdown */}
@@ -133,7 +133,7 @@ export default function UseItFor() {
               </div>
 
               {/* Verified Telemetry Strip */}
-              <div className="pt-4 border-t border-black/5 font-mono text-[11px] font-medium text-[#FF5A1F]">
+              <div className="pt-4 border-t border-black/5 font-mono text-[11px] font-medium text-[#412f91]">
                 {item.telemetry}
               </div>
             </div>

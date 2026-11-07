@@ -111,10 +111,10 @@ function IndustrialFabricationCell({ progress, autoRotate }: { progress: number;
       </mesh>
 
       {/* Subtle Engineering Grid Surface */}
-      <gridHelper args={[3.0, 16, '#FF5A1F', '#262A32']} position={[0, -0.85, 0]} />
+      <gridHelper args={[3.0, 16, '#412f91', '#262A32']} position={[0, -0.85, 0]} />
 
       {/* Bed Heating Coils Glow */}
-      <pointLight position={[0, -0.8, 0]} color="#FF5A1F" intensity={1.2} distance={3.0} />
+      <pointLight position={[0, -0.8, 0]} color="#412f91" intensity={1.2} distance={3.0} />
 
       {/* Turbine Impeller Geometry Sliced Dynamically */}
       <group ref={groupRef} position={[0, 0, 0]}>
@@ -169,9 +169,9 @@ function IndustrialFabricationCell({ progress, autoRotate }: { progress: number;
           <group position={[0, clipHeight, 0]}>
             <mesh rotation={[-Math.PI / 2, 0, 0]}>
               <ringGeometry args={[0.01, 1.38, 48]} />
-              <meshBasicMaterial color="#FF5A1F" side={THREE.DoubleSide} transparent opacity={0.85} />
+              <meshBasicMaterial color="#412f91" side={THREE.DoubleSide} transparent opacity={0.85} />
             </mesh>
-            <pointLight color="#FF5A1F" intensity={3} distance={1.8} />
+            <pointLight color="#412f91" intensity={3} distance={1.8} />
           </group>
         )}
       </group>
@@ -184,7 +184,7 @@ function IndustrialFabricationCell({ progress, autoRotate }: { progress: number;
         </mesh>
         <mesh position={[0, -0.04, 0]}>
           <coneGeometry args={[0.05, 0.09, 16]} />
-          <meshStandardMaterial color="#FF5A1F" emissive="#FF5A1F" emissiveIntensity={1.5} />
+          <meshStandardMaterial color="#412f91" emissive="#412f91" emissiveIntensity={1.5} />
         </mesh>
       </group>
     </group>
@@ -229,7 +229,7 @@ export default function HowItsMade() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="w-2 h-2 rounded-full bg-[#412f91]" />
               <span className="type-mono-eyebrow text-white/60">
                 06 // Fabrication Pipeline
               </span>
@@ -257,11 +257,11 @@ export default function HowItsMade() {
                 onClick={() => switchStep(idx)}
                 className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                   isActive
-                    ? 'border-[#FF5A1F] bg-[#181C22] text-white shadow-sm'
+                    ? 'border-[#412f91] bg-[#181C22] text-white shadow-sm'
                     : 'border-white/10 bg-white/[0.02] text-white/60 hover:text-white hover:border-white/20'
                 }`}
               >
-                <div className="font-mono text-[10px] text-[#FF5A1F] font-semibold">
+                <div className="font-mono text-[10px] text-[#412f91] font-semibold">
                   {st.number} // STAGE
                 </div>
                 <div className="text-xs font-semibold text-white mt-0.5 truncate">
@@ -278,11 +278,11 @@ export default function HowItsMade() {
           {/* Left Column: Active Step Details Card */}
           <div className="lg:col-span-6 card-precision-dark p-6 sm:p-8 space-y-6">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#FF5A1F] shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#412f91] shrink-0">
                 <StepIcon className="w-6 h-6" />
               </div>
               <div>
-                <span className="font-mono text-[11px] text-[#FF5A1F] uppercase tracking-wider block">
+                <span className="font-mono text-[11px] text-[#412f91] uppercase tracking-wider block">
                   {current.stage}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-semibold text-white mt-1">
@@ -291,7 +291,7 @@ export default function HowItsMade() {
               </div>
             </div>
 
-            <div className="text-xs font-mono font-medium text-white/80 border-l-2 border-[#FF5A1F] pl-3">
+            <div className="text-xs font-mono font-medium text-white/80 border-l-2 border-[#412f91] pl-3">
               {current.headline}
             </div>
 
@@ -302,7 +302,7 @@ export default function HowItsMade() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 font-mono text-xs">
               <div className="p-3 bg-white/5 rounded-xl border border-white/10">
                 <span className="text-[10px] text-white/40 block">SHOP METRIC</span>
-                <span className="text-[#FF5A1F] font-semibold mt-0.5 block">{current.metric}</span>
+                <span className="text-[#412f91] font-semibold mt-0.5 block">{current.metric}</span>
               </div>
               <div className="p-3 bg-white/5 rounded-xl border border-white/10">
                 <span className="text-[10px] text-white/40 block">VERIFIED SPEC</span>
@@ -363,13 +363,13 @@ export default function HowItsMade() {
               >
                 <ambientLight intensity={0.6} />
                 <directionalLight position={[5, 8, 5]} intensity={2.0} color="#FFF8F0" />
-                <directionalLight position={[-4, 3, -3]} intensity={1.5} color="#FF5A1F" />
+                <directionalLight position={[-4, 3, -3]} intensity={1.5} color="#412f91" />
                 <IndustrialFabricationCell progress={sliceProgress} autoRotate={autoRotate} />
                 <OrbitControls enablePan={false} enableZoom={true} minDistance={2.5} maxDistance={6.0} />
               </Canvas>
 
               <div className="absolute bottom-3 left-3 flex items-center gap-2 font-mono text-[10px] text-white/60 bg-[#0B0D10]/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 pointer-events-none">
-                <Move3d className="w-3 h-3 text-[#FF5A1F]" />
+                <Move3d className="w-3 h-3 text-[#412f91]" />
                 <span>Orbit 360° to inspect slicing plane</span>
               </div>
             </div>
@@ -391,9 +391,9 @@ export default function HowItsMade() {
                   const stepIdx = Math.min(steps.length - 1, Math.floor(val * steps.length));
                   setActiveStep(stepIdx);
                 }}
-                className="w-full accent-[#FF5A1F] cursor-pointer"
+                className="w-full accent-[#412f91] cursor-pointer"
               />
-              <span className="text-[#FF5A1F] font-semibold text-xs whitespace-nowrap w-10 text-right">
+              <span className="text-[#412f91] font-semibold text-xs whitespace-nowrap w-10 text-right">
                 {Math.round(sliceProgress * 100)}%
               </span>
             </div>

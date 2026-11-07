@@ -627,7 +627,7 @@ export default function HeroStage3D({
           title={isAutoPrinting ? 'Pause Print Kinematics' : 'Resume Print Kinematics'}
           className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl border backdrop-blur-md transition-all shadow-xs ${
             isAutoPrinting
-              ? 'bg-[#FF5A1F]/15 border-[#FF5A1F] text-[#FF5A1F]'
+              ? 'bg-[#412f91]/15 border-[#412f91] text-[#412f91]'
               : 'bg-white/90 border-black/10 text-[#5E6573] hover:text-[#111215]'
           }`}
         >
@@ -639,7 +639,7 @@ export default function HeroStage3D({
           title="Toggle Smooth Auto-Rotation"
           className={`p-1.5 sm:p-2 rounded-lg sm:rounded-xl border backdrop-blur-md transition-all shadow-xs ${
             autoRotate
-              ? 'bg-[#FF5A1F]/15 border-[#FF5A1F] text-[#FF5A1F]'
+              ? 'bg-[#412f91]/15 border-[#412f91] text-[#412f91]'
               : 'bg-white/90 border-black/10 text-[#5E6573] hover:text-[#111215]'
           }`}
         >
@@ -660,7 +660,7 @@ export default function HeroStage3D({
         {/* Row 1: Layer Slicing Scrubber */}
         <div className="flex items-center gap-2 sm:gap-2.5 w-full">
           <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-[#5E6573] flex-shrink-0">
-            <Sliders className="w-3.5 h-3.5 text-[#FF5A1F]" />
+            <Sliders className="w-3.5 h-3.5 text-[#412f91]" />
             <span className="font-semibold text-[#111215] hidden xs:inline">Layer Slicing:</span>
             <span className="font-semibold text-[#111215] xs:hidden">Slice:</span>
           </div>
@@ -673,11 +673,11 @@ export default function HeroStage3D({
             value={activeProgress}
             onChange={(e) => setManualProgress(parseFloat(e.target.value))}
             aria-label="3D Slicing Layer Progress"
-            className="flex-1 h-1.5 bg-black/15 rounded-lg appearance-none cursor-pointer accent-[#FF5A1F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F]"
+            className="flex-1 h-1.5 bg-black/15 rounded-lg appearance-none cursor-pointer accent-[#412f91] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91]"
           />
 
           <div className="flex items-center gap-1.5 flex-shrink-0">
-            <span className="font-mono text-[11px] sm:text-xs text-[#FF5A1F] font-bold px-1.5 sm:px-2 py-0.5 rounded-md bg-[#FF5A1F]/10 border border-[#FF5A1F]/20 min-w-[38px] sm:min-w-[42px] text-center">
+            <span className="font-mono text-[11px] sm:text-xs text-[#412f91] font-bold px-1.5 sm:px-2 py-0.5 rounded-md bg-[#412f91]/10 border border-[#412f91]/20 min-w-[38px] sm:min-w-[42px] text-center">
               {Math.round(activeProgress * 100)}%
             </span>
           </div>

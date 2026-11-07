@@ -24,8 +24,10 @@ module.exports = {
         "surface-card": "#181C22",
         "studio-light": "#F5F6F8",
         "studio-card": "#FFFFFF",
-        "saturn-orange": "#FF5A1F",
-        "saturn-orange-hover": "#E04810",
+        "saturn-orange": "#412f91",
+        "saturn-orange-hover": "#342575",
+        "saturn-purple": "#412f91",
+        "saturn-purple-hover": "#342575",
         "wa-green": "#25D366",
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -34,7 +36,7 @@ module.exports = {
           light: "#5B616B",
         },
         primary: {
-          DEFAULT: "#FF5A1F",
+          DEFAULT: "#412f91",
           foreground: "#FFFFFF",
         },
         secondary: {
@@ -46,7 +48,7 @@ module.exports = {
           foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "#FF5A1F",
+          DEFAULT: "#412f91",
           foreground: "#FFFFFF",
         },
         popover: {
@@ -72,8 +74,9 @@ module.exports = {
         'precision-md': '0 6px 18px rgba(0, 0, 0, 0.05)',
         'precision-lg': '0 12px 32px rgba(0, 0, 0, 0.06)',
         'precision-xl': '0 20px 48px rgba(0, 0, 0, 0.08)',
-        'glow-orange': '0 0 32px rgba(255, 90, 31, 0.12)',
-        'glow-orange-soft': '0 0 60px rgba(255, 90, 31, 0.08)',
+        'glow-orange': '0 0 32px rgba(65, 47, 145, 0.16)',
+        'glow-orange-soft': '0 0 60px rgba(65, 47, 145, 0.10)',
+        'glow-purple': '0 0 32px rgba(65, 47, 145, 0.16)',
       },
       maxWidth: {
         'container': '1280px',

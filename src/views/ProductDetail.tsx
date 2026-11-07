@@ -250,7 +250,7 @@ export default function ProductDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#F5F6F8] font-body">
         <div className="card-precision p-8 flex flex-col items-center gap-3">
-          <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           <p className="font-mono text-xs text-[#5B616B] uppercase tracking-wider">
             Loading Engineering Specification...
           </p>
@@ -263,7 +263,7 @@ export default function ProductDetail() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#F5F6F8] px-6 font-body">
         <div className="card-precision p-8 max-w-md text-center">
-          <div className="w-14 h-14 bg-neutral-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#FF5A1F]">
+          <div className="w-14 h-14 bg-neutral-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#412f91]">
             <Package className="w-7 h-7" />
           </div>
           <h2 className="text-xl font-semibold text-[#0B0D10] mb-2">
@@ -350,7 +350,7 @@ export default function ProductDetail() {
                 onClick={() => setMediaMode('3d')}
                 className={`px-3 py-2 rounded-xl border text-xs font-mono font-medium flex items-center gap-1.5 transition-all cursor-pointer ${
                   mediaMode === '3d'
-                    ? 'border-[#FF5A1F] bg-[#FF5A1F]/10 text-[#FF5A1F]'
+                    ? 'border-[#412f91] bg-[#412f91]/10 text-[#412f91]'
                     : 'border-black/10 bg-white text-[#5B616B] hover:text-[#0B0D10]'
                 }`}
               >
@@ -362,7 +362,7 @@ export default function ProductDetail() {
                 onClick={() => setMediaMode('photo')}
                 className={`px-3 py-2 rounded-xl border text-xs font-mono font-medium flex items-center gap-1.5 transition-all cursor-pointer ${
                   mediaMode === 'photo'
-                    ? 'border-[#FF5A1F] bg-[#FF5A1F]/10 text-[#FF5A1F]'
+                    ? 'border-[#412f91] bg-[#412f91]/10 text-[#412f91]'
                     : 'border-black/10 bg-white text-[#5B616B] hover:text-[#0B0D10]'
                 }`}
               >
@@ -374,7 +374,7 @@ export default function ProductDetail() {
             {/* Quality Badges */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs">
               <div className="card-precision p-3.5 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-[#412f91]/10 text-[#412f91] flex items-center justify-center shrink-0">
                   <Award className="w-4 h-4" />
                 </div>
                 <div>
@@ -421,7 +421,7 @@ export default function ProductDetail() {
 
             {/* Rating */}
             <div className="flex items-center gap-2 pb-3 border-b border-black/10 text-xs">
-              <div className="flex text-[#FF5A1F]">
+              <div className="flex text-[#412f91]">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 fill-current" />
                 ))}
@@ -432,7 +432,7 @@ export default function ProductDetail() {
 
             {/* Price Block */}
             <div className="flex items-baseline gap-3">
-              <span className="text-3xl font-display font-semibold text-[#FF5A1F]">
+              <span className="text-3xl font-display font-semibold text-[#412f91]">
                 ₹{subtotalPrice.toLocaleString('en-IN')}.00
               </span>
               <span className="text-sm font-mono text-[#5B616B] line-through">
@@ -445,7 +445,7 @@ export default function ProductDetail() {
 
             {/* Delivery Banner */}
             <div className="p-3.5 rounded-xl bg-white border border-black/10 flex items-center gap-2.5 text-xs">
-              <Truck className="w-4 h-4 text-[#FF5A1F] shrink-0" />
+              <Truck className="w-4 h-4 text-[#412f91] shrink-0" />
               <div>
                 <span className="font-medium text-[#0B0D10]">Complimentary Air Express above ₹1,499</span>
                 <span className="block text-[11px] text-[#5B616B]">Dispatch within 24–48 hours from Bhopal hub</span>
@@ -468,13 +468,13 @@ export default function ProductDetail() {
                       onClick={() => setSelectedMaterial(m.id)}
                       className={`p-3 text-left rounded-xl border transition-all cursor-pointer ${
                         isSelected
-                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/5 text-[#0B0D10]'
+                          ? 'border-[#412f91] bg-[#412f91]/5 text-[#0B0D10]'
                           : 'border-black/10 bg-white text-[#5B616B] hover:border-black/25'
                       }`}
                     >
                       <div className="flex items-center justify-between text-xs font-semibold">
                         <span className="text-[#0B0D10]">{m.name}</span>
-                        <span className="text-[#FF5A1F] font-mono">₹{matPrice}</span>
+                        <span className="text-[#412f91] font-mono">₹{matPrice}</span>
                       </div>
                       <span className="text-[10px] text-[#5B616B] block mt-0.5 truncate">
                         {m.badge}
@@ -547,7 +547,7 @@ export default function ProductDetail() {
                   className="w-full flex items-center justify-between text-xs font-semibold text-[#0B0D10] py-1 cursor-pointer"
                 >
                   <span>Description & Application</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${accordions.description ? 'rotate-180 text-[#FF5A1F]' : 'text-[#5B616B]'}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${accordions.description ? 'rotate-180 text-[#412f91]' : 'text-[#5B616B]'}`} />
                 </button>
                 {accordions.description && (
                   <div className="pt-2 text-xs text-[#5B616B] leading-relaxed space-y-1">
@@ -564,7 +564,7 @@ export default function ProductDetail() {
                   className="w-full flex items-center justify-between text-xs font-semibold text-[#0B0D10] py-1 cursor-pointer"
                 >
                   <span>Shipping & Packaging Protocol</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${accordions.shipping ? 'rotate-180 text-[#FF5A1F]' : 'text-[#5B616B]'}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${accordions.shipping ? 'rotate-180 text-[#412f91]' : 'text-[#5B616B]'}`} />
                 </button>
                 {accordions.shipping && (
                   <div className="pt-2 text-xs text-[#5B616B] leading-relaxed space-y-1">
@@ -599,7 +599,7 @@ export default function ProductDetail() {
             <div key={i} className="card-precision p-5 flex flex-col justify-between">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="flex text-[#FF5A1F]">
+                  <div className="flex text-[#412f91]">
                     {[...Array(rev.rating)].map((_, idx) => (
                       <Star key={idx} className="w-3.5 h-3.5 fill-current" />
                     ))}

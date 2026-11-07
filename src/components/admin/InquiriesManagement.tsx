@@ -21,7 +21,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   const styles: Record<string, string> = {
     new: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
     contacted: 'bg-sky-500/10 text-sky-600 border-sky-500/20',
-    quoted: 'bg-[#FF5A1F]/10 text-[#FF5A1F] border-[#FF5A1F]/20',
+    quoted: 'bg-[#412f91]/10 text-[#412f91] border-[#412f91]/20',
     completed: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20',
     archived: 'bg-neutral-100 text-[#5B616B] border-neutral-200',
   };
@@ -111,7 +111,7 @@ export default function InquiriesManagement() {
           className="border border-[#0B0D10]/10 font-mono text-xs font-medium h-10 px-4 bg-white text-[#0B0D10] rounded-xl hover:bg-[#F5F6F8] flex items-center gap-2 active:scale-[0.98] transition-all self-start sm:self-auto shadow-sm"
           onClick={fetchInquiries}
         >
-          <RefreshCw className="w-3.5 h-3.5 text-[#FF5A1F]" />
+          <RefreshCw className="w-3.5 h-3.5 text-[#412f91]" />
           Refresh Pipeline
         </button>
       </div>
@@ -124,7 +124,7 @@ export default function InquiriesManagement() {
             onClick={() => setStatusFilter(status)}
             className={`px-3 py-1.5 rounded-xl border text-xs font-mono font-medium uppercase tracking-wider transition-all shadow-sm ${
               statusFilter === status
-                ? 'bg-[#FF5A1F] text-white border-[#FF5A1F]'
+                ? 'bg-[#412f91] text-white border-[#412f91]'
                 : 'bg-white text-[#5B616B] border-[#0B0D10]/10 hover:text-[#0B0D10] hover:bg-[#F5F6F8]'
             }`}
           >
@@ -137,12 +137,12 @@ export default function InquiriesManagement() {
       <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-24">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           </div>
         ) : filtered.length === 0 ? (
           <div className="py-24 text-center space-y-3 font-mono">
             <div className="w-12 h-12 rounded-xl bg-[#F5F6F8] flex items-center justify-center mx-auto text-[#5B616B]">
-              <Mail className="w-6 h-6 text-[#FF5A1F]" />
+              <Mail className="w-6 h-6 text-[#412f91]" />
             </div>
             <div className="text-[#5B616B] text-xs uppercase tracking-widest">
               No inquiries found in this pipeline view
@@ -240,7 +240,7 @@ export default function InquiriesManagement() {
                 <div>
                   <span className="text-[10px] text-[#5B616B] uppercase font-semibold block">Organization &amp; Scale</span>
                   <div className="font-semibold text-[#0B0D10] mt-0.5">{selectedInquiry.company_name || 'Individual / Startup'}</div>
-                  <div className="text-[#FF5A1F] font-semibold mt-0.5">Quantity: {selectedInquiry.quantity || 1} units</div>
+                  <div className="text-[#412f91] font-semibold mt-0.5">Quantity: {selectedInquiry.quantity || 1} units</div>
                   <div className="text-[#5B616B] mt-0.5">Received: {new Date(selectedInquiry.created_at).toLocaleString()}</div>
                 </div>
               </div>

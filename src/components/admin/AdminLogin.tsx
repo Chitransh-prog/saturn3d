@@ -105,7 +105,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
           <div className="inline-block mb-3">
             <Logo variant="white" className="h-7 mx-auto" />
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#FF5A1F]/15 border border-[#FF5A1F]/30 text-[#FF5A1F] text-xs font-mono font-semibold mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#412f91]/15 border border-[#412f91]/30 text-[#412f91] text-xs font-mono font-semibold mb-2">
             <ShieldCheck className="w-4 h-4" />
             <span>Master Console Authentication</span>
           </div>
@@ -136,7 +136,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
             <div className="space-y-1.5">
               <Label className="text-xs font-mono text-[#A3A9B3] flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  <Mail className="w-3.5 h-3.5 text-[#412f91]" />
                   Administrator Email
                 </span>
                 <span className="text-[10px] text-white/40">REQUIRED</span>
@@ -147,7 +147,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="saturn3d@gmail.com"
-                className="h-10 font-mono bg-white/5 border-white/10 text-white rounded-xl focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
+                className="h-10 font-mono bg-white/5 border-white/10 text-white rounded-xl focus-visible:ring-1 focus-visible:ring-[#412f91]"
                 autoComplete="email"
                 autoFocus
               />
@@ -156,7 +156,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
             <div className="space-y-1.5">
               <Label className="text-xs font-mono text-[#A3A9B3] flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  <Lock className="w-3.5 h-3.5 text-[#412f91]" />
                   Master Password
                 </span>
                 <span className="text-[10px] text-white/40">ENCRYPTED</span>
@@ -168,7 +168,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter administrator password"
-                  className="h-10 pr-10 font-mono bg-white/5 border-white/10 text-white rounded-xl focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
+                  className="h-10 pr-10 font-mono bg-white/5 border-white/10 text-white rounded-xl focus-visible:ring-1 focus-visible:ring-[#412f91]"
                   autoComplete="current-password"
                 />
                 <button
@@ -187,7 +187,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
               <button
                 type="button"
                 onClick={handleQuickFill}
-                className="inline-flex items-center gap-1 text-[#FF5A1F] hover:underline cursor-pointer text-[11px]"
+                className="inline-flex items-center gap-1 text-[#412f91] hover:underline cursor-pointer text-[11px]"
               >
                 <Zap className="w-3 h-3" />
                 Fill Root Credentials

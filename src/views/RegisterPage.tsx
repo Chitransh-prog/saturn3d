@@ -57,7 +57,7 @@ export default function RegisterPage() {
             <Logo variant="dark" className="h-8 mx-auto" />
           </Link>
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-black/10 rounded-full font-mono text-[11px] font-medium text-[#5E6573] shadow-sm mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#412f91]" />
             <span>Operator Registration</span>
           </div>
           <h1 className="text-2xl font-semibold text-[#111215] tracking-tight mb-2">
@@ -65,7 +65,7 @@ export default function RegisterPage() {
           </h1>
           <p className="text-xs text-[#5E6573]">
             Already registered?{' '}
-            <Link to="/login" className="text-[#FF5A1F] hover:underline inline-flex items-center gap-1 font-medium">
+            <Link to="/login" className="text-[#412f91] hover:underline inline-flex items-center gap-1 font-medium">
               Sign in <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
             </Link>
           </p>
@@ -81,7 +81,7 @@ export default function RegisterPage() {
               <Input
                 id="name"
                 placeholder="Chief Engineer"
-                className="h-10 bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs font-mono focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
+                className="h-10 bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs font-mono focus-visible:ring-1 focus-visible:ring-[#412f91]"
                 {...register('name')}
               />
               {errors.name && <p className="font-mono text-[11px] text-red-500">{errors.name.message}</p>}
@@ -95,7 +95,7 @@ export default function RegisterPage() {
                 id="email"
                 type="email"
                 placeholder="engineer@company.com"
-                className="h-10 bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs font-mono focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
+                className="h-10 bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs font-mono focus-visible:ring-1 focus-visible:ring-[#412f91]"
                 {...register('email')}
               />
               {errors.email && <p className="font-mono text-[11px] text-red-500">{errors.email.message}</p>}
@@ -110,7 +110,7 @@ export default function RegisterPage() {
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Min. 6 characters"
-                  className="h-10 bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs font-mono pr-10 focus-visible:ring-1 focus-visible:ring-[#FF5A1F]"
+                  className="h-10 bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs font-mono pr-10 focus-visible:ring-1 focus-visible:ring-[#412f91]"
                   {...register('password', {
                     onChange: (e) => setPassword(e.target.value),
                   })}

@@ -124,7 +124,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
             {/* Header */}
             <div className="p-6 border-b border-black/10 bg-[#F8F9FA] flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#FF5A1F]/10 border border-black/5 flex items-center justify-center text-[#FF5A1F]">
+                <div className="w-10 h-10 rounded-xl bg-[#412f91]/10 border border-black/5 flex items-center justify-center text-[#412f91]">
                   <Factory size={20} />
                 </div>
                 <div>
@@ -151,7 +151,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
                       placeholder="Aditya Sharma"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#FF5A1F]"
+                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#412f91]"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -162,7 +162,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
                       placeholder="aditya@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#FF5A1F]"
+                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#412f91]"
                     />
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
                       placeholder="SkyDrive Robotics R&D"
                       value={formData.companyName}
                       onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#FF5A1F]"
+                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#412f91]"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -186,7 +186,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
                       placeholder="100+"
                       value={formData.quantity}
                       onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#FF5A1F]"
+                      className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 rounded-xl text-xs h-10 focus-visible:ring-[#412f91]"
                     />
                   </div>
                 </div>
@@ -198,7 +198,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
                     placeholder="Describe material requirements (e.g. Carbon-X PA12, 12K Tough Resin), mechanical tolerances, and required turnaround timeline..."
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 min-h-[120px] rounded-xl text-xs p-3 resize-none focus-visible:ring-[#FF5A1F]"
+                    className="bg-[#F8F9FB] border-black/10 text-[#111215] placeholder:text-black/30 min-h-[120px] rounded-xl text-xs p-3 resize-none focus-visible:ring-[#412f91]"
                   />
                 </div>
               </form>

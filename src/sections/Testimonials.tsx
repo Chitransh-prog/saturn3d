@@ -62,7 +62,7 @@ export default function Testimonials() {
           </h3>
         </div>
         <div className="flex items-center gap-1.5 font-mono text-xs text-[#5B616B]">
-          <span className="flex text-[#FF5A1F]">
+          <span className="flex text-[#412f91]">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-3.5 h-3.5 fill-current" />
             ))}
@@ -76,11 +76,11 @@ export default function Testimonials() {
         {testimonials.map((t) => (
           <div
             key={t.id}
-            className="card-precision p-6 flex flex-col justify-between hover:border-[#FF5A1F]/30"
+            className="card-precision p-6 flex flex-col justify-between hover:border-[#412f91]/30"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="flex text-[#FF5A1F]">
+                <div className="flex text-[#412f91]">
                   {[...Array(t.rating)].map((_, i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-current" />
                   ))}
@@ -102,7 +102,7 @@ export default function Testimonials() {
               <div className="text-[11px] text-[#5B616B]">
                 {t.role} &bull; {t.company}
               </div>
-              <div className="font-mono text-[10px] text-[#FF5A1F] mt-1">
+              <div className="font-mono text-[10px] text-[#412f91] mt-1">
                 Project: {t.project}
               </div>
             </div>

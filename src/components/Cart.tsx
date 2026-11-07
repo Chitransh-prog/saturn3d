@@ -90,7 +90,7 @@ export default function Cart() {
         {/* Drawer Header */}
         <div className="flex items-center justify-between p-5 border-b border-black/10 bg-[#F8F9FA]">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#FF5A1F] flex items-center justify-center text-white">
+            <div className="w-8 h-8 rounded-lg bg-[#412f91] flex items-center justify-center text-white">
               <ShoppingBag className="w-4 h-4" />
             </div>
             <div>
@@ -116,13 +116,13 @@ export default function Cart() {
           <div className="px-5 py-3 border-b border-black/10 bg-black/[0.02]">
             <div className="flex justify-between text-xs font-mono text-[#5E6573] mb-1.5">
               <span>{shippingFree ? 'Express Delivery Unlocked' : 'Free Express at ₹1,499'}</span>
-              <span className="text-[#FF5A1F] font-semibold">
+              <span className="text-[#412f91] font-semibold">
                 {shippingFree ? 'FREE' : `₹${(1499 - totalPrice).toFixed(0)} remaining`}
               </span>
             </div>
             <div className="h-1.5 bg-black/10 rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#FF5A1F] transition-all duration-300 rounded-full"
+                className="h-full bg-[#412f91] transition-all duration-300 rounded-full"
                 style={{ width: `${Math.min((totalPrice / 1499) * 100, 100)}%` }}
               />
             </div>
@@ -215,7 +215,7 @@ export default function Cart() {
                         </button>
                       </div>
 
-                      <span className="font-mono text-xs font-semibold text-[#FF5A1F]">
+                      <span className="font-mono text-xs font-semibold text-[#412f91]">
                         ₹{(item.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
@@ -276,7 +276,7 @@ export default function Cart() {
               </div>
 
               <div className="pt-2 flex items-center justify-center gap-1.5 text-[10px] font-mono text-[#5E6573]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#412f91]" />
                 <span>256-Bit SSL Encrypted &bull; Direct Bhopal Hub Dispatch</span>
               </div>
             </div>

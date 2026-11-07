@@ -188,7 +188,7 @@ export default function ExploreMaterials() {
         <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-200 scroll-reveal">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700 mb-3 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#412f91]" />
               <span>Materials Science</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 font-sans">
@@ -201,7 +201,7 @@ export default function ExploreMaterials() {
 
           <button
             onClick={() => navigate('/custom-lab')}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs font-medium transition-all shadow-sm shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#412f91] hover:bg-[#342575] text-white text-xs font-medium transition-all shadow-sm shrink-0 cursor-pointer"
           >
             <span>Configure Custom Material</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -222,7 +222,7 @@ export default function ExploreMaterials() {
                     onClick={() => setActiveIndex(idx)}
                     className={`card-precision p-4 cursor-pointer transition-all ${
                       isActive
-                        ? 'border-[#FF5A1F] bg-white ring-1 ring-[#FF5A1F] shadow-sm'
+                        ? 'border-[#412f91] bg-white ring-1 ring-[#412f91] shadow-sm'
                         : 'bg-[#F8F9FB] border border-black/10 hover:border-black/20 hover:bg-white'
                     }`}
                   >
@@ -230,7 +230,7 @@ export default function ExploreMaterials() {
                       <span className="precision-badge text-[10px] bg-white border-black/10 text-[#5E6573]">
                         {mat.group}
                       </span>
-                      <span className="font-mono text-xs font-bold text-[#FF5A1F]">
+                      <span className="font-mono text-xs font-bold text-[#412f91]">
                         {mat.price}
                       </span>
                     </div>
@@ -246,7 +246,7 @@ export default function ExploreMaterials() {
             </div>
 
             {/* Active Material Detailed Specifications Card */}
-            <div className="card-precision p-6 mt-4 border-[#FF5A1F]/30 bg-white shadow-sm">
+            <div className="card-precision p-6 mt-4 border-[#412f91]/30 bg-white shadow-sm">
               <div className="flex items-center justify-between mb-3">
                 <h4 className="text-base font-bold text-[#111215]">
                   {currentMaterial.name} Telemetry
@@ -274,7 +274,7 @@ export default function ExploreMaterials() {
                 </div>
                 <div>
                   <span className="text-[10px] text-[#8A91A0] block font-semibold">TOLERANCE</span>
-                  <span className="text-[#FF5A1F] font-bold">{currentMaterial.specs.tolerance}</span>
+                  <span className="text-[#412f91] font-bold">{currentMaterial.specs.tolerance}</span>
                 </div>
               </div>
             </div>

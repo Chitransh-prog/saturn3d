@@ -32,7 +32,7 @@ export default function Footer() {
           backgroundSize: '28px 28px'
         }}
       />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-5xl h-44 bg-gradient-to-b from-[#FF5A1F]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-5xl h-44 bg-gradient-to-b from-[#412f91]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-12">
         
@@ -55,11 +55,11 @@ export default function Footer() {
             </p>
             <div className="pt-1 flex flex-col gap-2 font-mono text-xs text-[#5E6573]">
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#FF5A1F] shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[#412f91] shrink-0" />
                 <span>Govindpura Hub, Bhopal • Indore Express Line (Pithampur)</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#FF5A1F] shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-[#412f91] shrink-0" />
                 <span>+91 88899 88874 / +91 79998 24632 &bull; Mon–Sat 9AM–8PM IST</span>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2 text-[#5E6573]">
                 <li>
-                  <Link to="/custom-lab" className="hover:text-[#111215] transition-colors text-[#FF5A1F] font-bold">
+                  <Link to="/custom-lab" className="hover:text-[#111215] transition-colors text-[#412f91] font-bold">
                     Instant CAD Slicer &rarr;
                   </Link>
                 </li>
@@ -134,7 +134,7 @@ export default function Footer() {
             </p>
 
             <form onSubmit={handleNewsletterSubmit} className="relative">
-              <div className="flex items-center bg-white border border-black/15 rounded-xl p-1 focus-within:border-[#FF5A1F] transition-all shadow-2xs">
+              <div className="flex items-center bg-white border border-black/15 rounded-xl p-1 focus-within:border-[#412f91] transition-all shadow-2xs">
                 <input
                   type="email"
                   required
@@ -146,7 +146,7 @@ export default function Footer() {
                 <button
                   type="submit"
                   aria-label="Subscribe to telemetry"
-                  className="px-3 py-2 bg-[#FF5A1F] text-white hover:bg-[#E04810] rounded-lg transition-colors flex items-center gap-1.5 text-xs font-semibold cursor-pointer shadow-xs"
+                  className="px-3 py-2 bg-[#412f91] text-white hover:bg-[#342575] rounded-lg transition-colors flex items-center gap-1.5 text-xs font-semibold cursor-pointer shadow-xs"
                 >
                   <span>Subscribe</span>
                   <Send className="w-3 h-3" />
@@ -264,7 +264,7 @@ export default function Footer() {
         </div>
         <button
           onClick={() => navigate('/custom-lab')}
-          className="btn-precision-primary text-xs py-2 px-3.5 flex items-center gap-1.5 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F]"
+          className="btn-precision-primary text-xs py-2 px-3.5 flex items-center gap-1.5 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91]"
         >
           <span>Instant Quote</span>
           <ArrowRight className="w-3.5 h-3.5" />

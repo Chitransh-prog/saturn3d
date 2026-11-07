@@ -105,7 +105,7 @@ export default function CouponsManagement() {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="h-10 px-5 rounded-xl bg-[#FF5A1F] text-white font-medium text-xs flex items-center justify-center gap-2 shadow-sm hover:bg-[#E04B14] active:scale-[0.98] transition-all w-full sm:w-auto"
+          className="h-10 px-5 rounded-xl bg-[#412f91] text-white font-medium text-xs flex items-center justify-center gap-2 shadow-sm hover:bg-[#342575] active:scale-[0.98] transition-all w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" /> Issue Coupon
         </button>
@@ -115,7 +115,7 @@ export default function CouponsManagement() {
       <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           </div>
         ) : coupons.length === 0 ? (
           <div className="py-16 text-center text-[#5B616B] font-mono text-xs uppercase tracking-widest">
@@ -139,13 +139,13 @@ export default function CouponsManagement() {
                   <tr key={coupon.id} className="hover:bg-[#F5F6F8]/60 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <Tag className="w-4 h-4 text-[#FF5A1F]" />
+                        <Tag className="w-4 h-4 text-[#412f91]" />
                         <span className="font-mono font-semibold text-xs text-[#0B0D10] bg-[#F5F6F8] px-2.5 py-1 rounded-lg border border-[#0B0D10]/10">
                           {coupon.code}
                         </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-semibold text-xs text-[#FF5A1F]">
+                    <td className="px-6 py-4 font-semibold text-xs text-[#412f91]">
                       {coupon.type === 'percent' ? `${coupon.value}% OFF` : `₹${coupon.value} OFF`}
                     </td>
                     <td className="px-6 py-4 text-xs font-normal text-[#0B0D10]/80">
@@ -217,7 +217,7 @@ export default function CouponsManagement() {
                   <select
                     value={form.type}
                     onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                    className="w-full h-10 px-3 mt-1 rounded-xl border border-[#0B0D10]/15 text-xs font-mono font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#FF5A1F]"
+                    className="w-full h-10 px-3 mt-1 rounded-xl border border-[#0B0D10]/15 text-xs font-mono font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[#412f91]"
                   >
                     <option value="percent">Percentage (%)</option>
                     <option value="flat">Flat Amount (₹)</option>
@@ -293,7 +293,7 @@ export default function CouponsManagement() {
                 <button
                   type="submit"
                   disabled={creating}
-                  className="flex-1 h-10 rounded-xl bg-[#FF5A1F] text-white font-medium text-xs shadow-sm hover:bg-[#E04B14] transition-all flex items-center justify-center gap-2"
+                  className="flex-1 h-10 rounded-xl bg-[#412f91] text-white font-medium text-xs shadow-sm hover:bg-[#342575] transition-all flex items-center justify-center gap-2"
                 >
                   {creating ? <Loader2 className="w-4 h-4 animate-spin text-white" /> : 'Create Coupon'}
                 </button>

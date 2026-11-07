@@ -314,21 +314,21 @@ export default function Navigation() {
                 aria-expanded={activeMegaMenu === 'services'}
                 aria-haspopup="true"
                 onClick={() => setActiveMegaMenu(activeMegaMenu === 'services' ? null : 'services')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                   activeMegaMenu === 'services'
                     ? 'text-neutral-900 bg-neutral-100 font-semibold shadow-2xs'
                     : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
                 }`}
               >
                 <span>Services</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMegaMenu === 'services' ? 'rotate-180 text-[#FF5A1F]' : 'opacity-50'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMegaMenu === 'services' ? 'rotate-180 text-[#412f91]' : 'opacity-50'}`} />
               </button>
             </div>
 
             {/* Direct Link: Products (homepage anchor) */}
             <button
               onClick={() => scrollToSection('products')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                 isHomePage && activeSection === 'products'
                   ? 'text-neutral-900 bg-neutral-100 font-semibold shadow-2xs'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
@@ -340,7 +340,7 @@ export default function Navigation() {
             {/* Direct Link: Catalog (full component catalog page) */}
             <Link
               to="/categories"
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                 pathname === '/categories'
                   ? 'text-neutral-900 bg-neutral-100 font-semibold shadow-2xs'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
@@ -357,7 +357,7 @@ export default function Navigation() {
                 <button
                   key={sec.id}
                   onClick={() => scrollToSection(sec.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5A1F] ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#412f91] ${
                     isActive
                       ? 'text-neutral-900 bg-neutral-100 font-semibold shadow-2xs'
                       : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100/70'
@@ -390,7 +390,7 @@ export default function Navigation() {
             >
               <ShoppingBag className="w-4 h-4" />
               {totalItems > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#FF5A1F] text-white font-mono text-[9px] font-bold flex items-center justify-center rounded-full shadow-xs">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#412f91] text-white font-mono text-[9px] font-bold flex items-center justify-center rounded-full shadow-xs">
                   {totalItems}
                 </span>
               )}
@@ -449,7 +449,7 @@ export default function Navigation() {
             {/* SaaS Primary Action Button */}
             <Link
               to="/custom-lab"
-              className="inline-flex items-center justify-center gap-1.5 bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs font-semibold px-3.5 sm:px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-1.5 bg-[#412f91] hover:bg-[#342575] text-white text-xs font-semibold px-3.5 sm:px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all active:scale-[0.98]"
             >
               <span className="hidden sm:inline whitespace-nowrap">Instant CAD Quote</span>
               <span className="sm:hidden whitespace-nowrap text-[11px]">Quote</span>
@@ -490,13 +490,13 @@ export default function Navigation() {
                                 onClick={() => setActiveMegaMenu(null)}
                                 className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-neutral-100/90 transition-colors"
                               >
-                                <div className="w-8 h-8 rounded-lg bg-neutral-100 group-hover:bg-[#FF5A1F]/10 border border-neutral-200 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
-                                  <Icon className="w-4 h-4 text-neutral-600 group-hover:text-[#FF5A1F] transition-colors" />
+                                <div className="w-8 h-8 rounded-lg bg-neutral-100 group-hover:bg-[#412f91]/10 border border-neutral-200 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
+                                  <Icon className="w-4 h-4 text-neutral-600 group-hover:text-[#412f91] transition-colors" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="text-sm font-semibold text-neutral-900 group-hover:text-[#FF5A1F] transition-colors flex items-center justify-between">
+                                  <div className="text-sm font-semibold text-neutral-900 group-hover:text-[#412f91] transition-colors flex items-center justify-between">
                                     <span>{link.name}</span>
-                                    <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#FF5A1F]" />
+                                    <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#412f91]" />
                                   </div>
                                   <p className="text-xs text-neutral-500 mt-0.5 line-clamp-1 leading-normal">
                                     {link.desc}
@@ -520,7 +520,7 @@ export default function Navigation() {
                   <Link
                     to={megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.href}
                     onClick={() => setActiveMegaMenu(null)}
-                    className="block p-3.5 group hover:border-[#FF5A1F]/40 transition-all rounded-xl bg-neutral-50 hover:bg-neutral-100/90 border border-neutral-200 shadow-xs"
+                    className="block p-3.5 group hover:border-[#412f91]/40 transition-all rounded-xl bg-neutral-50 hover:bg-neutral-100/90 border border-neutral-200 shadow-xs"
                   >
                     <div className="aspect-[16/10] w-full rounded-lg bg-neutral-200 border border-neutral-200 mb-3 relative overflow-hidden">
                       <img 
@@ -532,9 +532,9 @@ export default function Navigation() {
                         {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.badge}
                       </div>
                     </div>
-                    <h4 className="text-sm font-semibold text-neutral-900 group-hover:text-[#FF5A1F] transition-colors flex items-center justify-between">
+                    <h4 className="text-sm font-semibold text-neutral-900 group-hover:text-[#412f91] transition-colors flex items-center justify-between">
                       <span>{megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.title}</span>
-                      <ArrowRight className="w-4 h-4 text-[#FF5A1F] opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight className="w-4 h-4 text-[#412f91] opacity-0 group-hover:opacity-100 transition-opacity" />
                     </h4>
                     <p className="font-mono text-xs text-neutral-500 mt-1">
                       {megaMenuData[activeMegaMenu as keyof typeof megaMenuData].featured.spec}
@@ -563,7 +563,7 @@ export default function Navigation() {
                     onClick={() => scrollToSection(sec.id)}
                     className={`px-3 py-2 rounded-lg text-xs font-medium text-left transition-all ${
                       isHomePage && activeSection === sec.id
-                        ? 'bg-[#FF5A1F] text-white font-semibold'
+                        ? 'bg-[#412f91] text-white font-semibold'
                         : 'bg-neutral-100 text-neutral-800 hover:bg-neutral-200'
                     }`}
                   >
@@ -590,7 +590,7 @@ export default function Navigation() {
                       className="w-full py-2 flex items-center justify-between text-sm font-semibold text-neutral-900"
                     >
                       <span>{item.title}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-[#FF5A1F]' : 'text-neutral-400'}`} />
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180 text-[#412f91]' : 'text-neutral-400'}`} />
                     </button>
                     {isExpanded && (
                       <div className="pl-3 py-2 space-y-2.5">
@@ -624,7 +624,7 @@ export default function Navigation() {
                 <Link
                   to="/custom-lab"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full inline-flex items-center justify-center gap-1.5 bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs font-semibold py-2.5 rounded-lg shadow-sm"
+                  className="w-full inline-flex items-center justify-center gap-1.5 bg-[#412f91] hover:bg-[#342575] text-white text-xs font-semibold py-2.5 rounded-lg shadow-sm"
                 >
                   <span>Instant CAD Quote</span>
                   <ArrowRight className="w-4 h-4" />

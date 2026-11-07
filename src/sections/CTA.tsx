@@ -15,13 +15,13 @@ export default function CTA() {
       <section className="w-full py-16 sm:py-24 px-4 sm:px-8 lg:px-16 bg-[#F8F9FA] border-t border-black/10 font-sans">
         <div data-aos="fade-up" className="max-w-7xl mx-auto rounded-3xl bg-white text-neutral-900 p-5 sm:p-10 lg:p-14 relative overflow-hidden border border-neutral-200/90 shadow-lg">
           
-          {/* Subtle Orange Ambient Accent */}
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FF5A1F]/5 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Ambient Accent */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#412f91]/5 rounded-full blur-3xl pointer-events-none" />
 
           {/* Top Telemetry Strip */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-5 border-b border-neutral-200 relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-medium text-neutral-700">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#412f91] animate-pulse" />
               <span>Production Dispatch Desk</span>
             </div>
 
@@ -45,7 +45,7 @@ export default function CTA() {
           <div data-aos="fade-up" data-aos-delay="100" className="relative z-10 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
             <Link
               href="/custom-lab"
-              className="px-5 py-3 rounded-lg bg-[#FF5A1F] hover:bg-[#EA4D14] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
+              className="px-5 py-3 rounded-lg bg-[#412f91] hover:bg-[#342575] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-sm active:scale-[0.98]"
             >
               <Sparkles className="w-4 h-4" />
               <span>Upload CAD for Quote</span>
@@ -75,7 +75,7 @@ export default function CTA() {
           {/* Metrology & Location Guarantee */}
           <div className="relative z-10 mt-10 pt-6 border-t border-black/10 flex flex-wrap items-center justify-between gap-4 font-mono text-xs text-[#5E6573]">
             <div className="flex items-center gap-2 text-[#111215] font-semibold">
-              <ShieldCheck className="w-4 h-4 text-[#FF5A1F]" />
+              <ShieldCheck className="w-4 h-4 text-[#412f91]" />
               <span>&plusmn;0.04 mm Optical Metrology Inspection Certificate Available</span>
             </div>
 

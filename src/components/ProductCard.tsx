@@ -69,13 +69,13 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group relative bg-white rounded-2xl border border-black/10 hover:border-[#FF5A1F]/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1 select-none">
+    <div className="group relative bg-white rounded-2xl border border-black/10 hover:border-[#412f91]/60 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1 select-none">
       
       {/* 1. Card Top Bar: Sector Eyebrow + Status + Wishlist */}
       <div className="p-4 sm:p-5 pb-0 flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-          <span className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#FF5A1F] truncate">
+          <span className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#412f91] truncate">
             {product.category || 'RAPID PROTOTYPING'}
           </span>
         </div>
@@ -93,7 +93,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           >
             <Heart
               className={`w-3.5 h-3.5 transition-colors ${
-                isWishlisted ? 'fill-[#FF5A1F] text-[#FF5A1F]' : ''
+                isWishlisted ? 'fill-[#412f91] text-[#412f91]' : ''
               }`}
             />
           </button>
@@ -120,7 +120,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Interactive 3D CAD Inspect Hover Tag */}
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/visual:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 text-[#111215] font-mono text-[11px] font-bold shadow-lg transform translate-y-1 group-hover/visual:translate-y-0 transition-transform">
-              <Box className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <Box className="w-3.5 h-3.5 text-[#412f91]" />
               <span>Inspect in 3D CAD</span>
             </span>
           </div>
@@ -138,7 +138,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="px-4 sm:px-5 flex-1 flex flex-col justify-between">
         <div>
           {/* Title */}
-          <Link href={`/product/${product.id}`} className="block group-hover:text-[#FF5A1F] transition-colors">
+          <Link href={`/product/${product.id}`} className="block group-hover:text-[#412f91] transition-colors">
             <h3 className="font-sans font-bold text-base sm:text-lg text-[#111215] tracking-tight leading-snug">
               {product.name}
             </h3>
@@ -184,10 +184,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             {/* View 3D Page */}
             <Link
               href={`/product/${product.id}`}
-              className="p-2 sm:px-3 sm:py-2 rounded-xl border border-black/10 hover:border-[#FF5A1F] bg-[#F8F9FB] hover:bg-white text-[#111215] hover:text-[#FF5A1F] transition-all flex items-center gap-1 font-mono text-xs"
+              className="p-2 sm:px-3 sm:py-2 rounded-xl border border-black/10 hover:border-[#412f91] bg-[#F8F9FB] hover:bg-white text-[#111215] hover:text-[#412f91] transition-all flex items-center gap-1 font-mono text-xs"
               title="Inspect Part in 3D"
             >
-              <Box className="w-4 h-4 text-[#FF5A1F]" />
+              <Box className="w-4 h-4 text-[#412f91]" />
               <span className="hidden md:inline font-semibold">3D</span>
             </Link>
 
@@ -199,7 +199,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm active:scale-95 ${
                 inCartQty > 0
                   ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-500/20'
-                  : 'bg-[#FF5A1F] hover:bg-[#E04F1A] text-white shadow-[#FF5A1F]/20'
+                  : 'bg-[#412f91] hover:bg-[#342575] text-white shadow-[#412f91]/20'
               }`}
             >
               {inCartQty > 0 ? (

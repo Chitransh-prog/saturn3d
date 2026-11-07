@@ -12,8 +12,10 @@
     --surface-card: #181C22;
     --studio-light: #F5F6F8;
     --studio-card: #FFFFFF;
-    --saturn-orange: #FF5A1F;
-    --saturn-orange-hover: #E04810;
+    --saturn-orange: #412f91;
+    --saturn-orange-hover: #342575;
+    --saturn-purple: #412f91;
+    --saturn-purple-hover: #342575;
     --wa-green: #25D366;
     --text-primary: #0B0D10;
     --text-muted: #5B616B;
@@ -27,19 +29,19 @@
     --card-foreground: 220 18% 5%;
     --popover: 0 0% 100%;
     --popover-foreground: 220 18% 5%;
-    --primary: 16 100% 56%;       /* #FF5A1F Saturn Orange */
+    --primary: 251 51% 38%;       /* #412f91 Saturn Purple */
     --primary-foreground: 0 0% 100%;
     --secondary: 220 14% 93%;
     --secondary-foreground: 220 18% 5%;
     --muted: 220 14% 92%;
     --muted-foreground: 220 8% 40%;
-    --accent: 16 100% 56%;
+    --accent: 251 51% 38%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 220 18% 5% / 0.10;
     --input: 220 18% 5% / 0.12;
-    --ring: 16 100% 56%;
+    --ring: 251 51% 38%;
     --radius: 0.75rem;           /* 12px default */
   }
 
@@ -93,7 +95,7 @@
     color: inherit;
   }
   ::selection {
-    background-color: #FF5A1F;
+    background-color: #412f91;
     color: #FFFFFF;
   }
 }
@@ -220,17 +222,17 @@
     font-weight: 600;
     font-size: 0.875rem;
     border-radius: 10px;
-    background-color: #FF5A1F;
+    background-color: #412f91;
     color: #FFFFFF;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(255, 90, 31, 0.20);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(65, 47, 145, 0.22);
     border: 1px solid transparent;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .btn-precision-primary:hover {
-    background-color: #E04810;
+    background-color: #342575;
     transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(255, 90, 31, 0.28);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(65, 47, 145, 0.32);
   }
   .btn-precision-primary:hover svg {
     transform: translateX(3px);
@@ -243,7 +245,7 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   }
   .btn-precision-primary:focus-visible {
-    outline: 2px solid #FF5A1F;
+    outline: 2px solid #412f91;
     outline-offset: 2px;
   }
 
@@ -289,8 +291,8 @@
     cursor: pointer;
   }
   .btn-precision-ghost:hover {
-    border-bottom-color: #FF5A1F;
-    color: #FF5A1F;
+    border-bottom-color: #412f91;
+    color: #412f91;
   }
 
   .btn-whatsapp-precision {
@@ -369,9 +371,9 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    border: 1px solid rgba(255, 90, 31, 0.3);
-    background-color: rgba(255, 90, 31, 0.08);
-    color: #FF5A1F;
+    border: 1px solid rgba(65, 47, 145, 0.3);
+    background-color: rgba(65, 47, 145, 0.08);
+    color: #412f91;
     border-radius: 6px;
   }
 
@@ -411,7 +413,7 @@
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF5A1F;
+  background: #412f91;
 }
 
 @media (prefers-reduced-motion: reduce) {

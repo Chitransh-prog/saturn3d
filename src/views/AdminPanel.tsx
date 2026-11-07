@@ -33,7 +33,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   const styles: Record<string, string> = {
     pending: 'bg-amber-500/10 text-amber-600 border-amber-500/20',
     processing: 'bg-sky-500/10 text-sky-600 border-sky-500/20',
-    shipped: 'bg-[#FF5A1F]/10 text-[#FF5A1F] border-[#FF5A1F]/20',
+    shipped: 'bg-[#412f91]/10 text-[#412f91] border-[#412f91]/20',
     delivered: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20',
     completed: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20',
     contacted: 'bg-violet-500/10 text-violet-600 border-violet-500/20',
@@ -105,7 +105,7 @@ function Dashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
       </div>
     );
   }
@@ -115,7 +115,7 @@ function Dashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mb-8">
         <StatCard label="Total Revenue" value={`₹${(stats?.totalRevenue ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`} icon={DollarSign} color="bg-emerald-500/10 text-emerald-600" />
-        <StatCard label="Order Volume" value={stats?.orderVolume ?? 0} icon={BarChart3} color="bg-[#FF5A1F]/10 text-[#FF5A1F]" />
+        <StatCard label="Order Volume" value={stats?.orderVolume ?? 0} icon={BarChart3} color="bg-[#412f91]/10 text-[#412f91]" />
         <StatCard label="Total Orders" value={stats?.totalOrders ?? 0} icon={ShoppingCart} color="bg-sky-500/10 text-sky-600" />
         <StatCard label="Active Inventory" value={stats?.activeInventory ?? 0} icon={Layers} color="bg-indigo-500/10 text-indigo-600" />
         <StatCard label="Catalog Parts" value={stats?.totalProducts ?? 0} icon={Package} color="bg-amber-500/10 text-amber-600" />
@@ -127,7 +127,7 @@ function Dashboard() {
           to="/admin/products"
           className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm space-y-2 active:scale-[0.98] transition-all"
         >
-          <div className="w-10 h-10 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-[#412f91]/10 text-[#412f91] flex items-center justify-center">
             <Plus className="w-5 h-5" />
           </div>
           <span className="text-xs font-mono font-medium text-[#0B0D10]">Add Product</span>
@@ -178,7 +178,7 @@ function Dashboard() {
                     <td className="px-6 py-4 text-xs text-[#0B0D10]/80">
                       {order.users?.name || 'Guest'}
                     </td>
-                    <td className="px-6 py-4 font-semibold text-xs text-[#FF5A1F]">
+                    <td className="px-6 py-4 font-semibold text-xs text-[#412f91]">
                       ₹{order.total_amount.toFixed(2)}
                     </td>
                     <td className="px-6 py-4"><StatusBadge status={order.status} /></td>
@@ -207,7 +207,7 @@ function Dashboard() {
                     <div className="text-xs text-[#0B0D10]">
                       {order.users?.name || 'Guest'}
                     </div>
-                    <div className="font-semibold text-sm text-[#FF5A1F]">
+                    <div className="font-semibold text-sm text-[#412f91]">
                       ₹{order.total_amount.toFixed(2)}
                     </div>
                   </div>
@@ -503,7 +503,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                 type="button"
                 onClick={autoGenerateSeoGeoAeo}
                 title="Automatically generate high-ranking SEO, GEO and AEO citations from product details"
-                className="h-8 px-3 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] hover:bg-[#FF5A1F] hover:text-white transition-all text-xs font-semibold flex items-center gap-1.5 border border-[#FF5A1F]/20 shadow-sm"
+                className="h-8 px-3 rounded-xl bg-[#412f91]/10 text-[#412f91] hover:bg-[#412f91] hover:text-white transition-all text-xs font-semibold flex items-center gap-1.5 border border-[#412f91]/20 shadow-sm"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Auto-Fill SEO/GEO/AEO</span>
@@ -537,7 +537,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
               onClick={() => setActiveFormTab('seo')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition-all whitespace-nowrap ${
                 activeFormTab === 'seo'
-                  ? 'bg-[#FF5A1F] text-white shadow-sm'
+                  ? 'bg-[#412f91] text-white shadow-sm'
                   : 'text-[#5B616B] hover:text-[#0B0D10] hover:bg-white'
               }`}
             >
@@ -591,7 +591,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={handleDrop}
                   onClick={() => fileInputRef.current?.click()}
-                  className="border-2 border-dashed border-[#0B0D10]/15 hover:border-[#FF5A1F]/50 hover:bg-[#FF5A1F]/5 p-6 rounded-2xl text-center cursor-pointer transition-colors bg-white flex flex-col items-center justify-center gap-2 group"
+                  className="border-2 border-dashed border-[#0B0D10]/15 hover:border-[#412f91]/50 hover:bg-[#412f91]/5 p-6 rounded-2xl text-center cursor-pointer transition-colors bg-white flex flex-col items-center justify-center gap-2 group"
                 >
                   <input
                     ref={fileInputRef}
@@ -600,8 +600,8 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                     className="hidden"
                     onChange={(e) => e.target.files && handleFileUpload(e.target.files)}
                   />
-                  <div className="w-12 h-12 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center group-hover:scale-105 transition-transform">
-                    {uploading ? <Loader2 className="w-6 h-6 animate-spin text-[#FF5A1F]" /> : <UploadCloud className="w-6 h-6" />}
+                  <div className="w-12 h-12 rounded-xl bg-[#412f91]/10 text-[#412f91] flex items-center justify-center group-hover:scale-105 transition-transform">
+                    {uploading ? <Loader2 className="w-6 h-6 animate-spin text-[#412f91]" /> : <UploadCloud className="w-6 h-6" />}
                   </div>
                   <div>
                     <p className="text-xs font-medium text-[#0B0D10]">
@@ -629,7 +629,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                           <X className="w-3 h-3" />
                         </button>
                         {idx === 0 && (
-                          <span className="absolute bottom-0 inset-x-0 bg-[#FF5A1F] text-white text-[8px] font-semibold text-center uppercase tracking-tight py-0.5">
+                          <span className="absolute bottom-0 inset-x-0 bg-[#412f91] text-white text-[8px] font-semibold text-center uppercase tracking-tight py-0.5">
                             PRIMARY
                           </span>
                         )}
@@ -672,7 +672,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                   required
                   rows={3}
                   placeholder="Continuous chopped carbon fiber PA12 reinforced component manufactured for high vibrational damping..."
-                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#FF5A1F] bg-white"
+                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#412f91] bg-white"
                 />
               </div>
 
@@ -723,7 +723,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                   name="is_active"
                   value={form.is_active ? 'true' : 'false'}
                   onChange={(e) => setForm((p) => ({ ...p, is_active: e.target.value === 'true' }))}
-                  className="w-full h-10 px-3 rounded-xl border border-[#0B0D10]/15 font-mono text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#FF5A1F]"
+                  className="w-full h-10 px-3 rounded-xl border border-[#0B0D10]/15 font-mono text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#412f91]"
                 >
                   <option value="true">Active &amp; Published (Visible on Store &amp; Sitemaps)</option>
                   <option value="false">Draft &amp; Hidden (Restricted to Internal Review)</option>
@@ -778,7 +778,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                   value={seoForm.meta_description}
                   onChange={(e) => setSeoForm({ ...seoForm, meta_description: e.target.value })}
                   placeholder="e.g. High-strength PA12-CF carbon fiber drone arm spar printed with ±0.04 mm precision at Saturn 3D Bhopal hub. Fast dispatch across India."
-                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#FF5A1F] bg-white"
+                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#412f91] bg-white"
                 />
               </div>
 
@@ -808,7 +808,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                   <select
                     value={seoForm.indexable ? 'true' : 'false'}
                     onChange={(e) => setSeoForm({ ...seoForm, indexable: e.target.value === 'true' })}
-                    className="w-full h-10 px-3 rounded-xl border border-[#0B0D10]/15 font-mono text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#FF5A1F]"
+                    className="w-full h-10 px-3 rounded-xl border border-[#0B0D10]/15 font-mono text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#412f91]"
                   >
                     <option value="true">index, follow (Rank on Google, Bing &amp; DuckDuckGo)</option>
                     <option value="false">noindex, nofollow (Exclude from SERPs)</option>
@@ -918,7 +918,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                   value={aeoForm.direct_answer}
                   onChange={(e) => setAeoForm({ ...aeoForm, direct_answer: e.target.value })}
                   placeholder="e.g. Saturn 3D manufactures the Carbon-X Drone Arm in Bhopal, Madhya Pradesh using continuous chopped carbon fiber PA12 with industrial tolerance of ±0.04 mm, dispatching nationwide with zero minimum order quantity."
-                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#FF5A1F] bg-white"
+                  className="w-full px-3 py-2 rounded-xl border border-[#0B0D10]/15 font-mono text-xs resize-none focus:outline-none focus:ring-2 focus:ring-[#412f91] bg-white"
                 />
                 <span className="text-[10px] text-[#5B616B] block">This exact factual sentence is structured in JSON-LD for AI search engines to quote word-for-word.</span>
               </div>
@@ -972,7 +972,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                   <button
                     type="button"
                     onClick={handleAddFaqItem}
-                    className="text-xs text-[#FF5A1F] hover:underline font-semibold flex items-center gap-1"
+                    className="text-xs text-[#412f91] hover:underline font-semibold flex items-center gap-1"
                   >
                     <Plus className="w-3.5 h-3.5" /> Add Q&amp;A
                   </button>
@@ -1002,7 +1002,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
                         placeholder="Answer (factual, concise answer for AI retrieval)"
                         value={item.answer}
                         onChange={(e) => handleUpdateFaqItem(idx, 'answer', e.target.value)}
-                        className="w-full px-2.5 py-1.5 rounded-lg border border-[#0B0D10]/15 font-mono text-xs resize-none bg-white focus:outline-none focus:ring-1 focus:ring-[#FF5A1F]"
+                        className="w-full px-2.5 py-1.5 rounded-lg border border-[#0B0D10]/15 font-mono text-xs resize-none bg-white focus:outline-none focus:ring-1 focus:ring-[#412f91]"
                       />
                     </div>
                   ))}
@@ -1029,7 +1029,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
               <button
                 type="submit"
                 disabled={loading || uploading}
-                className="h-10 px-6 rounded-xl bg-[#FF5A1F] text-white font-medium text-xs shadow-sm hover:bg-[#E04B14] transition-all flex items-center justify-center gap-2"
+                className="h-10 px-6 rounded-xl bg-[#412f91] text-white font-medium text-xs shadow-sm hover:bg-[#342575] transition-all flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
@@ -1103,7 +1103,7 @@ function ProductsManagement() {
         </div>
         <button
           onClick={() => { setEditProduct(null); setShowForm(true); }}
-          className="hidden sm:inline-flex h-10 px-5 rounded-xl bg-[#FF5A1F] text-white font-medium text-xs items-center justify-center gap-2 shadow-sm hover:bg-[#E04B14] active:scale-[0.98] transition-all"
+          className="hidden sm:inline-flex h-10 px-5 rounded-xl bg-[#412f91] text-white font-medium text-xs items-center justify-center gap-2 shadow-sm hover:bg-[#342575] active:scale-[0.98] transition-all"
         >
           <Plus className="w-4 h-4 text-white" /> Register Component
         </button>
@@ -1112,7 +1112,7 @@ function ProductsManagement() {
       {/* Mobile Floating Action Button */}
       <button
         onClick={() => { setEditProduct(null); setShowForm(true); }}
-        className="sm:hidden fixed bottom-6 right-6 w-12 h-12 bg-[#FF5A1F] text-white rounded-full shadow-lg flex items-center justify-center z-40 active:scale-[0.98] transition-all"
+        className="sm:hidden fixed bottom-6 right-6 w-12 h-12 bg-[#412f91] text-white rounded-full shadow-lg flex items-center justify-center z-40 active:scale-[0.98] transition-all"
       >
         <Plus className="w-5 h-5" />
       </button>
@@ -1131,7 +1131,7 @@ function ProductsManagement() {
       <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           </div>
         ) : products.length === 0 ? (
           <div className="py-16 text-center text-[#5B616B] font-mono text-xs uppercase tracking-widest">
@@ -1180,7 +1180,7 @@ function ProductsManagement() {
                         </div>
                       </td>
                       <td className="px-6 py-4 text-xs text-[#0B0D10]/80">{product.category}</td>
-                      <td className="px-6 py-4 font-semibold text-xs text-[#FF5A1F]">
+                      <td className="px-6 py-4 font-semibold text-xs text-[#412f91]">
                         ₹{product.price.toFixed(2)}
                       </td>
                       <td className="px-6 py-4">
@@ -1271,7 +1271,7 @@ function ProductsManagement() {
                       </div>
                       <div className="text-[10px] text-[#5B616B] truncate mt-0.5">{product.category}</div>
                       <div className="flex items-center gap-2 mt-1.5">
-                        <div className="font-semibold text-xs text-[#FF5A1F]">₹{product.price.toFixed(2)}</div>
+                        <div className="font-semibold text-xs text-[#412f91]">₹{product.price.toFixed(2)}</div>
                         <div className="h-2.5 w-px bg-[#0B0D10]/10" />
                         <div className="text-[10px] text-[#5B616B]">Stock: {product.stock}</div>
                       </div>
@@ -1410,7 +1410,7 @@ function OrdersManagement() {
             onClick={() => setStatusFilter(s)}
             className={`px-3 py-1.5 rounded-xl border font-mono text-xs font-medium uppercase tracking-wider transition-all whitespace-nowrap shadow-sm ${
               statusFilter === s 
-                ? 'bg-[#FF5A1F] text-white border-[#FF5A1F]' 
+                ? 'bg-[#412f91] text-white border-[#412f91]' 
                 : 'bg-white text-[#5B616B] border-[#0B0D10]/10 hover:text-[#0B0D10] hover:bg-[#F5F6F8]'
             }`}
           >
@@ -1423,7 +1423,7 @@ function OrdersManagement() {
       <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           </div>
         ) : orders.length === 0 ? (
           <div className="py-16 text-center text-[#5B616B] font-mono text-xs uppercase tracking-widest">
@@ -1460,7 +1460,7 @@ function OrdersManagement() {
                       <td className="px-6 py-4 text-xs text-[#0B0D10]/80">
                         {order.order_items?.length ?? 0} component(s)
                       </td>
-                      <td className="px-6 py-4 font-semibold text-xs text-[#FF5A1F]">
+                      <td className="px-6 py-4 font-semibold text-xs text-[#412f91]">
                         ₹{order.total_amount.toFixed(2)}
                       </td>
                       <td className="px-6 py-4">
@@ -1500,7 +1500,7 @@ function OrdersManagement() {
                             onClick={() => setExpandedOrder(expandedOrder === order.id ? null : order.id)}
                             title="Inspect Payload"
                             className={`w-8 h-8 rounded-lg border border-[#0B0D10]/10 flex items-center justify-center transition-all shadow-sm ${
-                              expandedOrder === order.id ? 'bg-[#FF5A1F] text-white border-[#FF5A1F]' : 'bg-white text-[#5B616B] hover:text-[#0B0D10] hover:bg-[#F5F6F8]'
+                              expandedOrder === order.id ? 'bg-[#412f91] text-white border-[#412f91]' : 'bg-white text-[#5B616B] hover:text-[#0B0D10] hover:bg-[#F5F6F8]'
                             }`}
                           >
                             <Eye className="w-3.5 h-3.5" />
@@ -1515,7 +1515,7 @@ function OrdersManagement() {
                             {/* Order Items */}
                             <div className="space-y-3">
                               <h4 className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#0B0D10] flex items-center gap-1.5">
-                                <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+                                <span className="w-2 h-2 rounded-full bg-[#412f91]" />
                                 Manifest Items
                               </h4>
                               <div className="space-y-2">
@@ -1530,7 +1530,7 @@ function OrdersManagement() {
                                         Qty: {item.quantity} × ₹{item.price.toFixed(2)}
                                       </div>
                                     </div>
-                                    <div className="font-semibold text-xs text-[#FF5A1F] font-mono">
+                                    <div className="font-semibold text-xs text-[#412f91] font-mono">
                                       ₹{(item.price * item.quantity).toFixed(2)}
                                     </div>
                                   </div>
@@ -1569,7 +1569,7 @@ function OrdersManagement() {
                                   </div>
                                   <div className="flex gap-2">
                                     <button
-                                      className="flex-1 rounded-lg bg-[#FF5A1F] text-white font-mono font-medium text-[11px] h-9 shadow-sm hover:bg-[#E04B14] active:scale-[0.98] transition-all"
+                                      className="flex-1 rounded-lg bg-[#412f91] text-white font-mono font-medium text-[11px] h-9 shadow-sm hover:bg-[#342575] active:scale-[0.98] transition-all"
                                       onClick={() => handleUpdateDelivery(order.id)}
                                     >
                                       Save Waybill
@@ -1603,7 +1603,7 @@ function OrdersManagement() {
                                         });
                                       }}
                                     >
-                                      <Truck className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                                      <Truck className="w-3.5 h-3.5 text-[#412f91]" />
                                       {order.tracking_number ? 'Update Waybill' : 'Set Waybill'}
                                     </button>
                                   </div>
@@ -1650,7 +1650,7 @@ function OrdersManagement() {
                                 className="h-8 rounded-lg border border-[#0B0D10]/10 px-3 text-[11px] font-mono font-medium gap-1.5 bg-white text-[#0B0D10] flex items-center hover:bg-[#F5F6F8] shadow-sm transition-all"
                                 onClick={() => setSelectedInvoiceId(order.id)}
                               >
-                                <FileText className="w-3.5 h-3.5 text-[#FF5A1F]" /> Invoice
+                                <FileText className="w-3.5 h-3.5 text-[#412f91]" /> Invoice
                               </button>
                               {order.status !== 'refunded' && (
                                 <button
@@ -1701,7 +1701,7 @@ function OrdersManagement() {
                         {order.users?.name || 'Guest'}
                       </div>
                       <div className="text-[10px] text-[#5B616B]">
-                        {order.order_items?.length ?? 0} item(s) • Total: <span className="text-[#FF5A1F] font-semibold">₹{order.total_amount.toFixed(2)}</span>
+                        {order.order_items?.length ?? 0} item(s) • Total: <span className="text-[#412f91] font-semibold">₹{order.total_amount.toFixed(2)}</span>
                       </div>
                     </div>
                     <button
@@ -1718,7 +1718,7 @@ function OrdersManagement() {
                         {order.order_items?.map((item) => (
                           <div key={item.id} className="flex justify-between py-1 border-b border-[#0B0D10]/5">
                             <span className="text-[#0B0D10]">{item.name} × {item.quantity}</span>
-                            <span className="font-semibold text-[#FF5A1F]">₹{(item.price * item.quantity).toFixed(2)}</span>
+                            <span className="font-semibold text-[#412f91]">₹{(item.price * item.quantity).toFixed(2)}</span>
                           </div>
                         ))}
                       </div>
@@ -1727,7 +1727,7 @@ function OrdersManagement() {
                           className="h-8 rounded-lg border border-[#0B0D10]/10 px-3 text-[10px] font-mono font-medium gap-1.5 bg-white text-[#0B0D10] flex items-center shadow-sm"
                           onClick={() => setSelectedInvoiceId(order.id)}
                         >
-                          <FileText className="w-3 h-3 text-[#FF5A1F]" /> Invoice
+                          <FileText className="w-3 h-3 text-[#412f91]" /> Invoice
                         </button>
                         {order.status !== 'refunded' && (
                           <button
@@ -1806,7 +1806,7 @@ function UsersManagement() {
       <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           </div>
         ) : users.length === 0 ? (
           <div className="py-16 text-center text-[#5B616B] font-mono text-xs uppercase tracking-widest">
@@ -1829,14 +1829,14 @@ function UsersManagement() {
                   <tr key={user.id} className="hover:bg-[#F5F6F8]/60 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center text-xs font-semibold">
+                        <div className="w-9 h-9 rounded-xl bg-[#412f91]/10 text-[#412f91] flex items-center justify-center text-xs font-semibold">
                           {user.name.charAt(0).toUpperCase()}
                         </div>
                         <div>
                           <div className="font-semibold text-xs text-[#0B0D10] flex items-center gap-2">
                             {user.name}
                             {user.role === 'admin' && (
-                              <span className="w-4 h-4 bg-[#FF5A1F] text-white rounded-full flex items-center justify-center" title="Admin">
+                              <span className="w-4 h-4 bg-[#412f91] text-white rounded-full flex items-center justify-center" title="Admin">
                                 <ShieldCheck className="w-2.5 h-2.5" />
                               </span>
                             )}
@@ -1892,13 +1892,13 @@ function UsersManagement() {
                 <div key={user.id} className="p-4 active:bg-[#F5F6F8]/50 transition-colors space-y-3">
                   <div className="flex justify-between items-start">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center text-xs font-semibold">
+                      <div className="w-9 h-9 rounded-xl bg-[#412f91]/10 text-[#412f91] flex items-center justify-center text-xs font-semibold">
                         {user.name.charAt(0).toUpperCase()}
                       </div>
                       <div>
                         <div className="font-semibold text-xs text-[#0B0D10] flex items-center gap-1.5">
                           {user.name}
-                          {user.role === 'admin' && <ShieldCheck className="w-3 h-3 text-[#FF5A1F]" />}
+                          {user.role === 'admin' && <ShieldCheck className="w-3 h-3 text-[#412f91]" />}
                         </div>
                         <div className="text-[10px] text-[#5B616B]">{user.email}</div>
                       </div>
@@ -1985,7 +1985,7 @@ function BulkOrdersManagement() {
           className="border border-[#0B0D10]/10 rounded-xl font-mono text-xs font-medium h-10 px-4 bg-white text-[#0B0D10] shadow-sm hover:bg-[#F5F6F8] flex items-center gap-2 active:scale-[0.98] transition-all"
           onClick={fetchBulkOrders}
         >
-          <Clock className="w-3.5 h-3.5 text-[#FF5A1F]" />
+          <Clock className="w-3.5 h-3.5 text-[#412f91]" />
           Refresh Pipeline
         </button>
       </div>
@@ -1993,12 +1993,12 @@ function BulkOrdersManagement() {
       <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex items-center justify-center py-24">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           </div>
         ) : bulkOrders.length === 0 ? (
           <div className="py-24 text-center space-y-3 font-mono">
             <div className="w-12 h-12 rounded-xl bg-[#F5F6F8] flex items-center justify-center mx-auto text-[#5B616B]">
-              <Layers className="w-6 h-6 text-[#FF5A1F]" />
+              <Layers className="w-6 h-6 text-[#412f91]" />
             </div>
             <div className="text-[#5B616B] text-xs uppercase tracking-widest">
               No enterprise batch inquiries logged yet
@@ -2031,7 +2031,7 @@ function BulkOrdersManagement() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+                        <div className="w-2 h-2 rounded-full bg-[#412f91]" />
                         <span className="font-medium text-xs text-[#0B0D10]">{order.product_name}</span>
                       </div>
                     </td>
@@ -2190,8 +2190,8 @@ export default function AdminPanel() {
       {/* Logo Header */}
       <div className="p-6 border-b border-[#0B0D10]/10">
         <Logo className="h-6" />
-        <div className="mt-3 inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#FF5A1F]/10 text-[#FF5A1F] border border-[#FF5A1F]/20">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse" />
+        <div className="mt-3 inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#412f91]/10 text-[#412f91] border border-[#412f91]/20">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#412f91] animate-pulse" />
           <span className="text-[10px] font-mono font-medium uppercase tracking-wider">COMMAND // ADMIN</span>
         </div>
       </div>
@@ -2206,7 +2206,7 @@ export default function AdminPanel() {
               onClick={() => handleSelectTab(item.id)}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 text-xs font-medium rounded-xl transition-all text-left ${
                 isActive
-                  ? 'bg-[#FF5A1F] text-white shadow-sm font-semibold'
+                  ? 'bg-[#412f91] text-white shadow-sm font-semibold'
                   : 'text-[#5B616B] hover:text-[#0B0D10] hover:bg-[#F5F6F8]'
               }`}
             >
@@ -2231,7 +2231,7 @@ export default function AdminPanel() {
       {/* User Info + Storefront Button */}
       <div className="p-4 border-t border-[#0B0D10]/10 bg-[#F5F6F8]/50 font-mono">
         <div className="flex items-center gap-3 mb-3 px-1">
-          <div className="w-8 h-8 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center text-xs font-semibold">
+          <div className="w-8 h-8 rounded-xl bg-[#412f91]/10 text-[#412f91] flex items-center justify-center text-xs font-semibold">
             {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
           </div>
           <div className="min-w-0">
@@ -2243,7 +2243,7 @@ export default function AdminPanel() {
           onClick={() => navigate('/')}
           className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-[#0B0D10] bg-white border border-[#0B0D10]/10 hover:bg-[#F5F6F8] transition-all shadow-sm active:scale-[0.98]"
         >
-          <TrendingUp className="w-3.5 h-3.5 text-[#FF5A1F]" />
+          <TrendingUp className="w-3.5 h-3.5 text-[#412f91]" />
           Storefront
         </button>
       </div>
@@ -2291,7 +2291,7 @@ export default function AdminPanel() {
               onClick={() => handleSelectTab('credentials')}
               className="h-9 px-3.5 rounded-xl border border-[#0B0D10]/10 bg-white shadow-sm text-xs font-medium text-[#0B0D10] hover:bg-[#F5F6F8] flex items-center gap-1.5 transition-all"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#412f91]" />
               <span className="hidden md:inline">Credentials</span>
             </button>
             <button

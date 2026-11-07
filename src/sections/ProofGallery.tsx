@@ -178,7 +178,7 @@ export default function ProofGallery() {
         <div data-aos="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
           <div>
             <div className="flex items-center gap-2 mb-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#412f91] animate-pulse" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#5B616B] font-semibold">
                 07 // Physical Artifact Archive
               </span>
@@ -197,7 +197,7 @@ export default function ProofGallery() {
               onClick={() => setActiveFilter('all')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 activeFilter === 'all'
-                  ? 'bg-[#FF5A1F] text-white shadow-xs'
+                  ? 'bg-[#412f91] text-white shadow-xs'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
@@ -207,7 +207,7 @@ export default function ProofGallery() {
               onClick={() => setActiveFilter('industrial')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 activeFilter === 'industrial'
-                  ? 'bg-[#FF5A1F] text-white shadow-xs'
+                  ? 'bg-[#412f91] text-white shadow-xs'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
@@ -217,7 +217,7 @@ export default function ProofGallery() {
               onClick={() => setActiveFilter('lighting')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 activeFilter === 'lighting'
-                  ? 'bg-[#FF5A1F] text-white shadow-xs'
+                  ? 'bg-[#412f91] text-white shadow-xs'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
@@ -227,7 +227,7 @@ export default function ProofGallery() {
               onClick={() => setActiveFilter('custom')}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                 activeFilter === 'custom'
-                  ? 'bg-[#FF5A1F] text-white shadow-xs'
+                  ? 'bg-[#412f91] text-white shadow-xs'
                   : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
               }`}
             >
@@ -310,7 +310,7 @@ export default function ProofGallery() {
               {/* Modal Header */}
               <div className="p-4 border-b border-neutral-200 flex items-center justify-between bg-neutral-50/80">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#FF5A1F] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#412f91] animate-pulse" />
                   <span className="font-mono text-xs font-semibold text-neutral-900">
                     {selectedItem.name} // Artifact Spec
                   </span>
@@ -353,7 +353,7 @@ export default function ProofGallery() {
                   </div>
                   <div>
                     <span className="text-[10px] text-neutral-500 block">METROLOGY</span>
-                    <span className="font-semibold text-[#FF5A1F]">{selectedItem.tolerance}</span>
+                    <span className="font-semibold text-[#412f91]">{selectedItem.tolerance}</span>
                   </div>
                 </div>
 
@@ -371,7 +371,7 @@ export default function ProofGallery() {
                       setSelectedItem(null);
                       navigate('/custom-lab');
                     }}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#FF5A1F] hover:bg-[#E04810] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#412f91] hover:bg-[#342575] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
                   >
                     <span>Instant CAD Quote</span>
                     <ArrowRight className="w-3.5 h-3.5" />

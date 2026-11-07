@@ -182,7 +182,7 @@ Can an engineer review my file geometry for additive fabrication?`;
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="w-2 h-2 rounded-full bg-[#412f91]" />
               <span className="type-mono-eyebrow text-[#5B616B]">
                 05 // Rapid Additive Studio
               </span>
@@ -234,7 +234,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                       });
                       toast.success(`Loaded benchmark: ${sample.name}`);
                     }}
-                    className="px-2.5 py-1 rounded-lg border border-black/10 bg-white hover:border-[#FF5A1F] text-[#0B0D10] text-[11px] font-mono transition-colors cursor-pointer"
+                    className="px-2.5 py-1 rounded-lg border border-black/10 bg-white hover:border-[#412f91] text-[#0B0D10] text-[11px] font-mono transition-colors cursor-pointer"
                   >
                     {sample.name.replace('.stl', '')}
                   </button>
@@ -253,7 +253,7 @@ Can an engineer review my file geometry for additive fabrication?`;
               onDragLeave={() => setIsDragging(false)}
               onDrop={handleDrop}
               className={`p-4 rounded-xl border border-dashed transition-all flex items-center justify-between cursor-pointer ${
-                isDragging ? 'border-[#FF5A1F] bg-[#FF5A1F]/5' : 'border-black/15 bg-white hover:border-black/30'
+                isDragging ? 'border-[#412f91] bg-[#412f91]/5' : 'border-black/15 bg-white hover:border-black/30'
               }`}
             >
               <input
@@ -264,7 +264,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                 className="hidden"
               />
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center text-[#FF5A1F]">
+                <div className="w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center text-[#412f91]">
                   <Upload className="w-5 h-5" />
                 </div>
                 <div>
@@ -295,14 +295,14 @@ Can an engineer review my file geometry for additive fabrication?`;
                       onClick={() => setSelectedMaterial(m)}
                       className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                         isSelected
-                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/5 text-[#0B0D10]'
+                          ? 'border-[#412f91] bg-[#412f91]/5 text-[#0B0D10]'
                           : 'border-black/10 bg-white text-[#5B616B] hover:border-black/20'
                       }`}
                     >
                       <div className="font-semibold text-xs text-[#0B0D10] truncate">
                         {m.name}
                       </div>
-                      <div className="font-mono text-[10px] text-[#FF5A1F] mt-0.5">
+                      <div className="font-mono text-[10px] text-[#412f91] mt-0.5">
                         ₹{m.price}/g &bull; {m.tolerance}
                       </div>
                     </button>
@@ -325,7 +325,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                       onClick={() => setSelectedQuality(q)}
                       className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                         isSelected
-                          ? 'border-[#FF5A1F] bg-[#FF5A1F]/5 text-[#0B0D10]'
+                          ? 'border-[#412f91] bg-[#412f91]/5 text-[#0B0D10]'
                           : 'border-black/10 bg-white text-[#5B616B] hover:border-black/20'
                       }`}
                     >
@@ -342,7 +342,7 @@ Can an engineer review my file geometry for additive fabrication?`;
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs font-mono">
                   <span className="text-[#5B616B] uppercase">Gyroid Infill:</span>
-                  <span className="font-semibold text-[#FF5A1F]">{infillDensity}% Density</span>
+                  <span className="font-semibold text-[#412f91]">{infillDensity}% Density</span>
                 </div>
                 <input
                   type="range"
@@ -351,7 +351,7 @@ Can an engineer review my file geometry for additive fabrication?`;
                   step="5"
                   value={infillDensity}
                   onChange={(e) => setInfillDensity(Number(e.target.value))}
-                  className="w-full accent-[#FF5A1F] cursor-pointer"
+                  className="w-full accent-[#412f91] cursor-pointer"
                 />
               </div>
 
@@ -389,7 +389,7 @@ Can an engineer review my file geometry for additive fabrication?`;
             </div>
 
             {/* Total Quotation Summary */}
-            <div className="card-precision p-5 space-y-4 border-[#FF5A1F]/30 bg-white">
+            <div className="card-precision p-5 space-y-4 border-[#412f91]/30 bg-white">
               <div className="flex items-baseline justify-between pb-3 border-b border-black/5">
                 <div>
                   <span className="text-xs text-[#5B616B] block">Total Estimated Price</span>

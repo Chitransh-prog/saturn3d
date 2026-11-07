@@ -1195,7 +1195,7 @@ export default function Product3DViewer({ product, selectedMaterial = "PLA" }: P
         <Suspense
           fallback={
             <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-slate-400">
-              <span className="w-6 h-6 border-2 border-black/20 border-t-[#F7931E] rounded-full animate-spin" />
+              <span className="w-6 h-6 border-2 border-black/20 border-t-[#412f91] rounded-full animate-spin" />
               <span className="font-mono-tech text-[10px] tracking-widest uppercase">Initializing 3D Stage...</span>
             </div>
           }
@@ -1261,7 +1261,7 @@ export default function Product3DViewer({ product, selectedMaterial = "PLA" }: P
             
             {/* Gesture Hint Pill */}
             <div className="pointer-events-auto hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-white text-[9px] font-mono-tech font-bold uppercase tracking-widest shadow-2xs">
-              <Compass className="w-3 h-3 text-[#F7931E]" />
+              <Compass className="w-3 h-3 text-[#412f91]" />
               <span>DRAG 360° &bull; SCROLL TO ZOOM</span>
             </div>
 
@@ -1273,7 +1273,7 @@ export default function Product3DViewer({ product, selectedMaterial = "PLA" }: P
                 onClick={() => setWireframe(!wireframe)}
                 className={`h-8 px-3 rounded-full text-[10px] font-mono-tech font-bold uppercase tracking-wider flex items-center gap-1.5 border transition-all shadow-2xs active:scale-95 ${
                   wireframe
-                    ? 'bg-[#F7931E] border-[#F7931E] text-white shadow-orange-500/20'
+                    ? 'bg-[#412f91] border-[#412f91] text-white shadow-[#412f91]/20'
                     : 'bg-white/95 backdrop-blur-md border-black/10 text-slate-800 hover:border-black'
                 }`}
                 title="Toggle Wireframe CAD Mesh"

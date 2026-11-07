@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-6 py-20 font-body">
       <div className="max-w-md w-full card-precision-dark p-8 sm:p-10 text-center">
-        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-6 text-[#FF5A1F]">
+        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-6 text-[#412f91]">
           <Compass className="w-7 h-7 animate-spin" style={{ animationDuration: '8s' }} />
         </div>
         <div className="type-mono-eyebrow text-white/50 mb-2">Error 404 // Coordinate Out of Bounds</div>

@@ -80,7 +80,7 @@ export default function StickySubNav({
                 onClick={() => scrollTo(item.id)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#FF5A1F] text-white shadow-sm'
+                    ? 'bg-[#412f91] text-white shadow-sm'
                     : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/5'
                 }`}
               >

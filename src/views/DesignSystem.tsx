@@ -17,7 +17,7 @@ export default function DesignSystem() {
     { name: 'Surface Card', token: '--surface-card', hex: '#181C22', role: 'Elevated dark container surfaces' },
     { name: 'Studio Light', token: '--studio-light', hex: '#F5F6F8', role: 'Calm engineered light background' },
     { name: 'Studio Card', token: '--studio-card', hex: '#FFFFFF', role: 'Crisp white light cards and table panels' },
-    { name: 'Saturn Orange', token: '--saturn-orange', hex: '#FF5A1F', role: 'Sole primary action accent & nozzle glow' },
+    { name: 'Saturn Purple', token: '--saturn-orange', hex: '#412f91', role: 'Sole primary action accent & nozzle glow' },
     { name: 'WhatsApp Green', token: '--wa-green', hex: '#25D366', role: 'Dedicated customer communication channel' },
   ];
 
@@ -33,7 +33,7 @@ export default function DesignSystem() {
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Live Lab
           </Link>
           <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A1F] shadow-[0_0_8px_#FF5A1F] inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#412f91] shadow-[0_0_8px_#412f91] inline-block" />
             <h1 className="text-base font-display font-semibold tracking-tight text-white">
               Saturn 3D Precision Studio // Design System v3.0
             </h1>
@@ -47,8 +47,8 @@ export default function DesignSystem() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
         {/* Section 00: Overview Banner */}
         <section className="card-precision-dark p-8 sm:p-10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF5A1F]/8 rounded-full blur-3xl pointer-events-none" />
-          <span className="type-mono-eyebrow text-[#FF5A1F] block mb-3">00 // DESIGN PHILOSOPHY</span>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#412f91]/8 rounded-full blur-3xl pointer-events-none" />
+          <span className="type-mono-eyebrow text-[#412f91] block mb-3">00 // DESIGN PHILOSOPHY</span>
           <h2 className="type-h2 text-white mb-4">
             Industrial Trust & Surgical Precision
           </h2>
@@ -56,7 +56,7 @@ export default function DesignSystem() {
             The Precision Studio design system delivers high-trust additive manufacturing aesthetics.
             Zero comic outlines, zero brutalist offset shadows, zero saturated novelty tints. Built with 
             calm graphite dark zones, clean studio white surfaces, 1px surgical hairlines, and single-accent 
-            Saturn Orange (<code className="text-[#FF5A1F]">#FF5A1F</code>) focus states.
+            Saturn Purple (<code className="text-[#412f91]">#412f91</code>) focus states.
           </p>
           <div className="flex flex-wrap gap-3">
             <span className="precision-badge">1px Surgical Hairlines</span>
@@ -78,7 +78,7 @@ export default function DesignSystem() {
               <div
                 key={c.name}
                 onClick={() => copyToken(c.hex)}
-                className="card-precision-dark p-5 flex flex-col justify-between h-44 cursor-pointer group hover:border-[#FF5A1F]/40 transition-all"
+                className="card-precision-dark p-5 flex flex-col justify-between h-44 cursor-pointer group hover:border-[#412f91]/40 transition-all"
               >
                 <div className="flex items-center justify-between">
                   <div
@@ -148,7 +148,7 @@ export default function DesignSystem() {
             <div className="card-precision-dark p-6 flex flex-col justify-between items-start gap-4">
               <div>
                 <div className="font-semibold text-sm text-white mb-1">Primary Action</div>
-                <div className="text-xs text-[#A3A9B3]">Saturn Orange with hover lift and arrow nudge</div>
+                <div className="text-xs text-[#A3A9B3]">Saturn Purple with hover lift and arrow nudge</div>
               </div>
               <button className="btn-precision-primary">
                 Launch Custom Lab <ArrowRight className="w-4 h-4" />

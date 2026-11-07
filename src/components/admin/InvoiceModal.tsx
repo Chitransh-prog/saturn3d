@@ -39,7 +39,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
         {/* Header */}
         <div className="sticky top-0 bg-[#F5F6F8] flex items-center justify-between p-5 border-b border-[#0B0D10]/10 z-10 print:hidden rounded-t-2xl">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-[#FF5A1F]/10 rounded-lg flex items-center justify-center text-[#FF5A1F]">
+            <div className="w-8 h-8 bg-[#412f91]/10 rounded-lg flex items-center justify-center text-[#412f91]">
               <FileText className="w-4 h-4" />
             </div>
             <div>
@@ -67,7 +67,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-24 gap-3">
-            <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+            <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
             <span className="font-mono text-xs uppercase tracking-wider text-[#5B616B]">Compiling Invoice...</span>
           </div>
         ) : !invoice ? (
@@ -79,9 +79,9 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
               <div>
                 <div className="text-2xl font-bold tracking-tight text-[#0B0D10] flex items-center gap-2 font-mono">
                   <span>SATURN</span>
-                  <span className="bg-[#FF5A1F] text-white px-2 py-0.5 rounded-lg text-xl">3D</span>
+                  <span className="bg-[#412f91] text-white px-2 py-0.5 rounded-lg text-xl">3D</span>
                 </div>
-                <div className="text-xs font-mono font-medium text-[#FF5A1F] uppercase tracking-wider mt-2">
+                <div className="text-xs font-mono font-medium text-[#412f91] uppercase tracking-wider mt-2">
                   // Precision Additive Manufacturing Hub
                 </div>
                 <div className="text-xs font-mono text-[#5B616B] mt-2 space-y-1 leading-relaxed">
@@ -107,7 +107,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
 
             {/* Bill To */}
             <div className="bg-[#F5F6F8] border border-[#0B0D10]/10 rounded-xl p-5 font-mono">
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-[#FF5A1F] mb-1.5">// BILLED TO</div>
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-[#412f91] mb-1.5">// BILLED TO</div>
               <div className="font-semibold text-sm text-[#0B0D10] uppercase">{invoice.customer.name}</div>
               <div className="text-xs text-[#5B616B]">{invoice.customer.email}</div>
               {invoice.customer.shippingAddress && (
@@ -136,7 +136,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
                       <td className="py-4 px-4 font-medium text-[#0B0D10]">
                         <div className="text-sm font-semibold">{item.name}</div>
                         {item.options?.material && (
-                          <span className="inline-block text-[10px] font-mono bg-[#F5F6F8] border border-[#0B0D10]/10 px-2 py-0.5 rounded mt-1 font-medium text-[#FF5A1F]">
+                          <span className="inline-block text-[10px] font-mono bg-[#F5F6F8] border border-[#0B0D10]/10 px-2 py-0.5 rounded mt-1 font-medium text-[#412f91]">
                             Material: {item.options.material}
                           </span>
                         )}
@@ -168,7 +168,7 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
                   <span className="font-semibold text-[#0B0D10]">₹{invoice.financials.subtotal.toFixed(2)}</span>
                 </div>
                 {invoice.financials.discount > 0 && (
-                  <div className="flex justify-between text-[#FF5A1F] font-semibold pb-1 border-b border-[#0B0D10]/10">
+                  <div className="flex justify-between text-[#412f91] font-semibold pb-1 border-b border-[#0B0D10]/10">
                     <span>Discount Applied:</span>
                     <span>-₹{invoice.financials.discount.toFixed(2)}</span>
                   </div>
@@ -191,9 +191,9 @@ export default function InvoiceModal({ orderId, onClose }: InvoiceModalProps) {
                     {invoice.financials.shippingCost === 0 ? 'FREE' : `₹${invoice.financials.shippingCost.toFixed(2)}`}
                   </span>
                 </div>
-                <div className="flex justify-between items-baseline p-3 bg-[#FF5A1F]/10 border border-[#FF5A1F]/20 rounded-xl text-sm font-semibold text-[#0B0D10] mt-3">
+                <div className="flex justify-between items-baseline p-3 bg-[#412f91]/10 border border-[#412f91]/20 rounded-xl text-sm font-semibold text-[#0B0D10] mt-3">
                   <span className="uppercase tracking-wider">Grand Total:</span>
-                  <span className="text-xl text-[#FF5A1F] font-bold">₹{invoice.financials.grandTotal.toFixed(2)}</span>
+                  <span className="text-xl text-[#412f91] font-bold">₹{invoice.financials.grandTotal.toFixed(2)}</span>
                 </div>
               </div>
             </div>

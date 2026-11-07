@@ -18,7 +18,7 @@ const badgeVariants = cva(
         outline:
           "border-black/15 text-[#0B0D10] bg-transparent dark:border-white/15 dark:text-white",
         orange:
-          "bg-[#FF5A1F]/10 text-[#FF5A1F] border-[#FF5A1F]/30 font-semibold",
+          "bg-[#412f91]/10 text-[#412f91] border-[#412f91]/30 font-semibold",
         mint:
           "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400",
         periwinkle:

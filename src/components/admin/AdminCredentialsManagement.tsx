@@ -291,7 +291,7 @@ export default function AdminCredentialsManagement() {
             <div className="text-[11px] font-medium text-[#5B616B] uppercase tracking-wider">Active Administrators</div>
             <div className="text-2xl font-semibold text-[#0B0D10] mt-1">{admins.length} Accounts</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-[#412f91]/10 text-[#412f91] flex items-center justify-center">
             <Users className="w-5 h-5" />
           </div>
         </div>
@@ -312,7 +312,7 @@ export default function AdminCredentialsManagement() {
             <div className="text-xs font-semibold text-[#0B0D10] mt-1">BCRYPT 10-ROUNDS + JWT</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-[#F5F6F8] text-[#0B0D10] flex items-center justify-center">
-            <KeyRound className="w-5 h-5 text-[#FF5A1F]" />
+            <KeyRound className="w-5 h-5 text-[#412f91]" />
           </div>
         </div>
       </div>
@@ -325,7 +325,7 @@ export default function AdminCredentialsManagement() {
           <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm p-6 space-y-5">
             <div className="bg-[#F5F6F8] -mx-6 -mt-6 p-4 rounded-t-2xl border-b border-[#0B0D10]/10 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <UserPlus className="w-4 h-4 text-[#FF5A1F]" />
+                <UserPlus className="w-4 h-4 text-[#412f91]" />
                 <h2 className="text-sm font-semibold text-[#0B0D10]">
                   Add New Administrator
                 </h2>
@@ -342,7 +342,7 @@ export default function AdminCredentialsManagement() {
             <form onSubmit={handleCreateAdmin} className="space-y-4">
               <div>
                 <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                  <Mail className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  <Mail className="w-3.5 h-3.5 text-[#412f91]" />
                   Admin Email Address <span className="text-red-500">*</span>
                 </Label>
                 <Input
@@ -357,7 +357,7 @@ export default function AdminCredentialsManagement() {
 
               <div>
                 <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                  <Shield className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  <Shield className="w-3.5 h-3.5 text-[#412f91]" />
                   Display Name (Optional)
                 </Label>
                 <Input
@@ -372,7 +372,7 @@ export default function AdminCredentialsManagement() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                    <Lock className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                    <Lock className="w-3.5 h-3.5 text-[#412f91]" />
                     Password <span className="text-red-500">*</span>
                   </Label>
                   <div className="relative">
@@ -396,7 +396,7 @@ export default function AdminCredentialsManagement() {
 
                 <div>
                   <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                    <Lock className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                    <Lock className="w-3.5 h-3.5 text-[#412f91]" />
                     Confirm
                   </Label>
                   <Input
@@ -413,7 +413,7 @@ export default function AdminCredentialsManagement() {
               <Button
                 type="submit"
                 disabled={creatingAdmin}
-                className="w-full h-10 bg-[#FF5A1F] text-white hover:bg-[#E04B14] font-medium text-xs rounded-xl shadow-sm active:scale-[0.98] transition-all mt-2"
+                className="w-full h-10 bg-[#412f91] text-white hover:bg-[#342575] font-medium text-xs rounded-xl shadow-sm active:scale-[0.98] transition-all mt-2"
               >
                 {creatingAdmin ? (
                   <>
@@ -436,7 +436,7 @@ export default function AdminCredentialsManagement() {
           <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm p-6 space-y-5">
             <div className="bg-[#F5F6F8] -mx-6 -mt-6 p-4 rounded-t-2xl border-b border-[#0B0D10]/10 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-[#FF5A1F]" />
+                <Users className="w-4 h-4 text-[#412f91]" />
                 <h2 className="text-sm font-semibold text-[#0B0D10]">
                   Active Administrators Roster ({admins.length})
                 </h2>
@@ -455,7 +455,7 @@ export default function AdminCredentialsManagement() {
 
             {loadingAdmins ? (
               <div className="py-12 flex flex-col items-center justify-center gap-2">
-                <Loader2 className="w-6 h-6 animate-spin text-[#FF5A1F]" />
+                <Loader2 className="w-6 h-6 animate-spin text-[#412f91]" />
                 <span className="text-xs text-[#5B616B] uppercase">Loading admin directory...</span>
               </div>
             ) : admins.length === 0 ? (
@@ -470,18 +470,18 @@ export default function AdminCredentialsManagement() {
                     <div
                       key={admin.id}
                       className={`p-4 rounded-xl border border-[#0B0D10]/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${
-                        isCurrent ? 'bg-[#FF5A1F]/5 border-[#FF5A1F]/20' : 'bg-white hover:bg-[#F5F6F8]/40'
+                        isCurrent ? 'bg-[#412f91]/5 border-[#412f91]/20' : 'bg-white hover:bg-[#F5F6F8]/40'
                       }`}
                     >
                       <div className="flex items-start sm:items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center text-xs font-semibold flex-shrink-0">
+                        <div className="w-9 h-9 rounded-lg bg-[#412f91]/10 text-[#412f91] flex items-center justify-center text-xs font-semibold flex-shrink-0">
                           {admin.name ? admin.name.charAt(0).toUpperCase() : 'A'}
                         </div>
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-semibold text-xs text-[#0B0D10] truncate">{admin.name || 'Saturn Admin'}</span>
                             {isCurrent && (
-                              <span className="text-[10px] font-mono px-2 py-0.2 rounded-full bg-[#FF5A1F] text-white font-medium">
+                              <span className="text-[10px] font-mono px-2 py-0.2 rounded-full bg-[#412f91] text-white font-medium">
                                 YOU
                               </span>
                             )}
@@ -490,7 +490,7 @@ export default function AdminCredentialsManagement() {
                             </span>
                           </div>
                           <div className="text-xs text-[#5B616B] truncate flex items-center gap-1 mt-0.5">
-                            <Mail className="w-3 h-3 text-[#FF5A1F]" />
+                            <Mail className="w-3 h-3 text-[#412f91]" />
                             {admin.email}
                           </div>
                           {admin.created_at && (
@@ -508,7 +508,7 @@ export default function AdminCredentialsManagement() {
                           onClick={() => handleOpenEdit(admin)}
                           className="h-8 px-3 rounded-lg border border-[#0B0D10]/10 bg-white hover:bg-[#F5F6F8] text-[#0B0D10] text-xs font-medium shadow-sm"
                         >
-                          <KeyRound className="w-3.5 h-3.5 mr-1 text-[#FF5A1F]" />
+                          <KeyRound className="w-3.5 h-3.5 mr-1 text-[#412f91]" />
                           Update Password
                         </Button>
 
@@ -572,7 +572,7 @@ export default function AdminCredentialsManagement() {
         <form onSubmit={handleSelfSubmit} className="space-y-6">
           <div className="bg-[#F5F6F8] rounded-xl border border-[#0B0D10]/10 p-4 space-y-1">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#0B0D10]">
-              <AlertTriangle className="w-4 h-4 text-[#FF5A1F]" />
+              <AlertTriangle className="w-4 h-4 text-[#412f91]" />
               Default System Credentials Notice
             </div>
             <p className="text-xs text-[#5B616B] leading-relaxed">
@@ -583,7 +583,7 @@ export default function AdminCredentialsManagement() {
           <div className="space-y-4">
             <div>
               <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                <Mail className="w-3.5 h-3.5 text-[#412f91]" />
                 My Admin Email Address
               </Label>
               <Input
@@ -601,7 +601,7 @@ export default function AdminCredentialsManagement() {
 
             <div className="pt-4 border-t border-[#0B0D10]/10">
               <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-2">
-                <KeyRound className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                <KeyRound className="w-3.5 h-3.5 text-[#412f91]" />
                 Current Admin Password <span className="text-red-500">*</span>
               </Label>
               <Input
@@ -620,7 +620,7 @@ export default function AdminCredentialsManagement() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div>
                 <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-2">
-                  <Lock className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  <Lock className="w-3.5 h-3.5 text-[#412f91]" />
                   New Password (Optional)
                 </Label>
                 <Input
@@ -634,7 +634,7 @@ export default function AdminCredentialsManagement() {
 
               <div>
                 <Label className="text-xs font-mono font-medium text-[#5B616B] uppercase tracking-wider flex items-center gap-2">
-                  <Lock className="w-3.5 h-3.5 text-[#FF5A1F]" />
+                  <Lock className="w-3.5 h-3.5 text-[#412f91]" />
                   Confirm New Password
                 </Label>
                 <Input
@@ -652,7 +652,7 @@ export default function AdminCredentialsManagement() {
             <Button
               type="submit"
               disabled={savingSelf}
-              className="h-11 px-8 bg-[#FF5A1F] text-white hover:bg-[#E04B14] font-medium text-xs rounded-xl shadow-sm active:scale-[0.98] transition-all"
+              className="h-11 px-8 bg-[#412f91] text-white hover:bg-[#342575] font-medium text-xs rounded-xl shadow-sm active:scale-[0.98] transition-all"
             >
               {savingSelf ? (
                 <>
@@ -677,7 +677,7 @@ export default function AdminCredentialsManagement() {
             {/* Modal Header */}
             <div className="p-5 bg-[#F5F6F8] border-b border-[#0B0D10]/10 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <KeyRound className="w-4 h-4 text-[#FF5A1F]" />
+                <KeyRound className="w-4 h-4 text-[#412f91]" />
                 <h3 className="text-sm font-semibold text-[#0B0D10]">
                   Update Administrator Password
                 </h3>
@@ -730,7 +730,7 @@ export default function AdminCredentialsManagement() {
                     <button
                       type="button"
                       onClick={() => setShowEditPassword(!showEditPassword)}
-                      className="text-[10px] text-[#FF5A1F] font-semibold hover:underline"
+                      className="text-[10px] text-[#412f91] font-semibold hover:underline"
                     >
                       {showEditPassword ? 'Hide' : 'Show'}
                     </button>
@@ -776,7 +776,7 @@ export default function AdminCredentialsManagement() {
                 <Button
                   type="submit"
                   disabled={updatingAdmin}
-                  className="h-10 px-6 rounded-xl bg-[#FF5A1F] text-white hover:bg-[#E04B14] text-xs font-medium shadow-sm active:scale-[0.98]"
+                  className="h-10 px-6 rounded-xl bg-[#412f91] text-white hover:bg-[#342575] text-xs font-medium shadow-sm active:scale-[0.98]"
                 >
                   {updatingAdmin ? (
                     <>

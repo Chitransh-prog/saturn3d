@@ -126,7 +126,7 @@ export default function TheLab() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-black/10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-[#FF5A1F]" />
+              <span className="w-2 h-2 rounded-full bg-[#412f91]" />
               <span className="type-mono-eyebrow text-[#5B616B]">
                 02 // Production Showcase
               </span>
@@ -178,7 +178,7 @@ export default function TheLab() {
           {filteredParts.map((part) => (
             <div
               key={part.id}
-              className="card-precision p-5 flex flex-col justify-between group hover:border-[#FF5A1F]/30"
+              className="card-precision p-5 flex flex-col justify-between group hover:border-[#412f91]/30"
             >
               <div>
                 {/* Part Image with Soft Shadow */}
@@ -201,7 +201,7 @@ export default function TheLab() {
                 </div>
 
                 {/* Part Metadata */}
-                <h3 className="text-base font-semibold text-[#0B0D10] group-hover:text-[#FF5A1F] transition-colors">
+                <h3 className="text-base font-semibold text-[#0B0D10] group-hover:text-[#412f91] transition-colors">
                   {part.name}
                 </h3>
                 <p className="text-xs text-[#5B616B] mt-1 leading-relaxed">

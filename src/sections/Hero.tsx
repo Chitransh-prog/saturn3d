@@ -105,7 +105,7 @@ export default function Hero() {
         >
           {/* Clean SaaS Eyebrow Pill */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-neutral-200 text-[11px] sm:text-xs text-neutral-700 font-medium shadow-2xs max-w-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A1F] animate-pulse shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#412f91] animate-pulse shrink-0" />
             <span className="truncate">Central India&apos;s Precision Hub &bull; Bhopal &amp; Indore</span>
           </div>
 
@@ -141,7 +141,7 @@ export default function Hero() {
           >
             <button
               onClick={() => navigate('/custom-lab')}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#FF5A1F] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-md shadow-[#FF5A1F]/20 hover:bg-[#EA4D14] transition-all duration-200 active:scale-[0.98] cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#412f91] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-md shadow-[#412f91]/20 hover:bg-[#342575] transition-all duration-200 active:scale-[0.98] cursor-pointer"
             >
               <span>Upload CAD for Quote</span>
               <ArrowRight className="w-4 h-4" />

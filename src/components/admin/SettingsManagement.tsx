@@ -53,7 +53,7 @@ export default function SettingsManagement() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
       </div>
     );
   }
@@ -78,7 +78,7 @@ export default function SettingsManagement() {
         {/* Business Identity */}
         <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm p-6 sm:p-8 space-y-6">
           <div className="bg-[#F5F6F8] -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b border-[#0B0D10]/10 rounded-t-2xl flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#412f91]/10 text-[#412f91] flex items-center justify-center">
               <Store className="w-4 h-4" />
             </div>
             <h2 className="font-semibold text-sm text-[#0B0D10]">
@@ -140,7 +140,7 @@ export default function SettingsManagement() {
         {/* Financial & Shipping */}
         <div className="bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm p-6 sm:p-8 space-y-6">
           <div className="bg-[#F5F6F8] -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 p-4 sm:p-5 border-b border-[#0B0D10]/10 rounded-t-2xl flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#FF5A1F]/10 text-[#FF5A1F] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#412f91]/10 text-[#412f91] flex items-center justify-center">
               <Truck className="w-4 h-4" />
             </div>
             <h2 className="font-semibold text-sm text-[#0B0D10]">
@@ -183,7 +183,7 @@ export default function SettingsManagement() {
           <button
             type="submit"
             disabled={saving}
-            className="h-11 px-7 rounded-xl bg-[#FF5A1F] text-white font-medium text-xs gap-2 flex items-center justify-center shadow-sm hover:bg-[#E04B14] active:scale-[0.98] transition-all"
+            className="h-11 px-7 rounded-xl bg-[#412f91] text-white font-medium text-xs gap-2 flex items-center justify-center shadow-sm hover:bg-[#342575] active:scale-[0.98] transition-all"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin text-white" /> : <Save className="w-4 h-4" />}
             Save Configuration

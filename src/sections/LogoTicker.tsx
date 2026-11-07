@@ -47,7 +47,7 @@ export default function CapabilityStrip() {
               }`}
             >
               <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
-                <Icon className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#FF5A1F] shrink-0" />
+                <Icon className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#412f91] shrink-0" />
                 <span className="font-mono text-[10px] sm:text-xs text-[#8A91A0] uppercase tracking-wider font-semibold truncate">
                   {cap.label}
                 </span>

@@ -11,7 +11,7 @@ const AdminPanel = dynamic(() => import('@/views/AdminPanel'), {
   loading: () => (
     <div className="min-h-screen bg-[#0B0D10] flex items-center justify-center font-body">
       <div className="p-8 card-precision-dark flex flex-col items-center gap-3">
-        <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
         <span className="font-mono text-xs uppercase tracking-wider text-white/70">
           Authenticating Master Console...
         </span>
@@ -32,7 +32,7 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen bg-[#0B0D10] flex items-center justify-center font-body">
         <div className="p-8 card-precision-dark flex flex-col items-center gap-3">
-          <Loader2 className="w-8 h-8 animate-spin text-[#FF5A1F]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#412f91]" />
           <span className="font-mono text-xs uppercase tracking-wider text-white/70">
             Initializing Saturn Master Console...
           </span>

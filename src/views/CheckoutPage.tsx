@@ -201,7 +201,7 @@ export default function CheckoutPage() {
           orderId: orderId,
         },
         theme: {
-          color: '#FF5A1F', // Saturn Orange
+          color: '#412f91', // Saturn Royal Purple
         },
         handler: async function (response: any) {
           try {
