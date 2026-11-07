@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { ArrowRight, Instagram, Linkedin, Twitter, MessageSquare, Mail, Phone, MapPin, Sparkles, Send } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import RevolvingSaturn3D from '@/components/RevolvingSaturn3D';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -38,40 +37,19 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-14">
         
         {/* =================================================================
-            1. MONUMENTAL ONE-LINE BRAND BANNER WITH 3D REVOLVING SATURN EMBLEM
+            1. MONUMENTAL BRAND LOGO WITH GEOTAG FACILITY STRIP
         ================================================================= */}
-        <div data-aos="fade-up" className="relative w-full py-4 sm:py-8 flex flex-col items-center justify-center">
-          
-          <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-4 md:gap-6 w-full max-w-full overflow-hidden select-none">
-            
-            {/* SATURN in Giant Bold Dark Lettering */}
-            <span className="font-sans font-black tracking-tighter text-[#111215] uppercase text-[clamp(2.5rem,11vw,11rem)] leading-none select-none">
-              SATURN
-            </span>
-
-            {/* Circular Badge with Live 3D Revolving Planet Saturn */}
-            <div className="relative shrink-0 flex items-center justify-center -my-2 sm:-my-4">
-              <div className="relative w-14 h-14 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full p-[2px] sm:p-[2.5px] bg-gradient-to-tr from-[#FF5A1F] via-[#FBBF24] to-[#FF8A50] shadow-[0_4px_24px_rgba(255,90,31,0.25)]">
-                <div className="w-full h-full rounded-full bg-[#0B0D10] border border-black/10 overflow-hidden relative shadow-inner">
-                  <RevolvingSaturn3D />
-                </div>
-              </div>
-
-              {/* Verified Precision Pip */}
-              <span className="absolute -bottom-1 sm:-bottom-2 px-2 py-0.5 rounded-full bg-white border border-[#FF5A1F]/40 font-mono text-[7px] sm:text-[9px] text-[#FF5A1F] font-bold uppercase tracking-widest whitespace-nowrap shadow-xs">
-                3D HUB
-              </span>
-            </div>
-
-            {/* 3D in Giant Bold Dark Lettering */}
-            <span className="font-sans font-black tracking-tighter text-[#111215] uppercase text-[clamp(2.5rem,11vw,11rem)] leading-none select-none">
-              3D
-            </span>
-
-          </div>
+        <div data-aos="fade-up" className="relative w-full py-6 sm:py-10 flex flex-col items-center justify-center">
+          <Link to="/" className="group relative z-10 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]">
+            <img
+              src="/logo.png"
+              alt="Saturn 3D Precision Manufacturing"
+              className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-[85vw] object-contain select-none drop-shadow-xs"
+            />
+          </Link>
 
           {/* Clean Modern Geotag & Facility Strip */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-neutral-500 text-center px-4">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-neutral-500 text-center px-4">
             <span className="text-neutral-900 font-medium flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Bhopal Engineering Facility (Govindpura)
