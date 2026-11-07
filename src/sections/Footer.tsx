@@ -83,8 +83,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/#specs" className="hover:text-[#111215] transition-colors">
-                    Materials & Specs
+                  <Link to="/custom-lab" className="hover:text-[#111215] transition-colors">
+                    Custom Slicer &amp; CAD
                   </Link>
                 </li>
                 <li>

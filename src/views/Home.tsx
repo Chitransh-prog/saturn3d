@@ -13,8 +13,6 @@ import TechResultsDuo from '@/sections/TechResultsDuo';
 import FeaturedProductsViewer from '@/sections/FeaturedProductsViewer';
 import IndustryCategories from '@/sections/Sectors';
 import PrinterFleet from '@/sections/PrinterFleet';
-import ExploreMaterials from '@/sections/ExploreMaterials';
-import MakeItYours from '@/sections/MakeItYours';
 import ProofGallery from '@/sections/ProofGallery';
 import FAQSection from '@/sections/FAQSection';
 
@@ -96,8 +94,6 @@ export default function Home() {
   const subNavItems = [
     { id: 'products', label: '3D Products' },
     { id: 'hardware', label: 'Hardware Fleet' },
-    { id: 'specs', label: 'Materials & Specs' },
-    { id: 'configurator', label: 'Instant Quote' },
     { id: 'gallery', label: 'Real Prints' },
     { id: 'faq', label: 'FAQ' },
   ];
@@ -133,20 +129,12 @@ export default function Home() {
         <PrinterFleet />
       </div>
 
-      {/* 05. Explore Materials */}
-      <div id="specs">
-        <ExploreMaterials />
-      </div>
-
-      {/* 06. Instant CAD Quote Configurator */}
-      <MakeItYours />
-
-      {/* 07. Real Prints Showcase with Verified Shop Telemetry & Testimonials */}
+      {/* 05. Real Prints Showcase with Verified Shop Telemetry & Testimonials */}
       <div id="gallery">
         <ProofGallery />
       </div>
 
-      {/* 08. Frequently Answered Questions Accordion */}
+      {/* 06. Frequently Answered Questions Accordion */}
       <div id="faq">
         <FAQSection />
       </div>

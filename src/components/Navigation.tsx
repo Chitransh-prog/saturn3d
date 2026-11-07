@@ -21,7 +21,6 @@ import { authApi } from '@/lib/api';
 // Home Page Section Jump Items (Streamlined, no duplicate categories)
 const HOME_SECTIONS = [
   { id: 'products', label: 'Products' },
-  { id: 'specs', label: 'Materials' },
   { id: 'hardware', label: 'Fleet' },
   { id: 'gallery', label: 'Gallery' },
   { id: 'faq', label: 'FAQ' },
@@ -80,7 +79,7 @@ export default function Navigation() {
   useEffect(() => {
     if (!isHomePage) return;
 
-    const sectionIds = ['overview', 'products', 'categories', 'hardware', 'specs', 'configurator', 'gallery', 'faq'];
+    const sectionIds = ['overview', 'products', 'categories', 'hardware', 'gallery', 'faq'];
 
     const handleScrollSpy = () => {
       const scrollPos = window.scrollY + 200;
@@ -194,7 +193,7 @@ export default function Navigation() {
             { 
               name: 'Post-Processing & Vapor Smoothing', 
               desc: 'Chemical smoothing, thread inserts, and UV cure annealing', 
-              href: '/#specs',
+              href: '/categories',
               icon: ShieldCheck
             },
           ],
@@ -214,17 +213,17 @@ export default function Navigation() {
         {
           title: 'Engineering Thermoplastics',
           links: [
-            { name: 'Carbon-X PA12-CF', desc: 'High stiffness, 140°C heat deflection, chemical resistant', href: '/#specs', icon: Layers },
-            { name: 'PETG Industrial', desc: 'Durable, moisture resistant, certified food & chemical contact', href: '/#specs', icon: Box },
-            { name: 'ABS High-Impact', desc: 'Machinable, impact-resistant production grade polymer', href: '/#specs', icon: Box },
+            { name: 'Carbon-X PA12-CF', desc: 'High stiffness, 140°C heat deflection, chemical resistant', href: '/custom-lab', icon: Layers },
+            { name: 'PETG Industrial', desc: 'Durable, moisture resistant, certified food & chemical contact', href: '/custom-lab', icon: Box },
+            { name: 'ABS High-Impact', desc: 'Machinable, impact-resistant production grade polymer', href: '/custom-lab', icon: Box },
           ],
         },
         {
           title: 'Specialty Formulations',
           links: [
-            { name: 'Precision Tough SLA Resin', desc: 'ABS-like mechanical behavior with injection molded finish', href: '/#specs', icon: Sparkles },
-            { name: 'High-Temperature Resin (300°C)', desc: 'Engineered for tooling, gas nozzles, and autoclave exposure', href: '/#specs', icon: ShieldCheck },
-            { name: 'PLA Pro (Precision Grade)', desc: 'Ultra-low shrinkage, high dimensional stability for rapid mockups', href: '/#specs', icon: Box },
+            { name: 'Precision Tough SLA Resin', desc: 'ABS-like mechanical behavior with injection molded finish', href: '/custom-lab', icon: Sparkles },
+            { name: 'High-Temperature Resin (300°C)', desc: 'Engineered for tooling, gas nozzles, and autoclave exposure', href: '/custom-lab', icon: ShieldCheck },
+            { name: 'PLA Pro (Precision Grade)', desc: 'Ultra-low shrinkage, high dimensional stability for rapid mockups', href: '/custom-lab', icon: Box },
           ],
         },
       ],
