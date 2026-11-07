@@ -34,38 +34,12 @@ export default function Footer() {
       />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-5xl h-44 bg-gradient-to-b from-[#FF5A1F]/10 via-transparent to-transparent blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10 space-y-12">
         
         {/* =================================================================
-            1. MONUMENTAL BRAND LOGO WITH GEOTAG FACILITY STRIP
+            1. SIMPLISTIC & MODERN 3-COLUMN ARCHITECTURE
         ================================================================= */}
-        <div data-aos="fade-up" className="relative w-full py-6 sm:py-10 flex flex-col items-center justify-center">
-          <Link to="/" className="group relative z-10 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]">
-            <img
-              src="/logo.png"
-              alt="Saturn 3D Precision Manufacturing"
-              className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-[85vw] object-contain select-none drop-shadow-xs"
-            />
-          </Link>
-
-          {/* Clean Modern Geotag & Facility Strip */}
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-neutral-500 text-center px-4">
-            <span className="text-neutral-900 font-medium flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Bhopal Engineering Facility (Govindpura)
-            </span>
-            <span className="text-neutral-300">&bull;</span>
-            <span>Indore Industrial Corridor (Pithampur)</span>
-            <span className="text-neutral-300">&bull;</span>
-            <span className="text-emerald-700 font-medium">24–48h Air Cargo Dispatch</span>
-          </div>
-
-        </div>
-
-        {/* =================================================================
-            2. SIMPLISTIC & MODERN 3-COLUMN ARCHITECTURE
-        ================================================================= */}
-        <div data-aos="fade-up" data-aos-delay="100" className="pt-8 border-t border-black/10 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+        <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           
           {/* Col 1: About / Facility Telemetry (4 Cols) */}
           <div className="md:col-span-4 space-y-4">
@@ -193,6 +167,31 @@ export default function Footer() {
             </div>
           </div>
 
+        </div>
+
+        {/* =================================================================
+            2. MONUMENTAL SATURN 3D BRAND BANNER & FACILITY STRIP
+        ================================================================= */}
+        <div data-aos="fade-up" data-aos-delay="100" className="pt-10 pb-4 border-t border-black/10 flex flex-col items-center justify-center text-center">
+          <Link to="/" className="group relative z-10 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]">
+            <img
+              src="/logo.png"
+              alt="Saturn 3D Printing Company"
+              className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-[85vw] object-contain select-none drop-shadow-xs"
+            />
+          </Link>
+
+          {/* Clean Modern Geotag & Facility Strip */}
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-neutral-500 text-center px-4">
+            <span className="text-neutral-900 font-medium flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Bhopal Engineering Facility (Govindpura)
+            </span>
+            <span className="text-neutral-300">&bull;</span>
+            <span className="text-neutral-600">Indore Industrial Corridor (Pithampur)</span>
+            <span className="text-neutral-300">&bull;</span>
+            <span className="text-emerald-700 font-medium">24–48h Air Cargo Dispatch</span>
+          </div>
         </div>
 
         {/* =================================================================
