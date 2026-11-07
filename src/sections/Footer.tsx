@@ -175,7 +175,7 @@ export default function Footer() {
         <div data-aos="fade-up" data-aos-delay="100" className="pt-10 pb-4 border-t border-black/10 flex flex-col items-center justify-center text-center">
           <Link to="/" className="group relative z-10 flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]">
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="Saturn 3D Printing Company"
               className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto max-w-[85vw] object-contain select-none drop-shadow-xs"
             />

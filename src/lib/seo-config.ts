@@ -140,8 +140,8 @@ export function getLocalBusinessSchema() {
       'Saturn 3D Additive Manufacturing',
     ],
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/og-image.jpg`,
+    logo: `${SITE_URL}/logo.webp`,
+    image: `${SITE_URL}/og-image.webp`,
     description:
       'Premier industrial 3D printing and rapid prototyping facility serving Indore and Bhopal, Madhya Pradesh, India. High-precision FDM, SLA 12K resin, and Carbon-X PA12 printing with verified tolerances down to ±0.04mm. Same-day local pickup in Bhopal and express 12-24h delivery to Indore, Pithampur, and all India.',
     telephone: GEO_CONFIG.phone,

@@ -483,7 +483,7 @@ export default function CheckoutPage() {
                         src={item.image}
                         alt={item.name}
                         className="w-full h-full object-cover"
-                        onError={(e) => { e.currentTarget.src = '/products/vase.jpg'; }}
+                        onError={(e) => { e.currentTarget.src = '/products/vase.webp'; }}
                       />
                       <div className="absolute -top-1 -right-1 bg-saturn-orange text-white text-[9px] font-mono font-bold w-4 h-4 rounded-full flex items-center justify-center">
                         {item.quantity}

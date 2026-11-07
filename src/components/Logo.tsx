@@ -12,10 +12,10 @@ export default function Logo({ className = '', variant = 'dark' }: LogoProps) {
 
   const src =
     variant === 'light' || variant === 'white'
-      ? '/logo-white.png'
+      ? '/logo-white.webp'
       : variant === 'orange'
-      ? '/logo-orange.png'
-      : '/logo.png';
+      ? '/logo-orange.webp'
+      : '/logo.webp';
 
   return (
     <div className={`inline-flex items-center select-none ${className}`}>

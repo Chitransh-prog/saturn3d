@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
         slug,
         description ? description.trim() : '',
         parseFloat(price) || 0,
-        image ? image.trim() : '/products/vase.jpg',
+        image ? image.trim() : '/products/vase.webp',
         category.trim(),
         parseInt(stock) || 0,
         is_active !== false ? 1 : 0,

@@ -166,7 +166,7 @@ export default function Cart() {
                       alt={item.name}
                       className="w-full h-full object-cover mix-blend-multiply"
                       onError={(e) => {
-                        e.currentTarget.src = '/products/vase.jpg';
+                        e.currentTarget.src = '/products/vase.webp';
                       }}
                     />
                   </div>

@@ -43,7 +43,7 @@ function getProductData(id: string) {
   const name = dbProduct?.name || staticProduct?.name || '';
   const description = dbProduct?.description || staticProduct?.description || '';
   const price = dbProduct ? dbProduct.price : (staticProduct ? staticProduct.price : 0);
-  const image = dbProduct?.image || staticProduct?.image || '/showcase/carbon-drone-spar.jpg';
+  const image = dbProduct?.image || staticProduct?.image || '/showcase/carbon-drone-spar.webp';
   const category = dbProduct?.category || staticProduct?.category || 'Rapid Prototyping';
   const stock = dbProduct ? dbProduct.stock : (staticProduct ? staticProduct.stock : 10);
   const material = customSeo?.aeo?.material_grade || staticProduct?.material || 'Engineering Polymer';

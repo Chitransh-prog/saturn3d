@@ -27,7 +27,7 @@ const fleetData: PrinterItem[] = [
     name: 'SPARKX i8',
     headline: 'Fastest Prints. Least Waste. Unlimited Creations.',
     description: 'Industrial open-chassis CoreXY architecture engineered for ultra-rapid prototyping and zero-latency iterations. Features active input shaping and precision direct-drive extrusion.',
-    image: '/printers/saturn-sparkx-i8.jpg',
+    image: '/printers/saturn-sparkx-i8.webp',
     specs: [
       { label: 'Max Speed', value: '600 mm/s' },
       { label: 'Acceleration', value: '20,000 mm/s²' },
@@ -48,7 +48,7 @@ const fleetData: PrinterItem[] = [
     name: 'K3',
     headline: 'Beyond Nozzles. Conquer Materials.',
     description: 'Fully enclosed thermoregulated chamber with automated Quad-Color Filament System (CFS). Optimized for structural engineering composites and carbon-reinforced polymers.',
-    image: '/printers/saturn-k3-enclosed.jpg',
+    image: '/printers/saturn-k3-enclosed.webp',
     specs: [
       { label: 'CFS Capacity', value: '4-Color Continuous' },
       { label: 'Chamber Temp', value: 'Active 65°C Heated' },

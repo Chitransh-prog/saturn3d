@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Saturn 3D Industrial 3D Printing Facility Serving Indore & Bhopal, MP, India',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       'Precision rapid prototyping in Indore & Bhopal, MP. FDM, 12K SLA, Carbon-X PA12 with ±0.04mm tolerances. 12-24h delivery across Indore, Pithampur & Central MP.',
     site: '@saturn3d_in',
     creator: '@saturn3d_in',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
   },
   other: {
     'geo.region': GEO_CONFIG.regionCode,

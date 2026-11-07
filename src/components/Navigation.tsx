@@ -205,7 +205,7 @@ export default function Navigation() {
         spec: 'Tough Resin // ±0.04 mm // 0.05 mm layers',
         badge: 'SHOWCASE',
         href: '/categories',
-        image: '/showcase/sla-turbine-impeller.jpg',
+        image: '/showcase/sla-turbine-impeller.webp',
       },
     },
     materials: {
@@ -233,7 +233,7 @@ export default function Navigation() {
         spec: 'PA12 + 20% Carbon Fiber // 180 MPa Flexural',
         badge: 'MATERIAL SPOTLIGHT',
         href: '/categories',
-        image: '/showcase/carbon-drone-spar.jpg',
+        image: '/showcase/carbon-drone-spar.webp',
       },
     },
     industries: {
@@ -261,7 +261,7 @@ export default function Navigation() {
         spec: 'Direct Tooling // 24h Turnaround // Bhopal Hub',
         badge: 'APPLICATION',
         href: '/categories',
-        image: '/showcase/robotic-gripper.jpg',
+        image: '/showcase/robotic-gripper.webp',
       },
     },
   };

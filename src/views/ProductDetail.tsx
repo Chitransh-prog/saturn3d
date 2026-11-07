@@ -335,7 +335,7 @@ export default function ProductDetail() {
                       alt={product.name}
                       className="max-h-[380px] max-w-full object-contain"
                       onError={(e) => {
-                        e.currentTarget.src = '/products/vase.jpg';
+                        e.currentTarget.src = '/products/vase.webp';
                       }}
                     />
                   </div>

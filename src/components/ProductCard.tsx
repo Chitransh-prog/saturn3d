@@ -113,7 +113,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             decoding="async"
             className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 ease-out group-hover/visual:scale-108"
             onError={(e) => {
-              e.currentTarget.src = '/products/vase.jpg';
+              e.currentTarget.src = '/products/vase.webp';
             }}
           />
 

@@ -399,7 +399,7 @@ export default function Printer3D({
     <div className="w-full h-full relative flex items-center justify-center">
       {/* High-priority static poster for instant LCP < 1.8s */}
       <img
-        src="/hero-printer.jpg"
+        src="/hero-printer.webp"
         alt="Saturn 3D Precision CoreXY S1 Printer"
         width="900"
         height="800"

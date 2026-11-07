@@ -40,9 +40,9 @@ function SaturnCorePrinter({
         metalness: 0.88,
         roughness: 0.28,
       }),
-      // Saturn Orange CNC milled corner brackets
+      // Saturn Purple CNC milled corner brackets
       orangeAccent: new THREE.MeshStandardMaterial({
-        color: 0xff5a1f,
+        color: 0x412f91,
         metalness: 0.45,
         roughness: 0.3,
       }),

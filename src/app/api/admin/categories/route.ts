@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
     db.run(
       `INSERT INTO categories (id, name, slug, description, image, created_at, updated_at)
        VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [id, name.trim(), finalSlug, description ? description.trim() : '', image || '/products/vase.jpg', now, now]
+      [id, name.trim(), finalSlug, description ? description.trim() : '', image || '/products/vase.webp', now, now]
     );
 
     const category = db.get('SELECT * FROM categories WHERE id = ?', [id]);

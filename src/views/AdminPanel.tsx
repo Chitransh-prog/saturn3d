@@ -397,7 +397,7 @@ function ProductForm({ product, onClose, onSaved }: ProductFormProps) {
       meta_description: `High-precision 3D printed ${cleanName} for ${cat}. Manufactured with ±0.04 mm tolerance at Saturn 3D additive hub in Bhopal, MP. Fast 24-48h dispatch across India.`,
       keywords: `${cleanName}, 3d printing bhopal, 3d printing service madhya pradesh, custom ${cat.toLowerCase()} 3d printing, industrial additive manufacturing india, saturn 3d printing`,
       canonical_url: `/product/${slugClean}`,
-      og_image: form.image || '/showcase/carbon-drone-spar.jpg',
+      og_image: form.image || '/showcase/carbon-drone-spar.webp',
       indexable: true,
     });
 

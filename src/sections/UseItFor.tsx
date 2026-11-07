@@ -23,7 +23,7 @@ const caseStudies: CaseStudyItem[] = [
     problem: 'CNC aluminum motor spars added excessive mass, limiting endurance to 28 minutes.',
     solution: 'Engineered continuous Carbon-X PA12-CF spars with optimized gyroid infill, cutting mass by 38% while retaining 180 MPa stiffness.',
     telemetry: 'Carbon-X PA12-CF // 4h Turnaround // -38% Mass',
-    image: '/showcase/carbon-drone-spar.jpg',
+    image: '/showcase/carbon-drone-spar.webp',
     route: '/custom-lab',
   },
   {
@@ -34,7 +34,7 @@ const caseStudies: CaseStudyItem[] = [
     problem: 'Standard silicone grippers wore out rapidly under high-cycle conveyor friction.',
     solution: 'Fabricated dual-hardness TPU 95A flexible fingers over a rigid PETG Industrial core, increasing cycle life to 250,000+ continuous operations.',
     telemetry: 'PETG + TPU 95A // ±0.08 mm // 24h Dispatch',
-    image: '/showcase/robotic-gripper.jpg',
+    image: '/showcase/robotic-gripper.webp',
     route: '/custom-lab',
   },
   {
@@ -45,7 +45,7 @@ const caseStudies: CaseStudyItem[] = [
     problem: 'Required autoclave-stable, sub-50µm surface definition for surgical drill verification.',
     solution: 'Produced on 12K optical SLA photopolymer engines using High-Temp & Biocompatible resin formulations with verified ±0.04 mm accuracy.',
     telemetry: '12K Optical Resin // 25µm Layers // ±0.04 mm',
-    image: '/showcase/biomedical-guide.jpg',
+    image: '/showcase/biomedical-guide.webp',
     route: '/custom-lab',
   },
 ];

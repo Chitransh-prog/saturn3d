@@ -128,7 +128,7 @@ export default function CustomUpload() {
         name: `Custom CAD Part: ${uploadedFile.name}`,
         description: `${selectedMaterial.name} • ${selectedQuality.layerHeight} • ${infillDensity}% Infill`,
         price: unitPrice,
-        image: '/products/vase.jpg',
+        image: '/products/vase.webp',
         category: 'Custom Lab Print',
         stock: 99,
       },

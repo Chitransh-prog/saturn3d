@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Saturn 3D Industrial 3D Printing Facility Serving Indore & Bhopal, MP, India',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
       'Precision rapid prototyping & additive manufacturing in Indore & Bhopal, MP, India. FDM, SLA, Carbon-X PA12 with ±0.04mm tolerances. Express 12-24h delivery across MP & nationwide.',
     site: '@saturn3d_in',
     creator: '@saturn3d_in',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.webp'],
   },
   robots: {
     index: true,
@@ -87,11 +87,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-16x16.webp', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.webp', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.webp', sizes: '48x48', type: 'image/png' },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: '/apple-touch-icon.webp', sizes: '180x180', type: 'image/png' }],
   },
   other: {
     // Geographic Local SEO & AEO Meta Tags for Indore & Bhopal

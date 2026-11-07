@@ -28,7 +28,7 @@ const partsShowcase: ShowcasePart[] = [
     printTime: '4h 12m',
     tolerance: '±0.05 mm',
     description: 'High flexural modulus composite arm with gyroid lattice infill and embedded titanium inserts.',
-    image: '/showcase/carbon-drone-spar.jpg',
+    image: '/showcase/carbon-drone-spar.webp',
   },
   {
     id: 'turbine-impeller',
@@ -41,7 +41,7 @@ const partsShowcase: ShowcasePart[] = [
     printTime: '2h 45m',
     tolerance: '±0.04 mm',
     description: 'Ultra-smooth fluid dynamics vane geometry in optical translucent amber engineering resin.',
-    image: '/showcase/sla-turbine-impeller.jpg',
+    image: '/showcase/sla-turbine-impeller.webp',
   },
   {
     id: 'conveyor-guide',
@@ -54,7 +54,7 @@ const partsShowcase: ShowcasePart[] = [
     printTime: '6h 30m',
     tolerance: '±0.12 mm',
     description: 'Chemical-resistant production fixture with integrated planetary gearing for packaging lines.',
-    image: '/showcase/planetary-gears.jpg',
+    image: '/showcase/planetary-gears.webp',
   },
   {
     id: 'medical-enclosure',
@@ -67,7 +67,7 @@ const partsShowcase: ShowcasePart[] = [
     printTime: '5h 15m',
     tolerance: '±0.04 mm',
     description: 'Precision surgical drill guide and anatomical housing printed in certified biocompatible resin.',
-    image: '/showcase/biomedical-guide.jpg',
+    image: '/showcase/biomedical-guide.webp',
   },
   {
     id: 'intake-manifold',
@@ -80,7 +80,7 @@ const partsShowcase: ShowcasePart[] = [
     printTime: '7h 20m',
     tolerance: '±0.05 mm',
     description: 'Rigid electronics prototype chassis with heat-set brass threaded inserts and ventilation louvers.',
-    image: '/showcase/industrial-chassis.jpg',
+    image: '/showcase/industrial-chassis.webp',
   },
   {
     id: 'architecture-model',
@@ -93,7 +93,7 @@ const partsShowcase: ShowcasePart[] = [
     printTime: '8h 40m',
     tolerance: '±0.08 mm',
     description: 'Dual-hardness robotic gripper with flexible textured TPU fingertips over a high-rigidity PETG skeleton.',
-    image: '/showcase/robotic-gripper.jpg',
+    image: '/showcase/robotic-gripper.webp',
   },
 ];
 

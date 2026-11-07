@@ -157,7 +157,7 @@ export default function Features() {
           <div ref={imageRef} className="relative order-2 lg:order-1">
             <div className="relative aspect-square rounded-[3.5rem] overflow-hidden bg-white shadow-2xl shadow-slate-200 border border-slate-100 flex items-center justify-center group cursor-crosshair">
               {/* Industrial Grid Background */}
-              <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+              <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.webp')]" />
               
               {/* Functional HUD Overlays */}
               <div className="absolute inset-10 pointer-events-none flex flex-col justify-between z-20">
