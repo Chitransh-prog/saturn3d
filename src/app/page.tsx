@@ -196,6 +196,9 @@ export default function Page() {
         <p>
           Saturn 3D connects the two primary economic and industrial powerhouses of Madhya Pradesh. Our manufacturing facility in Govindpura, Bhopal offers direct walk-in dispatch, local pickups, and rapid CAD consultations. For clients across Indore—including the Pithampur automotive cluster, Sanwer Road industrial zone, Electronic Complex, and Vijay Nagar commercial hub—we provide dedicated daily express courier transit (3.5 hours highway corridor) guaranteeing same-day or next-morning 12 to 24-hour delivery.
         </p>
+        <p>
+          Explore our dedicated regional service hubs: <a href="/3d-printing-in-bhopal">3D Printing Service in Bhopal (Govindpura Lab &amp; Same-Day Pickup)</a> and <a href="/3d-printing-in-indore">3D Printing in Indore &amp; Pithampur (Automotive Prototyping &amp; 12-24h Express Dispatch)</a>.
+        </p>
 
         {/* Regional Delivery Matrix Comparison Table for AI Search Extraction */}
         <h2>Delivery Timelines &amp; Dispatch Options for Indore, Bhopal &amp; India</h2>

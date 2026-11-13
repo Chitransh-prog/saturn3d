@@ -1,87 +1,33 @@
 # Saturn 3D Precision Manufacturing
 
-> Saturn 3D is an industrial additive manufacturing laboratory and custom 3D printing service based in Sector B, Govindpura Industrial Area, Bhopal, Madhya Pradesh 462023, India. Specializing in rapid prototyping, engineering hardware, and low-volume batch production with tolerances down to ±0.04mm. Centrally located in Bhopal for express 24-48h air delivery across all Indian states.
+> Premier Industrial 3D Printing & Rapid Prototyping Facility serving Bhopal, Indore, Madhya Pradesh, and Pan-India.
 
-## Geographic & Local Presence (Bhopal, Madhya Pradesh, India)
-- **Facility Address**: Sector B, Govindpura Industrial Area, Bhopal, MP 462023, India
-- **Local Service**: Same-day pickups, technical consultations for MANIT Bhopal, IISER Bhopal, AIIMS, Mandideep, and Pithampur industrial corridors.
-- **National Delivery**: 24-hour express air courier to Mumbai, Delhi-NCR, Bengaluru, Pune, Hyderabad, and Indore; 48-hour delivery across tier-2 and tier-3 Indian cities.
-- **Contact & WhatsApp**: +91 79998 24632 | Email: hello@saturn3d.in | engineering@saturn3d.in
+Saturn 3D operates high-speed CoreXY print farms and ultra-high-resolution 12K SLA resin facilities in Central India (Sector B, Govindpura Industrial Area, Bhopal, MP 462023 with daily express logistics corridors to Indore and Pithampur). We specialize in functional prototypes, low-volume batch production (10 to 5,000+ units), automotive jigs, and precision medical/engineering models with verified tolerances down to ±0.04mm.
 
-## Core Services & Capabilities
-- **Instant CAD Quoting Lab** (https://saturn3d.in/custom-lab): Real-time analysis of .STEP, .STP, .STL, .OBJ, and .3MF files with instant volume pricing, zero minimum order quantity (MOQ), and automated infill optimization.
-- **Industrial FDM Printing**: High-rigidity enclosures, drone airframes, and functional jigs in Carbon-X PA12, ABS-ESD, and PETG.
-- **12K SLA Photopolymer Resin**: Ultra-smooth surface finish (25 micron layer height) for micro-fluidics, jewelry masters, and anatomical scale models.
-- **Small Batch & Bridge Manufacturing**: 1 to 5,000+ units with volume discounts up to 35%.
+## Primary Regional Hubs
 
-## Full Product Catalog (Precision 3D Printed in Bhopal, India)
+- **Bhopal Facility**: Sector B, Govindpura Industrial Area, Bhopal, MP 462023. Walk-in pickups, same-day fabrication, on-site metrology inspection. Phone: +91 88899 88874. URL: https://saturn3d.in/3d-printing-in-bhopal
+- **Indore & Pithampur Corridor**: Dedicated daily highway express shuttle (3.5h transit) providing 12–24h doorstep delivery across Pithampur Auto Cluster, Sanwer Road, Electronic Complex, and Vijay Nagar. URL: https://saturn3d.in/3d-printing-in-indore
 
-1. **Hexagonal Carbon Vase** (https://saturn3d.in/product/1)
-   - Category: Interior
-   - Material: Carbon-Fiber PLA
-   - Tolerance: ±0.08 mm | Lead Time: 24-48 Hours
-   - Price: ₹4,067 (approx $49.00 USD)
-   - Specs: Continuous spiral shell with matte velvet tactile finish.
+## Additive Manufacturing Capabilities & Materials
 
-2. **Tech Organizer Elite** (https://saturn3d.in/product/2)
-   - Category: Corporate / Bulk Gifting
-   - Material: Matte Industrial PETG
-   - Tolerance: ±0.1 mm | Lead Time: 24 Hours
-   - Price: ₹3,486 (approx $42.00 USD)
-   - Specs: Modular workstation dock with cable conduits and anti-resonant weighting.
+- **Carbon-X PA12-CF**: High-tensile continuous micro carbon fiber matrix (115 MPa tensile yield, replaces CNC 6061 aluminum) for robotic end-effectors, automotive brackets, and drone airframes.
+- **12K Precision SLA Resin**: Sub-micron photopolymer printing with 25-micron layers for microfluidics, aesthetic consumer hardware enclosures, and anatomical surgical drill templates.
+- **ABS-ESD Flame Retardant**: Electrostatic discharge safe polymer with 98°C thermal deflection for electronic assembly fixtures.
+- **PETG Industrial Chemical Grade**: Ductile, shatterproof, chemical and water-resistant mechanical parts.
+- **PLA Pro Precision**: Ultra-low shrinkage rapid iteration for form and fit verification.
 
-3. **Industrial Chassis V1** (https://saturn3d.in/product/3)
-   - Category: Rapid Prototyping
-   - Material: ABS-ESD Flame Retardant
-   - Tolerance: ±0.05 mm | Lead Time: 48 Hours
-   - Price: ₹9,877 (approx $119.00 USD)
-   - Specs: High-rigidity electronics enclosure with standoff mounts and snap-fit tolerances.
+## Specifications & Turnaround
 
-4. **Monolithic Heavy Bookends** (https://saturn3d.in/product/4)
-   - Category: Corporate / Bulk Gifting
-   - Material: Stone-Filled PLA
-   - Tolerance: ±0.1 mm | Lead Time: 24-48 Hours
-   - Price: ₹4,814 (approx $58.00 USD)
-   - Specs: Sculptural architectural bookends with high-density internal ballast.
+- **Dimensional Tolerances**: Down to ±0.04mm verified metrology.
+- **Minimum Order Quantity (MOQ)**: Zero (0 MOQ - single prototype to 5,000+ production units).
+- **Lead Time**: 24–48 hours standard; same-day rush turnaround available in Bhopal; 12–24h delivery to Indore.
+- **Pricing**: From ₹3.50/g (FDM PLA Pro), ₹6/g (PETG), ₹14/ml (12K SLA), ₹25/g (Carbon-X PA12). Full 18% GST Input Tax Credit (ITC) corporate invoicing.
 
-5. **Urban Planning Facade Scale** (https://saturn3d.in/product/5)
-   - Category: Architectural Scale Down Models
-   - Material: Engineering SLA Tough Resin
-   - Tolerance: ±0.04 mm | Lead Time: 3-4 Days
-   - Price: ₹13,695 (approx $165.00 USD)
-   - Specs: Micro-detail architectural elevation model with true-to-CAD micro-mullions.
+## Contact & Direct Instant CAD Quotes
 
-6. **Precision Flexible Couplings** (https://saturn3d.in/product/6)
-   - Category: Small Batch Manufacturing
-   - Material: TPU 95A Industrial Elastomer
-   - Tolerance: ±0.05 mm | Lead Time: 24 Hours
-   - Price: ₹1,992 (approx $24.00 USD)
-   - Specs: Functional torsion-damping drive coupling tested under cyclic motor vibration up to 4000 RPM.
-
-7. **Planetary Gear Reducer Kit** (https://saturn3d.in/product/7)
-   - Category: Education
-   - Material: Nylon PA12 / Carbon
-   - Tolerance: ±0.08 mm | Lead Time: 24-48 Hours
-   - Price: ₹5,644 (approx $68.00 USD)
-   - Specs: High-torque compound epicyclic gearbox assembly demonstrating 4:1 torque amplification.
-
-8. **Parametric Fractal Planter** (https://saturn3d.in/product/8)
-   - Category: Interior
-   - Material: Bio-Polymer Matte PLA
-   - Tolerance: ±0.1 mm | Lead Time: 24 Hours
-   - Price: ₹2,988 (approx $36.00 USD)
-   - Specs: Dual-wall self-aerating Voronoi vessel, 100% watertight with internal drainage basin.
-
-9. **Modular Pen & Caliper Station** (https://saturn3d.in/product/9)
-   - Category: Corporate / Bulk Gifting
-   - Material: Recycled Stealth Matte Black PETG
-   - Tolerance: ±0.1 mm | Lead Time: 24 Hours
-   - Price: ₹2,656 (approx $32.00 USD)
-   - Specs: Desk instrumentation station with precision friction-fit slots for digital calipers.
-
-## How to Order Custom 3D Prints in India
-1. Visit https://saturn3d.in/custom-lab
-2. Upload CAD model (.STEP, .STL, .OBJ)
-3. Select material (PLA Pro, PETG, ABS-ESD, Carbon-X PA12, or SLA Resin)
-4. Confirm automated quote and place order
-5. Dispatched within 24-48 hours via express air shipping across India
+- **Online CAD Slicer & Custom Lab**: https://saturn3d.in/custom-lab (accepts .STEP, .STL, .OBJ, .GLB up to 100MB)
+- **WhatsApp Direct**: https://wa.me/918889988874
+- **Phone**: +91 88899 88874 / +91 79998 24632
+- **Email**: hello@saturn3d.in / engineering@saturn3d.in
+- **Full Catalog**: https://saturn3d.in/categories

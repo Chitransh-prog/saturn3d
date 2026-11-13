@@ -15,6 +15,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
+      url: `${SITE_URL}/3d-printing-in-bhopal`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.98,
+    },
+    {
+      url: `${SITE_URL}/3d-printing-in-indore`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.98,
+    },
+    {
       url: `${SITE_URL}/custom-lab`,
       lastModified: currentDate,
       changeFrequency: 'weekly',

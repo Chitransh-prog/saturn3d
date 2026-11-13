@@ -236,14 +236,14 @@ export default function Navigation() {
       },
     },
     industries: {
-      title: 'Industries',
+      title: 'Industries & Regional Hubs',
       columns: [
         {
-          title: 'High-Trust Sectors',
+          title: 'Regional Manufacturing Hubs',
           links: [
-            { name: 'Aerospace & UAS Drone Frames', desc: 'Lightweight airframes, sensor brackets, avionics housings', href: '/about', icon: Layers },
-            { name: 'Automotive & Motorsport', desc: 'Custom intake runners, jigs, brackets, and testing manifolds', href: '/about', icon: Cpu },
-            { name: 'Medical Devices & Orthotics', desc: 'Biocompatible custom housings and surgical drill guides', href: '/about', icon: Sparkles },
+            { name: '3D Printing in Bhopal (Lab)', desc: 'Govindpura Sector B facility, same-day walk-in collection', href: '/3d-printing-in-bhopal', icon: Layers },
+            { name: '3D Printing in Indore (Hub)', desc: 'Pithampur auto corridor, 12-24h daily express delivery', href: '/3d-printing-in-indore', icon: Cpu },
+            { name: 'Aerospace & UAS Drone Frames', desc: 'Lightweight airframes, sensor brackets, avionics housings', href: '/about', icon: Sparkles },
           ],
         },
         {
@@ -256,10 +256,10 @@ export default function Navigation() {
         },
       ],
       featured: {
-        title: 'Robotic Gripper Arm',
-        spec: 'Direct Tooling // 24h Turnaround // Bhopal Hub',
-        badge: 'APPLICATION',
-        href: '/categories',
+        title: 'Central MP Manufacturing Hubs',
+        spec: 'Bhopal Facility // Indore Express Line',
+        badge: 'LOCAL HUBS',
+        href: '/3d-printing-in-bhopal',
         image: '/showcase/robotic-gripper.webp',
       },
     },

@@ -69,22 +69,22 @@ export default function Footer() {
           <div className="md:col-span-4 grid grid-cols-2 gap-6 text-xs">
             <div className="space-y-3">
               <h4 className="font-mono text-[10px] uppercase tracking-widest text-[#8A91A0] font-semibold">
-                Navigation
+                Local Hubs &amp; Store
               </h4>
               <ul className="space-y-2 text-[#5E6573]">
                 <li>
+                  <Link to="/3d-printing-in-bhopal" className="hover:text-[#412f91] font-semibold transition-colors flex items-center gap-1">
+                    <span>📍 3D Printing Bhopal</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/3d-printing-in-indore" className="hover:text-[#412f91] font-semibold transition-colors flex items-center gap-1">
+                    <span>📍 3D Printing Indore</span>
+                  </Link>
+                </li>
+                <li>
                   <Link to="/#products" className="hover:text-[#111215] transition-colors">
                     3D Products
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/#hardware" className="hover:text-[#111215] transition-colors">
-                    Hardware Fleet
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/custom-lab" className="hover:text-[#111215] transition-colors">
-                    Custom Slicer &amp; CAD
                   </Link>
                 </li>
                 <li>
@@ -112,7 +112,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link to="/#faq" className="hover:text-[#111215] transition-colors">
-                    FAQ & Dispatch
+                    FAQ &amp; Dispatch
                   </Link>
                 </li>
                 <li>

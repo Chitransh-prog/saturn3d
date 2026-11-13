@@ -62,6 +62,36 @@ export default function CapabilityStrip() {
           );
         })}
       </div>
+
+      {/* Local Hubs Quick Navigation Bar */}
+      <div className="max-w-7xl mx-auto mt-5 pt-4 border-t border-black/5 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-[#5E6573]">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-[#111215] font-semibold">Central MP Additive Hubs:</span>
+        </div>
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          <a
+            href="/3d-printing-in-bhopal"
+            className="hover:text-[#412f91] transition-colors flex items-center gap-1 font-medium text-neutral-800"
+          >
+            <span>📍 Bhopal (Govindpura Lab &amp; Same-Day Pickup)</span>
+            <span className="text-[10px] text-[#412f91]">&rarr;</span>
+          </a>
+          <a
+            href="/3d-printing-in-indore"
+            className="hover:text-[#412f91] transition-colors flex items-center gap-1 font-medium text-neutral-800"
+          >
+            <span>📍 Indore &amp; Pithampur (12-24h Highway Dispatch)</span>
+            <span className="text-[10px] text-[#412f91]">&rarr;</span>
+          </a>
+          <a
+            href="/custom-lab"
+            className="text-[#412f91] font-bold hover:underline"
+          >
+            Instant CAD Quote &rarr;
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

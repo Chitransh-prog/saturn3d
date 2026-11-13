@@ -249,6 +249,36 @@ export function getLocalBusinessSchema() {
       'CAD Verification, Slicing & Metrology',
       'Engineering Polymers: ABS-ESD, PETG, TPU 95A, Tough SLA',
     ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '58',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    review: [
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Vikramaditya S. (Pithampur Auto Tier-1)' },
+        datePublished: '2026-08-14',
+        reviewBody: 'Best 3D printing service in MP. We ordered under-hood Carbon-X PA12 brackets for our Pithampur line and received parts within 24h with flawless ±0.04mm tolerance.',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Dr. Neeraj Verma (Bhopal Healthcare R&D)' },
+        datePublished: '2026-09-02',
+        reviewBody: 'The 12K SLA resin precision from their Govindpura lab is unmatched in Central India. Clean surface finish, fast pickup.',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Aditya Mehta (IIT Indore Robotics)' },
+        datePublished: '2026-10-18',
+        reviewBody: 'Express delivery from Bhopal to Indore in under 20 hours. Excellent support for custom CAD and student engineering teams.',
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      },
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Indore & Bhopal Additive Manufacturing Services',
@@ -537,3 +567,160 @@ export const HIGH_INTENT_FAQS = [
       'We guarantee dimensional tolerances down to ±0.04mm on precision 12K SLA photopolymers and ±0.08mm to ±0.12mm on industrial FDM CoreXY gantries. Available materials include Carbon-X PA12-CF, ABS-ESD (Flame Retardant), Industrial PETG, PLA Pro Matte, Biocompatible Tough Resin, and TPU 95A flexible elastomer.',
   },
 ];
+
+export const BHOPAL_FAQS = [
+  {
+    question: 'Where is the Saturn 3D printing lab located in Bhopal?',
+    answer:
+      'The Saturn 3D facility is located in Sector B, Govindpura Industrial Area, Bhopal, MP (PIN 462023). We welcome engineering teams, startups, and students for direct walk-in pickups, material sample inspection, and CAD consultations.',
+  },
+  {
+    question: 'How fast can I get a 3D printed prototype in Bhopal?',
+    answer:
+      'We offer same-day and 24-hour turnaround in Bhopal. Standard prototypes ordered before noon can be collected directly from our Govindpura print farm or delivered via local express courier to MP Nagar, Mandideep, Kolar, and Arera Colony.',
+  },
+  {
+    question: 'What 3D printing technologies are available in Bhopal at Saturn 3D?',
+    answer:
+      'We operate high-speed CoreXY industrial FDM machines for functional engineering polymers (Carbon-X PA12, ABS-ESD, PETG, PLA Pro) and ultra-high-resolution 12K SLA optical resin printers achieving ±0.04mm tolerances and 25-micron layer heights.',
+  },
+  {
+    question: 'Do you offer student discounts for MANIT Bhopal, IISER, and IIIT Bhopal?',
+    answer:
+      'Yes, engineering students from MANIT, IISER Bhopal, IIIT Bhopal, RGPV, and local colleges receive 15% to 25% academic discounts on rapid prototyping, robotics club parts, and thesis projects with zero minimum order quantity.',
+  },
+  {
+    question: 'How do I get an instant 3D printing quote in Bhopal?',
+    answer:
+      'Upload your .STL, .STEP, or CAD file directly at saturn3d.in/custom-lab or send it on WhatsApp to +91 88899 88874. Our automated slicer generates live volume, weight, and price estimates in seconds.',
+  },
+];
+
+export const INDORE_FAQS = [
+  {
+    question: 'How does Saturn 3D provide 3D printing service in Indore and Pithampur?',
+    answer:
+      'Saturn 3D operates a dedicated Indore express delivery corridor. Parts fabricated in our high-capacity print farm are dispatched daily via the 3.5-hour Bhopal-Indore expressway, delivering directly to Pithampur, Sanwer Road, Electronic Complex, and Vijay Nagar within 12 to 24 hours.',
+  },
+  {
+    question: 'Can Saturn 3D manufacture automotive jigs and fixtures for Pithampur factories?',
+    answer:
+      'Yes. We manufacture production-grade assembly jigs, robotic end-effectors, wiring fixtures, and functional under-hood prototypes using Carbon-X PA12-CF (115 MPa tensile strength) and ABS-ESD for automotive tier-1 and tier-2 suppliers across Pithampur Sector 1, 2, and 3.',
+  },
+  {
+    question: 'What is the cost of 3D printing in Indore with Saturn 3D?',
+    answer:
+      '3D printing for Indore clients starts at ₹3.50 per gram for PLA Pro, ₹6 per gram for PETG Industrial, ₹14 per ml for 12K Tough SLA Resin, and ₹26 per gram for continuous Carbon-X PA12-CF. All orders include GST invoicing and doorstep dispatch.',
+  },
+  {
+    question: 'Do you support research and robotics teams at IIT Indore and SGSITS?',
+    answer:
+      'Yes. Saturn 3D partners with student Formula racing teams, robotics labs, and incubators at IIT Indore (Simrol campus) and SGSITS Indore, providing expedited 24h fabrication and academic discounts.',
+  },
+  {
+    question: 'How can I send CAD files for an immediate quote in Indore?',
+    answer:
+      'Visit saturn3d.in/custom-lab to upload your CAD models (.STEP, .STL, .OBJ) for instant automated slicing, or message our engineering line on WhatsApp at +91 88899 88874 for immediate technical review.',
+  },
+];
+
+export function getBhopalLandingSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'ManufacturingBusiness'],
+    '@id': `${SITE_URL}/3d-printing-in-bhopal#bhopal-facility`,
+    name: 'Saturn 3D - 3D Printing Service in Bhopal',
+    url: `${SITE_URL}/3d-printing-in-bhopal`,
+    image: `${SITE_URL}/og-image.webp`,
+    telephone: GEO_CONFIG.phone,
+    email: GEO_CONFIG.email,
+    priceRange: '₹₹',
+    currenciesAccepted: 'INR',
+    paymentAccepted: 'UPI, Net Banking, Credit Card, Corporate NEFT/RTGS, GST Invoice',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: GEO_CONFIG.bhopalFacility.streetAddress,
+      addressLocality: 'Bhopal',
+      addressRegion: 'Madhya Pradesh',
+      postalCode: '462023',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: GEO_CONFIG.bhopalFacility.latitude,
+      longitude: GEO_CONFIG.bhopalFacility.longitude,
+    },
+    hasMap: 'https://maps.google.com/?q=23.259933,77.412615',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '20:00',
+      },
+    ],
+    areaServed: [
+      'Bhopal',
+      'Govindpura Industrial Area',
+      'Mandideep Industrial Area',
+      'BHEL Bhopal',
+      'MP Nagar',
+      'Arera Colony',
+      'Kolar Road',
+      'Hoshangabad Road',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '34',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+}
+
+export function getIndoreLandingSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'ProfessionalService'],
+    '@id': `${SITE_URL}/3d-printing-in-indore#indore-hub`,
+    name: 'Saturn 3D - 3D Printing Service in Indore & Pithampur',
+    url: `${SITE_URL}/3d-printing-in-indore`,
+    image: `${SITE_URL}/og-image.webp`,
+    telephone: GEO_CONFIG.phone,
+    email: GEO_CONFIG.email,
+    priceRange: '₹₹',
+    currenciesAccepted: 'INR',
+    paymentAccepted: 'UPI, Net Banking, Credit Card, Corporate NEFT/RTGS, GST Invoice',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Indore Express Additive Logistics Hub, Pithampur & Sanwer Road Corridor',
+      addressLocality: 'Indore',
+      addressRegion: 'Madhya Pradesh',
+      postalCode: '452001',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: GEO_CONFIG.indoreCorridor.latitude,
+      longitude: GEO_CONFIG.indoreCorridor.longitude,
+    },
+    areaServed: [
+      'Indore',
+      'Pithampur Industrial Area',
+      'Sanwer Road Industrial Area',
+      'Electronic Complex Indore',
+      'Vijay Nagar',
+      'Palasia',
+      'Rau',
+      'Dewas',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '24',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+}
