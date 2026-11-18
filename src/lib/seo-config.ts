@@ -235,6 +235,7 @@ export function getLocalBusinessSchema() {
     ],
     sameAs: [
       'https://instagram.com/saturn3d.in',
+      'https://www.facebook.com/share/r/1ETtVYGLxX/',
       'https://linkedin.com/company/saturn3d',
       'https://twitter.com/saturn3d_in',
       'https://wa.me/919203711106',

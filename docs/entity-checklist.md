@@ -92,6 +92,7 @@ Post and answer these high-frequency customer queries directly from the owner ac
 | **Google Business Profile** | `https://maps.google.com/?cid=saturn3d` | Priority 1 | Claim/Update address, verify video, link UTM URL, seed 5 verified reviews |
 | **LinkedIn Company** | `https://www.linkedin.com/company/saturn3d` | Active | Set headline to *"Saturn 3D | Precision Additive Manufacturing & Prototyping"*, link website, post technical case studies |
 | **Instagram** | `@saturn3d.in` | Active | Bio: *"Precision 3D Printing & Prototyping Lab 🇮🇳 • Micron Tolerance • FDM & SLA • Bhopal Hub"*, Linktree/URL to saturn3d.in |
+| **Facebook** | `facebook.com/share/r/1ETtVYGLxX/` | Active | Direct company page / profile presence |
 | **Twitter / X** | `@saturn3d_in` | Active | Hardware updates, live printing timelapses, direct DMs |
 | **IndiaMART** | `indiamart.com/saturn-3d-studio/` | Critical B2B | Register as Verified TrustSEAL seller under *"3D Printing Services"* & *"Rapid Prototyping Services"* |
 | **Justdial Bhopal** | `justdial.com/Bhopal/Saturn-3D-Studio/` | Local Directory | Claim listing, align NAP, upload product catalog photos |

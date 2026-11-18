@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, Instagram, Linkedin, Twitter, MessageSquare, Mail, Phone, MapPin, Sparkles, Send } from 'lucide-react';
+import { ArrowRight, Facebook, Instagram, Linkedin, Twitter, MessageSquare, Mail, Phone, MapPin, Sparkles, Send } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
@@ -228,6 +228,15 @@ export default function Footer() {
               className="w-8 h-8 rounded-lg bg-white hover:bg-black/5 border border-black/10 text-[#5E6573] hover:text-[#111215] flex items-center justify-center transition-all shadow-2xs"
             >
               <Instagram className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://www.facebook.com/share/r/1ETtVYGLxX/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="w-8 h-8 rounded-lg bg-white hover:bg-black/5 border border-black/10 text-[#5E6573] hover:text-[#111215] flex items-center justify-center transition-all shadow-2xs"
+            >
+              <Facebook className="w-3.5 h-3.5" />
             </a>
             <a
               href="https://linkedin.com/company/saturn3d"
