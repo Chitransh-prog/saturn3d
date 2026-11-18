@@ -218,7 +218,8 @@ export default function ProductDetail() {
     const text = encodeURIComponent(
       `Hello Saturn 3D engineering team, I have a technical inquiry regarding ${product?.name} (Material: ${selectedMatObj.name}, Qty: ${selectedQty} units) on ${window.location.href}.`
     );
-    window.open(`https://wa.me/918889988874?text=${text}`, '_blank');
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919203711106';
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
   };
 
   const toggleWishlist = () => {

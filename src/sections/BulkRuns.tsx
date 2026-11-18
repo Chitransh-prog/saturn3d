@@ -28,7 +28,7 @@ export default function BulkRuns() {
   const unitPrice = Math.round(currentType.basePrice * (1 - discount));
   const estimatedTotal = unitPrice * quantity;
 
-  const whatsappNumber = '918889988874';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919203711106';
   const getWhatsAppMsg = () => {
     return `Hi Saturn 3D engineering, I would like to schedule a volume production run:
 - Part Size Category: ${currentType.label}

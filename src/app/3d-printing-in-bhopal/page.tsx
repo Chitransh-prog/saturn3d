@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: '3D Printing Service in Bhopal | Industrial Rapid Prototyping | Saturn 3D',
   description:
-    '#1 industrial 3D printing in Bhopal, MP. FDM, 12K SLA optical resin & Carbon-X PA12 printing with ±0.04mm tolerances at Govindpura Industrial Area. Same-day walk-in pickup, 0 MOQ, instant CAD quote. Call +91 88899 88874.',
+    '#1 industrial 3D printing in Bhopal, MP. FDM, 12K SLA optical resin & Carbon-X PA12 printing with ±0.04mm tolerances at Govindpura Industrial Area. Same-day walk-in pickup, 0 MOQ, instant CAD quote. Call +91 92037 11106.',
   keywords: [
     '3D printing Bhopal',
     '3D printing service in Bhopal',
@@ -222,13 +222,13 @@ export default function BhopalLandingPage() {
                 </Link>
 
                 <a
-                  href="https://wa.me/918889988874?text=Hi%20Saturn%203D%2C%20I%20need%20a%203D%20printing%20quote%20in%20Bhopal"
+                  href="https://wa.me/919203711106?text=Hi%20Saturn%203D%2C%20I%20need%20a%203D%20printing%20quote%20in%20Bhopal"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono font-semibold text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 active:scale-95 text-center"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp Bhopal Desk (+91 88899 88874)</span>
+                  <span>WhatsApp Bhopal Desk (+91 92037 11106)</span>
                 </a>
               </div>
 
@@ -402,9 +402,9 @@ export default function BhopalLandingPage() {
                 Sector B, Govindpura Industrial Area, Bhopal, MP 462023. Walk-ins welcomed Monday through Saturday, 9:00 AM to 8:00 PM for project evaluation, physical material comparisons, and instant collection.
               </p>
               <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-200">
-                <a href="tel:+918889988874" className="flex items-center gap-2 hover:text-white transition-colors">
+                <a href="tel:+919203711106" className="flex items-center gap-2 hover:text-white transition-colors">
                   <Phone className="w-4 h-4 text-[#a495ee]" />
-                  <span>+91 88899 88874</span>
+                  <span>+91 92037 11106</span>
                 </a>
                 <a href="mailto:hello@saturn3d.in" className="flex items-center gap-2 hover:text-white transition-colors">
                   <FileCode className="w-4 h-4 text-[#a495ee]" />
@@ -430,7 +430,7 @@ export default function BhopalLandingPage() {
                 Upload CAD Slicer &rarr;
               </Link>
               <a
-                href="https://wa.me/918889988874?text=Hi%20Saturn%203D%2C%20I%20am%20in%20Bhopal%20and%20would%20like%20to%20discuss%20a%203D%20printing%20job"
+                href="https://wa.me/919203711106?text=Hi%20Saturn%203D%2C%20I%20am%20in%20Bhopal%20and%20would%20like%20to%20discuss%20a%203D%20printing%20job"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono font-semibold text-xs text-center transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
@@ -446,3 +446,4 @@ export default function BhopalLandingPage() {
     </>
   );
 }
+

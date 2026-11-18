@@ -12,7 +12,7 @@ export default function SettingsManagement() {
   const [settings, setSettings] = useState<StoreSettings>({
     storeName: 'Saturn 3D Precision Manufacturing',
     supportEmail: 'hello@saturn3d.in',
-    whatsappNumber: '917999824632',
+    whatsappNumber: '919203711106',
     address: 'Govindpura Industrial Area, Bhopal, MP 462023, India',
     currency: 'INR',
     freeShippingThreshold: 1500,
@@ -112,7 +112,7 @@ export default function SettingsManagement() {
               <Input
                 value={settings.whatsappNumber}
                 onChange={(e) => setSettings({ ...settings, whatsappNumber: e.target.value })}
-                placeholder="917999824632"
+                placeholder="919203711106"
                 className="h-10 mt-1 font-mono text-xs border border-[#0B0D10]/15 bg-white rounded-xl"
               />
             </div>

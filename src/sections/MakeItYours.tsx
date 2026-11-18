@@ -79,7 +79,7 @@ export default function MakeItYours() {
   const discountedUnitPrice = Math.round(baseUnitPrice * (1 - activeTier.discount));
   const totalEstimate = discountedUnitPrice * quantity;
 
-  const whatsappNumber = '918889988874';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919203711106';
   const getWhatsAppMessage = () => {
     const fileName = selectedFile ? selectedFile.name : 'Custom 3D CAD Component';
     return `Hi Saturn 3D engineering, I would like an official fabrication quotation:

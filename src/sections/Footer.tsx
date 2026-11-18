@@ -60,7 +60,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#412f91] shrink-0" />
-                <span>+91 88899 88874 / +91 79998 24632 &bull; Mon–Sat 9AM–8PM IST</span>
+                <span>+91 92037 11106 &bull; Mon–Sat 9AM–8PM IST</span>
               </div>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function Footer() {
 
             <div className="pt-1">
               <a
-                href="https://wa.me/918889988874"
+                href="https://wa.me/919203711106"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-mono transition-all font-medium"
@@ -212,7 +212,7 @@ export default function Footer() {
           {/* Sleek Minimalist Social Icons */}
           <div className="flex items-center gap-3">
             <a
-              href="https://wa.me/918889988874"
+              href="https://wa.me/919203711106"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"

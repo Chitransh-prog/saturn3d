@@ -20,8 +20,8 @@ To establish undisputed topical authority and entity resolution in Google Knowle
 | **City, State, Postal Code**| **Bhopal, Madhya Pradesh 462023** |
 | **Country** | **India (IN)** |
 | **Latitude / Longitude** | `23.259933` N, `77.412613` E |
-| **Primary Telephone** | `+91 79998 24632` (International: `tel:+917999824632`) |
-| **WhatsApp Business** | `+91 79998 24632` (`https://wa.me/917999824632`) |
+| **Primary Telephone** | `+91 92037 11106` (International: `tel:+919203711106`) |
+| **WhatsApp Business** | `+91 92037 11106` (`https://wa.me/919203711106`) |
 | **Primary Email** | `hello@saturn3d.in` |
 | **Official Website URL** | `https://www.saturn3d.in/` |
 | **Hours of Operation** | Monday – Saturday: 09:00 AM – 08:00 PM IST (Sunday: Closed for routine farm maintenance) |
@@ -131,7 +131,7 @@ Every finished order dispatched from the print farm includes a heavyweight 350gs
 │       └──────────────┘                                 │
 │                                                        │
 │  Questions or fit issues? WhatsApp us directly at      │
-│  +91 79998 24632 for instant engineering support.      │
+│  +91 92037 11106 for instant engineering support.      │
 └────────────────────────────────────────────────────────┘
 ```
 

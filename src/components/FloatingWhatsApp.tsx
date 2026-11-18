@@ -22,7 +22,7 @@ export default function FloatingWhatsApp() {
   const isHiddenRoute = location.pathname.startsWith('/admin') || location.pathname === '/checkout';
 
   // Configured WhatsApp number (country code 91, no + sign)
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '917999824632';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919203711106';
 
   useEffect(() => {
     setMounted(true);

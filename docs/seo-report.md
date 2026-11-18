@@ -136,7 +136,7 @@ All high-value commercial actions dispatch structured events to `window.dataLaye
 | `quote_form_submit` | User clicks *"Add to Cart"* in Custom Lab or submits Bulk RFP | `material`, `quantity`, `estimatedPrice`, `infill`, `technology` |
 | `file_upload` | User drops an STL, STEP, OBJ, or 3MF into the Custom Lab | `fileName`, `fileSizeBytes`, `format`, `estWeight` |
 | `whatsapp_click` | User clicks any WhatsApp consultation or bulk inquiry button | `sourceLocation` (e.g. `navbar`, `custom_lab`, `footer`, `bulk_form`) |
-| `phone_click` | User taps direct phone link `tel:+917999824632` | `sourceLocation` |
+| `phone_click` | User taps direct phone link `tel:+919203711106` | `sourceLocation` |
 | `3D_viewer_interaction` | User interacts with CoreXY 3D model, rotates, or changes materials | `action`, `modelName` |
 
 ---

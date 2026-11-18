@@ -6,7 +6,7 @@ Saturn 3D operates high-speed CoreXY print farms and ultra-high-resolution 12K S
 
 ## Primary Regional Hubs
 
-- **Bhopal Facility**: Sector B, Govindpura Industrial Area, Bhopal, MP 462023. Walk-in pickups, same-day fabrication, on-site metrology inspection. Phone: +91 88899 88874. URL: https://saturn3d.in/3d-printing-in-bhopal
+- **Bhopal Facility**: Sector B, Govindpura Industrial Area, Bhopal, MP 462023. Walk-in pickups, same-day fabrication, on-site metrology inspection. Phone: +91 92037 11106. URL: https://saturn3d.in/3d-printing-in-bhopal
 - **Indore & Pithampur Corridor**: Dedicated daily highway express shuttle (3.5h transit) providing 12–24h doorstep delivery across Pithampur Auto Cluster, Sanwer Road, Electronic Complex, and Vijay Nagar. URL: https://saturn3d.in/3d-printing-in-indore
 
 ## Additive Manufacturing Capabilities & Materials
@@ -27,7 +27,7 @@ Saturn 3D operates high-speed CoreXY print farms and ultra-high-resolution 12K S
 ## Contact & Direct Instant CAD Quotes
 
 - **Online CAD Slicer & Custom Lab**: https://saturn3d.in/custom-lab (accepts .STEP, .STL, .OBJ, .GLB up to 100MB)
-- **WhatsApp Direct**: https://wa.me/918889988874
-- **Phone**: +91 88899 88874 / +91 79998 24632
+- **WhatsApp Direct**: https://wa.me/919203711106
+- **Phone**: +91 92037 11106
 - **Email**: hello@saturn3d.in / engineering@saturn3d.in
 - **Full Catalog**: https://saturn3d.in/categories

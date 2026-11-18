@@ -348,7 +348,7 @@ export function initAndSeedDatabase() {
       const storeConfig = {
         storeName: 'Saturn 3D Precision Manufacturing',
         supportEmail: 'saturn3d@gmail.com',
-        whatsappNumber: '917999824632',
+        whatsappNumber: '919203711106',
         address: 'Govindpura Industrial Area, Bhopal, MP 462023, India',
         currency: 'INR',
         freeShippingThreshold: 1500,

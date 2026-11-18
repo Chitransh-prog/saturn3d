@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: '3D Printing Service in Indore | Rapid Prototyping & Pithampur Auto Parts | Saturn 3D',
   description:
-    '#1 industrial 3D printing in Indore & Pithampur. High-speed CoreXY FDM, 12K SLA resin & Carbon-X PA12 with ±0.04mm tolerances. 12-24h express doorstep delivery across Indore, Sanwer Road & Pithampur. Instant CAD quote. Call +91 88899 88874.',
+    '#1 industrial 3D printing in Indore & Pithampur. High-speed CoreXY FDM, 12K SLA resin & Carbon-X PA12 with ±0.04mm tolerances. 12-24h express doorstep delivery across Indore, Sanwer Road & Pithampur. Instant CAD quote. Call +91 92037 11106.',
   keywords: [
     '3D printing service in Indore',
     '3D printing in Indore',
@@ -223,13 +223,13 @@ export default function IndoreLandingPage() {
                 </Link>
 
                 <a
-                  href="https://wa.me/918889988874?text=Hi%20Saturn%203D%2C%20I%20need%20a%203D%20printing%20quote%20in%20Indore"
+                  href="https://wa.me/919203711106?text=Hi%20Saturn%203D%2C%20I%20need%20a%203D%20printing%20quote%20in%20Indore"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono font-semibold text-sm flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 active:scale-95 text-center"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp Indore Desk (+91 88899 88874)</span>
+                  <span>WhatsApp Indore Desk (+91 92037 11106)</span>
                 </a>
               </div>
 
@@ -403,9 +403,9 @@ export default function IndoreLandingPage() {
                 Fast CAD verification, zero MOQ, instant quotes, and 12-24h express highway transit directly to your Indore factory or doorstep.
               </p>
               <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-neutral-200">
-                <a href="tel:+918889988874" className="flex items-center gap-2 hover:text-white transition-colors">
+                <a href="tel:+919203711106" className="flex items-center gap-2 hover:text-white transition-colors">
                   <Phone className="w-4 h-4 text-[#a495ee]" />
-                  <span>+91 88899 88874</span>
+                  <span>+91 92037 11106</span>
                 </a>
                 <a href="mailto:hello@saturn3d.in" className="flex items-center gap-2 hover:text-white transition-colors">
                   <FileCode className="w-4 h-4 text-[#a495ee]" />
@@ -426,7 +426,7 @@ export default function IndoreLandingPage() {
                 Upload CAD Slicer &rarr;
               </Link>
               <a
-                href="https://wa.me/918889988874?text=Hi%20Saturn%203D%2C%20I%20am%20in%20Indore%20and%20would%20like%20to%20discuss%20a%203D%20printing%20job"
+                href="https://wa.me/919203711106?text=Hi%20Saturn%203D%2C%20I%20am%20in%20Indore%20and%20would%20like%20to%20discuss%20a%203D%20printing%20job"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono font-semibold text-xs text-center transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
@@ -442,3 +442,4 @@ export default function IndoreLandingPage() {
     </>
   );
 }
+

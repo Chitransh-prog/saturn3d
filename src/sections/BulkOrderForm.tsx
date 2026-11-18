@@ -65,7 +65,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
             onClick: () => {
               trackWhatsAppClick('bulk_order_form_toast');
               window.open(
-                `https://wa.me/918889988874?text=${encodeURIComponent(
+                `https://wa.me/919203711106?text=${encodeURIComponent(
                   `Hello Saturn 3D team, this is ${formData.name} from ${formData.companyName || 'our team'}. I just submitted an enterprise inquiry for ${formData.quantity} parts: "${formData.description}".`
                 )}`,
                 '_blank'
@@ -88,7 +88,7 @@ export default function BulkOrderForm({ isOpen, onClose }: BulkOrderFormProps) {
           label: 'Chat on WhatsApp',
           onClick: () => {
             window.open(
-              `https://wa.me/918889988874?text=${encodeURIComponent(
+              `https://wa.me/919203711106?text=${encodeURIComponent(
                 `Hello Saturn 3D team, this is ${formData.name} from ${formData.companyName || 'our team'}. I just submitted an enterprise inquiry for ${formData.quantity} parts: "${formData.description}".`
               )}`,
               '_blank'

@@ -2,7 +2,7 @@
 
 > **Target Site**: https://saturn-3d.netlify.app/ (Canonical: https://www.saturn3d.in/)  
 > **Brand**: Saturn 3D &mdash; Custom 3D Printing & Rapid Prototyping Service, India (Bhopal, MP)  
-> **Contact**: WhatsApp `+91 79998 24632` &bull; `hello@saturn3d.in`  
+> **Contact**: WhatsApp `+91 92037 11106` &bull; `hello@saturn3d.in`  
 > **Date**: October 2026 Baseline  
 > **Migration Goal**: Migrate dark-slate / soft-studio aesthetic to **Neo-Brutalism Fused with 3D**, keeping all existing routes, SEO metadata, JSON-LD, JWT admin logic, and WhatsApp prefill logic intact.
 
@@ -136,7 +136,7 @@
 ### 12. Global Footer (`<Footer />`)
 - **Brand Statement**: *"Forging the future of physical intelligence through precision hardware."*
 - **Location**: Industrial Area, Govindpura, Bhopal, Madhya Pradesh 462023, India.
-- **Contact**: `+91 79998 24632` &bull; `hello@saturn3d.in`
+- **Contact**: `+91 92037 11106` &bull; `hello@saturn3d.in`
 - **Live Status**: `● Print Farm Online • 99.98% Uptime`
 
 ---
@@ -145,7 +145,7 @@
 
 ### WhatsApp Floating Action Widget (`<FloatingWhatsApp />`)
 - **Current Styling**: Circular 56px FAB in green `#25D366` with soft shadow, pulse ring, and greeting tooltip.
-- **Logic**: Target `https://wa.me/917999824632?text=...` with intelligent contextual prefill:
+- **Logic**: Target `https://wa.me/919203711106?text=...` with intelligent contextual prefill:
   - Cart has items: lists item count and names.
   - Category page: includes current category name.
   - Custom Lab: asks for engineering tolerance review.

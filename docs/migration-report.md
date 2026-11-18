@@ -3,7 +3,7 @@
 ## Executive Summary
 The visual and motion migration of **Saturn 3D** (custom 3D printing & rapid prototyping in Bhopal, India) from its previous dark-slate UI to **Neo-Brutalism Fused with 3D** is complete.
 
-All core functional logic, routes, SEO metadata, canonical links (`https://www.saturn3d.in/`), JSON-LD schemas, backend JWT authentication, Razorpay / Cash on Delivery payments, and WhatsApp contextual routing (`+91 79998 24632`) have been strictly preserved.
+All core functional logic, routes, SEO metadata, canonical links (`https://www.saturn3d.in/`), JSON-LD schemas, backend JWT authentication, Razorpay / Cash on Delivery payments, and WhatsApp contextual routing (`+91 92037 11106`) have been strictly preserved.
 
 ---
 
@@ -112,7 +112,7 @@ A bespoke loading screen was created in `frontend/index.html` featuring:
 7. **Floating WhatsApp Button (`FloatingWhatsApp.tsx`)**:
    - Neo-brutalist `#25D366` square slab with 3px ink border and hard shadow
    - 2-second pop entrance animation
-   - Direct link to `+91 79998 24632` with prefilled context
+   - Direct link to `+91 92037 11106` with prefilled context
    - Automatically hidden on `/admin` and during active payment flows
 8. **Dev-Only Design System (`/design-system`)**:
    - Interactive palette showcase of all tokens, typography, buttons, badges, slabs, and raw tables.

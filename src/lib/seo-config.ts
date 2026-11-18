@@ -52,8 +52,8 @@ export const GEO_CONFIG = {
   fullAddress: 'Sector B, Govindpura Industrial Area, Bhopal, MP 462023 & Indore Hub, Madhya Pradesh, India',
   latitude: 23.259933,
   longitude: 77.412615,
-  phone: '+91 88899 88874',
-  secondaryPhone: '+91 79998 24632',
+  phone: '+91 92037 11106',
+  secondaryPhone: '+91 92037 11106',
   email: 'hello@saturn3d.in',
   engineeringEmail: 'engineering@saturn3d.in',
   openingHours: 'Mo-Sa 09:00-20:00',
@@ -237,7 +237,7 @@ export function getLocalBusinessSchema() {
       'https://instagram.com/saturn3d.in',
       'https://linkedin.com/company/saturn3d',
       'https://twitter.com/saturn3d_in',
-      'https://wa.me/918889988874',
+      'https://wa.me/919203711106',
     ],
     knowsAbout: [
       'Industrial 3D Printing in Indore and Bhopal',
@@ -592,7 +592,7 @@ export const BHOPAL_FAQS = [
   {
     question: 'How do I get an instant 3D printing quote in Bhopal?',
     answer:
-      'Upload your .STL, .STEP, or CAD file directly at saturn3d.in/custom-lab or send it on WhatsApp to +91 88899 88874. Our automated slicer generates live volume, weight, and price estimates in seconds.',
+      'Upload your .STL, .STEP, or CAD file directly at saturn3d.in/custom-lab or send it on WhatsApp to +91 92037 11106. Our automated slicer generates live volume, weight, and price estimates in seconds.',
   },
 ];
 
@@ -620,7 +620,7 @@ export const INDORE_FAQS = [
   {
     question: 'How can I send CAD files for an immediate quote in Indore?',
     answer:
-      'Visit saturn3d.in/custom-lab to upload your CAD models (.STEP, .STL, .OBJ) for instant automated slicing, or message our engineering line on WhatsApp at +91 88899 88874 for immediate technical review.',
+      'Visit saturn3d.in/custom-lab to upload your CAD models (.STEP, .STL, .OBJ) for instant automated slicing, or message our engineering line on WhatsApp at +91 92037 11106 for immediate technical review.',
   },
 ];
 
