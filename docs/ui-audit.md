@@ -2,7 +2,7 @@
 
 > **Target Site**: https://saturn-3d.netlify.app/ (Canonical: https://www.saturn3d.in/)  
 > **Brand**: Saturn 3D &mdash; Custom 3D Printing & Rapid Prototyping Service, India (Bhopal, MP)  
-> **Contact**: WhatsApp `+91 92037 11106` &bull; `hello@saturn3d.in`  
+> **Contact**: WhatsApp `+91 92037 11106` &bull; `saturn3dlabs@gmail.com`  
 > **Date**: October 2026 Baseline  
 > **Migration Goal**: Migrate dark-slate / soft-studio aesthetic to **Neo-Brutalism Fused with 3D**, keeping all existing routes, SEO metadata, JSON-LD, JWT admin logic, and WhatsApp prefill logic intact.
 
@@ -136,7 +136,7 @@
 ### 12. Global Footer (`<Footer />`)
 - **Brand Statement**: *"Forging the future of physical intelligence through precision hardware."*
 - **Location**: Industrial Area, Govindpura, Bhopal, Madhya Pradesh 462023, India.
-- **Contact**: `+91 92037 11106` &bull; `hello@saturn3d.in`
+- **Contact**: `+91 92037 11106` &bull; `saturn3dlabs@gmail.com`
 - **Live Status**: `● Print Farm Online • 99.98% Uptime`
 
 ---

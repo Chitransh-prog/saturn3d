@@ -58,7 +58,7 @@ export default function AdminCredentialsManagement() {
 
   // ─── Self Credential Update State (Current Session) ──────────────────────────
   const [myCurrentPassword, setMyCurrentPassword] = useState('');
-  const [myNewEmail, setMyNewEmail] = useState(currentUser?.email || 'saturn3d@gmail.com');
+  const [myNewEmail, setMyNewEmail] = useState(currentUser?.email || 'saturn3dlabs@gmail.com');
   const [myNewPassword, setMyNewPassword] = useState('');
   const [myConfirmPassword, setMyConfirmPassword] = useState('');
   const [savingSelf, setSavingSelf] = useState(false);
@@ -299,7 +299,7 @@ export default function AdminCredentialsManagement() {
         <div className="p-5 bg-white rounded-2xl border border-[#0B0D10]/10 shadow-sm flex items-center justify-between">
           <div className="min-w-0">
             <div className="text-[11px] font-medium text-[#5B616B] uppercase tracking-wider">Current Session</div>
-            <div className="text-xs font-semibold text-[#0B0D10] truncate mt-1">{currentUser?.email || 'saturn3d@gmail.com'}</div>
+            <div className="text-xs font-semibold text-[#0B0D10] truncate mt-1">{currentUser?.email || 'saturn3dlabs@gmail.com'}</div>
           </div>
           <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
             <ShieldCheck className="w-5 h-5" />
@@ -576,7 +576,7 @@ export default function AdminCredentialsManagement() {
               Default System Credentials Notice
             </div>
             <p className="text-xs text-[#5B616B] leading-relaxed">
-              Default administrator email configured in <span className="font-semibold text-[#0B0D10]">.env</span> is <span className="font-semibold text-[#0B0D10]">saturn3d@gmail.com</span> with password <span className="font-semibold text-[#0B0D10]">Saturn3D@123</span>. You can change your active email and password below at any time.
+              Default administrator email configured in <span className="font-semibold text-[#0B0D10]">.env</span> is <span className="font-semibold text-[#0B0D10]">saturn3dlabs@gmail.com</span> with password <span className="font-semibold text-[#0B0D10]">Saturn3D@123</span>. You can change your active email and password below at any time.
             </p>
           </div>
 
@@ -591,7 +591,7 @@ export default function AdminCredentialsManagement() {
                 required
                 value={myNewEmail}
                 onChange={(e) => setMyNewEmail(e.target.value)}
-                placeholder="saturn3d@gmail.com"
+                placeholder="saturn3dlabs@gmail.com"
                 className="h-10 mt-1 font-mono text-xs border border-[#0B0D10]/15 bg-white rounded-xl"
               />
               <span className="text-[10px] text-[#5B616B] block mt-1">

@@ -15,9 +15,9 @@ export const mailConfig = {
   host: process.env.MAIL_HOST || 'smtp.gmail.com',
   port: parseInt(process.env.MAIL_PORT || '587', 10),
   secure: process.env.MAIL_SECURE === 'true',
-  user: process.env.MAIL_USER || 'saturn3d@gmail.com',
+  user: process.env.MAIL_USER || 'saturn3dlabs@gmail.com',
   password: process.env.MAIL_PASSWORD || 'Saturn3D@123',
-  from: process.env.MAIL_FROM || 'Saturn 3D Precision Manufacturing <saturn3d@gmail.com>',
+  from: process.env.MAIL_FROM || 'Saturn 3D Precision Manufacturing <saturn3dlabs@gmail.com>',
 };
 
 /**

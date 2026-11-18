@@ -221,7 +221,7 @@ export function initAndSeedDatabase() {
     const now = new Date().toISOString();
 
     // 1. Ensure Saturn 3D master admin exists using .env configuration
-    const targetEmail = (process.env.ADMIN_EMAIL || 'saturn3d@gmail.com').trim().toLowerCase();
+    const targetEmail = (process.env.ADMIN_EMAIL || 'saturn3dlabs@gmail.com').trim().toLowerCase();
     const targetPassword = process.env.ADMIN_PASSWORD || 'Saturn3D@123';
     const existingSaturnAdmin = sqlite.prepare('SELECT id, email FROM users WHERE LOWER(email) = ?').get(targetEmail) as { id: string } | undefined;
     
@@ -347,7 +347,7 @@ export function initAndSeedDatabase() {
     if (!existingSettings) {
       const storeConfig = {
         storeName: 'Saturn 3D Precision Manufacturing',
-        supportEmail: 'saturn3d@gmail.com',
+        supportEmail: 'saturn3dlabs@gmail.com',
         whatsappNumber: '919203711106',
         address: 'Govindpura Industrial Area, Bhopal, MP 462023, India',
         currency: 'INR',

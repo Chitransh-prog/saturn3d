@@ -3,12 +3,12 @@ const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 async function testAll() {
   console.log('--- Testing Saturn 3D Next.js Platform APIs ---');
 
-  // 1. Test Admin Login with default credentials: saturn3d@gmail.com / Saturn3D@123
-  console.log('\n[1] Testing Admin Login with default credentials (saturn3d@gmail.com / Saturn3D@123)...');
+  // 1. Test Admin Login with default credentials: saturn3dlabs@gmail.com / Saturn3D@123
+  console.log('\n[1] Testing Admin Login with default credentials (saturn3dlabs@gmail.com / Saturn3D@123)...');
   const loginRes = await fetch(`${BASE_URL}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'saturn3d@gmail.com', password: 'Saturn3D@123' })
+    body: JSON.stringify({ email: 'saturn3dlabs@gmail.com', password: 'Saturn3D@123' })
   });
 
   const loginData = await loginRes.json();
@@ -28,7 +28,7 @@ async function testAll() {
   });
   const meData = await meRes.json();
   const meUser = meData.data?.user || meData.user;
-  if (!meRes.ok || meUser?.email !== 'saturn3d@gmail.com') {
+  if (!meRes.ok || meUser?.email !== 'saturn3dlabs@gmail.com') {
     throw new Error(`/api/auth/me failed: ${JSON.stringify(meData)}`);
   }
   console.log(' /api/auth/me verified:', meUser.email);
@@ -57,7 +57,7 @@ async function testAll() {
   const oldLoginRes = await fetch(`${BASE_URL}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'saturn3d@gmail.com', password: 'Saturn3D@123' })
+    body: JSON.stringify({ email: 'saturn3dlabs@gmail.com', password: 'Saturn3D@123' })
   });
   if (oldLoginRes.ok) {
     throw new Error('Old password was still accepted!');
@@ -69,7 +69,7 @@ async function testAll() {
   const newLoginRes = await fetch(`${BASE_URL}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: 'saturn3d@gmail.com', password: 'Saturn3D@NewPassword456' })
+    body: JSON.stringify({ email: 'saturn3dlabs@gmail.com', password: 'Saturn3D@NewPassword456' })
   });
   const newLoginData = await newLoginRes.json();
   const updatedAdminToken = newLoginData.data?.token || newLoginData.token;
@@ -94,7 +94,7 @@ async function testAll() {
   if (!restoreRes.ok) {
     throw new Error('Failed to restore baseline password');
   }
-  console.log(' Baseline credentials restored: saturn3d@gmail.com / Saturn3D@123');
+  console.log(' Baseline credentials restored: saturn3dlabs@gmail.com / Saturn3D@123');
 
   // 4. Test Product Management API
   console.log('\n[4] Testing Admin Products API...');

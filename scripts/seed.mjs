@@ -17,12 +17,12 @@ sqlite.exec('PRAGMA foreign_keys = ON;');
 
 console.log('[Seed] Initializing Saturn 3D SQLite database at:', dbPath);
 
-const targetEmail = 'saturn3d@gmail.com';
+const targetEmail = 'saturn3dlabs@gmail.com';
 const defaultPassword = 'Saturn3D@123';
 const passwordHash = bcrypt.hashSync(defaultPassword, 10);
 const now = new Date().toISOString();
 
-// Check if saturn3d@gmail.com exists
+// Check if saturn3dlabs@gmail.com exists
 const existing = sqlite.prepare('SELECT id, email FROM users WHERE email = ?').get(targetEmail);
 if (existing) {
   sqlite.prepare('UPDATE users SET password = ?, role = \'admin\', is_blocked = 0, updated_at = ? WHERE id = ?')
@@ -43,5 +43,5 @@ if (existing) {
 }
 
 console.log('✨ Admin credentials verified:');
-console.log('   Email:    saturn3d@gmail.com');
+console.log('   Email:    saturn3dlabs@gmail.com');
 console.log('   Password: Saturn3D@123');

@@ -5,7 +5,7 @@
 > **Local Reference**: Local environment running on `http://localhost:5173`  
 > **Brand**: Saturn 3D — *"The Future of Precision Printing"*  
 > **Headquarters / Operations**: Bhopal, Madhya Pradesh, India  
-> **Contact**: `+91 92037 11106` (WhatsApp) • `hello@saturn3d.in`
+> **Contact**: `+91 92037 11106` (WhatsApp) • `saturn3dlabs@gmail.com`
 
 ---
 
@@ -121,7 +121,7 @@ The current live site operates as a single-page marketing application with clien
 #### J. Global Footer (`<Footer />`)
 - **Brand Summary**: *"Forging the future of physical intelligence through precision hardware."*
 - **Quick Links**: Home, Categories, Custom Lab, About, Privacy Policy, Terms of Service
-- **Direct Email**: `hello@saturn3d.in` (Action: `Contact Engineering`)
+- **Direct Email**: `saturn3dlabs@gmail.com` (Action: `Contact Engineering`)
 - **Live Status Indicator**: `● Print Farm Online • 99.98% Uptime`
 - **Copyright**: `© 2026 Saturn3D Studio. All rights reserved.`
 

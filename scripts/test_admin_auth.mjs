@@ -7,7 +7,7 @@ async function runTests() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      email: 'saturn3d@gmail.com',
+      email: 'saturn3dlabs@gmail.com',
       password: 'Saturn3D@123',
     }),
   });

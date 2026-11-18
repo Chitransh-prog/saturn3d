@@ -22,7 +22,7 @@ To establish undisputed topical authority and entity resolution in Google Knowle
 | **Latitude / Longitude** | `23.259933` N, `77.412613` E |
 | **Primary Telephone** | `+91 92037 11106` (International: `tel:+919203711106`) |
 | **WhatsApp Business** | `+91 92037 11106` (`https://wa.me/919203711106`) |
-| **Primary Email** | `hello@saturn3d.in` |
+| **Primary Email** | `saturn3dlabs@gmail.com` |
 | **Official Website URL** | `https://www.saturn3d.in/` |
 | **Hours of Operation** | Monday – Saturday: 09:00 AM – 08:00 PM IST (Sunday: Closed for routine farm maintenance) |
 

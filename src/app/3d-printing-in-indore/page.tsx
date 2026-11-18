@@ -407,9 +407,9 @@ export default function IndoreLandingPage() {
                   <Phone className="w-4 h-4 text-[#a495ee]" />
                   <span>+91 92037 11106</span>
                 </a>
-                <a href="mailto:hello@saturn3d.in" className="flex items-center gap-2 hover:text-white transition-colors">
+                <a href="mailto:saturn3dlabs@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
                   <FileCode className="w-4 h-4 text-[#a495ee]" />
-                  <span>hello@saturn3d.in</span>
+                  <span>saturn3dlabs@gmail.com</span>
                 </a>
                 <span className="flex items-center gap-2 text-neutral-400">
                   <Clock className="w-4 h-4 text-[#a495ee]" />

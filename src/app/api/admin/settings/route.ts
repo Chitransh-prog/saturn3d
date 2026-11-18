@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     const row = db.get<{ key: string; value: string }>('SELECT value FROM settings WHERE key = \'store_config\'');
     const settings = row ? JSON.parse(row.value) : {
       storeName: 'Saturn 3D Precision Manufacturing',
-      supportEmail: 'saturn3d@gmail.com',
+      supportEmail: 'saturn3dlabs@gmail.com',
       whatsappNumber: '919203711106',
       address: 'Govindpura Industrial Area, Bhopal, MP 462023, India',
       currency: 'INR',

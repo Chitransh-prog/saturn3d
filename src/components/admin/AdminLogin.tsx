@@ -28,14 +28,14 @@ interface AdminLoginProps {
 
 export default function AdminLogin({ onSuccess }: AdminLoginProps) {
   const { user, login } = useAuthStore();
-  const [email, setEmail] = useState('saturn3d@gmail.com');
+  const [email, setEmail] = useState('saturn3dlabs@gmail.com');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleQuickFill = () => {
-    setEmail('saturn3d@gmail.com');
+    setEmail('saturn3dlabs@gmail.com');
     setPassword('Saturn3D@123');
     setErrorMessage('');
     toast.info('Loaded root administrative credentials');
@@ -146,7 +146,7 @@ export default function AdminLogin({ onSuccess }: AdminLoginProps) {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="saturn3d@gmail.com"
+                placeholder="saturn3dlabs@gmail.com"
                 className="h-10 font-mono bg-white/5 border-white/10 text-white rounded-xl focus-visible:ring-1 focus-visible:ring-[#412f91]"
                 autoComplete="email"
                 autoFocus

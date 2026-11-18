@@ -11,7 +11,7 @@ export default function SettingsManagement() {
   const [saving, setSaving] = useState(false);
   const [settings, setSettings] = useState<StoreSettings>({
     storeName: 'Saturn 3D Precision Manufacturing',
-    supportEmail: 'hello@saturn3d.in',
+    supportEmail: 'saturn3dlabs@gmail.com',
     whatsappNumber: '919203711106',
     address: 'Govindpura Industrial Area, Bhopal, MP 462023, India',
     currency: 'INR',

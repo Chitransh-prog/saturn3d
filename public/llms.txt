@@ -29,5 +29,5 @@ Saturn 3D operates high-speed CoreXY print farms and ultra-high-resolution 12K S
 - **Online CAD Slicer & Custom Lab**: https://saturn3d.in/custom-lab (accepts .STEP, .STL, .OBJ, .GLB up to 100MB)
 - **WhatsApp Direct**: https://wa.me/919203711106
 - **Phone**: +91 92037 11106
-- **Email**: hello@saturn3d.in / engineering@saturn3d.in
+- **Email**: saturn3dlabs@gmail.com
 - **Full Catalog**: https://saturn3d.in/categories

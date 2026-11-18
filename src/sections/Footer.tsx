@@ -62,6 +62,12 @@ export default function Footer() {
                 <Phone className="w-3.5 h-3.5 text-[#412f91] shrink-0" />
                 <span>+91 92037 11106 &bull; Mon–Sat 9AM–8PM IST</span>
               </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-[#412f91] shrink-0" />
+                <a href="mailto:saturn3dlabs@gmail.com" className="hover:text-[#412f91] transition-colors">
+                  saturn3dlabs@gmail.com
+                </a>
+              </div>
             </div>
           </div>
 

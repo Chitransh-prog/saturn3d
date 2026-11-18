@@ -215,7 +215,7 @@ export default function CheckoutPage() {
             clearCart();
             navigate(`/order-success?order_id=${orderId}`);
           } catch (vErr) {
-            toast.error('Payment verification failed. Please contact hello@saturn3d.in with your reference ID.');
+            toast.error('Payment verification failed. Please contact saturn3dlabs@gmail.com with your reference ID.');
             navigate(`/order-success?order_id=${orderId}`);
           }
         },

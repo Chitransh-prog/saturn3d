@@ -2236,7 +2236,7 @@ export default function AdminPanel() {
           </div>
           <div className="min-w-0">
             <div className="font-semibold text-xs text-[#0B0D10] truncate">{user?.name || 'Saturn Admin'}</div>
-            <div className="text-[10px] text-[#5B616B] truncate">{user?.email || 'saturn3d@gmail.com'}</div>
+            <div className="text-[10px] text-[#5B616B] truncate">{user?.email || 'saturn3dlabs@gmail.com'}</div>
           </div>
         </div>
         <button
