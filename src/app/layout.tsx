@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import {
@@ -126,6 +127,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager / Google Analytics */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-NPBX9CR8"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
+
         {/* Structured Data: LocalBusiness & ManufacturingBusiness Schema (AEO / GEO / Local SEO) */}
         <script
           type="application/ld+json"
@@ -138,6 +153,15 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#F8F9FB] text-[#111215] font-body selection:bg-[#412f91] selection:text-white antialiased">
+        {/* Google Tag Manager (noscript fallback) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NPBX9CR8"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
