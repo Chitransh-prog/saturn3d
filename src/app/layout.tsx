@@ -86,13 +86,19 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.webp', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.webp', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-48x48.webp', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.webp', sizes: '32x32', type: 'image/webp' },
+      { url: '/favicon-16x16.webp', sizes: '16x16', type: 'image/webp' },
+      { url: '/favicon-48x48.webp', sizes: '48x48', type: 'image/webp' },
     ],
-    apple: [{ url: '/apple-touch-icon.webp', sizes: '180x180', type: 'image/png' }],
+    apple: [
+      { url: '/apple-touch-icon.webp', sizes: '180x180', type: 'image/webp' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: ['/favicon.ico'],
   },
+  manifest: '/site.webmanifest',
   other: {
     // Geographic Local SEO & AEO Meta Tags for Indore & Bhopal
     'geo.region': GEO_CONFIG.regionCode,

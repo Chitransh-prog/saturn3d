@@ -1,0 +1,36 @@
+{
+  "name": "Saturn 3D Precision Manufacturing",
+  "short_name": "Saturn 3D",
+  "description": "Central India premier industrial 3D printing and rapid prototyping hub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#412f91",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.webp",
+      "sizes": "180x180",
+      "type": "image/webp"
+    }
+  ]
+}
