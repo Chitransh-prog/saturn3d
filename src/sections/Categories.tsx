@@ -44,9 +44,11 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
 
     // Category filter
     if (selectedCategory !== 'All') {
-      result = result.filter(
-        (p) => p.category.toLowerCase() === selectedCategory.toLowerCase()
-      );
+      const cleanSelected = selectedCategory.toLowerCase().replace(/[^a-z0-9]/g, '');
+      result = result.filter((p) => {
+        const cleanCat = (p.category || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        return cleanCat.includes(cleanSelected) || cleanSelected.includes(cleanCat);
+      });
     }
 
     // Search query
@@ -78,7 +80,11 @@ export default function Categories({ limit, initialProducts }: CategoriesProps) 
   // Category counts
   const getCategoryCount = (catName: string) => {
     if (catName === 'All') return products.length;
-    return products.filter((p) => p.category.toLowerCase() === catName.toLowerCase()).length;
+    const cleanTarget = catName.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return products.filter((p) => {
+      const cleanCat = (p.category || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+      return cleanCat.includes(cleanTarget) || cleanTarget.includes(cleanCat);
+    }).length;
   };
 
   return (

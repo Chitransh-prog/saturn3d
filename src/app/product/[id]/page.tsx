@@ -11,14 +11,23 @@ import {
   getBreadcrumbSchema,
 } from '@/lib/seo-config';
 
+export const dynamicParams = true;
+
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
 export async function generateStaticParams() {
-  return products.map((product) => ({
-    id: product.id,
-  }));
+  const params: { id: string }[] = [];
+  products.forEach((product) => {
+    params.push({ id: product.id });
+    if (product.slug && product.slug !== product.id) {
+      params.push({ id: product.slug });
+    }
+  });
+  // Live / historical UUID aliases
+  params.push({ id: 'a537902f-8c05-4cb1-8154-514f157bc1b7' });
+  return params;
 }
 
 function getProductData(id: string) {
@@ -27,7 +36,31 @@ function getProductData(id: string) {
     dbProduct = db.get('SELECT * FROM products WHERE (id = ? OR slug = ?) AND is_deleted = 0', [id, id]);
   } catch {}
 
-  const staticProduct = products.find((p) => p.id === id);
+  // Match by id or slug in static products catalog
+  let staticProduct = products.find((p) => p.id === id || p.slug === id);
+
+  // Handle legacy UUIDs, historical links & slug aliases
+  if (!dbProduct && !staticProduct) {
+    if (id === 'a537902f-8c05-4cb1-8154-514f157bc1b7' || id.toLowerCase().includes('vase')) {
+      staticProduct = products.find((p) => p.slug === 'hexagonal-carbon-vase' || p.id === '1') || products[0];
+    } else if (id.toLowerCase().includes('organizer')) {
+      staticProduct = products.find((p) => p.slug === 'tech-organizer-elite' || p.id === '2');
+    } else if (id.toLowerCase().includes('lamp')) {
+      staticProduct = products.find((p) => p.slug === 'articulated-desk-lamp' || p.id === '3');
+    } else {
+      // Fuzzy match by slug or title
+      const cleanId = id.toLowerCase().replace(/[^a-z0-9]/g, '');
+      staticProduct = products.find((p) => {
+        const pSlug = (p.slug || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const pName = p.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        return pSlug.includes(cleanId) || cleanId.includes(pSlug) || pName.includes(cleanId);
+      });
+      // Safety net: default to first product instead of 404
+      if (!staticProduct && products.length > 0) {
+        staticProduct = products[0];
+      }
+    }
+  }
 
   if (!dbProduct && !staticProduct) {
     return null;
@@ -41,9 +74,10 @@ function getProductData(id: string) {
   }
 
   const name = dbProduct?.name || staticProduct?.name || '';
+  const slug = dbProduct?.slug || staticProduct?.slug || id;
   const description = dbProduct?.description || staticProduct?.description || '';
   const price = dbProduct ? dbProduct.price : (staticProduct ? staticProduct.price : 0);
-  const image = dbProduct?.image || staticProduct?.image || '/showcase/carbon-drone-spar.webp';
+  const image = dbProduct?.image || staticProduct?.image || '/products/vase.webp';
   const category = dbProduct?.category || staticProduct?.category || 'Rapid Prototyping';
   const stock = dbProduct ? dbProduct.stock : (staticProduct ? staticProduct.stock : 10);
   const material = customSeo?.aeo?.material_grade || staticProduct?.material || 'Engineering Polymer';
@@ -51,7 +85,8 @@ function getProductData(id: string) {
   const leadTime = customSeo?.geo?.dispatch_lead_time || staticProduct?.leadTime || '24-48 Hours';
 
   return {
-    id,
+    id: staticProduct?.id || id,
+    slug,
     name,
     description,
     price,
@@ -244,7 +279,7 @@ export default async function ProductPage({ params }: PageProps) {
       </article>
 
       {/* Interactive 3D Product Detail Experience */}
-      <ProductDetailClient />
+      <ProductDetailClient initialProduct={product} />
     </>
   );
 }

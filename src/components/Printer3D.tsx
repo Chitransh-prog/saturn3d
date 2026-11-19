@@ -94,7 +94,7 @@ function PrinterFrame() {
         ].map((screwPos, idx) => (
           <mesh key={idx} position={[screwPos[0], screwPos[1], screwPos[2]]}>
             <cylinderGeometry args={[0.09, 0.09, 0.06, 16]} />
-            <meshStandardMaterial color="#F7931E" roughness={0.3} metalness={0.8} />
+            <meshStandardMaterial color="#412f91" roughness={0.3} metalness={0.8} />
           </mesh>
         ))}
       </group>
@@ -108,7 +108,7 @@ function PrinterFrame() {
         {/* Saturn Orange Filament Thread wound on spool */}
         <mesh>
           <cylinderGeometry args={[0.39, 0.39, 0.24, 24]} />
-          <meshStandardMaterial color="#F7931E" roughness={0.3} />
+          <meshStandardMaterial color="#412f91" roughness={0.3} />
         </mesh>
       </group>
     </group>

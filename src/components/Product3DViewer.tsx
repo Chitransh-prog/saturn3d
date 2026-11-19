@@ -20,14 +20,24 @@ function useProductMaterial({ materialType, wireframe }: MaterialProps) {
   return useMemo(() => {
     if (wireframe) {
       return new THREE.MeshStandardMaterial({
-        color: '#F7931E',
+        color: '#412f91',
         wireframe: true,
-        emissive: '#F7931E',
-        emissiveIntensity: 0.4,
+        emissive: '#412f91',
+        emissiveIntensity: 0.5,
       });
     }
 
     switch (materialType) {
+      case 'CARBON':
+        // Carbon-fiber reinforced PA12, stealth matte micro-texture
+        return new THREE.MeshPhysicalMaterial({
+          color: '#1a1b1e',
+          roughness: 0.72,
+          metalness: 0.15,
+          clearcoat: 0.2,
+          clearcoatRoughness: 0.5,
+        });
+
       case 'ABS':
         // Flame retardant ESD-safe matte dark charcoal
         return new THREE.MeshPhysicalMaterial({
@@ -194,7 +204,7 @@ function PenCaliperStationModel({ material, wireframe }: { material: THREE.Mater
         {/* Accent Ring */}
         <mesh position={[0, 0.5, 0]}>
           <cylinderGeometry args={[0.095, 0.095, 0.05, 24]} />
-          <meshBasicMaterial color="#F7931E" />
+          <meshBasicMaterial color="#412f91" />
         </mesh>
       </group>
     </group>
@@ -310,7 +320,7 @@ function ArticulatedLampModel({ material, wireframe }: { material: THREE.Materia
   const orangeAccent = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: '#F7931E',
+        color: '#412f91',
         roughness: 0.3,
         metalness: 0.2,
         wireframe,
@@ -1090,83 +1100,83 @@ function ProductModelRenderer({
   material: THREE.Material;
   wireframe: boolean;
 }) {
-  const name = product.name.toLowerCase();
-  const id = String(product.id);
+  const name = (product.name || '').toLowerCase();
+  const slug = (product.slug || '').toLowerCase();
+  const id = String(product.id || '');
   const img = (product.image || '').toLowerCase();
 
-  // 1. Geometric Vase (Interior)
-  if (img.includes('vase') || name.includes('vase')) {
+  // 1. Hexagonal Carbon Vase / Geometric Vase (Interior)
+  if (img.includes('vase') || name.includes('vase') || slug.includes('vase') || id === '1') {
     return <HexVaseModel material={material} />;
   }
 
-  // 2. Tech Organizer (Corporate / Bulk Gifting)
-  if (img.includes('organizer') || name.includes('organizer')) {
+  // 2. Tech Organizer Elite (Corporate / Bulk Gifting)
+  if (img.includes('organizer') || name.includes('organizer') || slug.includes('organizer') || id === '2') {
     return <TechOrganizerModel material={material} />;
   }
 
-  // 3. Articulated Desk Lamp (Drone & Robotics)
-  if (img.includes('lamp') || name.includes('lamp')) {
+  // 3. Articulated High-Torque Desk Lamp (Drone & Robotics)
+  if (img.includes('lamp') || name.includes('lamp') || slug.includes('lamp') || id === '3') {
     return <ArticulatedLampModel material={material} wireframe={wireframe} />;
   }
 
-  // 4. Monolithic / Sculptural Bookends (Corporate & Wedding Keepsakes)
-  if (img.includes('bookend') || name.includes('bookend')) {
+  // 4. Monolithic Sculptural Bookends
+  if (img.includes('bookend') || name.includes('bookend') || slug.includes('bookend') || id === '4') {
     return <MonolithicBookendsModel material={material} wireframe={wireframe} />;
   }
 
-  // 5. Faceted Wall Hooks (Architectural Scale Down Models)
-  if (img.includes('wall-hook') || img.includes('hook') || name.includes('hook') || name.includes('architectural')) {
+  // 5. Faceted Architectural Wall Hooks
+  if (img.includes('wall-hook') || img.includes('hook') || name.includes('hook') || slug.includes('hook') || id === '5') {
     return <FacetedWallHookModel material={material} wireframe={wireframe} />;
   }
 
-  // 6. Cable Management System (Small Batch Manufacturing)
-  if (img.includes('cable') || name.includes('cable')) {
+  // 6. Modular Interlocking Cable Track
+  if (img.includes('cable') || name.includes('cable') || slug.includes('cable') || id === '6') {
     return <ModularCableClipModel material={material} wireframe={wireframe} />;
   }
 
-  // 7. Adjustable Phone Stand (Industrial Parts Manufacturing)
-  if (img.includes('phone') || name.includes('phone') || name.includes('stand')) {
-    return <ArticulatedPhoneStandModel material={material} wireframe={wireframe} />;
-  }
-
-  // 8. Self-Watering Plant Pot / Parametric Planter (Education)
-  if (img.includes('plant') || img.includes('pot') || name.includes('planter') || name.includes('plant') || name.includes('pot')) {
+  // 7. Geometric Self-Watering Planter / Plant Pot
+  if (img.includes('plant') || img.includes('pot') || name.includes('planter') || name.includes('plant') || slug.includes('planter') || id === '7') {
     return <ParametricPlanterModel material={material} wireframe={wireframe} />;
   }
 
-  // 9. Modular Pen & Caliper Station / Lattice Pen Holder (Rapid Prototyping)
-  if (img.includes('pen-holder') || img.includes('pen') || name.includes('pen') || name.includes('caliper') || name.includes('station')) {
+  // 8. Bespoke CNC-Fit Phone Stand
+  if (img.includes('phone') || name.includes('phone') || name.includes('stand') || slug.includes('phone') || id === '8') {
+    return <ArticulatedPhoneStandModel material={material} wireframe={wireframe} />;
+  }
+
+  // 9. Lattice Pen Holder & Caliper Station
+  if (img.includes('pen-holder') || img.includes('pen') || name.includes('pen') || name.includes('caliper') || slug.includes('pen') || id === '9') {
     return <PenCaliperStationModel material={material} wireframe={wireframe} />;
   }
 
-  // Premier Engineering Products
-  if (id === '1' || img.includes('impeller') || name.includes('impeller') || name.includes('turbine')) {
+  // 10. Micro-Fluidic Centrifugal Impeller
+  if (img.includes('impeller') || name.includes('impeller') || name.includes('turbine') || slug.includes('impeller') || id === '10') {
     return <Impeller3DModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '2' || img.includes('drone') || name.includes('drone') || name.includes('spar')) {
+  // 11. UAS Carbon-X Drone Arm Spar
+  if (img.includes('drone') || img.includes('spar') || name.includes('drone') || name.includes('spar') || slug.includes('drone') || id === '11') {
     return <DroneSpar3DModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '3' || img.includes('chassis') || name.includes('chassis') || name.includes('enclosure')) {
+  // 12. CoreXY Structural Enclosure Chassis
+  if (img.includes('chassis') || name.includes('chassis') || name.includes('enclosure') || slug.includes('chassis') || id === '12') {
     return <IndustrialChassis3DModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '4' || img.includes('gear') || name.includes('gear') || name.includes('planetary')) {
+  // 13. High-Torque Planetary Reduction Gearbox
+  if (img.includes('gear') || name.includes('gear') || name.includes('planetary') || slug.includes('gear') || id === '13') {
     return <PlanetaryGearbox3DModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '5' || img.includes('gripper') || name.includes('gripper') || name.includes('effector')) {
+  // 14. Robotic End-Effector Gripper Finger
+  if (img.includes('gripper') || name.includes('gripper') || name.includes('effector') || slug.includes('gripper') || id === '14') {
     return <RoboticGripper3DModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '6' || img.includes('biomedical') || name.includes('surgical') || name.includes('guide')) {
-    return <SurgicalGuide3DModel material={material} wireframe={wireframe} />;
-  }
-
-  return <Impeller3DModel material={material} wireframe={wireframe} />;
+  return <HexVaseModel material={material} />;
 }
-
 
 export interface Product3DViewerProps {
   product: Product;
@@ -1215,7 +1225,7 @@ export default function Product3DViewer({ product, selectedMaterial = "PLA" }: P
               <ambientLight intensity={1.2} />
               <directionalLight position={[6, 9, 5]} intensity={1.8} castShadow />
               <directionalLight position={[-6, 4, -4]} intensity={0.7} color="#cbd5e1" />
-              <pointLight position={[0, -2, 3]} intensity={0.5} color="#F7931E" />
+              <pointLight position={[0, -2, 3]} intensity={0.5} color="#412f91" />
               <pointLight position={[0, 4, -2]} intensity={0.4} color="#38bdf8" />
 
               {/* Centered Floating Model */}

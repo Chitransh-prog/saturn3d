@@ -254,7 +254,7 @@ export default function FeaturedProductsViewer() {
                       </button>
 
                       <Link
-                        href={`/product/${p.id}`}
+                        href={`/product/${p.slug || p.id}`}
                         onClick={(e) => e.stopPropagation()}
                         className="p-2 rounded-lg text-xs font-mono bg-black/5 hover:bg-black/10 text-[#5E6573] hover:text-[#111215] transition-all"
                         title="View Product Page"

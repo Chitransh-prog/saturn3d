@@ -102,7 +102,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* 2. Visual Studio: Product Photograph Stage */}
       <Link
-        href={`/product/${product.id}`}
+        href={`/product/${product.slug || product.id}`}
         className="block px-4 sm:px-5 my-3 relative group/visual cursor-pointer"
       >
         <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-b from-[#F7F8FA] to-[#ECEEF2] border border-black/5 flex items-center justify-center p-3 sm:p-4">
@@ -138,7 +138,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="px-4 sm:px-5 flex-1 flex flex-col justify-between">
         <div>
           {/* Title */}
-          <Link href={`/product/${product.id}`} className="block group-hover:text-[#412f91] transition-colors">
+          <Link href={`/product/${product.slug || product.id}`} className="block group-hover:text-[#412f91] transition-colors">
             <h3 className="font-sans font-bold text-base sm:text-lg text-[#111215] tracking-tight leading-snug">
               {product.name}
             </h3>
@@ -183,7 +183,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-center gap-1.5 shrink-0">
             {/* View 3D Page */}
             <Link
-              href={`/product/${product.id}`}
+              href={`/product/${product.slug || product.id}`}
               className="p-2 sm:px-3 sm:py-2 rounded-xl border border-black/10 hover:border-[#412f91] bg-[#F8F9FB] hover:bg-white text-[#111215] hover:text-[#412f91] transition-all flex items-center gap-1 font-mono text-xs"
               title="Inspect Part in 3D"
             >

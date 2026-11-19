@@ -78,16 +78,20 @@ const reviews = [
   },
 ];
 
-export default function ProductDetail() {
+interface ProductDetailProps {
+  initialProduct?: Product | any;
+}
+
+export default function ProductDetail({ initialProduct }: ProductDetailProps = {}) {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const addItem = useCartStore((state) => state.addItem);
   const toggleCart = useCartStore((state) => state.toggleCart);
 
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<Product | null>(initialProduct || null);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [related, setRelated] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(!initialProduct);
   const [notFound, setNotFound] = useState(false);
 
   // Configuration state
@@ -113,16 +117,20 @@ export default function ProductDetail() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     async function loadData() {
-      if (!id) return;
-      setLoading(true);
+      const targetId = id || initialProduct?.id || initialProduct?.slug;
+      if (!targetId && !initialProduct) return;
+      
+      if (!initialProduct) {
+        setLoading(true);
+      }
       setNotFound(false);
 
       try {
-        const productRes = await productsApi.getById(id);
+        const productRes = await productsApi.getById(targetId);
         const data = productRes.data?.data;
-        const currentProd = data?.product;
+        const currentProd = data?.product || initialProduct;
 
-        if (!currentProd && isMounted) {
+        if (!currentProd && isMounted && !initialProduct) {
           setNotFound(true);
           return;
         }
@@ -144,7 +152,9 @@ export default function ProductDetail() {
           }
         }
       } catch (err) {
-        if (isMounted) setNotFound(true);
+        if (isMounted && !initialProduct && !product) {
+          setNotFound(true);
+        }
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -154,7 +164,7 @@ export default function ProductDetail() {
     return () => {
       isMounted = false;
     };
-  }, [id]);
+  }, [id, initialProduct]);
 
   const selectedMatObj = useMemo(() => {
     return materials.find((m) => m.id === selectedMaterial) || materials[0];

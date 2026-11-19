@@ -78,14 +78,14 @@ export default function HowItWorks() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 pb-8 border-b border-black/10">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#F7931E]" />
+              <span className="w-2 h-2 rounded-full bg-[#412f91]" />
               <span className="font-mono-tech text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-slate-700">
                 04 / FABRICATION ARCHITECTURE
               </span>
             </div>
 
             <h2 className="font-monumental text-5xl sm:text-7xl lg:text-8xl font-black text-black tracking-tight leading-[0.88] uppercase">
-              OPERATION <span className="text-[#F7931E]">PROTOCOL</span>
+              OPERATION <span className="text-[#412f91]">PROTOCOL</span>
             </h2>
           </div>
 
@@ -157,7 +157,7 @@ export default function HowItWorks() {
             className="inline-flex items-center gap-3 px-8 py-4 bg-black hover:bg-neutral-800 text-white font-mono-tech text-xs font-bold uppercase tracking-[0.18em] rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 active:scale-95 group"
           >
             <span>LAUNCH INSTANT CAD SLICER</span>
-            <ArrowRight className="w-4 h-4 text-[#F7931E] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 text-[#412f91] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 

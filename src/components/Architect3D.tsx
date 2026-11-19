@@ -36,11 +36,11 @@ function ParametricSpire() {
     []
   );
 
-  const orangeGlowMaterial = useMemo(
+  const purpleGlowMaterial = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: '#F7931E',
-        emissive: '#F7931E',
+        color: '#412f91',
+        emissive: '#412f91',
         emissiveIntensity: 1.8,
         wireframe: false,
       }),
@@ -84,7 +84,7 @@ function ParametricSpire() {
       </mesh>
 
       {/* 2. Illuminated Central Structural Core */}
-      <mesh position={[0, 0, 0]} material={orangeGlowMaterial}>
+      <mesh position={[0, 0, 0]} material={purpleGlowMaterial}>
         <cylinderGeometry args={[0.22, 0.28, 4.6, 16]} />
       </mesh>
 
@@ -115,7 +115,7 @@ function ParametricSpire() {
         <mesh material={concreteMaterial}>
           <coneGeometry args={[0.65, 0.9, 8]} />
         </mesh>
-        <mesh position={[0, 0.85, 0]} material={orangeGlowMaterial}>
+        <mesh position={[0, 0.85, 0]} material={purpleGlowMaterial}>
           <cylinderGeometry args={[0.03, 0.08, 1.2, 12]} />
         </mesh>
       </group>
@@ -125,7 +125,7 @@ function ParametricSpire() {
         <mesh rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[0.4, 2.2, 32]} />
           <meshBasicMaterial
-            color="#F7931E"
+            color="#412f91"
             side={THREE.DoubleSide}
             transparent={true}
             opacity={0.35}
@@ -134,7 +134,7 @@ function ParametricSpire() {
         {/* Intense Outer Laser Trim Ring */}
         <mesh rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[2.18, 2.22, 32]} />
-          <meshBasicMaterial color="#F7931E" side={THREE.DoubleSide} />
+          <meshBasicMaterial color="#412f91" side={THREE.DoubleSide} />
         </mesh>
       </group>
 
@@ -171,8 +171,8 @@ export default function Architect3D() {
         <ambientLight intensity={0.8} />
         <directionalLight position={[6, 8, 5]} intensity={2.2} color="#ffffff" />
         <directionalLight position={[-5, -2, -4]} intensity={0.9} color="#38bdf8" />
-        <pointLight position={[0, 0, 0]} intensity={2.0} color="#F7931E" distance={6} />
-        <pointLight position={[2, 3, 2]} intensity={1.2} color="#F7931E" />
+        <pointLight position={[0, 0, 0]} intensity={2.0} color="#412f91" distance={6} />
+        <pointLight position={[2, 3, 2]} intensity={1.2} color="#412f91" />
 
         {/* Gentle Floating Motion */}
         <Float speed={1.8} rotationIntensity={0.12} floatIntensity={0.3}>
@@ -194,7 +194,7 @@ export default function Architect3D() {
 
       {/* Interactive Badge Hint */}
       <div className="absolute bottom-3 right-3 z-10 pointer-events-none hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white/70 text-[9px] font-mono-tech uppercase tracking-widest">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#F7931E] animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#412f91] animate-pulse" />
         <span>3D ARCHITECTURAL TWIN &bull; DRAG TO ROTATE</span>
       </div>
     </div>

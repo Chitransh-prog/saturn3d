@@ -1,196 +1,51 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.resolve(__dirname, '../src/components/Product3DViewer.tsx');
-let content = fs.readFileSync(filePath, 'utf8');
+const filePath = path.resolve('saturn-3d-main/src/components/Product3DViewer.tsx');
+let code = fs.readFileSync(filePath, 'utf8');
 
-const premierModelsCode = `
-// =============================================================================
-// PREMIER INDUSTRIAL 3D MODELS
-// =============================================================================
+// 1. Normalize line breaks to \n
+code = code.replace(/\r\n/g, '\n');
 
-// 1. Micro-Fluidic Centrifugal Impeller Model
-function Impeller3DModel({ material, wireframe }: { material: THREE.Material; wireframe: boolean }) {
-  return (
-    <group position={[0, -0.2, 0]}>
-      <mesh material={material} castShadow receiveShadow>
-        <cylinderGeometry args={[1.5, 1.6, 0.22, 48]} />
-      </mesh>
-      <mesh position={[0, 0.45, 0]} material={material} castShadow>
-        <cylinderGeometry args={[0.5, 0.95, 0.7, 36]} />
-      </mesh>
-      <mesh position={[0, 0.5, 0]}>
-        <cylinderGeometry args={[0.22, 0.22, 0.85, 24]} />
-        <meshStandardMaterial color="#0B0D10" metalness={0.9} roughness={0.15} wireframe={wireframe} />
-      </mesh>
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => {
-        const rad = (deg * Math.PI) / 180;
-        return (
-          <group key={i} rotation={[0, rad, 0]} position={[0, 0.4, 0]}>
-            <mesh
-              material={material}
-              position={[0.78, 0, 0]}
-              rotation={[0.3, 0.45, 0.1]}
-              castShadow
-            >
-              <boxGeometry args={[0.65, 0.6, 0.08]} />
-            </mesh>
-          </group>
-        );
-      })}
-    </group>
-  );
+// 2. Update wireframe color
+code = code.replace(
+  /color:\s*'#F7931E',\s*wireframe:\s*true,\s*emissive:\s*'#F7931E',\s*emissiveIntensity:\s*0\.4/,
+  "color: '#412f91',\n        wireframe: true,\n        emissive: '#412f91',\n        emissiveIntensity: 0.5"
+);
+
+// 3. Add CARBON material in useProductMaterial
+if (!code.includes("case 'CARBON':")) {
+  const carbonCase = `      case 'CARBON':
+        // Carbon-fiber reinforced PA12, stealth matte micro-texture
+        return new THREE.MeshPhysicalMaterial({
+          color: '#1a1b1e',
+          roughness: 0.72,
+          metalness: 0.15,
+          clearcoat: 0.2,
+          clearcoatRoughness: 0.5,
+        });
+
+      case 'ABS':`;
+  code = code.replace("      case 'ABS':", carbonCase);
 }
 
-// 2. UAS Carbon-X Drone Arm Spar Model
-function DroneSpar3DModel({ material, wireframe }: { material: THREE.Material; wireframe: boolean }) {
-  return (
-    <group position={[0, 0, 0]} rotation={[0.2, 0.4, 0]}>
-      <mesh material={material} castShadow receiveShadow>
-        <boxGeometry args={[3.2, 0.24, 0.45]} />
-      </mesh>
-      <mesh position={[1.55, 0, 0]} material={material} castShadow>
-        <cylinderGeometry args={[0.42, 0.42, 0.28, 32]} />
-      </mesh>
-      <mesh position={[1.55, 0, 0]}>
-        <cylinderGeometry args={[0.18, 0.18, 0.32, 20]} />
-        <meshStandardMaterial color="#0B0D10" metalness={0.9} roughness={0.15} wireframe={wireframe} />
-      </mesh>
-      <mesh position={[-1.55, 0, 0]} material={material} castShadow>
-        <boxGeometry args={[0.45, 0.38, 0.55]} />
-      </mesh>
-      {[-0.8, -0.2, 0.4, 1.0].map((x, i) => (
-        <mesh key={i} position={[x, 0, 0]}>
-          <cylinderGeometry args={[0.12, 0.12, 0.3, 16]} />
-          <meshStandardMaterial color="#0B0D10" wireframe={wireframe} />
-        </mesh>
-      ))}
-    </group>
-  );
-}
+// 4. Update orange accents
+code = code.replace(/<meshBasicMaterial color="#F7931E" \/>/g, '<meshBasicMaterial color="#412f91" />');
+code = code.replace(
+  /color:\s*'#F7931E',\s*roughness:\s*0\.3,\s*metalness:\s*0\.2/g,
+  "color: '#412f91',\n        roughness: 0.3,\n        metalness: 0.2"
+);
+code = code.replace(
+  /<pointLight position={\[0, -2, 3\]} intensity={0\.5} color="#F7931E" \/>/g,
+  '<pointLight position={[0, -2, 3]} intensity={0.5} color="#412f91" />'
+);
 
-// 3. CoreXY Structural Enclosure Chassis Model
-function IndustrialChassis3DModel({ material, wireframe }: { material: THREE.Material; wireframe: boolean }) {
-  return (
-    <group position={[0, -0.3, 0]} rotation={[0.35, -0.4, 0]}>
-      <mesh material={material} castShadow receiveShadow>
-        <boxGeometry args={[2.5, 0.85, 1.8]} />
-      </mesh>
-      <mesh position={[0, 0.45, 0]} material={material}>
-        <boxGeometry args={[2.38, 0.1, 1.68]} />
-      </mesh>
-      {[-0.6, -0.3, 0, 0.3, 0.6].map((x, i) => (
-        <mesh key={i} position={[x, 0.1, 0.91]}>
-          <boxGeometry args={[0.18, 0.04, 0.03]} />
-          <meshStandardMaterial color="#0B0D10" metalness={0.8} roughness={0.2} wireframe={wireframe} />
-        </mesh>
-      ))}
-      {[
-        [-1.0, -0.7],
-        [1.0, -0.7],
-        [-1.0, 0.7],
-        [1.0, 0.7],
-      ].map(([sx, sz], i) => (
-        <mesh key={i} position={[sx, 0.35, sz]} material={material}>
-          <cylinderGeometry args={[0.1, 0.1, 0.3, 16]} />
-        </mesh>
-      ))}
-    </group>
-  );
-}
+// 5. Replace ProductModelRenderer with 14-product mapping
+const startIdx = code.indexOf('function ProductModelRenderer(');
+const endIdx = code.indexOf('export interface Product3DViewerProps {');
 
-// 4. High-Torque Planetary Reduction Gearbox Model
-function PlanetaryGearbox3DModel({ material, wireframe }: { material: THREE.Material; wireframe: boolean }) {
-  const groupRef = useRef<THREE.Group>(null);
-  useFrame((_, delta) => {
-    if (groupRef.current) groupRef.current.rotation.y += delta * 0.4;
-  });
-
-  return (
-    <group ref={groupRef} position={[0, 0, 0]} rotation={[0.4, 0, 0]}>
-      <mesh material={material} castShadow receiveShadow>
-        <torusGeometry args={[1.5, 0.22, 16, 48]} />
-      </mesh>
-      <mesh material={material} castShadow>
-        <cylinderGeometry args={[0.42, 0.42, 0.35, 24]} />
-      </mesh>
-      <mesh position={[0, 0, 0]}>
-        <cylinderGeometry args={[0.16, 0.16, 0.4, 16]} />
-        <meshStandardMaterial color="#0B0D10" metalness={0.9} roughness={0.1} wireframe={wireframe} />
-      </mesh>
-      {[0, 120, 240].map((deg, i) => {
-        const rad = (deg * Math.PI) / 180;
-        const px = Math.cos(rad) * 0.95;
-        const pz = Math.sin(rad) * 0.95;
-        return (
-          <group key={i} position={[px, 0, pz]}>
-            <mesh material={material} castShadow>
-              <cylinderGeometry args={[0.38, 0.38, 0.32, 20]} />
-            </mesh>
-            <mesh>
-              <cylinderGeometry args={[0.1, 0.1, 0.38, 12]} />
-              <meshStandardMaterial color="#94A3B8" metalness={0.9} roughness={0.15} wireframe={wireframe} />
-            </mesh>
-          </group>
-        );
-      })}
-    </group>
-  );
-}
-
-// 5. Robotic End-Effector Gripper Finger Model
-function RoboticGripper3DModel({ material, wireframe }: { material: THREE.Material; wireframe: boolean }) {
-  return (
-    <group position={[0, -0.4, 0]} rotation={[0.2, 0.3, 0]}>
-      <mesh material={material} castShadow receiveShadow>
-        <boxGeometry args={[0.9, 0.6, 0.8]} />
-      </mesh>
-      <group position={[-0.4, 0.7, 0]} rotation={[0, 0, -0.3]}>
-        <mesh material={material} position={[0, 0.6, 0]} castShadow>
-          <boxGeometry args={[0.2, 1.2, 0.4]} />
-        </mesh>
-        <mesh position={[0.12, 0.6, 0]}>
-          <boxGeometry args={[0.06, 0.9, 0.36]} />
-          <meshStandardMaterial color="#FF5A1F" roughness={0.8} metalness={0.1} wireframe={wireframe} />
-        </mesh>
-      </group>
-      <group position={[0.4, 0.7, 0]} rotation={[0, 0, 0.3]}>
-        <mesh material={material} position={[0, 0.6, 0]} castShadow>
-          <boxGeometry args={[0.2, 1.2, 0.4]} />
-        </mesh>
-        <mesh position={[-0.12, 0.6, 0]}>
-          <boxGeometry args={[0.06, 0.9, 0.36]} />
-          <meshStandardMaterial color="#FF5A1F" roughness={0.8} metalness={0.1} wireframe={wireframe} />
-        </mesh>
-      </group>
-    </group>
-  );
-}
-
-// 6. Biomedical Mandibular Surgical Guide Model
-function SurgicalGuide3DModel({ material, wireframe }: { material: THREE.Material; wireframe: boolean }) {
-  return (
-    <group position={[0, 0, 0]} rotation={[0.5, 0.3, 0]}>
-      <mesh material={material} castShadow receiveShadow>
-        <torusGeometry args={[1.2, 0.22, 16, 36, Math.PI * 1.15]} />
-      </mesh>
-      {[-0.8, 0, 0.8].map((x, i) => (
-        <group key={i} position={[x, 0.25, 0.65 - Math.abs(x) * 0.3]}>
-          <mesh>
-            <cylinderGeometry args={[0.15, 0.15, 0.4, 20]} />
-            <meshStandardMaterial color="#E2E8F0" metalness={0.96} roughness={0.1} wireframe={wireframe} />
-          </mesh>
-          <mesh position={[0, 0.05, 0]}>
-            <cylinderGeometry args={[0.08, 0.08, 0.42, 16]} />
-            <meshBasicMaterial color="#0B0D10" />
-          </mesh>
-        </group>
-      ))}
-    </group>
-  );
-}
-
-function ProductModelRenderer({
+if (startIdx !== -1 && endIdx !== -1) {
+  const newRenderer = `function ProductModelRenderer({
   product,
   material,
   wireframe,
@@ -199,62 +54,87 @@ function ProductModelRenderer({
   material: THREE.Material;
   wireframe: boolean;
 }) {
-  const name = product.name.toLowerCase();
-  const id = product.id;
+  const name = (product.name || '').toLowerCase();
+  const slug = (product.slug || '').toLowerCase();
+  const id = String(product.id || '');
   const img = (product.image || '').toLowerCase();
 
-  // Premier Engineering Products
-  if (id === '1' || img.includes('impeller') || name.includes('impeller') || name.includes('turbine')) {
-    return <Impeller3DModel material={material} wireframe={wireframe} />;
+  // 1. Hexagonal Carbon Vase / Geometric Vase (Interior)
+  if (img.includes('vase') || name.includes('vase') || slug.includes('vase') || id === '1') {
+    return <HexVaseModel material={material} />;
   }
 
-  if (id === '2' || img.includes('drone') || name.includes('drone') || name.includes('spar')) {
-    return <DroneSpar3DModel material={material} wireframe={wireframe} />;
+  // 2. Tech Organizer Elite (Corporate / Bulk Gifting)
+  if (img.includes('organizer') || name.includes('organizer') || slug.includes('organizer') || id === '2') {
+    return <TechOrganizerModel material={material} />;
   }
 
-  if (id === '3' || img.includes('chassis') || name.includes('chassis') || name.includes('enclosure')) {
-    return <IndustrialChassis3DModel material={material} wireframe={wireframe} />;
+  // 3. Articulated High-Torque Desk Lamp (Drone & Robotics)
+  if (img.includes('lamp') || name.includes('lamp') || slug.includes('lamp') || id === '3') {
+    return <ArticulatedLampModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '4' || img.includes('gear') || name.includes('gear') || name.includes('planetary')) {
-    return <PlanetaryGearbox3DModel material={material} wireframe={wireframe} />;
+  // 4. Monolithic Sculptural Bookends
+  if (img.includes('bookend') || name.includes('bookend') || slug.includes('bookend') || id === '4') {
+    return <MonolithicBookendsModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '5' || img.includes('gripper') || name.includes('gripper') || name.includes('effector')) {
-    return <RoboticGripper3DModel material={material} wireframe={wireframe} />;
+  // 5. Faceted Architectural Wall Hooks
+  if (img.includes('wall-hook') || img.includes('hook') || name.includes('hook') || slug.includes('hook') || id === '5') {
+    return <FacetedWallHookModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '6' || img.includes('biomedical') || name.includes('surgical') || name.includes('guide')) {
-    return <SurgicalGuide3DModel material={material} wireframe={wireframe} />;
-  }
-
-  // Fallbacks
-  if (id === '7' || img.includes('cable-management') || name.includes('cable')) {
+  // 6. Modular Interlocking Cable Track
+  if (img.includes('cable') || name.includes('cable') || slug.includes('cable') || id === '6') {
     return <ModularCableClipModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '8' || img.includes('plant-pot') || name.includes('planter') || name.includes('pot')) {
+  // 7. Geometric Self-Watering Planter / Plant Pot
+  if (img.includes('plant') || img.includes('pot') || name.includes('planter') || name.includes('plant') || slug.includes('planter') || id === '7') {
     return <ParametricPlanterModel material={material} wireframe={wireframe} />;
   }
 
-  if (id === '9' || img.includes('pen-holder') || name.includes('pen') || name.includes('caliper')) {
+  // 8. Bespoke CNC-Fit Phone Stand
+  if (img.includes('phone') || name.includes('phone') || name.includes('stand') || slug.includes('phone') || id === '8') {
+    return <ArticulatedPhoneStandModel material={material} wireframe={wireframe} />;
+  }
+
+  // 9. Lattice Pen Holder & Caliper Station
+  if (img.includes('pen-holder') || img.includes('pen') || name.includes('pen') || name.includes('caliper') || slug.includes('pen') || id === '9') {
     return <PenCaliperStationModel material={material} wireframe={wireframe} />;
   }
 
-  return <Impeller3DModel material={material} wireframe={wireframe} />;
+  // 10. Micro-Fluidic Centrifugal Impeller
+  if (img.includes('impeller') || name.includes('impeller') || name.includes('turbine') || slug.includes('impeller') || id === '10') {
+    return <Impeller3DModel material={material} wireframe={wireframe} />;
+  }
+
+  // 11. UAS Carbon-X Drone Arm Spar
+  if (img.includes('drone') || img.includes('spar') || name.includes('drone') || name.includes('spar') || slug.includes('drone') || id === '11') {
+    return <DroneSpar3DModel material={material} wireframe={wireframe} />;
+  }
+
+  // 12. CoreXY Structural Enclosure Chassis
+  if (img.includes('chassis') || name.includes('chassis') || name.includes('enclosure') || slug.includes('chassis') || id === '12') {
+    return <IndustrialChassis3DModel material={material} wireframe={wireframe} />;
+  }
+
+  // 13. High-Torque Planetary Reduction Gearbox
+  if (img.includes('gear') || name.includes('gear') || name.includes('planetary') || slug.includes('gear') || id === '13') {
+    return <PlanetaryGearbox3DModel material={material} wireframe={wireframe} />;
+  }
+
+  // 14. Robotic End-Effector Gripper Finger
+  if (img.includes('gripper') || name.includes('gripper') || name.includes('effector') || slug.includes('gripper') || id === '14') {
+    return <RoboticGripper3DModel material={material} wireframe={wireframe} />;
+  }
+
+  return <HexVaseModel material={material} />;
 }
+
 `;
-
-// Replace from 'function ProductModelRenderer' to the end of that function
-const startIdx = content.indexOf('function ProductModelRenderer');
-const endMarker = 'export default function Product3DViewer';
-const endIdx = content.indexOf(endMarker);
-
-if (startIdx !== -1 && endIdx !== -1) {
-  content = content.slice(0, startIdx) + premierModelsCode + '\n\n' + content.slice(endIdx);
-  fs.writeFileSync(filePath, content, 'utf8');
-  console.log('Successfully updated Product3DViewer.tsx with premier models!');
-} else {
-  console.error('Could not find markers:', { startIdx, endIdx });
+  code = code.substring(0, startIdx) + newRenderer + code.substring(endIdx);
 }
 
+fs.writeFileSync(filePath, code, 'utf8');
+console.log('Successfully updated Product3DViewer.tsx!');
