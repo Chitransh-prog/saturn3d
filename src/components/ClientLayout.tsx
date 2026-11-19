@@ -17,6 +17,18 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const progressBarRef = useRef<HTMLDivElement>(null);
   const isAdminOrAuth = pathname.startsWith('/admin') || pathname === '/login' || pathname === '/register';
 
+  // Track SPA client route transitions in Google Analytics
+  useEffect(() => {
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('config', 'G-F1B5KLKPZ6', {
+        page_path: pathname,
+      });
+      (window as any).gtag('config', 'GTM-NPBX9CR8', {
+        page_path: pathname,
+      });
+    }
+  }, [pathname]);
+
   // 1. Initialize Lenis smooth scroll, GSAP ScrollTrigger & AOS Animation Engine
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

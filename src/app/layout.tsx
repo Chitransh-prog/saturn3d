@@ -127,19 +127,38 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Tag Manager / Google Analytics */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-NPBX9CR8"
+        {/* Google Tag (gtag.js) & Google Tag Manager - GA4: G-F1B5KLKPZ6 / GTM: GTM-NPBX9CR8 */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=GTM-NPBX9CR8"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          `}
-        </Script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-F1B5KLKPZ6"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-F1B5KLKPZ6', { send_page_view: true });
+              gtag('config', 'GTM-NPBX9CR8');
+            `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-NPBX9CR8');
+            `,
+          }}
+        />
 
         {/* Structured Data: LocalBusiness & ManufacturingBusiness Schema (AEO / GEO / Local SEO) */}
         <script
